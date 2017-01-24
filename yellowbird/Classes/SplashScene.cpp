@@ -35,7 +35,7 @@ bool SplashScene::init()
 
 	this->scheduleOnce(schedule_selector(SplashScene::GoToMainmenuScene), DISPLAY_TIME_SPLASH_SCREEN);
     
-	auto backgroundSprite = Sprite::create("Title.png");
+	auto backgroundSprite = Sprite::create("Splash Screen.png");
 	backgroundSprite->setPosition(Point(visibleSize.width/2 + origin.x ,
 		visibleSize.height/2+origin.y));
 
