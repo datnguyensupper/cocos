@@ -1,5 +1,7 @@
 #include "SplashScene.h"
 #include "SimpleAudioEngine.h"
+#include "MainMenuScene.h"
+#include "Definitions.h"
 
 USING_NS_CC;
 
@@ -31,6 +33,18 @@ bool SplashScene::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	this->scheduleOnce(schedule_selector(SplashScene::GoToMainmenuScene), DISPLAY_TIME_SPLASH_SCREEN);
     
+	auto backgroundSprite = Sprite::create("Title.png");
+	backgroundSprite->setPosition(Point(visibleSize.width/2 + origin.x ,
+		visibleSize.height/2+origin.y));
+
+	this->addChild(backgroundSprite);
+
     return true;
+}
+
+void SplashScene::GoToMainmenuScene(float dt) {
+	auto scene = MainMenuScene::createScene();
+	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
