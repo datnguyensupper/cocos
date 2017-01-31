@@ -1,3 +1,7 @@
+//create project
+cocos new -l cpp com.donick.rotatebox RotateBox
+
+// build
 cocos compile -p android --android-studio
 cocos compile -p android --android-studio --app-abi x86
 cocos compile -p android --android-studio --app-abi armeabi

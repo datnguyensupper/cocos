@@ -10,11 +10,11 @@ public:
 
     virtual bool init();
     
+    // a selector callback
+    void menuCloseCallback(cocos2d::Ref* pSender);
+    
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-
-private:
-	void GotoTouchScene(float dt);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

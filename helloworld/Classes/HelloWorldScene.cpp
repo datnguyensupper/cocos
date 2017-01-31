@@ -1,5 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "TouchScene.h"
+#include "Definitions.h"
 
 USING_NS_CC;
 
@@ -35,6 +37,14 @@ bool HelloWorld::init()
 	auto label = Label::createWithSystemFont("Hello World", "Arial", 96);
 	label->setAnchorPoint(cocos2d::Vec2(0.0, 0.0));
 	this->addChild(label, 1);
+
+	//GotoTouchScene();
+	this->scheduleOnce(schedule_selector(HelloWorld::GotoTouchScene), DISPLAY_TIME_SPLASH_SCREEN);
     
     return true;
+}
+
+void HelloWorld::GotoTouchScene(float dt) {
+	auto scene = TouchScene::createScene();
+	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
