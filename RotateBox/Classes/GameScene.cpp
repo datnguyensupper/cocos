@@ -172,7 +172,7 @@ void GameScene::createPlayer() {
 	playerRed = Sprite::create("enemy_red.jpg");
 	playerRed->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	playerRed->setAnchorPoint(Vec2(0.5, 0));
-	playerRed->setScaleY(0.5);
+	playerRed->setScaleX(2);
 	auto playerBodyRed = PhysicsBody::createBox(Size(playerRed->getContentSize().width, playerRed->getContentSize().height),
 		PhysicsMaterial(0.1f, 1.0f, 0.0f));
 	//playerBodyRed->setPositionOffset(Vec2(0, playerRed->getContentSize().height/4));
@@ -243,6 +243,9 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact & contact) {
 						ENEMY_COLLISION_BITMASK_BLUE == a->getCollisionBitmask())?a:b;
 		enemy->getNode()->removeFromParentAndCleanup(true);
 
+		score++;
+		updateTextScore();
+
 		return false;
 	}
 	else if (
@@ -291,17 +294,17 @@ void GameScene::playerDied() {
 	}
 	cocos2d::log("player died");
 	isDied = true;
-	popupController.CreatePopupGameOver(this);
+	popupController.CreatePopupGameOver(this,score,maxScore);
 }
 
 void GameScene::restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType) {
 	cocos2d::log("restart butotn click %i", touchType);
 	if (touchType == cocos2d::ui::Widget::TouchEventType::BEGAN) {
-		static_cast<ui::Button *>(sender)->setScale(0.9);
+		static_cast<ui::Button *>(sender)->setScale(1.4);
 	}
 	else if (touchType == cocos2d::ui::Widget::TouchEventType::ENDED ||
 		touchType == cocos2d::ui::Widget::TouchEventType::CANCELED) {
-		static_cast<ui::Button *>(sender)->setScale(1);
+		static_cast<ui::Button *>(sender)->setScale(1.5);
 	}
 	if (touchType == cocos2d::ui::Widget::TouchEventType::ENDED) {
 		static_cast<ui::Button *>(sender)->setTouchEnabled(false);

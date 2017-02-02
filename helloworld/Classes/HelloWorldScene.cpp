@@ -1,6 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "TouchScene.h"
+#include "MultiTouch.h"
 #include "Definitions.h"
 
 USING_NS_CC;
@@ -45,6 +45,6 @@ bool HelloWorld::init()
 }
 
 void HelloWorld::GotoTouchScene(float dt) {
-	auto scene = TouchScene::createScene();
+	auto scene = MultiTouch::createScene();
 	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
