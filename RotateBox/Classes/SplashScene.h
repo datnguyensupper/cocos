@@ -13,5 +13,9 @@ public:
     CREATE_FUNC(SplashScene);
 private:
 	void GoToGameScene(float dt);
+	void UpdateTimer(float dt);
+
+	
+	cocos2d::Sprite * btn_play;
 };
 

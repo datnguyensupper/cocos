@@ -155,6 +155,10 @@ void GameScene::spawnEnemy(float dt) {
 
 void GameScene::createWorldBounds() {
 
+	auto background = Sprite::create("bg.jpg");
+	background->setPosition(Vec2(visibleSize.width/2+origin.x, visibleSize.height/2+origin.y));
+	this->addChild(background);
+
 	auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
 	edgeBody->setCollisionBitmask(BOUND_COLLISION_BITMASK);
 	edgeBody->setContactTestBitmask(true);
@@ -169,10 +173,11 @@ void GameScene::createWorldBounds() {
 
 void GameScene::createPlayer() {
 
-	playerRed = Sprite::create("enemy_red.jpg");
+	playerRed = Sprite::create("shield.png");
 	playerRed->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	playerRed->setAnchorPoint(Vec2(0.5, 0));
-	playerRed->setScaleX(2);
+	playerRed->setColor(Color3B::RED);
+	//playerRed->setScaleX(2);
 	auto playerBodyRed = PhysicsBody::createBox(Size(playerRed->getContentSize().width, playerRed->getContentSize().height),
 		PhysicsMaterial(0.1f, 1.0f, 0.0f));
 	//playerBodyRed->setPositionOffset(Vec2(0, playerRed->getContentSize().height/4));
@@ -184,10 +189,11 @@ void GameScene::createPlayer() {
 	playerRed->setPhysicsBody(playerBodyRed);
 	//playerRed->addComponent(playerBodyRed);
 
-	playerBlue = Sprite::create("enemy_blue.jpg");
-	//playerBlue->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	playerBlue = Sprite::create("shield.png");
+	playerBlue->setPosition(Vec2(0, -playerBlue->getContentSize().height));
 	playerBlue->setAnchorPoint(Vec2(0, 1));
-	//playerBlue->setScaleY(0.5);
+	playerBlue->setColor(Color3B::BLUE);
+	playerBlue->setScaleY(-1);
 	auto playerBodyBlue = PhysicsBody::createBox(Size(playerBlue->getContentSize().width, playerBlue->getContentSize().height),
 		PhysicsMaterial(0.1f, 1.0f, 0.0f));
 	//playerBodyBlue->setPositionOffset(Vec2(0, -player->getContentSize().height / 4));

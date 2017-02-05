@@ -15,18 +15,24 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 	cocos2d::String* enemyRS = nullptr;// String::create("player.jpg");
 	int enemyBitmask = 0;
 	float enemyType = Helper::getInstance()->randomDirectionOneDimention();
+	Color3B enemyColor;
 	//enemyType = 1;
 	if (enemyType < 0) {
-		enemyRS = String::create("enemy_blue.jpg");
+		//enemyRS = String::create("enemy_blue.jpg");
+		enemyRS = String::create("enemy.png");
 		enemyBitmask = ENEMY_COLLISION_BITMASK_BLUE;
+		enemyColor = Color3B::BLUE;
 	}
 	else {
-		enemyRS = String::create("enemy_red.jpg");	
-		enemyBitmask = ENEMY_COLLISION_BITMASK_RED;	
+		//enemyRS = String::create("enemy_red.jpg");	
+		enemyRS = String::create("enemy.png");	
+		enemyBitmask = ENEMY_COLLISION_BITMASK_RED;
+		enemyColor = Color3B::RED;	
 	}
 
 	auto enemy = Sprite::create(enemyRS->getCString());
 	enemy->setScale(0.5);
+	enemy->setColor(enemyColor);
 
 	auto enemyBody = PhysicsBody::createBox(enemy->getContentSize(),
 		PhysicsMaterial(0.1f, 1.0f, 0.0f));
