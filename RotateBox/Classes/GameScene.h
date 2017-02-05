@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "EnemyController.h"
 #include "PopupController.h"
+#include "SoundController.h"
 #include "ui/CocosGUI.h"
 
 class GameScene : public cocos2d::Layer
@@ -34,8 +35,9 @@ private:
 	cocos2d::Size visibleSize;
 	cocos2d::Vec2 origin;
 
-	EnemyController enemy;
+	EnemyController enemyController;
 	PopupController popupController;
+	SoundController soundController;
 
 	cocos2d::Vec2 lastTouchLocation;
 

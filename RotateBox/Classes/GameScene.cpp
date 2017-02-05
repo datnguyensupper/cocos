@@ -10,7 +10,7 @@ Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
 	auto scene = Scene::createWithPhysics();
-	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	//scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	scene->getPhysicsWorld()->setGravity(Vect(0, 0));
     
     // 'layer' is an autorelease object
@@ -51,6 +51,8 @@ bool GameScene::init()
 	createWorldBounds();
 	createPlayer();
 	handleTouchController();
+	soundController.PlayBackgroundMusic();
+	soundController.CreateSoundControl(this);
 
 	updateTextScore();
 
@@ -131,7 +133,7 @@ void GameScene::handleTouchController() {
 			gameScene->playerRed->setPosition(newPosition);
 			
 		}
-		CCLOG("player red angle: %f",gameScene->playerRed->getRotation());
+		//CCLOG("player red angle: %f",gameScene->playerRed->getRotation());
 		gameScene->lastTouchLocation = touch->getLocation();
 	};
 	//touchListener->onTouchCancelled = [](Touch* touch, Event* event)->void {
@@ -150,7 +152,7 @@ void GameScene::spawnEnemy(float dt) {
 		// dont spawn enemy
 		return ;
 	}
-	enemy.SpawnEnemy(this, playerRed);
+	enemyController.SpawnEnemy(this, playerRed);
 }
 
 void GameScene::createWorldBounds() {
@@ -249,6 +251,7 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact & contact) {
 						ENEMY_COLLISION_BITMASK_BLUE == a->getCollisionBitmask())?a:b;
 		enemy->getNode()->removeFromParentAndCleanup(true);
 
+		soundController.PlayCoinSound();
 		score++;
 		updateTextScore();
 
@@ -298,6 +301,7 @@ void GameScene::playerDied() {
 	if (isDied) {
 		return;
 	}
+	soundController.PlayLooseSound();
 	cocos2d::log("player died");
 	isDied = true;
 	popupController.CreatePopupGameOver(this,score,maxScore);
