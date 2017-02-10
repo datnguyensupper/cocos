@@ -10,9 +10,9 @@ public:
 	SoundController();
 
 	void PlayBackgroundMusic();
-	void SoundController::PlayCoinSound();
-	void SoundController::PlayLooseSound();
-	void SoundController::CreateSoundControl(cocos2d::Layer * layer);
+	void PlayCoinSound();
+	void PlayLooseSound();
+	void CreateSoundControl(cocos2d::Layer * layer);
 private:
 	void PlaySound(const char* pszFilePath);
 	void toggleOnOffSound(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
