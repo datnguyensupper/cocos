@@ -4,6 +4,10 @@
 #include "Helper.h"
 #include "PopupController.h"
 
+#if (CC_TARGET_PLATFORM==CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
+#include "PluginFacebook/PluginFacebook.h"
+#endif
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -319,6 +323,36 @@ void GameScene::restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEven
 	if (touchType == cocos2d::ui::Widget::TouchEventType::ENDED) {
 		static_cast<ui::Button *>(sender)->setTouchEnabled(false);
 		this->scheduleOnce(schedule_selector(GameScene::GoToGameScene), 0);
+	}
+}
+
+void GameScene::shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType) {
+	cocos2d::log("restart butotn click %i", touchType);
+	if (touchType == cocos2d::ui::Widget::TouchEventType::BEGAN) {
+		static_cast<ui::Button *>(sender)->setScale(1.4);
+	}
+	else if (touchType == cocos2d::ui::Widget::TouchEventType::ENDED ||
+		touchType == cocos2d::ui::Widget::TouchEventType::CANCELED) {
+		static_cast<ui::Button *>(sender)->setScale(1.3);
+	}
+	if (touchType == cocos2d::ui::Widget::TouchEventType::ENDED) {
+		//static_cast<ui::Button *>(sender)->setTouchEnabled(false);
+		static_cast<ui::Button *>(sender)->setScale(1.3);
+
+#if (CC_TARGET_PLATFORM==CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
+		/*if (!sdkbox::PluginFacebook::isLoggedIn()) {
+			sdkbox::PluginFacebook::login();
+		}*/
+		__String * scoreStr = __String::createWithFormat("Congratulations! You beat your personal record! Your new score is %i", maxScore);
+		sdkbox::FBShareInfo info;
+		info.type = sdkbox::FB_LINK;
+		info.link = "https://play.google.com/store/apps/details?id=com.donick.rotatebox";
+		info.title = "Rotate Defense!";
+		info.text = scoreStr->getCString();
+		//info.image = "http://cocos2d-x.org/images/logo.png";
+		sdkbox::PluginFacebook::dialog(info);
+#endif
+
 	}
 }
 

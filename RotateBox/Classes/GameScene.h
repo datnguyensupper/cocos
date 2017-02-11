@@ -17,6 +17,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
 	void restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
+	void shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
 private:
 	void createPlayer();
 	void createWorldBounds();

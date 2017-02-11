@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\gameover">
+      <UniqueIdentifier>{e0162f32-9162-413e-847f-0fcbc6cfd104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\fonts">
+      <UniqueIdentifier>{16332f81-4fd0-4293-9d9a-8a0f14ebd242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\fonts\bitmapFonts">
+      <UniqueIdentifier>{38161d08-61e9-487c-837d-c40290efbf66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{d03afbeb-a8bc-49a1-92a6-d2eeb29c9c03}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SplashScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PopupController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ToggleButton.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SoundController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SplashScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Definitions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyController.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PopupController.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ToggleButton.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SoundController.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\enemy_blue.jpg">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\enemy_red.jpg">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\player.jpg">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\gameover\gameOver.png">
+      <Filter>resource\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\gameover\play-btn.png">
+      <Filter>resource\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\gameover\fbshare.png">
+      <Filter>resource\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\fonts\bitmapFonts\carrier_command.png">
+      <Filter>resource\fonts\bitmapFonts</Filter>
+    </Image>
+    <Image Include="..\Resources\gameover\middle.jpg">
+      <Filter>resource\gameover</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\fonts\bitmapFonts\carrier_command.xml">
+      <Filter>resource\fonts\bitmapFonts</Filter>
+    </Xml>
+    <Xml Include="..\proj.android-studio\app\AndroidManifest.xml">
+      <Filter>build</Filter>
+    </Xml>
+    <Xml Include="..\proj.android-studio\app\res\values\strings.xml">
+      <Filter>build</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\fonts\Marker Felt.ttf">
+      <Filter>resource\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\build.txt">
+      <Filter>build</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\proj.android-studio\app\jni\Android.mk">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\jni\Application.mk">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\project.properties">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\Resources\sdkbox_config.json">
+      <Filter>build</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -55,7 +55,6 @@ proj.win8.1-universal/*
 bin/*
 proj.tizen/*
 proj.win10/*
-proj.win32/*
 
 # cocos studio
 *.udf

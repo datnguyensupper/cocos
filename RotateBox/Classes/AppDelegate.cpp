@@ -1,6 +1,10 @@
 #include "AppDelegate.h"
 #include "SplashScene.h"
 
+#if (CC_TARGET_PLATFORM==CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
+#include "PluginFacebook/PluginFacebook.h"
+#endif
+
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(1600, 900);
@@ -34,6 +38,11 @@ static int register_all_packages()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+
+#if (CC_TARGET_PLATFORM==CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
+	sdkbox::PluginFacebook::init();
+#endif
+
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -47,7 +56,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    //director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);

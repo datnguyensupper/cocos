@@ -26,9 +26,16 @@ void PopupController::CreatePopupGameOver(cocos2d::Layer * layer, int score, int
 	auto playBtn = ui::Button::create("gameover/play-btn.png",
 		"gameover/play-btn.png");
 	playBtn->setScale(1.5);
-	playBtn->setPosition(Vec2(0, -bg->getContentSize().height / 1.5));
+	playBtn->setPosition(Vec2(-150, -bg->getContentSize().height / 1.5));
 	playBtn->addTouchEventListener(CC_CALLBACK_2(GameScene::restartGame, static_cast<GameScene *>(layer)));
 	popupGameOver->addChild(playBtn);
+
+	auto shareBtn = ui::Button::create("gameover/fbshare.png",
+		"gameover/fbshare.png");
+	shareBtn->setScale(1.3);
+	shareBtn->setPosition(Vec2(-playBtn->getPosition().x, -bg->getContentSize().height / 1.5-10));
+	shareBtn->addTouchEventListener(CC_CALLBACK_2(GameScene::shareFacebook, static_cast<GameScene *>(layer)));
+	popupGameOver->addChild(shareBtn);
 
 	auto title = Sprite::create("gameover/gameOver.png");
 	title->setScale(1.3);
