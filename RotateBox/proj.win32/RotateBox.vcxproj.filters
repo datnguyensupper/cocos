@@ -125,6 +125,9 @@
     <Xml Include="..\proj.android-studio\app\res\values\strings.xml">
       <Filter>build</Filter>
     </Xml>
+    <Xml Include="..\proj.android-studio\app\res\values\styles.xml">
+      <Filter>build</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Resources\fonts\Marker Felt.ttf">
