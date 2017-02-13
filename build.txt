@@ -8,8 +8,10 @@ cocos compile -p android --android-studio --app-abi armeabi
 
 //release
 cocos compile -p android --android-studio --app-abi x86 -m release
+Remove-Item bin\release\android\RotateBox-release-signed-x86.apk
 Rename-Item bin/release/android/RotateBox-release-signed.apk RotateBox-release-signed-x86.apk
 cocos compile -p android --android-studio --app-abi armeabi -m release
+Remove-Item bin\release\android\RotateBox-release-signed-armeabi.apk
 Rename-Item bin/release/android/RotateBox-release-signed.apk RotateBox-release-signed-armeabi.apk
 
 // run

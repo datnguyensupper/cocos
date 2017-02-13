@@ -346,10 +346,11 @@ void GameScene::shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEv
 		__String * scoreStr = __String::createWithFormat("Congratulations! You beat your personal record! Your new score is %i", maxScore);
 		sdkbox::FBShareInfo info;
 		info.type = sdkbox::FB_LINK;
-		info.link = "https://play.google.com/store/apps/details?id=com.donick.rotatebox";
+		info.link = "https://www.facebook.com/Rotate-Defense-577118195818190/";
+		//info.link = "https://play.google.com/store/apps/details?id=com.donick.rotatebox";
 		info.title = "Rotate Defense!";
 		info.text = scoreStr->getCString();
-		//info.image = "http://cocos2d-x.org/images/logo.png";
+		info.image = "https://raw.githubusercontent.com/tuynumemories/privacygame/master/levelUp.png";
 		sdkbox::PluginFacebook::dialog(info);
 #endif
 
