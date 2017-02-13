@@ -196,6 +196,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="..\proj.android-studio\app\res\values\strings.xml" />
+    <Xml Include="..\proj.android-studio\app\res\values\styles.xml" />
     <Xml Include="..\Resources\fonts\bitmapFonts\carrier_command.xml" />
   </ItemGroup>
   <ItemGroup>

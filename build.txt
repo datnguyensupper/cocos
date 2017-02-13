@@ -7,7 +7,7 @@ cocos compile -p android --android-studio --app-abi x86
 cocos compile -p android --android-studio --app-abi armeabi
 
 //release
-cocos compile -p android --android-studio --app-abi x86 -m release donick D@tnguyen1910
+cocos compile -p android --android-studio --app-abi x86 -m release
 Rename-Item bin/release/android/RotateBox-release-signed.apk RotateBox-release-signed-x86.apk
 cocos compile -p android --android-studio --app-abi armeabi -m release
 Rename-Item bin/release/android/RotateBox-release-signed.apk RotateBox-release-signed-armeabi.apk
@@ -18,3 +18,5 @@ cocos run -p android --android-studio
 // facebook setup android
 http://docs.sdkbox.com/en/plugins/facebook/v3-cpp/
 
+// splash screen
+http://discuss.cocos2d-x.org/t/android-native-splashscreen/22186

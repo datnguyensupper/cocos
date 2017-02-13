@@ -45,6 +45,19 @@ bool SplashScene::init()
 	partical->setPosition(Vec2(visibleSize.width / 2 + origin.x + 520, visibleSize.height / 2 + origin.y-20));
 	this->addChild(partical);
 
+	auto particalSnow = ParticleSnow::create();
+	
+	Color4F startColor = Color4F(66.0/255, 203.0/255, 244.0/255, 1);
+	particalSnow->setStartColor(startColor);
+	particalSnow->setEmissionRate(10);
+	particalSnow->setSpeed(20);
+	particalSnow->setGravity(Vec2(0, -70));
+	particalSnow->setEndColor(Color4F::WHITE);
+	particalSnow->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height + origin.y));
+	this->addChild(particalSnow);
+
+	
+
 	btn_play = Sprite::create("play_btn.png");
 	btn_play->setPosition(Vec2(1331, 460));
 	this->addChild(btn_play);
