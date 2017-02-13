@@ -206,6 +206,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Text Include="..\..\build.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\proj.android-studio\app\build.gradle" />
     <None Include="..\proj.android-studio\app\jni\Android.mk" />
     <None Include="..\proj.android-studio\app\jni\Application.mk" />
     <None Include="..\proj.android-studio\app\project.properties" />

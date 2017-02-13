@@ -152,5 +152,8 @@
     <None Include="..\Resources\sdkbox_config.json">
       <Filter>build</Filter>
     </None>
+    <None Include="..\proj.android-studio\app\build.gradle">
+      <Filter>build</Filter>
+    </None>
   </ItemGroup>
 </Project>
