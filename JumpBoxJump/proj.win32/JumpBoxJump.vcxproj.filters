@@ -10,6 +10,27 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource\fonts">
+      <UniqueIdentifier>{248446e5-fd97-469b-82ef-26c4dbf1b4f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\res">
+      <UniqueIdentifier>{3893f4ca-740a-4120-ae70-7924194dcb4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\fonts\bitmapFonts">
+      <UniqueIdentifier>{816d1727-cc6e-4c6b-8682-41abfc165739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\sprites">
+      <UniqueIdentifier>{e949b3f0-47e0-4af1-a6b3-0e3c414a6589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\sprites\gameover">
+      <UniqueIdentifier>{a34a5a23-0cab-4744-a706-dc246d9a396d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{d78f35d9-7cb0-40fc-8eaf-f15ad9a715db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\sprites\maingame">
+      <UniqueIdentifier>{576141d4-09fb-4eac-b108-dce20eee22cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,10 +53,102 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Definitions.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc">
+    <Image Include="..\Resources\fonts\bitmapFonts\carrier_command.png">
+      <Filter>resource\fonts\bitmapFonts</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\smoke-puff.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\snowflakes.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\snowflakes_large.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\tile.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\wing.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\background.jpg">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\halo.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\hand-touch.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\jump_partical.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\maingame\progress_blank.jpg">
+      <Filter>resource\sprites\maingame</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\maingame\background.jpg">
+      <Filter>resource\sprites\maingame</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\maingame\floor.jpg">
+      <Filter>resource\sprites\maingame</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\maingame\mute_bg.png">
+      <Filter>resource\sprites\maingame</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\maingame\play_bg.png">
+      <Filter>resource\sprites\maingame</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\maingame\progress.jpg">
+      <Filter>resource\sprites\maingame</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\gameover\play-btn.png">
+      <Filter>resource\sprites\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\gameover\fbshare.png">
+      <Filter>resource\sprites\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\gameover\gameOver.png">
+      <Filter>resource\sprites\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\gameover\middle-copy.jpg">
+      <Filter>resource\sprites\gameover</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\pattern4.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\sdkbox_config.json">
       <Filter>resource</Filter>
-    </ResourceCompile>
+    </None>
+    <None Include="..\proj.android-studio\app\jni\Application.mk">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\jni\Android.mk">
+      <Filter>build</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\fonts\Marker Felt.ttf">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\arial.ttf">
+      <Filter>resource\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Resources\fonts\bitmapFonts\carrier_command.xml">
+      <Filter>resource\fonts\bitmapFonts</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\build.txt">
+      <Filter>build</Filter>
+    </Text>
   </ItemGroup>
 </Project>
