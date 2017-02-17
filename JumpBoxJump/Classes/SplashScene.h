@@ -3,18 +3,17 @@
 
 #include "cocos2d.h"
 
-class HelloWorld : public cocos2d::Layer
+class SplashScene : public cocos2d::Layer
 {
+private:
+	void GoToGameScene(float dt);
 public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
     
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
     // implement the "static create()" method manually
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(SplashScene);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

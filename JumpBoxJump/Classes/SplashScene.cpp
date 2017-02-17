@@ -1,16 +1,17 @@
-#include "HelloWorldScene.h"
+#include "SplashScene.h"
 #include "SimpleAudioEngine.h"
 #include "Definitions.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* SplashScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = SplashScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -20,7 +21,7 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool SplashScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -88,5 +89,17 @@ bool HelloWorld::init()
 	auto spawnActionSprite = Spawn::createWithTwoActions(moveTo, rotateTo);
 	theSquare->runAction(spawnActionSprite);
 
+	this->scheduleOnce(schedule_selector(SplashScene::GoToGameScene), DISPLAY_TIME_SPLASH_SCREEN);
+
     return true;
 }
+
+void SplashScene::GoToGameScene(float dt) {
+	//stop time
+	//this->unschedule(schedule_selector(SplashScene::UpdateTimer));
+
+	auto scene = GameScene::createScene();
+	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
+
+}
+

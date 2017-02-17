@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "SplashScene.h"
 #ifdef SDKBOX_ENABLED
 #include "PluginFacebook/PluginFacebook.h"
 #endif
@@ -80,7 +80,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = SplashScene::createScene();
 
     // run
     director->runWithScene(scene);
