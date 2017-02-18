@@ -45,6 +45,12 @@
     <ClCompile Include="..\Classes\SplashScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Helper4Array.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PopupController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -60,6 +66,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SplashScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper4Array.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PopupController.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -121,11 +133,11 @@
     <Image Include="..\Resources\sprites\gameover\gameOver.png">
       <Filter>resource\sprites\gameover</Filter>
     </Image>
-    <Image Include="..\Resources\sprites\gameover\middle-copy.jpg">
-      <Filter>resource\sprites\gameover</Filter>
-    </Image>
     <Image Include="..\Resources\sprites\pattern4.png">
       <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\gameover\middle.jpg">
+      <Filter>resource\sprites\gameover</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

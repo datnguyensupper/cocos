@@ -2,6 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Definitions.h"
 #include "GameScene.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 
@@ -30,8 +31,8 @@ bool SplashScene::init()
         return false;
     }
     
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    visibleSize = Director::getInstance()->getVisibleSize();
+    origin = Director::getInstance()->getVisibleOrigin();
 
 	cocos2d::Sprite* background = Sprite::create("sprites/background.jpg");
 	background->setPosition(Vec2(visibleSize.width/2+origin.x,visibleSize.height/2+origin.y));
@@ -72,10 +73,10 @@ bool SplashScene::init()
 	this->addChild(progress);
 
 	auto theSquare = Sprite::create("sprites/pattern4.png");
-	theSquare->setPosition(Vec2(progressBG->getPosition().x,progressBG->getPosition().y+40));
+	theSquare->setPosition(Vec2(progressBG->getPosition().x,progressBG->getPosition().y+30));
 	theSquare->setContentSize(Size(SQUARE_SIZE, SQUARE_SIZE));
 	theSquare->setColor(Color3B::Color3B(255, 102, 153));
-	theSquare->setAnchorPoint(Vec2(0, 1));
+	theSquare->setAnchorPoint(Vec2(0.5, 0.5));
 	this->addChild(theSquare);
 
 
@@ -85,13 +86,30 @@ bool SplashScene::init()
 	progress->runAction(scaleBy);
 
 	auto moveTo = MoveTo::create(duration,Vec2(theSquare->getPosition().x + progressBG->getContentSize().width - 20,theSquare->getPosition().y));
-	auto rotateTo = RotateTo::create(duration, -20);
+	auto rotateTo = RotateTo::create(duration + 5*3, -20 - 360*3);
 	auto spawnActionSprite = Spawn::createWithTwoActions(moveTo, rotateTo);
 	theSquare->runAction(spawnActionSprite);
 
-	this->scheduleOnce(schedule_selector(SplashScene::GoToGameScene), DISPLAY_TIME_SPLASH_SCREEN);
+	this->scheduleOnce(schedule_selector(SplashScene::showBtnMove2NextScene), DISPLAY_TIME_SPLASH_SCREEN/10);
 
     return true;
+}
+
+void SplashScene::showBtnMove2NextScene(float dt) {
+
+
+	auto playBtn = ui::Button::create("sprites/gameover/play-btn.png",
+		"sprites/gameover/play-btn.png");
+	playBtn->setAnchorPoint(Vec2(0.5,0.5));
+	playBtn->setScale(1.5);
+	playBtn->setPosition(Vec2(visibleSize.width/2+origin.x, visibleSize.height/2+origin.y));
+	playBtn->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType touchType){
+		if (touchType == cocos2d::ui::Widget::TouchEventType::ENDED) {
+			playBtn->setTouchEnabled(false);
+			GoToGameScene(0);
+		}
+	});
+	this->addChild(playBtn);
 }
 
 void SplashScene::GoToGameScene(float dt) {

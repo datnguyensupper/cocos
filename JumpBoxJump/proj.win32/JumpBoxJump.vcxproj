@@ -146,6 +146,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
+    <ClCompile Include="..\Classes\Helper4Array.cpp" />
+    <ClCompile Include="..\Classes\PopupController.cpp" />
     <ClCompile Include="..\Classes\SplashScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -153,6 +155,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Definitions.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
+    <ClInclude Include="..\Classes\Helper4Array.h" />
+    <ClInclude Include="..\Classes\PopupController.h" />
     <ClInclude Include="..\Classes\SplashScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
@@ -173,7 +177,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\sprites\background.jpg" />
     <Image Include="..\Resources\sprites\gameover\fbshare.png" />
     <Image Include="..\Resources\sprites\gameover\gameOver.png" />
-    <Image Include="..\Resources\sprites\gameover\middle-copy.jpg" />
+    <Image Include="..\Resources\sprites\gameover\middle.jpg" />
     <Image Include="..\Resources\sprites\gameover\play-btn.png" />
     <Image Include="..\Resources\sprites\halo.png" />
     <Image Include="..\Resources\sprites\hand-touch.png" />
