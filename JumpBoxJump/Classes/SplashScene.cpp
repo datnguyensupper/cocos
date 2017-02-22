@@ -34,6 +34,8 @@ bool SplashScene::init()
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
 
+	SoundController::getInstance();
+
 	cocos2d::Sprite* background = Sprite::create("sprites/background.jpg");
 	background->setPosition(Vec2(visibleSize.width/2+origin.x,visibleSize.height/2+origin.y));
 	this->addChild(background);
@@ -66,7 +68,7 @@ bool SplashScene::init()
 
 	auto progress = Sprite::create("sprites/maingame/progress_blank.jpg");
 	progress->setPosition(progressBG->getPosition());
-	progress->setColor(Color3B::Color3B(255,102,153));
+	progress->setColor(Color3B(255,102,153));
 	progress->setContentSize(Size(progress->getContentSize().width,progress->getContentSize().height));
 	progress->setAnchorPoint(Vec2(0, 1));
 	progress->setScaleX(0);
@@ -75,7 +77,7 @@ bool SplashScene::init()
 	auto theSquare = Sprite::create("sprites/pattern4.png");
 	theSquare->setPosition(Vec2(progressBG->getPosition().x,progressBG->getPosition().y+30));
 	theSquare->setContentSize(Size(SQUARE_SIZE, SQUARE_SIZE));
-	theSquare->setColor(Color3B::Color3B(255, 102, 153));
+	theSquare->setColor(Color3B(255, 102, 153));
 	theSquare->setAnchorPoint(Vec2(0.5, 0.5));
 	this->addChild(theSquare);
 
@@ -90,7 +92,7 @@ bool SplashScene::init()
 	auto spawnActionSprite = Spawn::createWithTwoActions(moveTo, rotateTo);
 	theSquare->runAction(spawnActionSprite);
 
-	this->scheduleOnce(schedule_selector(SplashScene::showBtnMove2NextScene), DISPLAY_TIME_SPLASH_SCREEN/10);
+	this->scheduleOnce(schedule_selector(SplashScene::showBtnMove2NextScene), DISPLAY_TIME_SPLASH_SCREEN);
 
     return true;
 }

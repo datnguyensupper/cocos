@@ -13,7 +13,7 @@ Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
-	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	//scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	scene->getPhysicsWorld()->setGravity(Vect(0, -SQUARE_GRAVITY));
 	
     
@@ -120,25 +120,29 @@ bool GameScene::init()
         return false;
     }
     
+	soundController = SoundController::getInstance();
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
 
 	theSquare = nullptr;
 
 	floorY = {112-EXTRA_HEIGHT,224 - EXTRA_HEIGHT,336 - EXTRA_HEIGHT,448 - EXTRA_HEIGHT };
-	levelColors = {Color3B::Color3B(232,29,98),Color3B::Color3B(155,38,175),Color3B::Color3B(32,149,242), Color3B::Color3B(75,174,79),Color3B::Color3B(254,234,58),Color3B::Color3B(121,85,72),Color3B::Color3B(95,124,138), };
+	levelColors = {Color3B(232,29,98),Color3B(155,38,175),Color3B(32,149,242), Color3B(75,174,79),Color3B(254,234,58),Color3B(121,85,72),Color3B(95,124,138), };
 
 	createGameLevels();
 	updateTextScore();
-	createTheSquare();
 	createLevels();
+	createTheSquare();
 	createWorldBounds();
+	soundController->PlayBackgroundMusic();
+	soundController->CreateSoundControl(this);
+	createEmitters();
 
 	auto contactListener = EventListenerPhysicsContact::create();
 	contactListener->onContactBegin = CC_CALLBACK_1(GameScene::onContactBegin, this);
 	contactListener->onContactSeparate = CC_CALLBACK_1(GameScene::onContactSeperate, this);
-	contactListener->onContactPostSolve = CC_CALLBACK_2(GameScene::onContactPostSolve, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_2(GameScene::onContactPreSolve, this);
+	//contactListener->onContactPostSolve = CC_CALLBACK_2(GameScene::onContactPostSolve, this);
+	//contactListener->onContactPreSolve = CC_CALLBACK_2(GameScene::onContactPreSolve, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
 	// Add a "touch" event listener to our sprite
@@ -198,7 +202,7 @@ void GameScene::createTheSquare() {
 		//theSquare->setColor(Color3B::Color3B(255, 0, 255));
 		theSquare->setAnchorPoint(Vec2(0.5, 0.5));
 		theSquare->setContentSize(Size(SQUARE_SIZE, SQUARE_SIZE));
-		this->addChild(theSquare,2);
+		this->addChild(theSquare,20);
 		//playerRed->setScaleX(2);
 
 
@@ -206,6 +210,8 @@ void GameScene::createTheSquare() {
 	else {
 		theSquare->getPhysicsBody()->removeFromWorld();
 	}
+
+	theSquare->setColor(squareColor[levelFloor]);
 	theSquare->setRotation(0);
 	this->scheduleOnce(schedule_selector(GameScene::resetSquarePosition), 0);
 }
@@ -241,10 +247,11 @@ void GameScene::squareJump() {
 
 	if (canJump) {
 
+		soundController->PlayJumpSound();
 		canJump = false;
 		PhysicsBody * playerBody = theSquare->getPhysicsBody();
-		if (playerBody != nullptr) {
-		/*	playerBody->setVelocity(Vec2((levelFloor % 2 == 0) ? SQUARE_SPEED : -SQUARE_SPEED, -JUMP_FORCE));*/
+		if (playerBody != nullptr && playerBody->getVelocity().y <10) {
+			//playerBody->setVelocity(Vec2((levelFloor % 2 == 0) ? SQUARE_SPEED : -SQUARE_SPEED, -JUMP_FORCE));
 			playerBody->applyImpulse(Vec2(0, -JUMP_FORCE));
 			//playerBody->setGravityEnable(true);
 
@@ -261,6 +268,8 @@ void GameScene::squareJump() {
 }
 
 void GameScene::createFloor(int floor, std::vector<Barrier> floorLevelWall) {
+
+	Node *groupSpikeOfThisLevel = Node::create();
 	for (int i = 0; i < floorLevelWall.size(); i++) {
 		auto spike = Sprite::create("sprites/pattern4.png");
 		spike->setAnchorPoint(Vec2(0.5, 0));
@@ -268,25 +277,50 @@ void GameScene::createFloor(int floor, std::vector<Barrier> floorLevelWall) {
 		spike->setPosition(Vec2(
 			floorX + floorLevelWall[i].x,
 			visibleSize.height-floorY[floor]));
+		groupSpikeOfThisLevel->addChild(spike, 2);
 
-		auto spikeBody = PhysicsBody::createBox(Size(
-			//floor->getContentSize().width-100, 
-			spike->getContentSize().width,
-			spike->getContentSize().height),
-			PhysicsMaterial(0.0f, 0.0f, 0.0f));
-		spikeBody->setDynamic(false);
-		spikeBody->setContactTestBitmask(true);
-		spikeBody->setCollisionBitmask(OBSTACLE_COLLISION_BITMASK);
-		spike->setPhysicsBody(spikeBody);
+		//create count point
+		auto coinPoint = Node::create();
+		coinPoint->setPosition(Vec2(spike->getPosition().x, spike->getPosition().y + spike->getContentSize().height + 25));
+		groupSpikeOfThisLevel->addChild(coinPoint);
 
-		this->addChild(spike, 2);
+		Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]() {
+			auto spikeBody = PhysicsBody::createBox(Size(
+				//floor->getContentSize().width-100, 
+				spike->getContentSize().width,
+				spike->getContentSize().height),
+				PhysicsMaterial(0.0f, 0.0f, 0.0f));
+			spikeBody->setDynamic(false);
+			spikeBody->setContactTestBitmask(true);
+			spikeBody->setCollisionBitmask(OBSTACLE_COLLISION_BITMASK);
+			spike->setPhysicsBody(spikeBody);
+
+			auto coinPointBody = PhysicsBody::createBox(Size(
+				//floor->getContentSize().width-100, 
+				4,
+				50),
+				PhysicsMaterial(0.0f, 0.0f, 0.0f));
+			coinPointBody->setDynamic(false);
+			coinPointBody->setContactTestBitmask(true);
+			coinPointBody->setCollisionBitmask(POINT_COLLISION_BITMASK);
+			coinPoint->setPhysicsBody(coinPointBody);
+
+		});
+		//__String * scoreStr = __String::createWithFormat("%i", cocos2d::random(0,1000));
+		//this->scheduleOnce([=](float dt) {
+		//
+		//}, 0, scoreStr->getCString());
+
 
 	}
+	this->addChild(groupSpikeOfThisLevel,2);
+	arrayOfGroupEachFloorLevel[floor] = groupSpikeOfThisLevel;
+
 }
 
 void GameScene::createWorldBounds() {
 
-	auto edgeBody = PhysicsBody::createEdgeBox(Size(visibleSize.width+40, visibleSize.height), PHYSICSBODY_MATERIAL_DEFAULT, 3);
+	auto edgeBody = PhysicsBody::createEdgeBox(Size(visibleSize.width+40, visibleSize.height), PhysicsMaterial(0.0f, 0.0f, 0.0f), 3);
 	edgeBody->setCollisionBitmask(BOUND_COLLISION_BITMASK);
 	edgeBody->setContactTestBitmask(true);
 	edgeBody->setDynamic(false);
@@ -299,8 +333,9 @@ void GameScene::createWorldBounds() {
 }
 
 void GameScene::createLevels() {
-	squareColor.reserve(floorY.size());
+	//squareColor.reserve(floorY.size());
 	for (int i = 0; i < floorY.size(); i++) {
+		arrayOfGroupEachFloorLevel.push_back(nullptr);
 
 		std::vector<Color3B> colorsArray(levelColors.begin(), levelColors.end());
 
@@ -389,6 +424,21 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
 		playerDied();
 
 		return false;
+	} else if (
+		(PLAYER_COLLISION_BITMASK_PLAY == a->getCollisionBitmask() &&
+			POINT_COLLISION_BITMASK == b->getCollisionBitmask()) ||
+			(POINT_COLLISION_BITMASK == a->getCollisionBitmask() &&
+				PLAYER_COLLISION_BITMASK_PLAY == b->getCollisionBitmask())) {
+
+		PhysicsBody * point =
+			(POINT_COLLISION_BITMASK == a->getCollisionBitmask()) ? a : b;
+		point->getNode()->removeFromParentAndCleanup(true);
+
+		soundController->PlayCoinSound();
+		score++;
+		updateTextScore();
+
+		return false;
 	}
 	else if (
 		(PLAYER_COLLISION_BITMASK_PLAY == a->getCollisionBitmask() &&
@@ -433,7 +483,6 @@ void GameScene::placeSquare(){
 
 	createTheSquare();
 
-	theSquare->setColor(squareColor[levelFloor]);
 	// theSquare can jump again
 	canJump = true;
 
@@ -446,7 +495,15 @@ void GameScene::placeSquare(){
 }
 
 void GameScene::resetFloor(int floor) {
+	if (floor < 0) {
+		floor = floorY.size() - 1;
+	}
 
+	int floorLevelID = cocos2d::random(0, static_cast<int>(gameLevelsRandom.size() - 1));
+	std::vector<Barrier> floorLevel = gameLevelsRandom[floorLevelID];
+	this->removeChild(arrayOfGroupEachFloorLevel[floor]);
+	arrayOfGroupEachFloorLevel[floor] = nullptr;
+	createFloor(floor, floorLevel);
 }
 
 void GameScene::playerDied() {
@@ -454,8 +511,12 @@ void GameScene::playerDied() {
 		return;
 	}
 
+	dieParticle->setPosition(theSquare->getPosition());
+	dieParticle->resetSystem();
+
+	soundController->PlayLooseSound();
 	this->removeChild(theSquare);
-	//soundController.PlayLooseSound();
+	//soundController->PlayLooseSound();
 	cocos2d::log("player died");
 	isDead = true;
 	popupController.CreatePopupGameOver(this, score, maxScore);
@@ -481,9 +542,9 @@ void GameScene::shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEv
 		__String * scoreStr = __String::createWithFormat("Congratulations! You beat your personal record! Your new score is %i", maxScore);
 		sdkbox::FBShareInfo info;
 		info.type = sdkbox::FB_LINK;
-		info.link = "https://www.facebook.com/Rotate-Defense-577118195818190/";
+		info.link = "https://www.facebook.com/Jump-Box-Jump-1617325158294542/";
 		//info.link = "https://play.google.com/store/apps/details?id=com.donick.rotatebox";
-		info.title = "Rotate Defense!";
+		info.title = "Jump Box Jump!";
 		info.text = scoreStr->getCString();
 		info.image = "https://raw.githubusercontent.com/tuynumemories/privacygame/master/levelUp.png";
 		sdkbox::PluginFacebook::dialog(info);
@@ -511,4 +572,30 @@ void GameScene::restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEven
 void GameScene::GoToGameScene(float dt) {
 	auto scene = GameScene::createScene();
 	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
+}
+
+
+void GameScene::createEmitters() {
+	
+	//dieParticle = CCParticleExplosion::create();
+	dieParticle = ParticleExplosion::create();
+	dieParticle->setTexture(CCTextureCache::sharedTextureCache()->addImage("sprites/pattern4.png"));
+	dieParticle->setPosition(Vec2(100, 100));
+	dieParticle->setPosVar(ccp(20, 20));
+	dieParticle->setTotalParticles(30);
+	dieParticle->setDuration(0.2);
+	dieParticle->setStartSize(5);
+	dieParticle->setStartSizeVar(5);
+	dieParticle->setEndSize(20);
+	dieParticle->setEndSizeVar(3);
+	dieParticle->setGravity(Vec2(0, -300));
+	dieParticle->setLife(0.8f);
+	dieParticle->setLifeVar(0);
+	dieParticle->setEmissionRate(60);
+	dieParticle->setSpeed(50);
+	dieParticle->setSpeedVar(50);
+
+
+	dieParticle->stopSystem();
+	this->addChild(dieParticle, 20);
 }

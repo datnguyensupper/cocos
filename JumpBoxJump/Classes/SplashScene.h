@@ -6,7 +6,7 @@
 class SplashScene : public cocos2d::Layer
 {
 private:
-	void SplashScene::showBtnMove2NextScene(float dt);
+	void showBtnMove2NextScene(float dt);
 	void GoToGameScene(float dt);
 
 	cocos2d::Size visibleSize;

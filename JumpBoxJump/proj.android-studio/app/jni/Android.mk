@@ -14,8 +14,12 @@ LOCAL_MODULE_FILENAME := libMyGame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
 ../../../Classes/AppDelegate.cpp \
+../../../Classes/GameScene.cpp \
+../../../Classes/Helper4Array.cpp \
+../../../Classes/PopupController.cpp \
+../../../Classes/SoundController.cpp \
 ../../../Classes/SplashScene.cpp \
-../../../Classes/GameScene.cpp
+../../../Classes/ToggleButton.cpp
 
 LOCAL_CPPFLAGS := -DSDKBOX_ENABLED
 LOCAL_LDLIBS := -landroid \

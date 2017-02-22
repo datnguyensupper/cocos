@@ -148,7 +148,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\Helper4Array.cpp" />
     <ClCompile Include="..\Classes\PopupController.cpp" />
+    <ClCompile Include="..\Classes\SoundController.cpp" />
     <ClCompile Include="..\Classes\SplashScene.cpp" />
+    <ClCompile Include="..\Classes\ToggleButton.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -157,7 +159,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\Helper4Array.h" />
     <ClInclude Include="..\Classes\PopupController.h" />
+    <ClInclude Include="..\Classes\SoundController.h" />
     <ClInclude Include="..\Classes\SplashScene.h" />
+    <ClInclude Include="..\Classes\ToggleButton.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
@@ -196,8 +200,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\sprites\wing.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\proj.android-studio\app\build.gradle" />
     <None Include="..\proj.android-studio\app\jni\Android.mk" />
     <None Include="..\proj.android-studio\app\jni\Application.mk" />
+    <None Include="..\proj.android-studio\app\project.properties" />
     <None Include="..\Resources\sdkbox_config.json" />
   </ItemGroup>
   <ItemGroup>
@@ -205,10 +211,18 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Font Include="..\Resources\fonts\Marker Felt.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="..\proj.android-studio\app\AndroidManifest.xml" />
+    <Xml Include="..\proj.android-studio\app\res\values\strings.xml" />
     <Xml Include="..\Resources\fonts\bitmapFonts\carrier_command.xml" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\build.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\sounds\background_music.mp3" />
+    <Media Include="..\Resources\sounds\die.mp3" />
+    <Media Include="..\Resources\sounds\Jump.mp3" />
+    <Media Include="..\Resources\sounds\point.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
