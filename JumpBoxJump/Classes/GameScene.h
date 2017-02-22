@@ -36,6 +36,7 @@ public:
 	void restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
 	void GoToGameScene(float dt);
 	void createEmitters();
+	void update(float) override;
 
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
@@ -52,6 +53,7 @@ public:
 	bool isDead = false;
 	int levelFloor = 0;
 	cocos2d::Node* theSquare;
+	cocos2d::ParticleSystemQuad* particleFuel;
 	cocos2d::Sprite* theSquareGraphic;
 	bool canJump = true;
 	cocos2d::MoveTo jumpTween;
@@ -61,6 +63,7 @@ public:
 	int score = 0;
 	cocos2d::CCLabelBMFont *maxScoreText;
 	int maxScore = 0;
+	int gameDirection = 0;
 
 
 	PopupController popupController;

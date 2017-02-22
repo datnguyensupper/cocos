@@ -34,9 +34,9 @@ SoundController::SoundController() {
 	audio->playBackgroundMusic(
 		"sounds/background_music.mp3", true);
 	audio->pauseBackgroundMusic();
-	audio->preloadEffect("sounds/die.mp3");
+	/*audio->preloadEffect("sounds/die.mp3");
 	audio->preloadEffect("sounds/Jump.mp3");
-	audio->preloadEffect("sounds/point.mp3");
+	audio->preloadEffect("sounds/point.mp3");*/
 
 
 }

@@ -137,6 +137,7 @@ bool GameScene::init()
 	soundController->PlayBackgroundMusic();
 	soundController->CreateSoundControl(this);
 	createEmitters();
+	this->scheduleUpdate();
 
 	auto contactListener = EventListenerPhysicsContact::create();
 	contactListener->onContactBegin = CC_CALLBACK_1(GameScene::onContactBegin, this);
@@ -149,7 +150,7 @@ bool GameScene::init()
 	auto touchListener = EventListenerTouchOneByOne::create();
 	touchListener->onTouchBegan = [=](Touch* touch, Event* event)->bool {
 		squareJump();
-		return false;
+		return true;
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 
@@ -205,6 +206,9 @@ void GameScene::createTheSquare() {
 		this->addChild(theSquare,20);
 		//playerRed->setScaleX(2);
 
+		particleFuel = ParticleSystemQuad::create("sprites/particle_fuel.plist");
+		particleFuel->setTexture(TextureCache::sharedTextureCache()->addImage("sprites/particle_fuel.png"));
+		theSquare->addChild(particleFuel, 200);
 
 	}
 	else {
@@ -218,9 +222,13 @@ void GameScene::createTheSquare() {
 
 void GameScene::resetSquarePosition(float dt) {
 
-	Vec2 squarePosition = Vec2((levelFloor % 2 == 0) ? floorX + 20 : floorX + FLOOR_WIDTH - 20,
+	Vec2 squarePosition = Vec2((levelFloor % 2 == gameDirection) ? floorX + 20 : floorX + FLOOR_WIDTH - 20,
 			visibleSize.height - (floorY[levelFloor] - SQUARE_SIZE / 2));
 	theSquare->setPosition(squarePosition);
+
+	particleFuel->setGravity(Vec2((levelFloor % 2 == gameDirection) ? -540 : 540,0));
+	//particleFuel->setRadialAccel((levelFloor % 2 == gameDirection) ? -320 : 320);
+	particleFuel->setPosition(Vec2((levelFloor % 2 == gameDirection) ? 0:40, 10));
 
 	auto playerBody = PhysicsBody::createBox(Size(theSquare->getContentSize().width, theSquare->getContentSize().height),
 		PhysicsMaterial(/*density*/0.0f, /*restitution*/0.0f,/*friction*/ 0.0f));
@@ -232,7 +240,7 @@ void GameScene::resetSquarePosition(float dt) {
 	playerBody->setCollisionBitmask(PLAYER_COLLISION_BITMASK_PLAY);
 	playerBody->setContactTestBitmask(true);
 	//playerBody->applyForce(Vec2(SQUARE_SPEED, 0));
-	playerBody->setVelocity(Vec2((levelFloor % 2 == 0) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
+	playerBody->setVelocity(Vec2((levelFloor % 2 == gameDirection) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
 	playerBody->setRotationEnable(false);
 
 
@@ -250,12 +258,15 @@ void GameScene::squareJump() {
 		soundController->PlayJumpSound();
 		canJump = false;
 		PhysicsBody * playerBody = theSquare->getPhysicsBody();
-		if (playerBody != nullptr && playerBody->getVelocity().y <10) {
-			//playerBody->setVelocity(Vec2((levelFloor % 2 == 0) ? SQUARE_SPEED : -SQUARE_SPEED, -JUMP_FORCE));
-			playerBody->applyImpulse(Vec2(0, -JUMP_FORCE));
+		if (playerBody != nullptr && playerBody->getVelocity().y < 1) {
+
+			float velocity = -JUMP_FORCE;
+
+			playerBody->setVelocity(Vec2((levelFloor % 2 == gameDirection) ? SQUARE_SPEED : -SQUARE_SPEED, velocity));
+			//playerBody->applyImpulse(Vec2(0, -JUMP_FORCE));
 			//playerBody->setGravityEnable(true);
 
-			float jumpAngle = levelFloor % 2 == 0 ? -20 : 20;
+			float jumpAngle = levelFloor % 2 == gameDirection ? -20 : 20;
 			auto rotateTo = RotateTo::create(JUMP_TIME*2, jumpAngle);
 			auto rotateTo2 = RotateTo::create(JUMP_TIME*4, 0);
 			auto seq = Sequence::create(rotateTo, rotateTo2, nullptr);
@@ -445,7 +456,10 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
 			GOURND_COLLISION_BITMASK_PLAY == b->getCollisionBitmask()) ||
 			(GOURND_COLLISION_BITMASK_PLAY == a->getCollisionBitmask() &&
 				PLAYER_COLLISION_BITMASK_PLAY == b->getCollisionBitmask())) {
-
+		PhysicsBody * playerBody = theSquare->getPhysicsBody();
+		if (playerBody != nullptr) {
+			playerBody->setVelocity(Vec2((levelFloor % 2 == gameDirection) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
+		}
 		canJump = true;
 	}
 
@@ -475,10 +489,10 @@ void GameScene::placeSquare(){
 	resetFloor(levelFloor - 1);
 
 	//// adjusting hero speed according to floor number: from left to right on even floors, from right to left on odd floors
-	//theSquare->getPhysicsBody()->setVelocity(Vec2((levelFloor % 2 == 0) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
+	//theSquare->getPhysicsBody()->setVelocity(Vec2((levelFloor % 2 == gameDirection) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
 
 	//theSquare->setPosition(Vec2(
-	//	(levelFloor % 2 == 0) ? floorX : floorX + FLOOR_WIDTH,
+	//	(levelFloor % 2 == gameDirection) ? floorX : floorX + FLOOR_WIDTH,
 	//	visibleSize.height-(floorY[levelFloor] - SQUARE_SIZE / 2)));
 
 	createTheSquare();
@@ -598,4 +612,8 @@ void GameScene::createEmitters() {
 
 	dieParticle->stopSystem();
 	this->addChild(dieParticle, 20);
+}
+
+void GameScene::update(float) {
+
 }
