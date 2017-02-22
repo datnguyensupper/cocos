@@ -52,6 +52,24 @@ bool GameScene::init()
 
 	this->schedule(schedule_selector(GameScene::spawnEnemy), ENEMY_SPAWN_FREQUENCY );
 
+	//create difficult bar
+	cocos2d::Sprite * difficultLevelBG = Sprite::create("difficultLevelBg.png");
+	difficultLevelBG->setAnchorPoint(Vec2(0, 1));
+	difficultLevelBG->setPosition(10, visibleSize.height-10);
+	this->addChild(difficultLevelBG,10);
+
+	CCProgressTimer* difficultLevelProgress = CCProgressTimer::create(CCSprite::create("difficultLevel.png"));
+	if (difficultLevelProgress != NULL)
+	{
+		difficultLevelProgress->setType(kCCProgressTimerTypeBar);
+		difficultLevelProgress->setAnchorPoint(Vec2(0.5, 0.5));
+		difficultLevelProgress->setMidpoint(ccp(0, 0));
+		difficultLevelProgress->setBarChangeRate(ccp(1, 0));
+		difficultLevelProgress->setPercentage(100);
+		difficultLevelProgress->setPosition(ccp(140, 31));
+		difficultLevelBG->addChild(difficultLevelProgress);
+	}
+
 	createWorldBounds();
 	createPlayer();
 	handleTouchController();
@@ -253,6 +271,15 @@ bool GameScene::onContactBegin(cocos2d::PhysicsContact & contact) {
 		PhysicsBody * enemy = 
 					(ENEMY_COLLISION_BITMASK_RED == a->getCollisionBitmask() ||
 						ENEMY_COLLISION_BITMASK_BLUE == a->getCollisionBitmask())?a:b;
+
+		auto particleFire = ParticleFire::create();
+		particleFire->setLife(1);
+		particleFire->setDuration(1);
+		particleFire->setTotalParticles(40);
+		particleFire->setPosition(enemy->getNode()->getPosition());
+		particleFire->setAutoRemoveOnFinish(true);
+		this->addChild(particleFire);
+
 		enemy->getNode()->removeFromParentAndCleanup(true);
 
 		soundController.PlayCoinSound();
@@ -305,6 +332,22 @@ void GameScene::playerDied() {
 	if (isDied) {
 		return;
 	}
+
+	auto particleSmoke = ParticleSmoke::create();
+	particleSmoke->setStartColor(Color4F::BLUE);
+	particleSmoke->setEndColor(Color4F::RED);
+	particleSmoke->setPosition(playerRed->getPosition());
+	this->addChild(particleSmoke, 150);
+
+	playerRed->setZOrder(140);
+	playerRed->setOpacity(255 * 0.7);
+
+	auto scheduler = Director::getInstance()->getScheduler();
+	scheduler->schedule([=](float dt)
+	{
+		playerRed->setRotation(playerRed->getRotation() + 2);
+	}, this, 0.01f, kRepeatForever, 0.0f, false, "myCallbackKey");
+
 	soundController.PlayLooseSound();
 	cocos2d::log("player died");
 	isDied = true;

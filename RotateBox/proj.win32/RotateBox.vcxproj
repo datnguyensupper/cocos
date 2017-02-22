@@ -182,6 +182,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Resources\difficultLevel.png" />
+    <Image Include="..\Resources\difficultLevelBg.png" />
     <Image Include="..\Resources\enemy_blue.jpg" />
     <Image Include="..\Resources\enemy_red.jpg" />
     <Image Include="..\Resources\fonts\bitmapFonts\carrier_command.png" />
@@ -190,6 +192,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\gameover\middle.jpg" />
     <Image Include="..\Resources\gameover\play-btn.png" />
     <Image Include="..\Resources\player.jpg" />
+    <Image Include="..\Resources\shiny_spawn.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\proj.android-studio\app\AndroidManifest.xml">
