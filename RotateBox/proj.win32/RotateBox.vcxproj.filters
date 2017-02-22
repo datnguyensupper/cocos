@@ -114,6 +114,15 @@
     <Image Include="..\Resources\gameover\middle.jpg">
       <Filter>resource\gameover</Filter>
     </Image>
+    <Image Include="..\Resources\shiny_spawn.jpg">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\difficultLevelBg.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\difficultLevel.png">
+      <Filter>resource</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Resources\fonts\bitmapFonts\carrier_command.xml">
