@@ -226,7 +226,9 @@ void GameScene::resetSquarePosition(float dt) {
 	playerBody->setCollisionBitmask(PLAYER_COLLISION_BITMASK_PLAY);
 	playerBody->setContactTestBitmask(true);
 	//playerBody->applyForce(Vec2(SQUARE_SPEED, 0));
+
 	playerBody->setVelocity(Vec2((levelFloor % 2 == 0) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
+	playerBody->setVelocityLimit(450);
 	playerBody->setRotationEnable(false);
 
 
