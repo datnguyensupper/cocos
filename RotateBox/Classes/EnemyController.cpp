@@ -9,7 +9,7 @@ EnemyController::EnemyController() {
 	origin = Director::getInstance()->getVisibleOrigin();
 }
 
-void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * player) {
+void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * player, float enemySpeed) {
 	//CCLOG("SPAWN ENEMY");
 
 	
@@ -72,7 +72,7 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 
 
 		auto direction = Helper::getInstance()->normalizeDirection(player->getPosition()-enemy->getPosition());
-		enemyBody->setVelocity(Vec2(ENEMY_SPEED*visibleSize.width*direction.x, ENEMY_SPEED*visibleSize.height*direction.y));
+		enemyBody->setVelocity(Vec2(enemySpeed*visibleSize.width*direction.x, enemySpeed*visibleSize.height*direction.y));
 
 		layer->addChild(enemy);
 		

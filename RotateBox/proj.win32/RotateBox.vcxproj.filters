@@ -51,6 +51,12 @@
     <ClCompile Include="..\Classes\SoundController.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\CLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PoolSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -81,6 +87,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SoundController.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CLoader.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PoolSystem.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

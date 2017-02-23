@@ -1,6 +1,7 @@
 #include "SplashScene.h"
 #include "Definitions.h"
 #include "GameScene.h"
+#include "CLoader.h"
 
 USING_NS_CC;
 
@@ -74,10 +75,31 @@ bool SplashScene::init()
 
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 
+	loadRS();
+
 	//start timer
 	this->schedule(schedule_selector(SplashScene::UpdateTimer), 2.0f);
 
     return true;
+}
+
+void SplashScene::loadRS(){
+	std::vector<string> resources = {
+	"gameover/fbshare.png",
+	"gameover/gameOver.png",
+	"gameover/middle.jpg",
+	"gameover/play-btn.png",
+	"difficultLevel.png",
+	"difficultLevelBg.png",
+	"emeny_blue.jpg",
+	"enemy_red.jpg",
+	"player.jpg",
+	"shiny_spawn.jpg",
+	
+	};
+	CLoader::getInstance()->startLoadingResources(resources,
+		[]() {},
+		[](float progress) {});
 }
 
 void SplashScene::UpdateTimer(float dt)

@@ -2,6 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "KeyboardScene.h"
 #include "Definitions.h"
+#include "PhysicScene.h"
 
 USING_NS_CC;
 
@@ -39,12 +40,12 @@ bool HelloWorld::init()
 	this->addChild(label, 1);
 
 	//GotoTouchScene();
-	this->scheduleOnce(schedule_selector(HelloWorld::GotoTouchScene), DISPLAY_TIME_SPLASH_SCREEN);
+	this->scheduleOnce(schedule_selector(HelloWorld::GotoTouchScene), 0);
     
     return true;
 }
 
 void HelloWorld::GotoTouchScene(float dt) {
-	auto scene = KeyboardScene::createScene();
-	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
+	auto scene = PhysicScene::createScene();
+	Director::getInstance()->replaceScene(TransitionFade::create(0, scene));
 }

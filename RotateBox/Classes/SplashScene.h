@@ -13,6 +13,7 @@ public:
     CREATE_FUNC(SplashScene);
 private:
 	void GoToGameScene(float dt);
+	void loadRS();
 	void UpdateTimer(float dt);
 
 	

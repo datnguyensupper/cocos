@@ -41,6 +41,7 @@ private:
 	SoundController soundController;
 
 	cocos2d::Vec2 lastTouchLocation;
+	cocos2d::CCProgressTimer* difficultLevelProgress;
 
 	cocos2d::LabelTTF *scoreText;
 	int score;
@@ -48,5 +49,6 @@ private:
 	int maxScore;
 
 	bool isDied = false;
+	float enemySpeed;
 };
 

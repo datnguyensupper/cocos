@@ -40,6 +40,8 @@ bool GameScene::init()
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
 
+	enemySpeed = ENEMY_SPEED;
+
 	Label* label = Label::createWithSystemFont("Game Scene", "Arial", 30);
 	label->setPosition(Vec2(visibleSize.width/2+origin.x, visibleSize.height/2+origin.y));
 	this->addChild(label);
@@ -58,14 +60,14 @@ bool GameScene::init()
 	difficultLevelBG->setPosition(10, visibleSize.height-10);
 	this->addChild(difficultLevelBG,10);
 
-	CCProgressTimer* difficultLevelProgress = CCProgressTimer::create(CCSprite::create("difficultLevel.png"));
+	difficultLevelProgress = CCProgressTimer::create(CCSprite::create("difficultLevel.png"));
 	if (difficultLevelProgress != NULL)
 	{
 		difficultLevelProgress->setType(kCCProgressTimerTypeBar);
 		difficultLevelProgress->setAnchorPoint(Vec2(0.5, 0.5));
 		difficultLevelProgress->setMidpoint(ccp(0, 0));
 		difficultLevelProgress->setBarChangeRate(ccp(1, 0));
-		difficultLevelProgress->setPercentage(100);
+		difficultLevelProgress->setPercentage(0);
 		difficultLevelProgress->setPosition(ccp(140, 31));
 		difficultLevelBG->addChild(difficultLevelProgress);
 	}
@@ -113,6 +115,25 @@ void GameScene::updateTextScore() {
 	scoreText->setString(scoreStr->getCString());
 	__String * maxScoreStr = __String::createWithFormat("Top Score : %i", maxScore);
 	maxScoreText->setString(maxScoreStr->getCString());
+
+	int nextDifficultLevel;
+	if (score > 20) {
+		enemySpeed = ENEMY_SPEED*3;
+		nextDifficultLevel = 100;
+	}
+	else if (score > 15) {
+		enemySpeed = ENEMY_SPEED*2;
+		nextDifficultLevel = 66;
+	}
+	else {
+		enemySpeed = ENEMY_SPEED;
+		nextDifficultLevel = 33;
+	}
+
+	if (difficultLevelProgress->getPercentage() < nextDifficultLevel) {
+		auto progressAction = ProgressTo::create(0.5, nextDifficultLevel);
+		difficultLevelProgress->runAction(progressAction);
+	}
 }
 
 void GameScene::handleTouchController() {
@@ -174,7 +195,7 @@ void GameScene::spawnEnemy(float dt) {
 		// dont spawn enemy
 		return ;
 	}
-	enemyController.SpawnEnemy(this, playerRed);
+	enemyController.SpawnEnemy(this, playerRed, enemySpeed);
 }
 
 void GameScene::createWorldBounds() {
