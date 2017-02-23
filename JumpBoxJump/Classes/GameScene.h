@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "PopupController.h"
+#include "SoundController.h"
 
 struct Barrier {
 	int width;
@@ -34,6 +35,8 @@ public:
 	void shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
 	void restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
 	void GoToGameScene(float dt);
+	void createEmitters();
+	void update(float) override;
 
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
@@ -42,6 +45,7 @@ public:
 	cocos2d::Vec2 origin;
 	std::vector<std::vector<Barrier>> gameLevels;
 	std::vector<std::vector<Barrier>> gameLevelsRandom;
+	std::vector<cocos2d::Node*> arrayOfGroupEachFloorLevel;
 	std::vector<int> floorY;
 	std::vector<cocos2d::Color3B> squareColor;
 	int floorX = 0;
@@ -49,17 +53,21 @@ public:
 	bool isDead = false;
 	int levelFloor = 0;
 	cocos2d::Node* theSquare;
+	cocos2d::ParticleSystemQuad* particleFuel;
 	cocos2d::Sprite* theSquareGraphic;
 	bool canJump = true;
 	cocos2d::MoveTo jumpTween;
+	cocos2d::CCParticleExplosion * dieParticle;
 
 	cocos2d::CCLabelBMFont *scoreText;
 	int score = 0;
 	cocos2d::CCLabelBMFont *maxScoreText;
 	int maxScore = 0;
+	int gameDirection = 0;
 
 
 	PopupController popupController;
+	SoundController * soundController;
 };
 
 #endif // __GAME_SCENE_H__

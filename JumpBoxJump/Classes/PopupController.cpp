@@ -14,8 +14,8 @@ PopupController::PopupController() {
 
 void PopupController::CreatePopupGameOver(cocos2d::Layer * layer, int score, int maxScore) {
 	CCLOG("show popup game over");
-	score = 200;
-	maxScore = 200;
+	//score = 200;
+	//maxScore = 200;
 	// layer
 	auto popupGameOver = Layer::create();
 

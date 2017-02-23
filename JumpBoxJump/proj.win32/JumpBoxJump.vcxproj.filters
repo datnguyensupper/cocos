@@ -31,13 +31,13 @@
     <Filter Include="resource\sprites\maingame">
       <UniqueIdentifier>{576141d4-09fb-4eac-b108-dce20eee22cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource\sounds">
+      <UniqueIdentifier>{57cb867b-f902-4e71-b205-97da85f01d49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameScene.cpp">
       <Filter>src</Filter>
@@ -49,6 +49,21 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PopupController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SoundController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ToggleButton.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CLoader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PoolSystem.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,21 +89,27 @@
     <ClInclude Include="..\Classes\PopupController.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\SoundController.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ToggleButton.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CLoader.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PoolSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\fonts\bitmapFonts\carrier_command.png">
       <Filter>resource\fonts\bitmapFonts</Filter>
     </Image>
-    <Image Include="..\Resources\sprites\smoke-puff.png">
-      <Filter>resource\sprites</Filter>
-    </Image>
     <Image Include="..\Resources\sprites\snowflakes.png">
       <Filter>resource\sprites</Filter>
     </Image>
     <Image Include="..\Resources\sprites\snowflakes_large.png">
-      <Filter>resource\sprites</Filter>
-    </Image>
-    <Image Include="..\Resources\sprites\tile.png">
       <Filter>resource\sprites</Filter>
     </Image>
     <Image Include="..\Resources\sprites\wing.png">
@@ -139,16 +160,31 @@
     <Image Include="..\Resources\sprites\gameover\middle.jpg">
       <Filter>resource\sprites\gameover</Filter>
     </Image>
+    <Image Include="..\Resources\sprites\tile.png">
+      <Filter>src</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\smoke-puff.png">
+      <Filter>resource</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Resources\sdkbox_config.json">
-      <Filter>resource</Filter>
-    </None>
     <None Include="..\proj.android-studio\app\jni\Application.mk">
       <Filter>build</Filter>
     </None>
     <None Include="..\proj.android-studio\app\jni\Android.mk">
       <Filter>build</Filter>
+    </None>
+    <None Include="..\Resources\sdkbox_config.json">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\build.gradle">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\project.properties">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\Resources\sprites\particle_fuel.plist">
+      <Filter>resource\sprites</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -163,10 +199,30 @@
     <Xml Include="..\Resources\fonts\bitmapFonts\carrier_command.xml">
       <Filter>resource\fonts\bitmapFonts</Filter>
     </Xml>
+    <Xml Include="..\proj.android-studio\app\res\values\strings.xml">
+      <Filter>build</Filter>
+    </Xml>
+    <Xml Include="..\proj.android-studio\app\AndroidManifest.xml">
+      <Filter>build</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\build.txt">
       <Filter>build</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\sounds\die.mp3">
+      <Filter>resource\sounds</Filter>
+    </Media>
+    <Media Include="..\Resources\sounds\Jump.mp3">
+      <Filter>resource\sounds</Filter>
+    </Media>
+    <Media Include="..\Resources\sounds\background_music.mp3">
+      <Filter>resource\sounds</Filter>
+    </Media>
+    <Media Include="..\Resources\sounds\point.mp3">
+      <Filter>resource\sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>

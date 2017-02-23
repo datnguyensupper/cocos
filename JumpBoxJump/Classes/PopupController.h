@@ -7,7 +7,6 @@ class PopupController
 {
 public:
 	PopupController();
-
 	void CreatePopupGameOver(cocos2d::Layer * layer, int score, int maxScore);
 private:
 	cocos2d::Size visibleSize;
