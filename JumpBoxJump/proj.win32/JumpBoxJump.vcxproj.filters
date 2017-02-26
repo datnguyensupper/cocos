@@ -166,16 +166,16 @@
     <Image Include="..\Resources\sprites\gameover\middle.jpg">
       <Filter>resource\sprites\gameover</Filter>
     </Image>
-    <Image Include="..\Resources\sprites\tile.png">
-      <Filter>src</Filter>
-    </Image>
-    <Image Include="..\Resources\sprites\smoke-puff.png">
-      <Filter>resource</Filter>
-    </Image>
     <Image Include="..\Resources\sprites\particle_fuel.png">
       <Filter>resource\sprites</Filter>
     </Image>
     <Image Include="..\Resources\sprites\particle_goback.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\tile.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\smoke-puff.png">
       <Filter>resource\sprites</Filter>
     </Image>
   </ItemGroup>
