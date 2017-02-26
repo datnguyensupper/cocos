@@ -14,8 +14,11 @@ LOCAL_MODULE_FILENAME := libMyGame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
 ../../../Classes/AppDelegate.cpp \
+../../../Classes/CLoader.cpp \
+../../../Classes/GameLevelController.cpp \
 ../../../Classes/GameScene.cpp \
 ../../../Classes/Helper4Array.cpp \
+../../../Classes/PoolSystem.cpp \
 ../../../Classes/PopupController.cpp \
 ../../../Classes/SoundController.cpp \
 ../../../Classes/SplashScene.cpp \

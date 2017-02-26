@@ -66,6 +66,9 @@
     <ClCompile Include="..\Classes\PoolSystem.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameLevelController.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -99,6 +102,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PoolSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLevelController.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
@@ -166,6 +172,12 @@
     <Image Include="..\Resources\sprites\smoke-puff.png">
       <Filter>resource</Filter>
     </Image>
+    <Image Include="..\Resources\sprites\particle_fuel.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
+    <Image Include="..\Resources\sprites\particle_goback.png">
+      <Filter>resource\sprites</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\proj.android-studio\app\jni\Application.mk">
@@ -184,6 +196,9 @@
       <Filter>build</Filter>
     </None>
     <None Include="..\Resources\sprites\particle_fuel.plist">
+      <Filter>resource\sprites</Filter>
+    </None>
+    <None Include="..\Resources\sprites\particle_goback.plist">
       <Filter>resource\sprites</Filter>
     </None>
   </ItemGroup>
