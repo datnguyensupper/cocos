@@ -8,7 +8,7 @@ android {
         applicationId "com.donick.jumpingbox"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 10000439
+        versionCode 10000440
         versionName "1.0.2"
     }
 
