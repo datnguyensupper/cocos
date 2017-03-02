@@ -1,5 +1,6 @@
 #include "PhysicScene.h"
 #include "SimpleAudioEngine.h"
+#include "MyBodyParser.h"
 
 USING_NS_CC;
 
@@ -9,7 +10,7 @@ Scene* PhysicScene::createScene()
     auto scene = Scene::createWithPhysics();
 	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-	scene->getPhysicsWorld()->setGravity(Vec2(0, 0));
+	//scene->getPhysicsWorld()->setGravity(Vec2(0, 0));
     // 'layer' is an autorelease object
     auto layer = PhysicScene::create();
 
@@ -39,7 +40,7 @@ bool PhysicScene::init()
 	edgeNode->setPhysicsBody(edgeBody);
 
 	this->addChild(edgeNode);
-	{
+	/*{
 
 		auto sprite = Sprite::create("CloseNormal.png");
 		sprite->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
@@ -51,18 +52,24 @@ bool PhysicScene::init()
 		sprite->setPhysicsBody(spriteBody);
 
 		this->addChild(sprite);
-	}
+	}*/
 	{
 
-		auto sprite = Sprite::create("CloseNormal.png");
+		auto sprite = Sprite::create("Paddle.png");
 		sprite->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y+200));
 
-		auto spriteBody = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(0, 1, 0));
-		spriteBody->setCollisionBitmask(2);
-		spriteBody->setContactTestBitmask(true);
-		sprite->setPhysicsBody(spriteBody);
+		MyBodyParser::getInstance()->parseJsonFile("Paddle");
+		auto spriteBody = MyBodyParser::getInstance()->bodyFormJson(sprite, "Paddle", PhysicsMaterial(1, 1, 0));
+		if (spriteBody != nullptr) {
+			//spriteBody->setDynamic(false);
+			sprite->setPhysicsBody(spriteBody);
+		}
+		//auto spriteBody = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(0, 1, 0));
+		////spriteBody->setCollisionBitmask(2);
+		////spriteBody->setContactTestBitmask(true);
+		//sprite->setPhysicsBody(spriteBody);
 
-		spriteBody->setAngularVelocity(400);
+		//spriteBody->setAngularVelocity(400);
 
 		this->addChild(sprite);
 	}
