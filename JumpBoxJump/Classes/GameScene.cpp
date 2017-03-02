@@ -27,89 +27,6 @@ Scene* GameScene::createScene()
     return scene;
 }
 
-void GameScene::createGameLevels() {
-	
-	//std::vector<std::vector<Barrier>> gameLevelsRandom;
-	std::vector<Barrier> level;
-	Barrier barrier;
-
-	//floor 0
-	barrier= { 60,30,200 };
-	level.push_back(barrier);
-	barrier = {60,30,400};
-	level.push_back(barrier);
-	barrier = {60,30,600};
-	level.push_back(barrier);
-	gameLevelsRandom.push_back(level);
-
-	//floor 1
-	level = std::vector<Barrier>();
-	barrier = { 70,25,350 };
-	level.push_back(barrier);
-	barrier = { 30,20,100 };
-	level.push_back(barrier);
-	barrier = { 40,30,700 };
-	level.push_back(barrier);
-	gameLevelsRandom.push_back(level);
-
-	//floor 2
-	level = std::vector<Barrier>();
-	barrier = { 10,35,150 };
-	level.push_back(barrier);
-	barrier = { 10,35,400 };
-	level.push_back(barrier);
-	barrier = { 10,35,650 };
-	level.push_back(barrier);
-	gameLevelsRandom.push_back(level);
-
-	//floor 3
-	level = std::vector<Barrier>();
-	barrier = { 80,10,280 };
-	level.push_back(barrier);
-	barrier = { 80,10,480 };
-	level.push_back(barrier);
-	barrier = { 80,10,960 };
-	level.push_back(barrier);
-	barrier = { 80,10,1160 };
-	level.push_back(barrier);
-	barrier = { 80,10,1440 };
-	level.push_back(barrier);
-	gameLevelsRandom.push_back(level);
-
-	//floor 4
-	level = std::vector<Barrier>();
-	barrier = { 10,10,100 };
-	level.push_back(barrier);
-	barrier = { 10,10,200 };
-	level.push_back(barrier);
-	barrier = { 10,10,300 };
-	level.push_back(barrier);
-	barrier = { 10,10,400 };
-	level.push_back(barrier);
-	barrier = { 10,10,500 };
-	level.push_back(barrier);
-	barrier = { 10,10,600 };
-	level.push_back(barrier);
-	gameLevelsRandom.push_back(level);
-
-	//floor 5
-	level = std::vector<Barrier>();
-	barrier = { 10,40,200 };
-	level.push_back(barrier);
-	barrier = { 10,40,400 };
-	level.push_back(barrier);
-	barrier = { 10,40,600 };
-	level.push_back(barrier);
-	gameLevelsRandom.push_back(level);
-
-	gameLevels.push_back(gameLevelsRandom[0]);
-	gameLevels.push_back(gameLevelsRandom[1]);
-	gameLevels.push_back(gameLevelsRandom[2]);
-	gameLevels.push_back(gameLevelsRandom[3]);
-
-
-}
-
 // on "init" you need to initialize your instance
 bool GameScene::init()
 {
@@ -129,7 +46,8 @@ bool GameScene::init()
 	floorY = {112-EXTRA_HEIGHT,224 - EXTRA_HEIGHT,336 - EXTRA_HEIGHT,448 - EXTRA_HEIGHT };
 	levelColors = {Color3B(232,29,98),Color3B(155,38,175),Color3B(32,149,242), Color3B(75,174,79),Color3B(254,234,58),Color3B(121,85,72),Color3B(95,124,138), };
 
-	createGameLevels();
+	gameLevelController.createGameLevels();
+	gameLevelController.setFloor(floorX,floorY);
 	updateTextScore();
 	createLevels();
 	createTheSquare();
@@ -226,10 +144,6 @@ void GameScene::resetSquarePosition(float dt) {
 			visibleSize.height - (floorY[levelFloor] - SQUARE_SIZE / 2));
 	theSquare->setPosition(squarePosition);
 
-	particleFuel->setGravity(Vec2((levelFloor % 2 == gameDirection) ? -540 : 540,0));
-	//particleFuel->setRadialAccel((levelFloor % 2 == gameDirection) ? -320 : 320);
-	particleFuel->setPosition(Vec2((levelFloor % 2 == gameDirection) ? 0:40, 10));
-
 	auto playerBody = PhysicsBody::createBox(Size(theSquare->getContentSize().width, theSquare->getContentSize().height),
 		PhysicsMaterial(/*density*/0.0f, /*restitution*/0.0f,/*friction*/ 0.0f));
 	//playerBodyRed->setPositionOffset(Vec2(0, playerRed->getContentSize().height/4));
@@ -240,14 +154,19 @@ void GameScene::resetSquarePosition(float dt) {
 	playerBody->setCollisionBitmask(PLAYER_COLLISION_BITMASK_PLAY);
 	playerBody->setContactTestBitmask(true);
 	//playerBody->applyForce(Vec2(SQUARE_SPEED, 0));
-
 	playerBody->setVelocityLimit(450);
-	playerBody->setVelocity(Vec2((levelFloor % 2 == gameDirection) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
-
 	playerBody->setRotationEnable(false);
-
-
 	theSquare->setPhysicsBody(playerBody);
+
+	resetSquareDirection();
+}
+
+void GameScene::resetSquareDirection() {
+
+	particleFuel->setGravity(Vec2((levelFloor % 2 == gameDirection) ? -540 : 540, 0));
+	particleFuel->setPosition(Vec2((levelFloor % 2 == gameDirection) ? 0 : 40, 10));
+	theSquare->getPhysicsBody()->setVelocity(Vec2((levelFloor % 2 == gameDirection) ? SQUARE_SPEED : -SQUARE_SPEED, 0));
+
 }
 
 void GameScene::squareJump() {
@@ -279,57 +198,6 @@ void GameScene::squareJump() {
 		//theSquare->setRotation(-30);
 
 	}
-}
-
-void GameScene::createFloor(int floor, std::vector<Barrier> floorLevelWall) {
-
-	Node *groupSpikeOfThisLevel = Node::create();
-	for (int i = 0; i < floorLevelWall.size(); i++) {
-		auto spike = Sprite::create("sprites/pattern4.png");
-		spike->setAnchorPoint(Vec2(0.5, 0));
-		spike->setContentSize(Size(floorLevelWall[i].width, floorLevelWall[i].height));
-		spike->setPosition(Vec2(
-			floorX + floorLevelWall[i].x,
-			visibleSize.height-floorY[floor]));
-		groupSpikeOfThisLevel->addChild(spike, 2);
-
-		//create count point
-		auto coinPoint = Node::create();
-		coinPoint->setPosition(Vec2(spike->getPosition().x, spike->getPosition().y + spike->getContentSize().height + 25));
-		groupSpikeOfThisLevel->addChild(coinPoint);
-
-		Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]() {
-			auto spikeBody = PhysicsBody::createBox(Size(
-				//floor->getContentSize().width-100, 
-				spike->getContentSize().width,
-				spike->getContentSize().height),
-				PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			spikeBody->setDynamic(false);
-			spikeBody->setContactTestBitmask(true);
-			spikeBody->setCollisionBitmask(OBSTACLE_COLLISION_BITMASK);
-			spike->setPhysicsBody(spikeBody);
-
-			auto coinPointBody = PhysicsBody::createBox(Size(
-				//floor->getContentSize().width-100, 
-				4,
-				50),
-				PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			coinPointBody->setDynamic(false);
-			coinPointBody->setContactTestBitmask(true);
-			coinPointBody->setCollisionBitmask(POINT_COLLISION_BITMASK);
-			coinPoint->setPhysicsBody(coinPointBody);
-
-		});
-		//__String * scoreStr = __String::createWithFormat("%i", cocos2d::random(0,1000));
-		//this->scheduleOnce([=](float dt) {
-		//
-		//}, 0, scoreStr->getCString());
-
-
-	}
-	this->addChild(groupSpikeOfThisLevel,2);
-	arrayOfGroupEachFloorLevel[floor] = groupSpikeOfThisLevel;
-
 }
 
 void GameScene::createWorldBounds() {
@@ -379,7 +247,8 @@ void GameScene::createLevels() {
 		floor->setPhysicsBody(floorBody);
 
 		//create floor at level i
-		createFloor(i, gameLevels[i]);
+		Node *groupSpikeOfThisLevel = gameLevelController.createFloor(i,this);
+		arrayOfGroupEachFloorLevel[i] = groupSpikeOfThisLevel;
 
 	}
 }
@@ -438,7 +307,17 @@ bool GameScene::onContactBegin(PhysicsContact& contact)
 		playerDied();
 
 		return false;
-	} else if (
+	}
+	else if (
+		(PLAYER_COLLISION_BITMASK_PLAY == a->getCollisionBitmask() &&
+			OBSTACLE_GOBACK_COLLISION_BITMASK == b->getCollisionBitmask()) ||
+			(OBSTACLE_GOBACK_COLLISION_BITMASK == a->getCollisionBitmask() &&
+				PLAYER_COLLISION_BITMASK_PLAY == b->getCollisionBitmask())) {
+		gameDirection = (gameDirection == 0)?1:0;
+		resetSquareDirection();
+		return false;
+	}
+	else if (
 		(PLAYER_COLLISION_BITMASK_PLAY == a->getCollisionBitmask() &&
 			POINT_COLLISION_BITMASK == b->getCollisionBitmask()) ||
 			(POINT_COLLISION_BITMASK == a->getCollisionBitmask() &&
@@ -516,11 +395,14 @@ void GameScene::resetFloor(int floor) {
 		floor = floorY.size() - 1;
 	}
 
-	int floorLevelID = cocos2d::random(0, static_cast<int>(gameLevelsRandom.size() - 1));
-	std::vector<Barrier> floorLevel = gameLevelsRandom[floorLevelID];
+	
 	this->removeChild(arrayOfGroupEachFloorLevel[floor]);
 	arrayOfGroupEachFloorLevel[floor] = nullptr;
-	createFloor(floor, floorLevel);
+	Node *groupSpikeOfThisLevel = gameLevelController.createFloorRandom(floor, this);
+	arrayOfGroupEachFloorLevel[floor] = groupSpikeOfThisLevel;
+	/*Director::getInstance()->getScheduler()->performFunctionInCocosThread([=]() {
+		this->removeChild(arrayOfGroupEachFloorLevel[floor]);
+	});*/
 }
 
 void GameScene::playerDied() {

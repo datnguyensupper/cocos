@@ -5,18 +5,12 @@
 #include "ui/CocosGUI.h"
 #include "PopupController.h"
 #include "SoundController.h"
-
-struct Barrier {
-	int width;
-	int height;
-	int x;
-};
+#include "GameLevelController.h"
 
 class GameScene : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
-	void createGameLevels();
     virtual bool init();
 	void updateTextScore();
 	void createTheSquare();
@@ -29,8 +23,8 @@ public:
 	void placeSquare();
 	void resetFloor(int floor);
 	void resetSquarePosition(float dt);
+	void resetSquareDirection();
 	void squareJump();
-	void createFloor(int floor, std::vector<Barrier> floorLevelWall);
 	void playerDied();
 	void shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
 	void restartGame(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType touchType);
@@ -43,12 +37,10 @@ public:
 
 	cocos2d::Size visibleSize;
 	cocos2d::Vec2 origin;
-	std::vector<std::vector<Barrier>> gameLevels;
-	std::vector<std::vector<Barrier>> gameLevelsRandom;
 	std::vector<cocos2d::Node*> arrayOfGroupEachFloorLevel;
+	int floorX = 0;
 	std::vector<int> floorY;
 	std::vector<cocos2d::Color3B> squareColor;
-	int floorX = 0;
 	std::vector<cocos2d::Color3B> levelColors;
 	bool isDead = false;
 	int levelFloor = 0;
@@ -68,6 +60,7 @@ public:
 
 	PopupController popupController;
 	SoundController * soundController;
+	GameLevelController gameLevelController;
 };
 
 #endif // __GAME_SCENE_H__

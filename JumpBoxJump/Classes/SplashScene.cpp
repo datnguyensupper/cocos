@@ -119,7 +119,10 @@ void SplashScene::loadingResource() {
 		"sprites/background.jpg",
 		"sprites/hand-touch.png",
 		"sprites/jump_partical.png",
-		"sprites/wing.png"};
+		"sprites/wing.png",
+		"sprites/particle_fuel.png",
+		"sprites/particle_goback.png",
+	};
 	CLoader::getInstance()->startLoadingResources(
 		resources, 
 		[this]() {

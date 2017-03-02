@@ -146,6 +146,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CLoader.cpp" />
+    <ClCompile Include="..\Classes\GameLevelController.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\Helper4Array.cpp" />
     <ClCompile Include="..\Classes\PoolSystem.cpp" />
@@ -159,6 +160,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\CLoader.h" />
     <ClInclude Include="..\Classes\Definitions.h" />
+    <ClInclude Include="..\Classes\GameLevelController.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\Helper4Array.h" />
     <ClInclude Include="..\Classes\PoolSystem.h" />
@@ -196,6 +198,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <Image Include="..\Resources\sprites\maingame\play_bg.png" />
     <Image Include="..\Resources\sprites\maingame\progress.jpg" />
     <Image Include="..\Resources\sprites\maingame\progress_blank.jpg" />
+    <Image Include="..\Resources\sprites\particle_fuel.png" />
+    <Image Include="..\Resources\sprites\particle_goback.png" />
     <Image Include="..\Resources\sprites\pattern4.png" />
     <Image Include="..\Resources\sprites\smoke-puff.png" />
     <Image Include="..\Resources\sprites\snowflakes.png" />
@@ -210,6 +214,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <None Include="..\proj.android-studio\app\project.properties" />
     <None Include="..\Resources\sdkbox_config.json" />
     <None Include="..\Resources\sprites\particle_fuel.plist" />
+    <None Include="..\Resources\sprites\particle_goback.plist" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Resources\fonts\arial.ttf" />

@@ -24,6 +24,9 @@ Rename-Item bin/release/android/JumpBoxJump-release-signed.apk JumpBoxJump-relea
 // run
 cocos run -p android --android-studio
 
+// install apk
+adb install -r c:/
+
 // facebook setup android
 http://docs.sdkbox.com/en/plugins/facebook/v3-cpp/
 
