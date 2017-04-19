@@ -102,10 +102,10 @@ bool SplashScene::init()
 void SplashScene::loadingResource() {
 	startTheSquarePosition = theSquare->getPosition().x;
 	vector<string> resources = {
-		"sounds/background_music.mp3",
-		"sounds/die.mp3",
-		"sounds/Jump.mp3",
-		"sounds/point.mp3",
+//		"sounds/background_music.mp3",
+//		"sounds/die.mp3",
+//		"sounds/Jump.mp3",
+//		"sounds/point.mp3",
 		"sprites/gameover/fbshare.png",
 		"sprites/gameover/gameOver.png",
 		"sprites/gameover/middle.jpg",

@@ -434,7 +434,7 @@ void GameScene::shareFacebook(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEv
 		//static_cast<ui::Button *>(sender)->setTouchEnabled(false);
 		static_cast<ui::Button *>(sender)->setScale(1.3);
 
-#if (CC_TARGET_PLATFORM==CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
+#ifdef SDKBOX_ENABLED
 		/*if (!sdkbox::PluginFacebook::isLoggedIn()) {
 		sdkbox::PluginFacebook::login();
 		}*/
