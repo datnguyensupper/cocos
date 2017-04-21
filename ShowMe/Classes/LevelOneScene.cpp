@@ -1,4 +1,5 @@
 #include "LevelOneScene.h"
+#include "SpritePath.h"
 
 
 USING_NS_CC;
@@ -7,8 +8,8 @@ Scene* LevelOneScene::createScene()
 {
 	// 'scene' is an autorelease object
 	auto scene = Scene::createWithPhysics();
-	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	scene->getPhysicsWorld()->setGravity(Vect(0, 100));
+	//scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	scene->getPhysicsWorld()->setGravity(Vect(0, 0));
 
 	// 'layer' is an autorelease object
 	auto layer = LevelOneScene::create();
@@ -30,20 +31,18 @@ bool LevelOneScene::init()
         return false;
     }
     
-    ninePath = cocos2d::ui::Scale9Sprite::create("CloseNormal.png", cocos2d::Rect::ZERO, Rect(10, 10, 20, 20));
-    ninePath->setScale9Enabled(true);
-    ninePath->setContentSize(Size(300,40));
-//    ninePath->setScaleX(5);
-    ninePath->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-    ninePath->setAnchorPoint(Vec2(0.5, 0.5));
-    addChild(ninePath);
     
-	auto label = Label::createWithSystemFont("LevelOneScene", "Arial", 30);
+    
+	label = Label::createWithSystemFont("LevelOneScene", "Arial", 30);
 	label->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	this->addChild(label);
 
+
 	createPlayer();
+	handleTouchInput();
     
+	spritePath = SpritePath::create();
+	addChild(spritePath);
     
     this->scheduleUpdate();
 
@@ -56,30 +55,65 @@ void LevelOneScene::update(float delta){
     
     Vec2 pos = Vec2(player->getPositionX(), player->getPositionY());
     auto cam = Camera::getDefaultCamera();
-//    cam->setPosition(pos);
+    cam->setPosition(pos);
 }
 
 
 void LevelOneScene::createPlayer() {
 
 	player = Sprite::create("CloseNormal.png");
-	player->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	playerFirstPosition = Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 4 + origin.y);
+	player->setPosition(playerFirstPosition);
+	playerFirstPosition.x = 0;
 	player->setAnchorPoint(Vec2(0.5, 0));
 	player->setColor(Color3B::RED);
 	//playerRed->setScaleX(2);
 	auto playerBodyRed = PhysicsBody::createBox(Size(player->getContentSize().width, player->getContentSize().height),
-		PhysicsMaterial(0.1f, 1.0f, 0.0f));
+		PhysicsMaterial(0.1f, 0.0f, 0.0f));
 	//playerBodyRed->setPositionOffset(Vec2(0, playerRed->getContentSize().height/4));
 	//set the body isn't affected by the physics world's gravitational force
 	playerBodyRed->setGravityEnable(true);
 	playerBodyRed->setDynamic(true);
 	playerBodyRed->setCollisionBitmask(PLAYER_COLLISION_BITMASK_RED);
 	playerBodyRed->setContactTestBitmask(true);
+	//playerBodyRed->setVelocity(Vec2(0, 500));
 	player->setPhysicsBody(playerBodyRed);
+	
 	//playerRed->addComponent(playerBodyRed);
 	addChild(player);
     
-    
 }
 
+void LevelOneScene::handleTouchInput() {
+	//Create a "one by one" touch event listener (processes one touch at a time)
+	auto listener1 = EventListenerTouchOneByOne::create();
+	listener1->setSwallowTouches(true);
+
+	// Example of using a lambda expression to implement onTouchBegan event callback function
+	listener1->onTouchBegan = [this](Touch* touch, Event* event) {
+		auto target = static_cast<Sprite*>(event->getCurrentTarget());
+		Point locationInNode = touch->getLocation();
+		CCLOG("pos x:%f y:%f", locationInNode.x, locationInNode.y);
+		//label->setPosition(touch->getLocation() - Vec2(0, visibleSize.height / 4 + origin.y));
+		spritePath->adjustSprite(locationInNode- playerFirstPosition, locationInNode- playerFirstPosition);
+		return true;
+	};
+
+	//Trigger when moving touch
+	listener1->onTouchMoved = [this](Touch* touch, Event* event) {
+		auto target = static_cast<Sprite*>(event->getCurrentTarget());
+		//Move the position of current button sprite
+		//target->setPosition(target->getPosition() + touch->getDelta());
+		Point locationInNode = touch->getLocation();
+		//label->setPosition(touch->getLocation() - Vec2(0, visibleSize.height / 4 + origin.y));
+		spritePath->adjustSprite(locationInNode- playerFirstPosition);
+		//CCLOG("translate x:%i y:%i", translate.x, translate.y);
+	};
+
+	//Process the touch end event
+	listener1->onTouchEnded = [=](Touch* touch, Event* event) {
+		auto target = static_cast<Sprite*>(event->getCurrentTarget());
+	};
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
+}
 

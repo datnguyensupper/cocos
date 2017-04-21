@@ -27,6 +27,12 @@
     <ClCompile Include="..\Classes\LevelOneScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SpritePath.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper4Calculate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -45,6 +51,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Definitions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpritePath.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper4Calculate.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
