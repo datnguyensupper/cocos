@@ -1,4 +1,5 @@
 #include "SpritePath.h"
+#include "PhysicBodyAdjustRotation.h"
 
 USING_NS_CC;
 
@@ -45,6 +46,31 @@ void SpritePath::adjustSprite() {
 	float angle = vectorDirection.getAngle();
 	log("direction: x=%f y=%f angle: %f",vectorDirection.x,vectorDirection.y,angle* (180.0 / 3.14));
 	spriteBG->setContentSize(Size(spriteBG->getContentSize().width, distance ));
+
 	spriteBG->setRotation(-angle * (180.0 / 3.14)+90);
 	spriteBG->setPosition(firstPoint);
+	updatePhysic();
+}
+
+void SpritePath::updatePhysic() {
+	removePhysic();
+
+
+	physicBody = PhysicBodyAdjustRotation::createBox(Size(spriteBG->getContentSize().width, spriteBG->getContentSize().height),
+		PhysicsMaterial(0.1f, 1.0f, 0.0f));
+	physicBody->setRotationOffset(spriteBG->getRotation());
+	//set the body isn't affected by the physics world's gravitational force
+	physicBody->setRotationEnable(true);
+	physicBody->setGravityEnable(false);
+	physicBody->setDynamic(false);
+	physicBody->setCollisionBitmask(PLAYER_COLLISION_BITMASK_RED);
+	physicBody->setContactTestBitmask(true);
+	spriteBG->setPhysicsBody(physicBody);
+	//playerRed->addComponent(playerBodyRed);
+}
+
+void SpritePath::removePhysic() {
+	if (physicBody == nullptr) return;
+	physicBody->removeFromWorld();
+	physicBody = nullptr;
 }

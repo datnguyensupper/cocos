@@ -13,11 +13,15 @@ protected:
 	cocos2d::Point secondPoint;
 	cocos2d::ui::Scale9Sprite * spriteBG;
 	void adjustSprite();
+	cocos2d::PhysicsBody * physicBody = nullptr;
 public:
 
     virtual bool init();
     void adjustSprite(cocos2d::Point _firstPoint, cocos2d::Point _secondPoint);
     void adjustSprite(cocos2d::Point _secondPoint);
+
+	void updatePhysic();
+	void removePhysic();
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(SpritePath);

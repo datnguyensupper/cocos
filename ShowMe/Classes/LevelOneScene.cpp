@@ -8,8 +8,9 @@ Scene* LevelOneScene::createScene()
 {
 	// 'scene' is an autorelease object
 	auto scene = Scene::createWithPhysics();
-	//scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	scene->getPhysicsWorld()->setGravity(Vect(0, 0));
+	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	scene->getPhysicsWorld()->setGravity(Vect(0, 100));
+	//scene->getPhysicsWorld()->setGravity(Vect(0, 0));
 
 	// 'layer' is an autorelease object
 	auto layer = LevelOneScene::create();
@@ -45,15 +46,26 @@ bool LevelOneScene::init()
 	addChild(spritePath);
     
     this->scheduleUpdate();
+	this->schedule(schedule_selector(LevelOneScene::spawnEnemy), 10.0f);
 
     return true;
 }
 
 
+void LevelOneScene::spawnEnemy(float delta) {
+	enemyController.SpawnEnemy(this, player, 0);
+}
 
 void LevelOneScene::update(float delta){
     
-    Vec2 pos = Vec2(player->getPositionX(), player->getPositionY());
+    Vec2 pos = player->getPosition();
+	if (pos.x < 0) {
+		pos.x = 0;
+		player->setPosition(pos);
+	}else if (pos.x > visibleSize.width / 2) {
+		pos.x = visibleSize.width;
+		player->setPosition(pos);
+	}
     auto cam = Camera::getDefaultCamera();
     cam->setPosition(pos);
 }
@@ -64,19 +76,20 @@ void LevelOneScene::createPlayer() {
 	player = Sprite::create("CloseNormal.png");
 	playerFirstPosition = Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 4 + origin.y);
 	player->setPosition(playerFirstPosition);
-	playerFirstPosition.x = 0;
+	playerFirstPosition.x /= 2.0;
+	//playerFirstPosition.x = 0;
 	player->setAnchorPoint(Vec2(0.5, 0));
-	player->setColor(Color3B::RED);
+	player->setColor(Color3B::BLUE);
 	//playerRed->setScaleX(2);
-	auto playerBodyRed = PhysicsBody::createBox(Size(player->getContentSize().width, player->getContentSize().height),
-		PhysicsMaterial(0.1f, 0.0f, 0.0f));
+	auto playerBodyRed = PhysicsBody::createCircle(player->getContentSize().width/2,PhysicsMaterial(0.1f, 0.0f, 0.0f));
 	//playerBodyRed->setPositionOffset(Vec2(0, playerRed->getContentSize().height/4));
 	//set the body isn't affected by the physics world's gravitational force
+	playerBodyRed->setRotationEnable(false);
 	playerBodyRed->setGravityEnable(true);
 	playerBodyRed->setDynamic(true);
 	playerBodyRed->setCollisionBitmask(PLAYER_COLLISION_BITMASK_RED);
 	playerBodyRed->setContactTestBitmask(true);
-	//playerBodyRed->setVelocity(Vec2(0, 500));
+	playerBodyRed->setVelocityLimit(100);
 	player->setPhysicsBody(playerBodyRed);
 	
 	//playerRed->addComponent(playerBodyRed);
@@ -95,7 +108,11 @@ void LevelOneScene::handleTouchInput() {
 		Point locationInNode = touch->getLocation();
 		CCLOG("pos x:%f y:%f", locationInNode.x, locationInNode.y);
 		//label->setPosition(touch->getLocation() - Vec2(0, visibleSize.height / 4 + origin.y));
-		spritePath->adjustSprite(locationInNode- playerFirstPosition, locationInNode- playerFirstPosition);
+		Point playerPosition = player->getPosition();
+		Point translate = playerPosition - 2 * playerFirstPosition;
+		spritePath->adjustSprite(locationInNode + translate, locationInNode + translate);
+
+		spritePath->removePhysic();
 		return true;
 	};
 
@@ -106,13 +123,16 @@ void LevelOneScene::handleTouchInput() {
 		//target->setPosition(target->getPosition() + touch->getDelta());
 		Point locationInNode = touch->getLocation();
 		//label->setPosition(touch->getLocation() - Vec2(0, visibleSize.height / 4 + origin.y));
-		spritePath->adjustSprite(locationInNode- playerFirstPosition);
+		Point playerPosition = player->getPosition();
+		Point translate = playerPosition - 2 * playerFirstPosition;
+		spritePath->adjustSprite(locationInNode + translate);
 		//CCLOG("translate x:%i y:%i", translate.x, translate.y);
 	};
 
 	//Process the touch end event
 	listener1->onTouchEnded = [=](Touch* touch, Event* event) {
 		auto target = static_cast<Sprite*>(event->getCurrentTarget());
+		//spritePath->updatePhysic();
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
 }

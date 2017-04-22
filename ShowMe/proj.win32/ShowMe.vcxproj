@@ -146,8 +146,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\BaseScene.cpp" />
+    <ClCompile Include="..\Classes\EnemyController.cpp" />
     <ClCompile Include="..\Classes\Helper4Calculate.cpp" />
     <ClCompile Include="..\Classes\LevelOneScene.cpp" />
+    <ClCompile Include="..\Classes\PhysicBodyAdjustRotation.cpp" />
     <ClCompile Include="..\Classes\SplashScene.cpp" />
     <ClCompile Include="..\Classes\SpritePath.cpp" />
     <ClCompile Include="main.cpp" />
@@ -156,8 +158,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\BaseScene.h" />
     <ClInclude Include="..\Classes\Definitions.h" />
+    <ClInclude Include="..\Classes\EnemyController.h" />
     <ClInclude Include="..\Classes\Helper4Calculate.h" />
     <ClInclude Include="..\Classes\LevelOneScene.h" />
+    <ClInclude Include="..\Classes\PhysicBodyAdjustRotation.h" />
     <ClInclude Include="..\Classes\SplashScene.h" />
     <ClInclude Include="..\Classes\SpritePath.h" />
     <ClInclude Include="main.h" />
