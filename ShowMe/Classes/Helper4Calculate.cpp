@@ -22,8 +22,17 @@ Helper4Calculate::Helper4Calculate()
 	
 }
 
-
 float Helper4Calculate::distance(cocos2d::Vec2 firstPoint, cocos2d::Vec2 secondPoint) {
 	return firstPoint.distance(secondPoint);
+}
 
+float Helper4Calculate::angle(cocos2d::Vec2 firstPoint, cocos2d::Vec2 secondPoint) {
+
+	Vec2 vectorDirection = secondPoint - firstPoint;
+	float angle = vectorDirection.getAngle();
+	//log("direction: x=%f y=%f angle: %f", vectorDirection.x, vectorDirection.y, angle* (180.0 / 3.14));
+	float angleResult = -angle * (180.0 / 3.14) + 90;
+	
+	if (angleResult < 0) angleResult += 360;
+	return angleResult;
 }

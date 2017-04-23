@@ -1,7 +1,27 @@
 #include "SpritePath.h"
 #include "PhysicBodyAdjustRotation.h"
+#include "Helper4Calculate.h"
 
 USING_NS_CC;
+
+
+SpritePath * SpritePath::create(cocos2d::Sprite * player) {
+
+	SpritePath *pRet = new(std::nothrow) SpritePath();
+	if (pRet && pRet->init()){
+		pRet->setPlayer(player);
+		pRet->autorelease();
+		return pRet;
+	}else{
+		delete pRet;
+		pRet = nullptr;
+		return nullptr;
+	}
+}
+
+void SpritePath::setPlayer(cocos2d::Sprite * _player) {
+	player = _player;
+}
 
 // on "init" you need to initialize your instance
 bool SpritePath::init()
@@ -29,41 +49,83 @@ bool SpritePath::init()
     return true;
 }
 
+void SpritePath::adjustFirstPoint() {
+	float distance2Player = firstPoint.distance(player->getPosition());
+	if (distance2Player <= player->getContentSize().width + spriteBG->getContentSize().width) {
+		firstPoint.x = player->getPosition().x+ player->getContentSize().width + spriteBG->getContentSize().width;
+	}
+}
+
+void SpritePath::adjustSecondPoint() {
+	//return;
+	float pathAngle = Helper4Calculate::getInstance()->angle(firstPoint, secondPoint);
+	float playerAngle = Helper4Calculate::getInstance()->angle(firstPoint, player->getPosition());
+	float delta = abs(pathAngle - playerAngle);
+	if (delta > 180) {
+		delta = 360 -delta;
+	}
+	//log("delta : %f", delta);
+	//return;
+	if (delta < 10) {
+		Point newPoint2 = player->getPosition();
+		newPoint2.x = player->getPosition().x + player->getContentSize().width + spriteBG->getContentSize().width;
+
+		float oldDistance = firstPoint.distance(secondPoint);
+		float newDistance = firstPoint.distance(newPoint2);
+		float ratio = oldDistance*1.0 / newDistance;
+		secondPoint = (newPoint2 - firstPoint)*ratio+firstPoint;
+	}
+}
+
 void SpritePath::adjustSprite(cocos2d::Point _firstPoint, cocos2d::Point _secondPoint) {
 	firstPoint = _firstPoint;
-	secondPoint = _secondPoint;
-	adjustSprite();
+	adjustFirstPoint();
+	delayForSetSecondPoint = 0;
+	adjustSprite(_secondPoint);
 }
 
 void SpritePath::adjustSprite(cocos2d::Point _secondPoint) {
+	if (delayForSetSecondPoint > 0) {
+		delayForSetSecondPoint--;
+		return;
+	}
+	delayForSetSecondPoint = 2;
+
 	secondPoint = _secondPoint;
-	adjustSprite();
+	adjustSecondPoint();
+	adjustSprite(true);
 }
 
-void SpritePath::adjustSprite() {
+void SpritePath::adjustSpriteWithoutPhysic(cocos2d::Point _secondPoint) {
+	secondPoint = _secondPoint;
+	adjustSecondPoint();
+	adjustSprite(false);
+}
+
+void SpritePath::adjustSprite(bool havePhysic) {
 	float distance = firstPoint.distance(secondPoint);
-	Vec2 vectorDirection = secondPoint - firstPoint;
-	float angle = vectorDirection.getAngle();
-	log("direction: x=%f y=%f angle: %f",vectorDirection.x,vectorDirection.y,angle* (180.0 / 3.14));
+
 	spriteBG->setContentSize(Size(spriteBG->getContentSize().width, distance ));
 
-	spriteBG->setRotation(-angle * (180.0 / 3.14)+90);
+	spriteBG->setRotation(Helper4Calculate::getInstance()->angle(firstPoint,secondPoint));
 	spriteBG->setPosition(firstPoint);
-	updatePhysic();
+	if(havePhysic) updatePhysic();
+	else spriteBG->setOpacity(255 * 0.5);
+
 }
 
 void SpritePath::updatePhysic() {
 	removePhysic();
 
-
+	spriteBG->setOpacity(255);
 	physicBody = PhysicBodyAdjustRotation::createBox(Size(spriteBG->getContentSize().width, spriteBG->getContentSize().height),
-		PhysicsMaterial(0.1f, 1.0f, 0.0f));
+		PhysicsMaterial(0.0f, 0.0f, 0.0f));
 	physicBody->setRotationOffset(spriteBG->getRotation());
 	//set the body isn't affected by the physics world's gravitational force
 	physicBody->setRotationEnable(true);
 	physicBody->setGravityEnable(false);
 	physicBody->setDynamic(false);
-	physicBody->setCollisionBitmask(PLAYER_COLLISION_BITMASK_RED);
+	physicBody->setCollisionBitmask(BOUND_COLLISION_BITMASK);
 	physicBody->setContactTestBitmask(true);
 	spriteBG->setPhysicsBody(physicBody);
 	//playerRed->addComponent(playerBodyRed);

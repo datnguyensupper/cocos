@@ -11,14 +11,21 @@ protected:
 	cocos2d::Vec2 origin;
 	cocos2d::Point firstPoint;
 	cocos2d::Point secondPoint;
+	float delayForSetSecondPoint = 0;
 	cocos2d::ui::Scale9Sprite * spriteBG;
-	void adjustSprite();
+	void adjustSprite(bool havePhysic);
 	cocos2d::PhysicsBody * physicBody = nullptr;
+	cocos2d::Sprite * player = nullptr;
 public:
 
+	static SpritePath* create(cocos2d::Sprite * player);
+    void setPlayer(cocos2d::Sprite * _player);
     virtual bool init();
+	void adjustFirstPoint();
+	void adjustSecondPoint();
     void adjustSprite(cocos2d::Point _firstPoint, cocos2d::Point _secondPoint);
     void adjustSprite(cocos2d::Point _secondPoint);
+    void adjustSpriteWithoutPhysic(cocos2d::Point _secondPoint);
 
 	void updatePhysic();
 	void removePhysic();

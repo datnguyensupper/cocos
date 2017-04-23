@@ -13,7 +13,7 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 	//CCLOG("SPAWN ENEMY");
 
 	
-
+	//return;
 	
 	auto xPosition = cocos2d::random(100, (int)visibleSize.width - 100);
 	Vec2 enemyPosition = player->getPosition() + Vec2(0,visibleSize.height/2);
@@ -37,11 +37,9 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 
 
 	cocos2d::String* enemyRS = nullptr;// String::create("player.jpg");
-	int enemyBitmask = 0;
 	Color3B enemyColor;
 	//enemyRS = String::create("enemy_red.jpg");	
 	enemyRS = String::create("CloseNormal.png");	
-	enemyBitmask = ENEMY_COLLISION_BITMASK_RED;
 	enemyColor = Color3B::RED;	
 	
 	auto enemy = Sprite::create(enemyRS->getCString());
@@ -51,7 +49,7 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 	auto enemyBody = PhysicsBody::createBox(enemy->getContentSize(),
 		PhysicsMaterial(0.1f, 1.0f, 0.0f));
 	//enemyBody->setDynamic(false);
-	enemyBody->setCollisionBitmask(enemyBitmask);
+	enemyBody->setCollisionBitmask(ENEMY_COLLISION_BITMASK);
 	enemyBody->setContactTestBitmask(true);
 	enemyBody->setRotationEnable(true);
 	enemyBody->setGravityEnable(false);

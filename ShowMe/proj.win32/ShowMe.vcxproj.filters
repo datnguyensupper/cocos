@@ -10,6 +10,21 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{334c165d-d6bb-44c7-90ee-14ad37d41a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Helper">
+      <UniqueIdentifier>{4ff40c49-6dc4-4191-8466-7ff9c12e8e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controller">
+      <UniqueIdentifier>{9ab18a98-6500-4c23-8885-63a11cd584c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Constant">
+      <UniqueIdentifier>{21fa6ec3-c35c-4c1a-9106-c77ab6bbe481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Others">
+      <UniqueIdentifier>{f45bc0d9-7b0f-4e3f-a27d-4707acee5737}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -19,25 +34,28 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\SplashScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BaseScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\LevelOneScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SpritePath.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Helper4Calculate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\PhysicBodyAdjustRotation.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\BaseScene.cpp">
+      <Filter>src\scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\EnemyController.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper4Calculate.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PhysicBodyAdjustRotation.cpp">
+      <Filter>src\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpritePath.cpp">
+      <Filter>src\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Controller4Score.cpp">
+      <Filter>src\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,28 +66,31 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SplashScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BaseScene.h">
-      <Filter>src</Filter>
+      <Filter>src\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\LevelOneScene.h">
-      <Filter>src</Filter>
+      <Filter>src\scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Definitions.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpritePath.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Helper4Calculate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\PhysicBodyAdjustRotation.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\BaseScene.h">
+      <Filter>src\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemyController.h">
-      <Filter>src</Filter>
+      <Filter>src\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper4Calculate.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Definitions.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PhysicBodyAdjustRotation.h">
+      <Filter>src\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpritePath.h">
+      <Filter>src\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Controller4Score.h">
+      <Filter>src\Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,5 +12,8 @@ public:
 
     virtual bool init();
 	void Go2LevelOneScene(float dt);
+	void prepare2Go2LevelOneScene();
+	void Go2SplashScene(float dt);
+	void prepare2Go2SplashScene();
 };
 

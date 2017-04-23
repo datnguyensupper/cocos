@@ -16,4 +16,5 @@ public:
 	static Helper4Calculate* getInstance();
 
 	float distance(cocos2d::Vec2 firstPoint, cocos2d::Vec2 secondPoint );
+	float angle(cocos2d::Vec2 firstPoint, cocos2d::Vec2 secondPoint );
 };
