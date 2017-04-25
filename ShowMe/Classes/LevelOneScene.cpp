@@ -127,7 +127,7 @@ void LevelOneScene::handleTouchInput() {
 		//label->setPosition(touch->getLocation() - Vec2(0, visibleSize.height / 4 + origin.y));
 		Point playerPosition = player->getPosition();
 		playerPosition.x = 0;
-		Point translate = playerPosition - Vec2(0, playerFirstPosition.y);
+		Point translate = playerPosition - Vec2(0, playerFirstPosition.y) + Vec2(0, deadSpace);
 		spritePath->adjustSprite(locationInNode + translate, locationInNode + translate);
 
 		spritePath->removePhysic();
@@ -143,7 +143,7 @@ void LevelOneScene::handleTouchInput() {
 		Point locationInNode = touch->getLocation();
 		Point playerPosition = player->getPosition();
 		playerPosition.x = 0;
-		Point translate = playerPosition - Vec2(0, playerFirstPosition.y);
+		Point translate = playerPosition - Vec2(0, playerFirstPosition.y) + Vec2(0, deadSpace);
 		spritePath->adjustSprite(locationInNode + translate);
 	};
 

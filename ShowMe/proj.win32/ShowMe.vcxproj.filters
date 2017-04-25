@@ -25,6 +25,9 @@
     <Filter Include="src\Others">
       <UniqueIdentifier>{f45bc0d9-7b0f-4e3f-a27d-4707acee5737}</UniqueIdentifier>
     </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{319d8b71-f270-4e33-8bc8-3c73557d7da4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -102,5 +105,10 @@
     <Image Include="..\Resources\CloseNormal.png">
       <Filter>resource</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\build.txt">
+      <Filter>build</Filter>
+    </Text>
   </ItemGroup>
 </Project>

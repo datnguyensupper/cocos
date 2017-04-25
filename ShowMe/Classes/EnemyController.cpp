@@ -9,14 +9,32 @@ EnemyController::EnemyController() {
 	origin = Director::getInstance()->getVisibleOrigin();
 }
 
-void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * player, float enemySpeed) {
-	//CCLOG("SPAWN ENEMY");
+cocos2d::Sprite * EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * player, float enemySpeed) {
+	
+	Sprite * newEnemy = nullptr;
 
-	
-	//return;
-	
+	for (auto enemy : arrayOfEnemy) {
+		int distance = (player->getPosition().y - enemy->getPosition().y);
+		int availableSpace = (visibleSize.height/2 + enemy->getContentSize().height);
+		if (distance > availableSpace) {
+			newEnemy = enemy;
+			break;
+		}
+	}
+
+	if (newEnemy == nullptr) {
+		newEnemy = SpawnEnemy();
+		if (layer) layer->addChild(newEnemy);
+		arrayOfEnemy.push_back(newEnemy);
+	}
+	if (player) newEnemy->setPosition( player->getPosition() + Vec2(0, visibleSize.height / 2));
+	return nullptr;
+}
+
+cocos2d::Sprite * EnemyController::SpawnEnemy() {
+
 	auto xPosition = cocos2d::random(100, (int)visibleSize.width - 100);
-	Vec2 enemyPosition = player->getPosition() + Vec2(0,visibleSize.height/2);
+	Vec2 enemyPosition = Vec2::ZERO;
 
 	////// particle create sprite
 	//ParticleFlower * particleSpawnEnemy = ParticleFlower::create();
@@ -39,9 +57,9 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 	cocos2d::String* enemyRS = nullptr;// String::create("player.jpg");
 	Color3B enemyColor;
 	//enemyRS = String::create("enemy_red.jpg");	
-	enemyRS = String::create("CloseNormal.png");	
-	enemyColor = Color3B::RED;	
-	
+	enemyRS = String::create("CloseNormal.png");
+	enemyColor = Color3B::RED;
+
 	auto enemy = Sprite::create(enemyRS->getCString());
 	enemy->setColor(enemyColor);
 	enemy->setAnchorPoint(Vec2(0.5, 0.5));
@@ -58,11 +76,5 @@ void EnemyController::SpawnEnemy(cocos2d::Layer * layer, cocos2d::Sprite * playe
 	enemy->setPosition(enemyPosition);
 	enemy->setPhysicsBody(enemyBody);
 
-	layer->addChild(enemy);
-		
-
-
-	
-
-
+	return enemy;
 }
