@@ -1,6 +1,9 @@
 //create project
 cocos new -l cpp -p com.donick.rotatebox RotateBox
 
+// build win32
+cocos deploy -p win32 -m release
+
 // build
 cocos compile -p android --android-studio
 cocos compile -p android --android-studio --app-abi x86

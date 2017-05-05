@@ -37,6 +37,8 @@ bool LevelOneScene::init()
 	label->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	this->addChild(label);
 
+	Controller4Score::getInstance()->setCurrentScore(0);
+
 	createPlayer();
 	handleTouchInput();
 	handlePhysicEvent();
