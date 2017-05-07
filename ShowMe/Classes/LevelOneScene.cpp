@@ -33,12 +33,14 @@ bool LevelOneScene::init()
         return false;
     }
     
+#if IS_DEBUG
 	label = Label::createWithSystemFont("LevelOneScene", "Arial", 30);
 	label->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	this->addChild(label);
-
+//	this->addChild(label);
+#endif
 	Controller4Score::getInstance()->setCurrentScore(0);
 
+    createBg();
 	createPlayer();
 	handleTouchInput();
 	handlePhysicEvent();
@@ -48,8 +50,42 @@ bool LevelOneScene::init()
     
     this->scheduleUpdate();
 	this->schedule(schedule_selector(LevelOneScene::spawnEnemy), 10.0f);
+    createUIScore();
 
     return true;
+}
+
+void LevelOneScene::createUIScore() {
+    
+    groupLabel = Node::create();
+    
+    auto spriteLabel = Sprite::create("moutain.png");
+    spriteLabel->setAnchorPoint(Vec2(0, 0.5));
+    spriteLabel->setScale(1);
+    groupLabel->addChild(spriteLabel);
+    
+    labelScore = LabelTTF::create("Score : 0", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
+    labelScore->setAnchorPoint(Vec2(0, 0.5));
+    labelScore->setVerticalAlignment(TextVAlignment::TOP);
+    labelScore->setHorizontalAlignment(TextHAlignment::LEFT);
+    labelScore->setPosition(Vec2(spriteLabel->getContentSize().width*spriteLabel->getScale(), 0));
+    groupLabel->addChild(labelScore);
+    
+    this->addChild(groupLabel);
+    
+    updateUIScorePos();
+    
+}
+
+void LevelOneScene::updateUIScorePos() {
+    
+    auto cam = Camera::getDefaultCamera();
+    groupLabel->setPosition(cam->getPosition() + Vec2(-visibleSize.width/2,visibleSize.height/2-40));
+    
+    Controller4Score::getInstance()->setCurrentScore((player->getPositionY() - playerFirstPosition.y)/100);
+    int currentScore = Controller4Score::getInstance()->getCurrentScore();
+    std::string scoreTxt = std::to_string(currentScore) +"m";
+    labelScore->setString(scoreTxt);
 }
 
 void LevelOneScene::handlePhysicEvent() {
@@ -84,10 +120,27 @@ void LevelOneScene::update(float delta){
 	pos.x = visibleSize.width / 2;
 	if (deadSpace > visibleSize.height / 2) doDead();
     cam->setPosition(pos + Vec2(0,deadSpace));
-
-	Controller4Score::getInstance()->setCurrentScore(pos.y - playerFirstPosition.y);
+    
+    updateBgPos();
+    updateUIScorePos();
 }
 
+
+void LevelOneScene::updateBgPos() {
+    auto cam = Camera::getDefaultCamera();
+    if(bg->getPositionY() + bg->getContentSize().height < (cam->getPositionY()-visibleSize.height/2)){
+        bg->setPositionY(cam->getPositionY() + visibleSize.height/2);
+    }
+}
+
+void LevelOneScene::createBg() {
+    
+    bg = Sprite::create("bluemarblewest.png");
+    bg->setAnchorPoint(Vec2(0.5,0));
+    bg->setPositionX(visibleSize.width/2);
+    addChild(bg);
+    
+}
 
 void LevelOneScene::createPlayer() {
 

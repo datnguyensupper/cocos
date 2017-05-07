@@ -31,10 +31,12 @@ bool SplashScene::init()
 
 
 	Controller4Score::getInstance()->updateMaxScore();
-
+    
+#if IS_DEBUG
 	auto label = Label::createWithSystemFont("Splash Scene", "Arial", 30);
 	label->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	this->addChild(label);
+//	this->addChild(label);
+#endif
     
 	auto labelScore = LabelTTF::create("Score : 0", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
 	labelScore->setAnchorPoint(Vec2(0, 0.5));

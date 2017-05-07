@@ -23,4 +23,6 @@
 #define CACHE_MAX_SCORE "cache_max_score"
 #define CACHE_CAN_PLAY_MUSIC "cache_can_play_music"
 
+#define IS_DEBUG true
+
 #endif // __DEFINITIONS_H__

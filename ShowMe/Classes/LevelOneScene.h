@@ -10,8 +10,11 @@ private:
 	float deadSpace = false;
 	float delayTime = 0;
     cocos2d::Sprite * player;
+    cocos2d::Sprite * bg;
     cocos2d::Vec2 playerFirstPosition;
 	cocos2d::Label * label;
+    cocos2d::Node * groupLabel;
+    cocos2d::LabelTTF* labelScore;
 	SpritePath * spritePath;
 	float speed;
 	EnemyController enemyController;
@@ -19,10 +22,14 @@ public:
 	static cocos2d::Scene* createScene();
 
     virtual bool init();
+    void createUIScore();
+    void updateUIScorePos();
     void handlePhysicEvent();
     void update(float delta);
     void spawnEnemy(float delta);
-	void createPlayer();
+	void updateBgPos();
+    void createBg();
+    void createPlayer();
 	void handleTouchInput();
 	void doDead();
 
