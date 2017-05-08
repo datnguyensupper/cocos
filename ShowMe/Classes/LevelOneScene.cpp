@@ -131,15 +131,23 @@ void LevelOneScene::updateBgPos() {
     if(bg->getPositionY() + bg->getContentSize().height < (cam->getPositionY()-visibleSize.height/2)){
         bg->setPositionY(cam->getPositionY() + visibleSize.height/2);
     }
+    stars->setPositionY(cam->getPositionY());
 }
 
 void LevelOneScene::createBg() {
+    
+    stars = Sprite::create("stars.jpg");
+    stars->setAnchorPoint(Vec2(0.5,0.5));
+    stars->setPositionX(visibleSize.width/2);
+    stars->setScale(1.2);
+    addChild(stars);
     
     bg = Sprite::create("bluemarblewest.png");
     bg->setAnchorPoint(Vec2(0.5,0));
     bg->setPositionX(visibleSize.width/2);
     addChild(bg);
     
+    updateBgPos();
 }
 
 void LevelOneScene::createPlayer() {

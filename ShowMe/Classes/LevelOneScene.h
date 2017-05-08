@@ -11,6 +11,7 @@ private:
 	float delayTime = 0;
     cocos2d::Sprite * player;
     cocos2d::Sprite * bg;
+    cocos2d::Sprite * stars;
     cocos2d::Vec2 playerFirstPosition;
 	cocos2d::Label * label;
     cocos2d::Node * groupLabel;
