@@ -152,15 +152,25 @@ void LevelOneScene::createBg() {
 
 void LevelOneScene::createPlayer() {
 
-	player = Sprite::create("CloseNormal.png");
+	player = Sprite::create("supperman.png");
 	playerFirstPosition = Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y);
 	player->setPosition(playerFirstPosition);
 	playerFirstPosition.x /= 2.0;
 	//playerFirstPosition.x = 0;
 	player->setAnchorPoint(Vec2(0.5, 0.5));
-	player->setColor(Color3B::BLUE);
+//	player->setColor(Color3B::BLUE);
 	//playerRed->setScaleX(2);
-	auto playerBody = PhysicsBody::createCircle(player->getContentSize().width/2,PhysicsMaterial(1.0f, 1.0f, 1.0f));
+//	auto playerBody = PhysicsBody::createEdgeBox(player->getContentSize(),PhysicsMaterial(1.0f, 1.0f, 1.0f));
+    Size playerS = player->getContentSize();
+    cocos2d::Vec2 * points = new Vec2[6]{
+        Vec2(-playerS.width/2,-playerS.height/2),
+        Vec2(-playerS.width/2,playerS.height/4),
+        Vec2(-playerS.width/6,playerS.height/2),
+        Vec2(playerS.width/6,playerS.height/2),
+        Vec2(playerS.width/2,playerS.height/4),
+        Vec2(playerS.width/2,-playerS.height/2)};
+    auto playerBody = PhysicsBody::createPolygon(points, 6,PhysicsMaterial(1.0f, 1.0f, 1.0f));
+    
 	//playerBodyRed->setPositionOffset(Vec2(0, playerRed->getContentSize().height/4));
 	//set the body isn't affected by the physics world's gravitational force
 	playerBody->setRotationEnable(false);
