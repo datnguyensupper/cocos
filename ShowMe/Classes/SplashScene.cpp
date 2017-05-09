@@ -53,8 +53,8 @@ bool SplashScene::init()
 	labelHighScore->setPosition(labelScore->getPosition() - Vec2(0, 50));
 	this->addChild(labelHighScore);
 	
-	auto playBtn = ui::Button::create("CloseNormal.png");
-	playBtn->setPosition(Vec2(visibleSize.width/2, labelHighScore->getPosition().y-50));
+	auto playBtn = ui::Button::create("play.png");
+	playBtn->setPosition(Vec2(visibleSize.width/2-20, labelHighScore->getPosition().y-120));
 	playBtn->addTouchEventListener([this](Ref* ref, ui::Widget::TouchEventType type) {
 		if (type != ui::Widget::TouchEventType::ENDED) return;
 		scheduleOnce(schedule_selector(SplashScene::Go2LevelOneScene), DISPLAY_TIME_SPLASH_SCREEN);

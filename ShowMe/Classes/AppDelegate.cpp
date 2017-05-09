@@ -73,14 +73,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
-    // create a scene. it's an autorelease object
-    auto scene = SplashScene::createScene();
-
     CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
     std::vector<std::string> searchPaths = fileUtils->getSearchPaths();
     searchPaths.insert(searchPaths.begin(), "img");
     fileUtils->setSearchPaths(searchPaths);
     
+
+    // create a scene. it's an autorelease object
+    auto scene = SplashScene::createScene();
     // run
     director->runWithScene(scene);
 
