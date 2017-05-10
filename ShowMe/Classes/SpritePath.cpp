@@ -38,8 +38,23 @@ bool SpritePath::init()
 	firstPoint = Point::ZERO;
 	secondPoint = Point::ZERO;
 
-	spriteBG = cocos2d::ui::Scale9Sprite::create("CloseNormal.png", cocos2d::Rect::ZERO, Rect(10, 10, 20, 20));
-	spriteBG->setScale9Enabled(true);
+    
+//    CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage("light.png");
+//    cocos2d::Texture2D::TexParams tp ;
+//    tp.minFilter =GL_LINEAR;
+//    tp.magFilter =GL_LINEAR;
+//    tp.wrapS =GL_REPEAT;
+//    tp.wrapT =GL_REPEAT;
+//    texture->setTexParameters(&tp);
+//    spriteBG = CCSprite::createWithTexture(texture, CCRectMake(0, 0, 135, 174));
+    
+    spriteBG = Sprite::create("light.png");
+    
+    auto spriteTex = Sprite::create("light_texture.png");
+    spriteBG->addChild(spriteTex);
+    
+//    cocos2d::ui::Scale9Sprite::create("light.png", cocos2d::Rect::ZERO, Rect(10, 10, 20, 20));
+//	spriteBG->setScale9Enabled(true);
 	spriteBG->setContentSize(Size(spriteBG->getContentSize().width, 0));
 	spriteBG->setPosition(firstPoint);
 	spriteBG->setAnchorPoint(Vec2(0.5, 0));
@@ -105,7 +120,8 @@ void SpritePath::adjustSpriteWithoutPhysic(cocos2d::Point _secondPoint) {
 void SpritePath::adjustSprite(bool havePhysic) {
 	float distance = firstPoint.distance(secondPoint);
 
-	spriteBG->setContentSize(Size(spriteBG->getContentSize().width, distance ));
+	spriteBG->setContentSize(Size(50, distance ));
+//    spriteBG->setContentSize(Size(spriteBG->getContentSize().width, distance ));
 
 	spriteBG->setRotation(Helper4Calculate::getInstance()->angle(firstPoint,secondPoint));
 	spriteBG->setPosition(firstPoint);

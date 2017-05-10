@@ -29,8 +29,6 @@ bool SplashScene::init()
 
 	Controller4Score::getInstance()->updateMaxScore();
 
-
-	Controller4Score::getInstance()->updateMaxScore();
     
 #if IS_DEBUG
 	auto label = Label::createWithSystemFont("Splash Scene", "Arial", 30);
@@ -42,19 +40,20 @@ bool SplashScene::init()
     bg->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     this->addChild(bg);
     
-	auto labelScore = LabelTTF::create("Score : 0", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
-	labelScore->setAnchorPoint(Vec2(0, 0.5));
+    
+	auto labelScore = LabelTTF::create("Score : " + std::to_string(Controller4Score::getInstance()->getCurrentScore())+"m", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
+	labelScore->setAnchorPoint(Vec2(0.5, 0.5));
 	labelScore->setVerticalAlignment(TextVAlignment::CENTER);
-	labelScore->setHorizontalAlignment(TextHAlignment::LEFT);
-	labelScore->setPosition(Vec2(visibleSize.width / 2-100, visibleSize.height / 2 + 50));
+	labelScore->setHorizontalAlignment(TextHAlignment::CENTER);
+	labelScore->setPosition(Vec2(visibleSize.width / 2-0, visibleSize.height / 2 + 50));
 	this->addChild(labelScore);
 
-	auto labelHighScore = LabelTTF::create("Max Score : 0", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
+	auto labelHighScore = LabelTTF::create("Max Score : " + std::to_string(Controller4Score::getInstance()->getMaxScore())+"m", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
 	labelHighScore->setColor(Color3B::YELLOW);
 	labelHighScore->setAnchorPoint(labelScore->getAnchorPoint());
 	labelHighScore->setVerticalAlignment(labelScore->getVerticalAlignment());
 	labelHighScore->setHorizontalAlignment(labelScore->getHorizontalAlignment());
-	labelHighScore->setPosition(labelScore->getPosition() - Vec2(0, 50));
+	labelHighScore->setPosition(labelScore->getPosition() - Vec2(0, 60));
 	this->addChild(labelHighScore);
 	
 	auto playBtn = ui::Button::create("play.png");

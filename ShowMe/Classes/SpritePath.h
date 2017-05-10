@@ -12,7 +12,8 @@ protected:
 	cocos2d::Point firstPoint;
 	cocos2d::Point secondPoint;
 	float delayForSetSecondPoint = 0;
-	cocos2d::ui::Scale9Sprite * spriteBG;
+//	cocos2d::ui::Scale9Sprite * spriteBG;
+    cocos2d::Sprite * spriteBG;
 	void adjustSprite(bool havePhysic);
 	cocos2d::PhysicsBody * physicBody = nullptr;
 	cocos2d::Sprite * player = nullptr;
