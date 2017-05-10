@@ -38,6 +38,10 @@ bool SplashScene::init()
 //	this->addChild(label);
 #endif
     
+    auto bg = Sprite::create("bg_flash.png");
+    bg->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+    this->addChild(bg);
+    
 	auto labelScore = LabelTTF::create("Score : 0", "fonts/Marker Felt.ttf", visibleSize.height*SCORE_FONT_SIZE);
 	labelScore->setAnchorPoint(Vec2(0, 0.5));
 	labelScore->setVerticalAlignment(TextVAlignment::CENTER);
@@ -54,7 +58,7 @@ bool SplashScene::init()
 	this->addChild(labelHighScore);
 	
 	auto playBtn = ui::Button::create("play.png");
-	playBtn->setPosition(Vec2(visibleSize.width/2-20, labelHighScore->getPosition().y-120));
+	playBtn->setPosition(Vec2(visibleSize.width/2-20, labelHighScore->getPosition().y-140));
 	playBtn->addTouchEventListener([this](Ref* ref, ui::Widget::TouchEventType type) {
 		if (type != ui::Widget::TouchEventType::ENDED) return;
 		scheduleOnce(schedule_selector(SplashScene::Go2LevelOneScene), DISPLAY_TIME_SPLASH_SCREEN);
