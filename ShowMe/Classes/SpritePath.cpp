@@ -1,6 +1,7 @@
 #include "SpritePath.h"
 #include "PhysicBodyAdjustRotation.h"
 #include "Helper4Calculate.h"
+#include "Helper4Sprite.h"
 
 USING_NS_CC;
 
@@ -51,6 +52,7 @@ bool SpritePath::init()
     spriteBG = Sprite::create("light.png");
     
     auto spriteTex = Sprite::create("light_texture.png");
+	spriteTex->setAnchorPoint(Vec2(0, 0));
     spriteBG->addChild(spriteTex);
     
 //    cocos2d::ui::Scale9Sprite::create("light.png", cocos2d::Rect::ZERO, Rect(10, 10, 20, 20));

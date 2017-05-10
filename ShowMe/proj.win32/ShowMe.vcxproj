@@ -149,6 +149,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Controller4Score.cpp" />
     <ClCompile Include="..\Classes\EnemyController.cpp" />
     <ClCompile Include="..\Classes\Helper4Calculate.cpp" />
+    <ClCompile Include="..\Classes\Helper4Sprite.cpp" />
     <ClCompile Include="..\Classes\LevelOneScene.cpp" />
     <ClCompile Include="..\Classes\PhysicBodyAdjustRotation.cpp" />
     <ClCompile Include="..\Classes\SplashScene.cpp" />
@@ -162,6 +163,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Definitions.h" />
     <ClInclude Include="..\Classes\EnemyController.h" />
     <ClInclude Include="..\Classes\Helper4Calculate.h" />
+    <ClInclude Include="..\Classes\Helper4Sprite.h" />
     <ClInclude Include="..\Classes\LevelOneScene.h" />
     <ClInclude Include="..\Classes\PhysicBodyAdjustRotation.h" />
     <ClInclude Include="..\Classes\SplashScene.h" />

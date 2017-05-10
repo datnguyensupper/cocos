@@ -60,6 +60,9 @@
     <ClCompile Include="..\Classes\Controller4Score.cpp">
       <Filter>src\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Helper4Sprite.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Controller4Score.h">
       <Filter>src\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper4Sprite.h">
+      <Filter>src\Helper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
