@@ -24,6 +24,10 @@ void SpritePath::setPlayer(cocos2d::Sprite * _player) {
 	player = _player;
 }
 
+SpritePath::~SpritePath(){
+    arrayOfTexPath.clear();
+}
+
 // on "init" you need to initialize your instance
 bool SpritePath::init()
 {
@@ -51,10 +55,14 @@ bool SpritePath::init()
     
     spriteBG = Sprite::create("light.png");
     
-    auto spriteTex = Sprite::create("light_texture.png");
-	spriteTex->setAnchorPoint(Vec2(0, 0));
-    spriteBG->addChild(spriteTex);
-    
+    int yPosition = 0;
+    for(int i = 0; i < 15; i++){
+        auto spriteTex = Sprite::create("light_texture.png");
+        spriteTex->setAnchorPoint(Vec2(0, 0));
+        Helper4Sprite::setBlendModeAdd(spriteTex);
+        spriteBG->addChild(spriteTex);
+        arrayOfTexPath.push_back(spriteTex);
+    }
 //    cocos2d::ui::Scale9Sprite::create("light.png", cocos2d::Rect::ZERO, Rect(10, 10, 20, 20));
 //	spriteBG->setScale9Enabled(true);
 	spriteBG->setContentSize(Size(spriteBG->getContentSize().width, 0));
@@ -122,7 +130,23 @@ void SpritePath::adjustSpriteWithoutPhysic(cocos2d::Point _secondPoint) {
 void SpritePath::adjustSprite(bool havePhysic) {
 	float distance = firstPoint.distance(secondPoint);
 
+    distance = min(distance, arrayOfTexPath.size()*arrayOfTexPath[0]->getContentSize().height);
 	spriteBG->setContentSize(Size(50, distance ));
+    float yPosition = 0;
+    int count = 0;
+    log(distance);
+    for(; count < arrayOfTexPath.size(); count++){
+        Sprite* texPath = arrayOfTexPath[count];
+        texPath->setVisible(true);
+        texPath->setPositionY(yPosition);
+        yPosition += texPath->getContentSize().height;
+        if(yPosition > distance) break;
+    }
+    for(; count < arrayOfTexPath.size(); count++){
+        Sprite* texPath = arrayOfTexPath[count];
+        texPath->setVisible(false);
+    }
+    
 //    spriteBG->setContentSize(Size(spriteBG->getContentSize().width, distance ));
 
 	spriteBG->setRotation(Helper4Calculate::getInstance()->angle(firstPoint,secondPoint));

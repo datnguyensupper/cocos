@@ -17,8 +17,9 @@ protected:
 	void adjustSprite(bool havePhysic);
 	cocos2d::PhysicsBody * physicBody = nullptr;
 	cocos2d::Sprite * player = nullptr;
+    std::vector<cocos2d::Sprite*> arrayOfTexPath;
 public:
-
+    ~SpritePath();
 	static SpritePath* create(cocos2d::Sprite * player);
     void setPlayer(cocos2d::Sprite * _player);
     virtual bool init();

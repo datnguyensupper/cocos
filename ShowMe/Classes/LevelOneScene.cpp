@@ -8,8 +8,10 @@ Scene* LevelOneScene::createScene()
 {
 	// 'scene' is an autorelease object
 	auto scene = Scene::createWithPhysics();
-	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	scene->getPhysicsWorld()->setGravity(Vect(0, 50));
+#if IS_DEBUG
+//	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+#endif
+	scene->getPhysicsWorld()->setGravity(Vect(0, 100));
 	//scene->getPhysicsWorld()->setGravity(Vect(0, 100));
 	//scene->getPhysicsWorld()->setGravity(Vect(0, 0));
 
@@ -115,7 +117,7 @@ void LevelOneScene::update(float delta){
 	
     auto cam = Camera::getDefaultCamera();
 	//log("Player position x=%f y=%f physic x=%f y=%f", pos.x, pos.y,player->getPhysicsBody()->getPosition().x,player->getPhysicsBody()->getPosition().y);
-	log("Player velocity x=%f y=%f",player->getPhysicsBody()->getVelocity().x,player->getPhysicsBody()->getVelocity().y);
+//	log("Player velocity x=%f y=%f",player->getPhysicsBody()->getVelocity().x,player->getPhysicsBody()->getVelocity().y);
 	if (player->getPhysicsBody()->getVelocity().y < 10) deadSpace += 1;
 	pos.x = visibleSize.width / 2;
 	if (deadSpace > visibleSize.height / 2) doDead();
@@ -178,7 +180,7 @@ void LevelOneScene::createPlayer() {
 	playerBody->setDynamic(true);
 	playerBody->setCollisionBitmask(PLAYER_COLLISION_BITMASK);
 	playerBody->setContactTestBitmask(true);
-	playerBody->setVelocityLimit(100);
+	playerBody->setVelocityLimit(200);
 	player->setPhysicsBody(playerBody);
 	
 	//playerRed->addComponent(playerBodyRed);
