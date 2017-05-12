@@ -2,6 +2,7 @@
 
 #include "BaseScene.h"
 #include "EnemyController.h"
+#include "ui/UIButton.h"
 
 class SpritePath;
 class LevelOneScene : public BaseScene{
@@ -16,6 +17,7 @@ private:
 	cocos2d::Label * label;
     cocos2d::Node * groupLabel;
     cocos2d::LabelTTF* labelScore;
+    cocos2d::Layer * soundButton;
 	SpritePath * spritePath;
 	float speed;
 	EnemyController enemyController;

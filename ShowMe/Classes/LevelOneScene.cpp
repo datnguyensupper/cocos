@@ -1,6 +1,7 @@
 #include "LevelOneScene.h"
 #include "SpritePath.h"
 #include "Controller4Score.h"
+#include "SoundController.h"
 
 USING_NS_CC;
 
@@ -52,8 +53,10 @@ bool LevelOneScene::init()
     
     this->scheduleUpdate();
 	this->schedule(schedule_selector(LevelOneScene::spawnEnemy), 10.0f);
+ 
+    soundButton = SoundController::getInstance()->CreateSoundControl(this);
     createUIScore();
-
+    
     return true;
 }
 
@@ -83,6 +86,7 @@ void LevelOneScene::updateUIScorePos() {
     
     auto cam = Camera::getDefaultCamera();
     groupLabel->setPosition(cam->getPosition() + Vec2(-visibleSize.width/2,visibleSize.height/2-40));
+    soundButton->setPositionY(cam->getPosition().y - visibleSize.height/2+40);
     
     Controller4Score::getInstance()->setCurrentScore((player->getPositionY() - playerFirstPosition.y)/100);
     int currentScore = Controller4Score::getInstance()->getCurrentScore();

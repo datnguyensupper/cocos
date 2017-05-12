@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "SplashScene.h"
+#include "SoundController.h"
 
 USING_NS_CC;
 
@@ -46,6 +47,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+    SoundController::getInstance();
+    
     // turn on display FPS
     director->setDisplayStats(true);
 

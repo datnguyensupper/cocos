@@ -57,7 +57,7 @@ cocos2d::Sprite * EnemyController::SpawnEnemy() {
 	cocos2d::String* enemyRS = nullptr;// String::create("player.jpg");
 	Color3B enemyColor;
 	//enemyRS = String::create("enemy_red.jpg");	
-	enemyRS = String::create("enemy1.png");
+	enemyRS = String::create("enemy/enemy1.png");
 	enemyColor = Color3B::RED;
 
 	auto enemy = Sprite::create(enemyRS->getCString());
