@@ -63,6 +63,12 @@
     <ClCompile Include="..\Classes\Helper4Sprite.cpp">
       <Filter>src\Helper</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SoundController.cpp">
+      <Filter>src\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ToggleButton.cpp">
+      <Filter>src\Others</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -100,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Helper4Sprite.h">
       <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SoundController.h">
+      <Filter>src\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ToggleButton.h">
+      <Filter>src\Others</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

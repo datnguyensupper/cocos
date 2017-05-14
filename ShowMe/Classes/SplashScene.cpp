@@ -1,6 +1,5 @@
 #include "SplashScene.h"
 #include "SimpleAudioEngine.h"
-#include "ui/CocosGUI.h"
 #include "Controller4Score.h"
 
 USING_NS_CC;
@@ -64,7 +63,33 @@ bool SplashScene::init()
 	});
 	addChild(playBtn);
 
+
+	tutorialBtn = ui::Button::create("question.png", "question_clicked.png");
+	//tutorialBtn->setScale(0.05);
+	tutorialBtn->setPosition(Vec2(190+ visibleSize.width/2,85+ visibleSize.height/2));
+	tutorialBtn->addTouchEventListener([this](Ref* ref, ui::Widget::TouchEventType type) {
+		if (type != ui::Widget::TouchEventType::ENDED) return;
+	});
+	addChild(tutorialBtn);
+
+	createTutorialView();
+
     return true;
+}
+
+
+void SplashScene::createTutorialView() {
+
+	Node* tutorialV = Node::create();
+	tutorialV->setPosition(tutorialBtn->getPosition() + Vec2(50, 0));
+	addChild(tutorialV);
+
+	auto tutorialText = CCLabelBMFont::create("Swipe to create\n\n correct way!", "fonts/bitmapFonts/carrier_command.xml");
+	tutorialText->setScale(0.5);
+	tutorialText->setColor(Color3B::WHITE);
+	tutorialText->setAlignment(TextHAlignment::LEFT);
+	tutorialText->setAnchorPoint(Vec2(0, 0.5));
+	tutorialV->addChild(tutorialText);
 }
 
 

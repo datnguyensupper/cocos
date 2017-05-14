@@ -10,7 +10,7 @@ Scene* LevelOneScene::createScene()
 	// 'scene' is an autorelease object
 	auto scene = Scene::createWithPhysics();
 #if IS_DEBUG
-//	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 #endif
 	scene->getPhysicsWorld()->setGravity(Vect(0, 100));
 	//scene->getPhysicsWorld()->setGravity(Vect(0, 100));
@@ -52,7 +52,10 @@ bool LevelOneScene::init()
 	addChild(spritePath);
     
     this->scheduleUpdate();
+	// init enemy
+	enemyController.initEnemy(this);
 	this->schedule(schedule_selector(LevelOneScene::spawnEnemy), 10.0f);
+	//this->scheduleOnce(schedule_selector(LevelOneScene::spawnEnemy), 1.0f);
  
     soundButton = SoundController::getInstance()->CreateSoundControl(this);
     createUIScore();

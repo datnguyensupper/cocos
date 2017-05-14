@@ -152,8 +152,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Helper4Sprite.cpp" />
     <ClCompile Include="..\Classes\LevelOneScene.cpp" />
     <ClCompile Include="..\Classes\PhysicBodyAdjustRotation.cpp" />
+    <ClCompile Include="..\Classes\SoundController.cpp" />
     <ClCompile Include="..\Classes\SplashScene.cpp" />
     <ClCompile Include="..\Classes\SpritePath.cpp" />
+    <ClCompile Include="..\Classes\ToggleButton.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,8 +168,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Helper4Sprite.h" />
     <ClInclude Include="..\Classes\LevelOneScene.h" />
     <ClInclude Include="..\Classes\PhysicBodyAdjustRotation.h" />
+    <ClInclude Include="..\Classes\SoundController.h" />
     <ClInclude Include="..\Classes\SplashScene.h" />
     <ClInclude Include="..\Classes\SpritePath.h" />
+    <ClInclude Include="..\Classes\ToggleButton.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
