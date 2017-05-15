@@ -8,6 +8,7 @@ class SplashScene : public BaseScene
 public:
     static cocos2d::Scene* createScene();
 	cocos2d::ui::Button* tutorialBtn;
+    cocos2d::Node* tutorialV;
 
     virtual bool init();
 	void createTutorialView();

@@ -69,6 +69,8 @@ bool SplashScene::init()
 	tutorialBtn->setPosition(Vec2(190+ visibleSize.width/2,85+ visibleSize.height/2));
 	tutorialBtn->addTouchEventListener([this](Ref* ref, ui::Widget::TouchEventType type) {
 		if (type != ui::Widget::TouchEventType::ENDED) return;
+        tutorialV->setVisible(!tutorialV->isVisible());
+        
 	});
 	addChild(tutorialBtn);
 
@@ -80,7 +82,7 @@ bool SplashScene::init()
 
 void SplashScene::createTutorialView() {
 
-	Node* tutorialV = Node::create();
+	tutorialV = Node::create();
 	tutorialV->setPosition(tutorialBtn->getPosition() + Vec2(50, 0));
 	addChild(tutorialV);
 
@@ -90,6 +92,16 @@ void SplashScene::createTutorialView() {
 	tutorialText->setAlignment(TextHAlignment::LEFT);
 	tutorialText->setAnchorPoint(Vec2(0, 0.5));
 	tutorialV->addChild(tutorialText);
+    
+    Sprite * hand = Sprite::create("hand-touch.png");
+    tutorialV->addChild(hand);
+    hand->setPosition(Vec2(50,-70));
+    
+    Sequence * handAction = Sequence::create(MoveTo::create(1.0, Vec2(150,-70)),MoveTo::create(0, Vec2(50,-70)),nullptr);
+    RepeatForever * handActionRepeat = RepeatForever::create(handAction);
+    hand->runAction(handActionRepeat);
+    tutorialV->setVisible(false);
+            
 }
 
 
