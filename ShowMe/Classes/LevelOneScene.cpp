@@ -58,6 +58,7 @@ bool LevelOneScene::init()
 	//this->scheduleOnce(schedule_selector(LevelOneScene::spawnEnemy), 1.0f);
  
     soundButton = SoundController::getInstance()->CreateSoundControl(this);
+    SoundController::getInstance()->PlayBackgroundMusic();
     createUIScore();
     
     return true;
@@ -213,6 +214,8 @@ void LevelOneScene::handleTouchInput() {
 		spritePath->adjustSprite(locationInNode + translate, locationInNode + translate);
 
 		spritePath->removePhysic();
+        
+        SoundController::getInstance()->PlayWhooshSound();
 		return true;
 	};
 
@@ -245,6 +248,7 @@ void LevelOneScene::doDead() {
 	if (isDied) return;
 	isDied = true;
 	prepare2Go2SplashScene();
+    SoundController::getInstance()->PlayLooseSound();
 }
 
 bool LevelOneScene::onContactBegin(cocos2d::PhysicsContact & contact) {

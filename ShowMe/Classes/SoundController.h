@@ -15,6 +15,7 @@ public:
 	void StopBackgroundMusic();
 	void PlayCoinSound();
 	void PlayLooseSound();
+    void PlayWhooshSound();
 	void PlayJumpSound();
 	cocos2d::Layer* CreateSoundControl(cocos2d::Layer * layer);
 private:

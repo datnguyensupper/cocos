@@ -76,9 +76,11 @@ void SoundController::PlayCoinSound() {
 }
 
 void SoundController::PlayLooseSound() {
-
 	PlaySound("sounds/die.mp3");
+}
 
+void SoundController::PlayWhooshSound() {
+    PlaySound("sounds/whoosh.mp3");
 }
 
 void SoundController::PlayJumpSound() {
