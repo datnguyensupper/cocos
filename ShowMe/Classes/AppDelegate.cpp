@@ -50,8 +50,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SoundController::getInstance();
     
     // turn on display FPS
+#if IS_DEBUG
     director->setDisplayStats(true);
-
+#endif
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
 

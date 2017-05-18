@@ -1,6 +1,7 @@
 #include "SplashScene.h"
 #include "SimpleAudioEngine.h"
 #include "Controller4Score.h"
+#include "SoundController.h"
 
 USING_NS_CC;
 
@@ -35,6 +36,8 @@ bool SplashScene::init()
 //	this->addChild(label);
 #endif
     
+	SoundController::getInstance()->StopBackgroundMusic();
+
     auto bg = Sprite::create("bg_flash.png");
     bg->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
     this->addChild(bg);
