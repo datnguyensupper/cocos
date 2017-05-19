@@ -23,6 +23,18 @@
 #define CACHE_MAX_SCORE "cache_max_score"
 #define CACHE_CAN_PLAY_MUSIC "cache_can_play_music"
 
+#include <string>
+#include <sstream>
+namespace std
+{
+	template < typename T > std::string to_string(const T& n)
+	{
+		std::ostringstream ss;
+		ss << n;
+		return ss.str();
+	}
+}
+
 //#define IS_DEBUG true
 #define IS_DEBUG false
 

@@ -23,6 +23,13 @@ Rename-Item bin/release/android/JumpBoxJump-release-signed.apk JumpBoxJump-relea
 cocos compile -p android --android-studio --app-abi x86 -m release
 Remove-Item bin\release\android\JumpBoxJump-release-signed-x86.apk
 Rename-Item bin/release/android/JumpBoxJump-release-signed.apk JumpBoxJump-release-signed-x86.apk
+//release ShowMe
+cocos compile -p android --android-studio --app-abi armeabi -m release
+Remove-Item bin\release\android\ShowMe-release-signed-armeabi.apk
+Rename-Item bin/release/android/ShowMe-release-signed.apk ShowMe-release-signed-armeabi.apk
+cocos compile -p android --android-studio --app-abi x86 -m release
+Remove-Item bin\release\android\ShowMe-release-signed-x86.apk
+Rename-Item bin/release/android/ShowMe-release-signed.apk ShowMe-release-signed-x86.apk
 
 // run
 cocos run -p android --android-studio

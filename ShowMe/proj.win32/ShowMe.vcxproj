@@ -195,6 +195,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <Text Include="..\..\build.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\proj.android-studio\app\build.gradle" />
+    <None Include="..\proj.android-studio\app\jni\Android.mk" />
+    <None Include="..\proj.android-studio\app\jni\Application.mk" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

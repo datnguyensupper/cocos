@@ -129,4 +129,15 @@
       <Filter>build</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\proj.android-studio\app\build.gradle">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\jni\Application.mk">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\jni\Android.mk">
+      <Filter>build</Filter>
+    </None>
+  </ItemGroup>
 </Project>

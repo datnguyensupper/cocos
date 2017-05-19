@@ -12,8 +12,18 @@ LOCAL_MODULE := MyGame_shared
 LOCAL_MODULE_FILENAME := libMyGame
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../../Classes/AppDelegate.cpp \
-                   ../../../Classes/HelloWorldScene.cpp
+                   ../../../Classes/Controller4Score.cpp \
+                   ../../../Classes/EnemyController.cpp \
+                   ../../../Classes/SoundController.cpp \
+                   ../../../Classes/Helper4Calculate.cpp \
+                   ../../../Classes/Helper4Sprite.cpp \
+                   ../../../Classes/PhysicBodyAdjustRotation.cpp \
+                   ../../../Classes/SpritePath.cpp \
+                   ../../../Classes/ToggleButton.cpp \
+                   ../../../Classes/BaseScene.cpp \
+                   ../../../Classes/LevelOneScene.cpp \
+                   ../../../Classes/SplashScene.cpp \
+                   ../../../Classes/AppDelegate.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 
