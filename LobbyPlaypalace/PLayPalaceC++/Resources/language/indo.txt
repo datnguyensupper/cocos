@@ -1,0 +1,573 @@
+{
+	popup_need_level_to_play_game:{
+		text1: "Anda perlu Mencapai tingkat ",
+		text2:" untuk memainkan game ini."
+	},
+	setting_language_lable: {
+		text: "B-Indonesia"
+	},
+	setting_logged_with_lable: {
+		text: "Login melalui: "
+	},
+	setting_logout_lable: {
+		text: "Keluar"
+	},
+	setting_login_lable: {
+		text: "Masuk"
+	},
+	setting_game_option_lable: {
+		text: "Pilihan permainan"
+	},
+	setting_back_ground_music_lable: {
+		text: "Latarbelakang musik"
+	},
+	setting_back_sound_effect_lable: {
+		text: "Efek suara"
+	},
+	setting_language: {
+		text: "Bahasa"
+	},
+	setting_ref_lable: {
+		text: "Push Pemberitahuan"
+	},
+	setting_mycode_lable: {
+		text: "Kode saya"
+	},
+	setting_myrefcode_lable: {
+		text: "Kode Referensi saya"
+	},
+	setting_friend_request_lable: {
+		text: "Permintaan pertemanan"
+	},
+	setting_btn_tearm_lable: {
+		text: "Jangka Layanan"
+	},
+	setting_btn_privacy_lable: {
+		text: "Kebijakan pribadi"
+	},
+	setting_version_lable: {
+		text: "Versi"
+	},
+	setting_languages: {
+		eng: "English",
+		cn: "简体",
+		taiwan: "繁體",
+		vn: "Tiếng Việt",
+		malay: "B-Malay",
+		indo: "B-Indonesia"
+	},
+	footer_collect_lable: {
+		text: "Mengumpulkan"
+	},
+	footer_collect_time_bonus_in_lable: {
+		text: "Bonus waktu di"
+	},
+	footer_achievement_lable: {
+		text: "Prestasi"
+	},
+	popup_profile_to_level_up_lable: {
+		text: " XP\nuntuk tingkat atas"
+	},
+	footer_gift_lable: {
+		text: "Hadiah"
+	},
+	header_profile_tooltip: {
+		text: "Profil"
+	},
+	header_invite_tooltip: {
+		text: "Undang Teman"
+	},
+	header_sendgift_tooltip: {
+		text: "Pengiriman Hadiah"
+	},
+	header_shop_tooltip: {
+		text: "Shop"
+	},
+	header_stardom_tooltip: {
+		text: "Stardom"
+	},
+	header_Level: {
+		text: "Level"
+	},
+	header_recent_winner_text: {
+		text1: "Baru saja",
+		text2: "Pemenang"
+	},
+	popup_shop_transaction_cancelled: {
+		text: "Transaksi Dibatalkan"
+	},
+	popup_achievement_title: {
+		text: "PENCAPAIAN"
+	},
+	popup_achievement_total_achievement_point: {
+		text: "POIN PRESTASI"
+	},
+	popup_achievement_group_title_general: {
+		text: "Umum"
+	},
+	popup_achievement_group_title_game: {
+		text: "Permainan"
+	},
+	popup_achievement_group_title_social: {
+		text: "Sosial"
+	},
+	popup_profile_logo: {
+		text: "Profil"
+	},
+	popup_profile_level: {
+		text: "Level"
+	},
+	popup_profile_rank: {
+		text: "Ranking"
+	},
+	popup_profile_MaximumCoins: {
+		text: "Maksimum koins"
+	},
+	popup_profile_PlayedSince: {
+		text: "Bermain sejak"
+	},
+	popup_profile_btn_SendFreeGift: {
+		text: "Mengirimkan Hadiah gratis"
+	},
+	popup_profile_btn_SendCoins: {
+		text: "Mengirimkan Koin"
+	},
+	popup_profile_Slot_NumberofJackpot: {
+		text: "Jumlah Jackpot"
+	},
+	popup_profile_Slot_Win: {
+		text: "Menang: "
+	},
+	popup_profile_Slot_BiggestWin: {
+		text: "Kemenangan Terbesar"
+	},
+	popup_profile_Slot_TotalSpin: {
+		text: "Jumlah total Spin"
+	},
+	popup_profile_Slot_NetProfit: {
+		text: "Keuntungan Bersih"
+	},
+	popup_profile_Blackjack_NumberofBlackjack: {
+		text: "Jumlah Blackjack"
+	},
+	popup_profile_Blackjack_PlayedHand: {
+		text: "Tangan Pemain"
+	},
+	popup_profile_Blackjack_BiggestWin: {
+		text: "Pemenang Terbesar"
+	},
+	popup_profile_Blackjack_Win: {
+		text: "Kemenangan"
+	},
+	popup_profile_Blackjack_NetProfit: {
+		text: "Keuntungan Bersih"
+	},
+	popup_profile_Change_Avatar: {
+		title: "Ganti Avatar",
+		success: "Ganti Avatar Sukses!",
+		fail: "Ganti Avatar Gagal!"
+	},
+	popup_profile_Blackjack_MaxWinInaRow: {
+		text: "Maksimum kemenangan berturut turut"
+	},
+	popup_gift_leaderboard: {
+		text: "Papan"
+	},
+	popup_gift_friends: {
+		text: "Teman"
+	},
+	popup_gift_inbox: {
+		text: "Inbox"
+	},
+	popup_gift_inbox_empty: {
+		text: "Kotak masuk kosong!"
+	},
+	popup_gift_error_oop: {
+		text: "Peringatan"
+	},
+	popup_gift_error_message: {
+		text: "Silahkan login dengan akun facebook Anda!"
+	},
+	popup_gift_select: {
+		text: "Silakan pilih minimal satu teman!"
+	},
+	popup_gift_success: {
+		text: "Keberhasilan"
+	},
+	popup_gift_send_free_gift_success: {
+		text: "Kirim keberhasilan hadiah gratis!"
+	},
+	popup_gift_invite_success: {
+		text : "Undang sukses!"
+	},
+	popup_gift_info: {
+		text:  " Dapat 100.000 koin"
+	},
+	popup_gift_warning: {
+		text: "Peringatan"
+	},
+	popup_gift_warning_message: {
+		text: " Silakan coba lagi nanti"
+	},
+	popup_gift_accept_success: {
+		text: "Terima berhasil!"
+	},
+	popup_gift_anonymous:{
+		text: "Anonim"
+	},
+	popup_edit_name: {
+		title: "Ganti Nama",
+		fail:"Ketik nama",
+		success:"Keberhasilan perubahan nama",
+		reachLimit:"perubahan nama maksimum mencapai"
+	},
+	popup_reference: {
+		title: "Kode Referensi Saya",
+		title_noti: "Kode Referensi",
+		already_send: "Sudah dikirim hadiah dari kode referensi",
+		not_exist: "Kode referensi tidak ada!",
+		max: "Kode referensi mencapai max waktu!",
+		own_code: "Tidak bisa masuk ke sana RO penari referensi kode!",
+		success:"Kode referensi diperbarui!",
+		confirm:"Menegaskan"
+	},
+	popup_change_language: {
+		fail:"Gagal!",
+		success:"Keberhasilan!"
+	},
+	popup_invite_description: {
+		text: "Jika anda mengundang kawan anda untuk bergabung, anda akan mendapatkan  $ 700 untuk setiap kawan anda"
+	},
+	popup_invite_tab_FriendtoSendGift: {
+		text: "Teman untuk mengirimkan hadiah"
+	},
+	popup_invite_tab_AllFriends: {
+		text: "Semua Teman"
+	},
+	popup_invite_FriendsSelected: {
+		text: "Teman terpilih"
+	},
+	popup_invite_btn_UnSelectAll: {
+		text: "Jangan pilih semuanya"
+	},
+	popup_invite_btn_SelectAll: {
+		text: "Pilih semuanya"
+	},
+	popup_invite_btn_SendGift: {
+		text: "Mengirim hadiah"
+	},
+	popup_invite_btn_Invite: {
+		text: "Mengundang"
+	},
+	popup_invite_error_non_select: {
+		text: "Silakan pilih minimal satu teman!"
+	},
+	popup_invite_tab_GameFriend: {
+		text: "Game Friends"
+	},
+	popup_askfriend_description: {
+		text: "Anda dapat menerima maksimal 3  kunci per hari"
+	},
+	popup_askfriend_btn_label: {
+		text: "Tanya teman"
+	},
+	popup_SendGift_Description: {
+		text: "Jika anda mengirimkan hadiah kepada kawan anda , anda akan mendapatkan $ 700"
+	},
+	popup_shop_btn_BuyNow: {
+		text: "Beli Sekarang"
+	},
+	popup_stardom_level: {
+		text: "Level"
+	},
+	popup_stardom_BankRoll: {
+		text: "Bankroll"
+	},
+	popup_stardom_BiggestWin: {
+		text: "Pemenang Terbesar"
+	},
+	popup_stardom_JackPot: {
+		text: "Jackpot"
+	},
+	popup_stardom_label_Player: {
+		text: "Pemain"
+	},
+	popup_stardom_player_AllPlayers: {
+		text: "Semua Pemain"
+	},
+	popup_stardom_player_Friends: {
+		text: "Teman teman"
+	},
+	popup_stardom_player_BankRoll: {
+		text: "Bankroll"
+	},
+	popup_stardom_player_NetProfit: {
+		text: "Keuntungan Bersih"
+	},
+	popup_stardom_player_BiggestWin: {
+		text: "Pemenang Terbesar"
+	},
+	popup_stardom_player_Jackpot: {
+		text: "Jackpot"
+	},
+	popup_stardom_player_Ranking: {
+		text: "Ranking"
+	},
+	popup_stardom_player_Players: {
+		text: "Para Pemain"
+	},
+	popup_stardom_player_Coins: {
+		text: "Koins"
+	},
+	popup_stardom_player_PlayTogether: {
+		text: "Bermain bersama"
+	},
+	popup_stardom_player_Game: {
+		text: "Permainan"
+	},
+	popup_secretgift_description: {
+		text1: "*Peringatan!",
+		text2: "Kunci yang dibeli dari Toko kunci tidak akan kadaluwarsa"
+	},
+	popup_smallbox_description: {
+		text: "3 Kunci diperlukan untuk membuka  Kotak"
+	},
+	popup_inbox_btn_Accept: {
+		text: "Menerima "
+	},
+	popup_inbox_btn_Accept_SendGift: {
+		text: "Menerima dan Mengirimkan hadiah"
+	},
+	popup_inbox_btn_SendKey: {
+		text: "Mengirimkan Kunci"
+	},
+	popup_inbox_btn_Accept_SendGift_All: {
+		text: "Menerima dan Mengirimkan hadiah"
+	},
+	popup_inbox_Message_Gift: {
+		text1: "Saya kirimkan ",
+		text2: " Koin untuk anda, Semoga anda beruntung!"
+	},
+	popup_inbox_message_free_magic_item_watching_video: {
+        text1: "Selamat! Anda telah menerima barang sulap gratis untuk menonton ",
+        text2: " video"
+	},
+	popup_inbox_message_default_gift:{
+        text: "Selamat! Anda telah menerima hadiah"
+	},
+	popup_inbox_Message_FreeGift: {
+		text1: "Saya kirimkan hadiah hingga ",
+		text2: " Koin untuk anda, Semoga anda beruntung!"
+	},
+	popup_inbox_Message_SystemGift: {
+		text1: "Anda telah menerima ",
+		text2: "  koin. Semoga berhasil!"
+	},
+	popup_inbox_Message_Requestkey: {
+		text: "Mohon kirimkan 1 kunci!"
+	},
+	popup_inbox_Message_Promote: {
+		text1: "Bonus promosi untuk mengundang teman (",
+		text2: ") koins"
+	},
+	popup_inbox_Message_Vip: {
+        text1: "Selamat! Anda telah menerima VIP hadiah. upahmu ",
+        text2: " koin"
+	},
+	popup_inbox_Friend_Benefit: {
+        text1: "Selamat! Anda telah menerima ",
+        text2: " koin untuk mengundang teman Anda"
+	},
+	popup_inbox_Reference_Code: {
+        text1: "Selamat! Anda telah menerima hadiah referensi. upahmu ",
+        text2: " koin"
+	},
+	popup_inbox_Top_Player_Gift: {
+		text1: "Selamat! Anda pemain top. upahmu ",
+		text2: " koin"
+	},
+	popup_inbox_Message_Vip_Up: {
+		text: "Selamat untuk Vip Up!"
+	},
+	popup_shop_Vip: {
+		text: "VIP"
+	},
+	popup_shop_Standard: {
+		text: "Standard"
+	},
+	popup_shop_Mobile: {
+		text: "Mobile"
+	},
+	menu_setting_Label: {
+		text: "Pengaturan"
+	},
+	menu_setting_GraphicQuality: {
+		text: "Kualitas Grafik"
+	},
+	menu_setting_Music: {
+		text: "Musik"
+	},
+	menu_setting_Sound: {
+		text: "Suara"
+	},
+	menu_setting_Language: {
+		text: "Bahasa"
+	},
+	popup_voucher_description: {
+		text1: "Anda telah dianugrahkan ",
+		text2: " koin"
+	},
+	popup_warning_switch_to_app_fb: {
+		text: "Silahkan brealih ke aplikasi facebook untuk \n membeli!"
+	},
+	popup_warning_switch_to_app_fb_to_invite: {
+		text: "Silahkan brealih ke aplikasi facebook untuk \n mengundang!"
+	},
+	popup_warning_switch_to_app_fb_to_send_gift: {
+		text: "Silahkan brealih ke aplikasi facebook untuk \n mengirim hadiah!"
+	},
+	popup_warning_switch_to_app_fb_to_share: {
+		text: "Silahkan beralih ke aplikasi facebook untuk \n berbagi!"
+	},
+	share_facebook_levelup: {
+		name: "Naik tingkat",
+		caption: "Tingkat baru Dicapai dalam PlayPalace!",
+		info: "telah berhasil diratakan ke Level"
+	},
+	share_facebook_game_unlock: {
+		name: "Game Aktifkan",
+		caption: "Game baru unlocked di PlayPalace!",
+		info: "memiliki permainan baru berhasil dibuka di Play Palace!"
+	},
+	popup_user_level_up:{
+		text1 : "Tingkat ",
+		text2 : " dicapai",
+		text3 : "Berikut ",
+		text4 : " Gratis Koin Untuk Anda"
+	},
+	popup_user_game_unlock:{
+		text1 : "Level ",
+		text2 : " Tingkat",
+		text3 : " is now unlocked & available",
+		text4 : "Membuka kunci",
+		text5 : "Crown",
+
+		text6: "Membuka Dengan Crown",
+		text7: "Membuka permainan ini dengan ",
+		text8: " crowns?",
+		text9:" Kali Tingkat Penguat",
+		text10:" Berputar Beruntung"
+	},
+	main_menu_not_support_region: {
+		text: "Wilayah Anda saat ini tidak didukung"
+	},
+	body_slot_game_coming_soon: {
+		text: "Segera akan datang"
+	},
+	popup_inbox_button_accept_all: {
+		text: "Terima semua"
+	},
+	ok: {
+		text: "Baik"
+	},
+	pay: {
+		text: "Membayar"
+	},
+	copy: {
+		text_copy: "Salinan",
+		text_copied: "Disalin"
+	},
+	add: {
+		text_add: "Menambah",
+		text_added: "Menambah"
+	},
+	loginFacebook: {
+		text: "Masuk Facebook"
+	},
+	collect: {
+		text: "Mengumpulkan"
+	},
+	collectAndShare: {
+		text: "Kumpulkan & Share"
+	},
+	cancel: {
+		text: "Batalkan"
+	},
+	buyNow: {
+		text: "Beli sekarang"
+	},
+	goToLobby: {
+		text: "Pergi ke lobi"
+	},
+	send: {
+		text: "Kirim"
+	},
+	voucher_has_expired: {
+		text: "Voucher telah berakhir"
+	},
+	voucher_has_already_been_redeemed: {
+		text: "Voucher telah ditukarkan"
+	},
+	you_have_unlocked_a_new_game: {
+		text: "Anda telah membuka sebuah game baru"
+	},
+	crown_purchase_successfully: {
+		text: "Crown membeli berhasil. Silahkan tunggu server game kami untuk memproses pembayaran ini"
+	},
+	coin_purchase_successfully: {
+		text: "Koin membeli berhasil. Silahkan tunggu server game kami untuk memproses pembayaran ini"
+	},
+	new_game_tile: {
+		text: "Konten baru segera hadir"
+	},
+	new_game_description: {
+		text: "Kami bekerja keras untuk membawa Anda konten baru"
+	},
+	cant_get_image:{
+		text: "Anda tidak bisa mendapatkan gambar ini!"
+	},
+	download_remove:{
+		message_download: " akan mulai men-download. Sementara itu Anda dapat bermain game lain yang tersedia. Koneksi Wi-Fi dianjurkan untuk men-download slot, biaya 3G / LTE mungkin berlaku.",
+		info_remove: "Hapus permainan kapan saja dengan menekan ke bawah",
+		download: "DOWNLOAD",
+		remove: "MENGHAPUS",
+		stop: "BERHENTI",
+		continue: "TERUS",
+		wait_to_download: "Harap tunggu sementara data game download. ",
+		download_soon: " akan diunduh segera!",
+		downloading: "Download sumber daya untuk ",
+		cancle_download: ". Apakah Anda ingin membatalkan unduhan ini?",
+		update: "MEMPERBARUI",
+		message_update: "Sumber daya dari game ini perlu diperbarui. Apakah Anda ingin memperbarui sekarang?",
+		message_remove: "Game akan mulai segera menghapus.",
+		delete_failed: "Hapus permainan gagal."
+	},
+	exit_game:{
+		title: "Keluar konfirmasi",
+		message: "Apakah Anda ingin berhenti bermain?"
+	},
+	not_enough_space:{
+		text: "Perangkat Anda tidak memiliki ruang penyimpanan yang cukup."
+	},
+	login_some_where:{
+		text: "Akun Anda telah login dari perangkat lain.\nKlik OK untuk reload."
+	},
+	cant_get_data_FB:{
+		text: "Tidak bisa mendapatkan data dari facebook.\nSilakan coba lagi nanti."
+	},
+	FB_token_expired:{
+		text: "Token facebook Anda telah expired.\nMuat ulang aplikasi."
+	},
+	purchased:{
+		approved: "Pembelian disetujui!",
+		reward: "Upahmu: ",
+		payment_accepted: "Pembayaran diterima!",
+		support: "Jika Anda tidak menerima koin, silahkan hubungi admin untuk dukungan!",
+		not_available: "Produk tidak tersedia sekarang!"
+	},
+	free_coin:{
+		received: "Menerima",
+		play_fail: "Anda tidak dapat memutar video pada saat ini. Silakan coba lagi nanti.",
+		title: "Koin gratis"
+	}
+}

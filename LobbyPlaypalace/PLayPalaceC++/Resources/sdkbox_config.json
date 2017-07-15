@@ -1,0 +1,252 @@
+{
+    "android": {
+        "Facebook": {
+            "enabled" : true,
+            "debug" : true,
+            "url_scheme" : "fb822586904502053suffix",
+            "facebook_id" : "822586904502053"
+        }, 
+        "AdColony": {
+            "debug": true, 
+            "id": "app5da0b1d06a614b8a8f", 
+            "ads": {
+                "v4vc": {
+                    "v4vc": true, 
+                    "pre_popup": false, 
+                    "zone": "vz9536a932b875420fb0", 
+                    "post_popup": false
+                }
+            }
+        }, 
+        "iap": {
+          "enabled" : true,
+            "key" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj0QlpVFuX5tLDq/GjJgRjWnXzhgVm97d6vZ1rjDyhhZy0l7q7o3HempAbMjm//LuhJj+NMrQ4Ei+q0wXHS7fVzXLhDoVPs/GVXltl15i5sP5MXVc3bKdl27wDdubZURFLyC97+jRDydLGtt1npCirXqdpFgmhIMoeve8sUBLrLW9m7ebHeuVmG4SkK39SzfliNpszc/AL29UDlw+63V5rI6nJsh+f3aWpm4qeVoXDCEzIGJBT15ln7XmEMrLDZGDXv1fgejxEdCR9Q5rng9Pxb4LKvlx34uH2H0YtDMOJ1M/Q2vN2slLGByrA5C+eCLpDz7ZtkXu3URUhUBSW4a6+wIDAQAB",
+          "items": {
+            "400kcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package1",
+              "type": "consumable"
+            },
+            "800kcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package2",
+              "type": "consumable"
+            },
+            "2mcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package3",
+              "type": "consumable"
+            },
+            "4mcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package4",
+              "type": "consumable"
+            },
+            "8mcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package5",
+              "type": "consumable"
+            },
+            "20mcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package6",
+              "type": "consumable"
+            },
+            "40mcoin": {
+              "id": "com.playpalace.product.android.uat.cocos.coin.package7",
+              "type": "consumable"
+            },
+            "10crowns": {
+              "id": "com.playpalace.product.android.uat.cocos.crown.package1",
+              "type": "consumable"
+            },
+            "55crowns": {
+              "id": "com.playpalace.product.android.uat.cocos.crown.package2",
+              "type": "consumable"
+            },
+            "120crowns": {
+              "id": "com.playpalace.product.android.uat.cocos.crown.package3",
+              "type": "consumable"
+            },
+            "magic_item_lucky_100_big_win": {
+              "id": "com.playpalace.product.android.uat.cocos.magicitem.package6",
+              "type": "consumable"
+            },
+            "magic_item_lucky_100_mega_win": {
+              "id": "com.playpalace.product.android.uat.cocos.magicitem.package1",
+              "type": "consumable"
+            },
+            "magic_item_lucky_10": {
+              "id": "com.playpalace.product.android.uat.cocos.magicitem.package2",
+              "type": "consumable"
+            },
+            "magic_item_lucky_20": {
+              "id": "com.playpalace.product.android.uat.cocos.magicitem.package3",
+              "type": "consumable"
+            },
+            "magic_item_double_exp": {
+              "id": "com.playpalace.product.android.uat.cocos.magicitem.package4",
+              "type": "consumable"
+            },
+            "magic_item_lucky_symbol": {
+              "id": "com.playpalace.product.android.uat.cocos.magicitem.package5",
+              "type": "consumable"
+            },
+            "booster1": {
+              "id": "com.playpalace.product.android.uat.cocos.booster.package1",
+              "type": "consumable"
+            },
+            "booster2": {
+              "id": "com.playpalace.product.android.uat.cocos.booster.package2",
+              "type": "consumable"
+            },
+            "lucky_box_x2_commoner": {
+              "id": "com.playpalace.product.android.uat.cocos.luckybox.package1",
+              "type": "consumable"
+            },
+            "lucky_box_x2_noble": {
+              "id": "com.playpalace.product.android.uat.cocos.luckybox.package2",
+              "type": "consumable"
+            },
+            "lucky_box_x2_king": {
+              "id": "com.playpalace.product.android.uat.cocos.luckybox.package3",
+              "type": "consumable"
+            },
+            "lucky_wheel_1": {
+              "id": "com.playpalace.product.android.uat.cocos.luckywheel.package1",
+              "type": "consumable"
+            },
+            "lucky_wheel_2": {
+              "id": "com.playpalace.product.android.uat.cocos.luckywheel.package2",
+              "type": "consumable"
+            },
+            "lucky_wheel_3": {
+              "id": "com.playpalace.product.android.uat.cocos.luckywheel.package3",
+              "type": "consumable"
+            },
+            "piggy_bank_1": {
+              "id": "com.playpalace.product.android.uat.cordova.piggybank.package1",
+              "type": "consumable"
+            }
+          }
+        }
+    }, 
+    "ios": {
+        "Facebook": {
+            "enabled" : true,
+            "debug" : true,
+            "url_scheme" : "fb822586904502053Cocos",
+            "facebook_id" : "822586904502053"
+        }, 
+        "AdColony": {
+            "debug": true, 
+            "id": "app3dbef1d2bd0543e189", 
+            "ads": {
+                "v4vc": {
+                    "v4vc": true, 
+                    "pre_popup": false, 
+                    "zone": "vz96f47c283dbb4a6dab", 
+                    "post_popup": false
+                }
+            }
+        }, 
+        "iap": {
+          "items": {
+            "400kcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package1",
+              "type": "consumable"
+            },
+            "800kcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package2",
+              "type": "consumable"
+            },
+            "2mcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package3",
+              "type": "consumable"
+            },
+            "4mcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package4",
+              "type": "consumable"
+            },
+            "8mcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package5",
+              "type": "consumable"
+            },
+            "20mcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package6",
+              "type": "consumable"
+            },
+            "40mcoin": {
+              "id": "com.playpalace.product.ios.uat.cocos.coin.package7",
+              "type": "consumable"
+            },
+            "10crowns": {
+              "id": "com.playpalace.product.ios.uat.cocos.crown.package1",
+              "type": "consumable"
+            },
+            "55crowns": {
+              "id": "com.playpalace.product.ios.uat.cocos.crown.package2",
+              "type": "consumable"
+            },
+            "120crowns": {
+              "id": "com.playpalace.product.ios.uat.cocos.crown.package3",
+              "type": "consumable"
+            },
+            "magic_item_lucky_100_big_win": {
+              "id": "com.playpalace.product.ios.uat.cocos.magicitem.package6",
+              "type": "consumable"
+            },
+            "magic_item_lucky_100_mega_win": {
+              "id": "com.playpalace.product.ios.uat.cocos.magicitem.package1",
+              "type": "consumable"
+            },
+            "magic_item_lucky_10": {
+              "id": "com.playpalace.product.ios.uat.cocos.magicitem.package2",
+              "type": "consumable"
+            },
+            "magic_item_lucky_20": {
+              "id": "com.playpalace.product.ios.uat.cocos.magicitem.package3",
+              "type": "consumable"
+            },
+            "magic_item_double_exp": {
+              "id": "com.playpalace.product.ios.uat.cocos.magicitem.package4",
+              "type": "consumable"
+            },
+            "magic_item_lucky_symbol": {
+              "id": "com.playpalace.product.ios.uat.cocos.magicitem.package5",
+              "type": "consumable"
+            },
+            "booster1": {
+              "id": "com.playpalace.product.ios.uat.cocos.booster.package1",
+              "type": "consumable"
+            },
+            "booster2": {
+              "id": "com.playpalace.product.ios.uat.cocos.booster.package2",
+              "type": "consumable"
+            },
+            "lucky_box_x2_commoner": {
+              "id": "com.playpalace.product.ios.uat.cocos.luckybox.package1",
+              "type": "consumable"
+            },
+            "lucky_box_x2_noble": {
+              "id": "com.playpalace.product.ios.uat.cocos.luckybox.package2",
+              "type": "consumable"
+            },
+            "lucky_box_x2_king": {
+              "id": "com.playpalace.product.ios.uat.cocos.luckybox.package3",
+              "type": "consumable"
+            },
+            "lucky_wheel_1": {
+              "id": "com.playpalace.product.ios.uat.cocos.luckywheel.package1",
+              "type": "consumable"
+            },
+            "lucky_wheel_2": {
+              "id": "com.playpalace.product.ios.uat.cocos.luckywheel.package2",
+              "type": "consumable"
+            },
+            "lucky_wheel_3": {
+              "id": "com.playpalace.product.ios.uat.cocos.luckywheel.package3",
+              "type": "consumable"
+            },
+            "piggy_bank_1": {
+              "id": "com.playpalace.product.ios.uat.cocos.piggybank.package1",
+              "type": "consumable"
+            }
+          }
+        }
+    }
+}

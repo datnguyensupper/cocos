@@ -1,0 +1,576 @@
+{
+	popup_need_level_to_play_game:{
+		text1: "Bạn cần đạt đến level ",
+		text2:" để chơi game này."
+	},
+	setting_language_lable: {
+		text: "Tiếng Việt"
+	},
+	setting_logged_with_lable: {
+		text: "Đăng nhập qua : "
+	},
+	setting_logout_lable: {
+		text: "Đăng xuất"
+	},
+	setting_login_lable: {
+		text: "Đăng nhập"
+	},
+	setting_game_option_lable: {
+		text: "Tùy chọn"
+	},
+	setting_back_ground_music_lable: {
+		text: "Nhạc nền"
+	},
+	setting_back_sound_effect_lable: {
+		text: "Âm thanh"
+	},
+	setting_language: {
+		text: "Ngôn ngữ"
+	},
+	setting_ref_lable: {
+		text: "Thông báo"
+	},
+	setting_mycode_lable: {
+		text: "Mã của tôi"
+	},
+	setting_myrefcode_lable: {
+		text: "Mã đã nhập"
+	},
+	setting_friend_request_lable: {
+		text: "Yêu cầu bạn bè"
+	},
+	setting_btn_tearm_lable: {
+		text: "Điều khoản"
+	},
+	setting_btn_privacy_lable: {
+		text: "Chính sách bảo mật"
+	},
+	setting_version_lable: {
+		text: "Phiên bản"
+	},
+	setting_languages: {
+		eng: "English",
+		cn: "简体",
+		taiwan: "繁體",
+		vn: "Tiếng Việt",
+		malay: "B-Malay",
+		indo: "B-Indonesia"
+	},
+	footer_collect_lable: {
+		text: "Nhận"
+	},
+	footer_collect_time_bonus_in_lable: {
+		text: "Nhận trong"
+	},
+	footer_achievement_lable: {
+		text: "Thành tựu"
+	},
+	footer_gift_lable: {
+		text: "Quà"
+	},
+	popup_profile_to_level_up_lable: {
+		text: " XP\nđể lên cấp"
+	},
+	header_profile_tooltip: {
+		text: "Thông tin"
+	},
+	header_invite_tooltip: {
+		text: "Mời bạn"
+	},
+	header_sendgift_tooltip: {
+		text: "Tặng quà"
+	},
+	header_shop_tooltip: {
+		text: "Cửa hàng"
+	},
+	header_stardom_tooltip: {
+		text: "Stardom"
+	},
+	header_Level: {
+		text: "Lv."
+	},
+	header_recent_winner_text: {
+		text1: "Người",
+		text2: "thắng"
+	},
+	popup_shop_transaction_cancelled: {
+		text: "Giao dịch bị hủy"
+	},
+	popup_achievement_title: {
+		text: "Thành Tựu"
+	},
+	popup_achievement_total_achievement_point: {
+		text: "ĐIỂM THÀNH TỰU"
+	},
+	popup_achievement_group_title_general: {
+		text: "Tổng hợp"
+	},
+	popup_achievement_group_title_game: {
+		text: "Trò chơi"
+	},
+	popup_achievement_group_title_social: {
+		text: "Xã hội"
+	},
+	popup_profile_logo: {
+		text: "Thông tin"
+	},
+	popup_profile_level: {
+		text: "Cấp"
+	},
+	popup_profile_rank: {
+		text: "Hạng"
+	},
+	popup_profile_MaximumCoins: {
+		text: "Tổng tiền"
+	},
+	popup_profile_PlayedSince: {
+		text: "Ngày tham gia"
+	},
+	popup_profile_btn_SendFreeGift: {
+		text: "Tặng quà"
+	},
+	popup_profile_btn_SendCoins: {
+		text: "Gửi tiền"
+	},
+	popup_profile_Slot_NumberofJackpot: {
+		text: "Number of Jackpot"
+	},
+	popup_profile_Slot_Win: {
+		text: "Thắng: "
+	},
+	popup_profile_Slot_BiggestWin: {
+		text: "Thắng lớn nhất"
+	},
+	popup_profile_Slot_TotalSpin: {
+		text: "Tổng số lần quay"
+	},
+	popup_profile_Slot_NetProfit: {
+		text: "Lợi nhuận:"
+	},
+	popup_profile_Blackjack_NumberofBlackjack: {
+		text: "Số lần Xì-dách"
+	},
+	popup_profile_Blackjack_PlayedHand: {
+		text: "Tay chơi"
+	},
+	popup_profile_Blackjack_BiggestWin: {
+		text: "Thắng lớn nhất"
+	},
+	popup_profile_Blackjack_Win: {
+		text: "Thắng"
+	},
+	popup_profile_Blackjack_NetProfit: {
+		text: "Lợi nhuận"
+	},
+	popup_profile_Change_Avatar: {
+		title: "Đổi Avatar",
+		success: "Thay avatar thành công",
+		fail: "Thay avatar thất bại"
+	},
+	popup_profile_Blackjack_MaxWinInaRow: {
+		text: "Thắng lớn nhất trong một hàng"
+	},
+	popup_gift_leaderboard: {
+		text: "Bảng dẫn đầu"
+	},
+	popup_gift_friends: {
+		text: "Bạn bè"
+	},
+	popup_gift_inbox: {
+		text: "Tin đã nhận"
+	},
+	popup_gift_inbox_empty: {
+		text: "Không có tin nhắn!"
+	},
+	popup_gift_error_oop: {
+		text: "Cảnh báo"
+	},
+	popup_gift_error_message: {
+		text: "Hãy đăng nhập với tài khoản facebook của bạn!"
+	},
+	popup_gift_select: {
+		text: "Vui lòng chọn ít nhất một người bạn!"
+	},
+	popup_gift_success: {
+		text: "Thành công"
+	},
+	popup_gift_send_free_gift_success: {
+		text: "Tặng quà thành công!"
+	},
+	popup_gift_invite_success: {
+		text : "Mời thành công!"
+	},
+	popup_gift_info: {
+		text:  " Có thể nhận 100,000 đồng"
+	},
+	popup_gift_warning: {
+		text: "Cảnh báo"
+	},
+	popup_gift_warning_message: {
+		text: " Làm ơn thử lại lần nữa!"
+	},
+	popup_gift_accept_success: {
+		text: "Chấp nhận thành công!"
+	},
+	popup_gift_anonymous:{
+		text: "Ẩn danh"
+	},
+	popup_edit_name: {
+		title: "Đổi tên",
+		fail:"Vui lòng nhập tên",
+		success:"Đổi tên thành công",
+		reachLimit:"Bạn đã quá số lần đổi tên"
+	},
+	popup_reference: {
+		title: "Mã bạn bè",
+		title_noti: "Mã bạn bè",
+		already_send: "Bạn đã nhập mã rồi",
+		not_exist: "Mã không tồn tại",
+		max: "Mã đã được nhập quá giới hạn!",
+		own_code: "Bạn không thể nhập mã của mình!",
+		success:"Cập nhật mã thành công!",
+		confirm:"Xác nhận"
+	},
+	popup_change_language: {
+		fail:"Thất bại!",
+		success:"Thành công!"
+	},
+	popup_invite_description: {
+		text: "Nếu bạn gửi thư mời cho bạn bè của bạn, bạn có thể nhận được $ 700 từ mỗi người bạn"
+	},
+	popup_invite_tab_FriendtoSendGift: {
+		text: "Bạn để tặng quà"
+	},
+	popup_invite_tab_AllFriends: {
+		text: "Tất cả"
+	},
+	popup_invite_FriendsSelected: {
+		text: "Đã chọn"
+	},
+	popup_invite_btn_UnSelectAll: {
+		text: "Hủy chọn"
+	},
+	popup_invite_btn_SelectAll: {
+		text: "Chọn hết"
+	},
+	popup_invite_btn_SendGift: {
+		text: "Gửi quà"
+	},
+	popup_invite_btn_Invite: {
+		text: "Mời"
+	},
+	popup_invite_error_non_select: {
+		text: "Vui lòng chọn ít nhất một người bạn!"
+	},
+	popup_invite_tab_GameFriend: {
+		text: "Bạn game"
+	},
+	popup_askfriend_description: {
+		text: "Bạn có thể nhận được lên đến 3 Keys mỗi ngày"
+	},
+	popup_askfriend_btn_label: {
+		text: "Yêu cầu"
+	},
+	popup_SendGift_Description: {
+		text: "Nếu bạn gửi một món quà cho bạn bè của bạn, bạn có thể nhận được 700 $"
+	},
+	popup_shop_btn_BuyNow: {
+		text: "MUA NGAY"
+	},
+	popup_stardom_level: {
+		text: "Cấp"
+	},
+	popup_stardom_BankRoll: {
+		text: "Bankroll"
+	},
+	popup_stardom_BiggestWin: {
+		text: "Biggest Win"
+	},
+	popup_stardom_JackPot: {
+		text: "Jackpot"
+	},
+	popup_stardom_label_Player: {
+		text: "NGƯỜI CHƠI"
+	},
+	popup_stardom_player_AllPlayers: {
+		text: "Tất cả"
+	},
+	popup_stardom_player_Friends: {
+		text: "Bạn"
+	},
+	popup_stardom_player_BankRoll: {
+		text: "Bankroll"
+	},
+	popup_stardom_player_NetProfit: {
+		text: "Lợi nhuận"
+	},
+	popup_stardom_player_BiggestWin: {
+		text: "Thắng lớn nhất"
+	},
+	popup_stardom_player_Jackpot: {
+		text: "Jackpot"
+	},
+	popup_stardom_player_Ranking: {
+		text: "Hạng"
+	},
+	popup_stardom_player_Players: {
+		text: "Người chơi"
+	},
+	popup_stardom_player_Coins: {
+		text: "Tiền"
+	},
+	popup_stardom_player_PlayTogether: {
+		text: "Cùng chơi"
+	},
+	popup_stardom_player_Game: {
+		text: "Game"
+	},
+	popup_secretgift_description: {
+		text1: "*Cảnh báo!",
+		text2: " Chìa khóa đã mua tồn tại vĩnh viễn"
+	},
+	popup_smallbox_description: {
+		text: "Cần 3 khóa để mở thùng"
+	},
+	popup_inbox_btn_Accept: {
+		text: "Đồng ý"
+	},
+	popup_inbox_btn_Accept_SendGift: {
+		text: "Đồng ý & gửi quà"
+	},
+	popup_inbox_btn_SendKey: {
+		text: "Gửi key"
+	},
+	popup_inbox_btn_Accept_SendGift_All: {
+		text: "Đồng ý và gửi tất cả quà"
+	},
+	popup_inbox_Message_Gift: {
+		text1: "Tôi đã gửi ",
+		text2: " đồng cho bạn! Good luck!"
+	},
+	popup_inbox_message_free_magic_item_watching_video: {
+        text1: "Chúc mừng! Bạn đã nhận được một magic item do xem ",
+        text2: " videos"
+	},
+	popup_inbox_message_default_gift:{
+        text: "Chúc mừng! Bạn vừa nhận được một món quà"
+	},
+	popup_inbox_Message_FreeGift: {
+		text1: "Tôi đã gửi ",
+		text2: " đồng cho bạn! Good luck!"
+	},
+	popup_inbox_Message_SystemGift: {
+		text1: "Bạn đã nhận được ",
+		text2: " đồng. Chúc may mắn!"
+	},
+	popup_inbox_Message_Requestkey: {
+		text: "Gửi cho mình 1 key nhé!"
+	},
+	popup_inbox_Message_Promote: {
+		text1: "Tiền tặng từ hệ thống (",
+		text2: ") đồng"
+	},
+	popup_inbox_Message_Vip: {
+        text1: "Xin chúc mừng! Bạn đã nhận được quà VIP. Phần thưởng của bạn là ",
+        text2: " đồng"
+	},
+	popup_inbox_Friend_Benefit: {
+        text1: "Xin chúc mừng! Bạn đã nhận được ",
+        text2: " đồng vì đã mời thêm bạn chơi game"
+	},
+	popup_inbox_Reference_Code: {
+        text1: "Xin chúc mừng! Bạn đã nhận được quà giới thiệu. Phần thưởng của bạn là ",
+        text2: " đồng"
+	},
+	popup_inbox_Top_Player_Gift: {
+		text1: "Xin chúc mừng! Bạn đã đứng đầu bảng xếp hạng. Phần thưởng của bạn là ",
+		text2: " đồng"
+	},
+	popup_shop_Vip: {
+		text: "Vip"
+	},
+	popup_shop_Standard: {
+		text: "Standard"
+	},
+	popup_shop_Mobile: {
+		text: "Mobile"
+	},
+	popup_warning_switch_to_app_fb: {
+		text: "Xin hãy chuyển qua ứng dụng trên facebook \n để thanh toán!"
+	},
+	popup_warning_switch_to_app_fb_to_invite: {
+		text: "Xin hãy chuyển qua ứng dụng trên facebook \n để mời!"
+	},
+	popup_warning_switch_to_app_fb_to_send_gift: {
+		text: "Xin hãy chuyển qua ứng dụng trên facebook \n để gửi quà!"
+	},
+	popup_warning_switch_to_app_fb_to_share: {
+		text: "Xin hãy chuyển qua ứng dụng trên facebook \n để chia sẽ!"
+	},
+	menu_setting_Label: {
+		text: "TÙY CHỈNH"
+	},
+	menu_setting_GraphicQuality: {
+		text: "Hình ảnh"
+	},
+	menu_setting_Music: {
+		text: "Nhạc nền"
+	},
+	menu_setting_Sound: {
+		text: "Âm thanh"
+	},
+	menu_setting_Language: {
+		text: "Ngôn ngữ"
+	},
+	popup_voucher_description: {
+		text1: "Bạn đã được tặng ",
+		text2: " đồng"
+	},
+	share_facebook_levelup: {
+		name: "Lên cấp",
+		caption: "Bạn đã lên cấp!",
+		info: "đã đạt tới cấp"
+	},
+	share_facebook_game_unlock: {
+		name: "Mở game",
+		caption: "Một game mới đã được mở PlayPalace!",
+		info: "một game đã mở thành công trong PlayPalace!"
+	},
+	popup_user_level_up:{
+		text1 : "Cấp ",
+		text2 : " Đạt được",
+		text3 : "Here's ",
+		text4 : " Tiền tặng cho bạn"
+	},
+	popup_user_game_unlock:{
+		text1 : "Cấp ",
+		text2 : " Đạt được",
+		text3 : " đã được mở",
+		text4 : "Mở khóa",
+		text5 : "Crowns",
+
+		text6: "Mở khóa bằng Crown",
+		text7: "Mở khóa với ",
+		text8: " crowns?",
+		text9:" giờ tăng exp",
+		text10:" vòng quay may mắn"
+	},
+	footer_collect_coin: {
+		text: "Nhận"
+	},
+	footer_time_bonus:{
+		text: "Nhận trong"
+	},
+	main_menu_not_support_region: {
+		text: "Tính năng này không hỗ trợ tại đất nước bạn!"
+	},
+	body_slot_game_coming_soon: {
+		text: "Sắp có"
+	},
+	popup_inbox_button_accept_all: {
+		text: "Nhận tất cả"
+	},
+	ok: {
+		text: "Đồng ý"
+	},
+	pay: {
+		text: "Thanh Toán"
+	},
+	copy: {
+		text_copy: "Sao chép",
+		text_copied: "Đã sao chép"
+	},
+	add: {
+		text_add: "Nhập",
+		text_added: "Đã nhập"
+	},
+	loginFacebook: {
+		text: "Đăng nhập Facebook"
+	},
+	collect: {
+		text: "Nhận"
+	},
+	collectAndShare: {
+		text: "Nhận & Chia sẻ"
+	},
+	cancel: {
+		text: "Hủy"
+	},
+	buyNow: {
+		text: "Mua ngay"
+	},
+	goToLobby: {
+		text: "Trở lại lobby"
+	},
+	send: {
+		text: "Gửi"
+	},
+	voucher_has_expired: {
+		text: "Voucher hết hạn"
+	},
+	voucher_has_already_been_redeemed: {
+		text: "Voucher đã được sử dụng"
+	},
+	you_have_unlocked_a_new_game: {
+		text: "Bạn đã mở khóa một game"
+	},
+	crown_purchase_successfully: {
+		text: "Mua vương miện thành công. Vui lòng đợi game server xử lý lượt giao dịch này"
+	},
+	coin_purchase_successfully: {
+		text: "Mua tiền thành công. Vui lòng đợi game server xử lý lượt giao dịch này"
+	},
+	new_game_tile: {
+		text: "Sắp có game mới"
+	},
+	new_game_description: {
+		text: "Chúng tôi đang cố gắng làm game mới"
+	},
+	cant_get_image:{
+		text: "Bạn không thể lấy được hình này!"
+	},
+	download_remove:{
+		message_download: " sẽ được tải về ngay. Trong lúc đó, bạn có thể chơi game khác có sẵn. Khuyến khích nên sử dụng WIFI để tải game, phí 3G/LTE có thể áp dụng.",
+		info_remove: "Xóa một game bất cứ lúc nào bằng cách nhấn và giữ nó xuống",
+		download: "TẢI",
+		remove: "XÓA",
+		stop: "DỪNG",
+		continue: "TIẾP TỤC",
+		wait_to_download: "Xin vui lòng chờ trong khi dữ liệu đang được tải về. ",
+		download_soon: " sẽ được tải sau!",
+		downloading: "Đang tải dữ liệu game ",
+		cancle_download: ". Bạn muốn dừng việc tải này lại?",
+		update: "CẬP NHẬT",
+		message_update: "Dữ liệu của trò chơi này cần được cập nhật. Bạn có muốn cập nhật bây giờ?",
+		message_remove: "Game sẽ được xóa ngay.",
+		delete_failed: "Xóa thất bại."
+	},
+	exit_game:{
+		title: "Xác nhận",
+		message: "Bạn muốn thoát khỏi game?"
+	},
+	not_enough_space:{
+		text: "Thiết bị của bạn không đủ dung lượng bộ nhớ cần thiết"
+	},
+	login_some_where:{
+		text: "Tài khoản của bạn đã được đăng nhập từ một thiết bị khác.\nClick OK để tải lại."
+	},
+	cant_get_data_FB:{
+		text: "Không thể lấy dữ liệu từ Facebook.\nVui lòng thử lại sau."
+	},
+	FB_token_expired:{
+		text: "Thẻ Facebook của bạn đã hết hạn.\nXin hãy tải lại ứng dụng."
+	},
+	purchased:{
+		approved: "Giao dịch hoàn tất",
+		reward: "Phần thưởng của bạn: ",
+		payment_accepted: "Thanh toán của bạn được chấp nhận",
+		support: "Nếu bạn không nhận dược xu, xin vui lòng liên hệ với quản trị viên để được hỗ trợ.",
+		not_available: "Sản phẩm không có sẵn vào lúc này"
+	},
+	free_coin:{
+		received: "Đã nhận",
+		play_fail: "Bạn không thể chơi video vào lúc này. Xin hãy thử lại.",
+		title: "Xu miễn phí"
+	}
+}

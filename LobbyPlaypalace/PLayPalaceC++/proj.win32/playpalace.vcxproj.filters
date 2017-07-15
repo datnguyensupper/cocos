@@ -1,0 +1,1577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{02ca315f-c8e0-4e2d-ba5f-60ebcfc70833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Constant">
+      <UniqueIdentifier>{34300b90-ef48-4849-8411-dbd45a1062e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Custom">
+      <UniqueIdentifier>{2cb977dc-b9dd-465d-b1b8-7e05492439aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager">
+      <UniqueIdentifier>{1e1398b7-d6cc-4e26-a0cc-939b001e1656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views">
+      <UniqueIdentifier>{7acf61e3-701a-428c-bcbe-723562d561eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Login">
+      <UniqueIdentifier>{0303d789-92c7-41ef-a4b0-d8ac80f90183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Util">
+      <UniqueIdentifier>{c15a6195-842f-4909-bf2a-12b32fdda88d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{c761a1fd-0c9a-45c9-980a-997d8dd02735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Helper">
+      <UniqueIdentifier>{afdcaaaf-e9bd-4d88-8f01-653ba156abd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame">
+      <UniqueIdentifier>{e93a46b0-f328-49aa-a433-de17adf77c47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base">
+      <UniqueIdentifier>{e5faae08-7719-4629-8db4-9a6991bd6ff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\nezha">
+      <UniqueIdentifier>{8e7d0910-57cf-44de-9326-0b2cb1178677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\constant">
+      <UniqueIdentifier>{b94e20c7-b53a-4c25-89c8-65c486e4a53f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\game">
+      <UniqueIdentifier>{4972133a-40fc-44f5-9356-da39fec15a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\interfaceUI">
+      <UniqueIdentifier>{88c6c1f1-dda7-4164-bf47-1ce0ab31812d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\manager">
+      <UniqueIdentifier>{1a339a1e-08dd-42b6-a018-df8f14a80173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\object">
+      <UniqueIdentifier>{2c28f460-ceb1-4c2f-9c30-86262b13a219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\settings">
+      <UniqueIdentifier>{678e1ea7-b144-495b-a8e9-09cf14af2a7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\base\utils">
+      <UniqueIdentifier>{46cec9ba-2872-48f0-a887-e73add35039d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\nezha\game">
+      <UniqueIdentifier>{93f9461d-e1c6-4ee1-8dca-88d514c2a895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\nezha\interfaceUI">
+      <UniqueIdentifier>{c1cdab20-25d7-45a9-8e24-6abb8a97eea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\font">
+      <UniqueIdentifier>{97d932c0-1a04-4b56-b38f-8c4fbd59bacd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\img">
+      <UniqueIdentifier>{291ed024-637a-438d-b881-3a79da649e25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\language">
+      <UniqueIdentifier>{89347478-69cc-4745-8e3a-7ee90a99e27d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\res">
+      <UniqueIdentifier>{23c21048-5155-431a-91f0-81e3d7829042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\sound">
+      <UniqueIdentifier>{504716b4-4a24-4f87-9f83-12f656146205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\sound\lucky_wheel">
+      <UniqueIdentifier>{cd836dcd-46fd-4c43-a564-5c41e4eeddf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene\testScene">
+      <UniqueIdentifier>{8a36b0da-3d95-473d-ac4f-4c3063bd56a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\img\body">
+      <UniqueIdentifier>{4ca7ec19-0c46-429d-af7b-056d08db3779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\img\body\slotGameIcon">
+      <UniqueIdentifier>{246f3f3b-557b-4481-85b3-4f2723b03bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\img\body\slotGameIcon\WebGame">
+      <UniqueIdentifier>{4327f336-a31d-4eef-9fae-438ff7dfd4e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Custom\GameSlot">
+      <UniqueIdentifier>{5e623dad-9043-4c3c-a539-ae7b70f00502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Info">
+      <UniqueIdentifier>{9606998b-def8-4bc5-93ac-85585ce67d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager\FileManager">
+      <UniqueIdentifier>{0c9aeeac-ca63-43c1-9640-a89784bb5ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\test">
+      <UniqueIdentifier>{1765416e-ec43-4e9e-bc2e-5ad124c3ac00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\deepblue">
+      <UniqueIdentifier>{f8a0d93f-a2b5-4240-b9fb-bc04345df25e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\deepblue\game">
+      <UniqueIdentifier>{913647c6-1eb4-4db7-9193-237e3dbc7995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\deepblue\interfaceUI">
+      <UniqueIdentifier>{fc72f64c-dd7a-4ef3-bdbe-25afa291bcfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Custom\Common">
+      <UniqueIdentifier>{5f7bd007-29e8-4a1d-a8d7-6a40837a4285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Lobby">
+      <UniqueIdentifier>{2c4d0d7c-579b-4692-a808-165a51d14b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\goldenegg">
+      <UniqueIdentifier>{618e7c8e-6c90-46bb-b197-9c30bae2c5b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\goldenegg\game">
+      <UniqueIdentifier>{4001750d-4c80-4111-81d0-0ae0569cdf19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\goldenegg\interfaceUI">
+      <UniqueIdentifier>{4439395c-571d-4703-af44-819dba98a45b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\img\animation">
+      <UniqueIdentifier>{013db454-7cb0-452a-b4a3-a301cb9c6f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup">
+      <UniqueIdentifier>{5ebc65af-2b29-4a3d-9342-07adad8059c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Lobby\body">
+      <UniqueIdentifier>{ebcf7524-1666-4020-8089-95df9af7abec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Lobby\header">
+      <UniqueIdentifier>{45f73444-8351-4466-aeec-875a9be8a4ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\boxing">
+      <UniqueIdentifier>{47684e82-5c33-4042-b33d-74c25d11b792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\boxing\game">
+      <UniqueIdentifier>{4469f1d7-5739-4be3-a3bc-09632e1a77e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\boxing\interfaceUI">
+      <UniqueIdentifier>{c8b07a01-aa05-47b6-8549-3ec2352fb3a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Manager\Test">
+      <UniqueIdentifier>{ad49e1bc-009f-4d7d-8359-1e26225ef976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Lobby\bottom">
+      <UniqueIdentifier>{f5c49532-7fb6-4956-830d-a18dffdd5c41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\romanempire">
+      <UniqueIdentifier>{aca4ebf5-dbe2-4c66-a97e-0ed293179523}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\romanempire\game">
+      <UniqueIdentifier>{500f2930-3aa0-4a93-b9a7-78bb107ecaaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\romanempire\interfaceUI">
+      <UniqueIdentifier>{ed3419c3-013a-41c6-9d5b-27a1398b8cb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\img\bottom">
+      <UniqueIdentifier>{23e22c9f-2d07-45b7-a20e-36a1e7b54b5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\pharaoh">
+      <UniqueIdentifier>{be08030b-8760-47eb-a286-88d691a4518a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\pharaoh\game">
+      <UniqueIdentifier>{405b8d29-8fea-470f-861c-6254a2e6b85c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SlotGame\pharaoh\interfaceUI">
+      <UniqueIdentifier>{9d871d3c-68bc-41d4-9964-e878d251db4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup\Shop">
+      <UniqueIdentifier>{c69abc9f-30ae-48a7-af1e-d379d758e8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup\FriendPopup">
+      <UniqueIdentifier>{0061fecc-ba06-4dc0-98df-388fe61b1dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup\Achievement">
+      <UniqueIdentifier>{04722e89-1965-4453-874e-4ce57efdb9d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plugins">
+      <UniqueIdentifier>{599f6e25-96b8-4dc3-8b95-25599b914a36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plugins\ImagePicker">
+      <UniqueIdentifier>{66ee34c5-9267-4cb3-b999-e1140ab3b759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Effects">
+      <UniqueIdentifier>{32bd2200-4c3c-4834-b8d2-481a9edd1837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup\FBDailySpinPopup">
+      <UniqueIdentifier>{3b733663-21ad-4dfc-8bd9-e1e95ceaa420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Tutorial">
+      <UniqueIdentifier>{e448d567-e326-4ebb-bbca-d1a276ba7ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\LuckyWheel">
+      <UniqueIdentifier>{47356d2a-5a3e-4284-8f6f-41506663cb01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Helper\Action">
+      <UniqueIdentifier>{744144b9-590d-48e4-86ba-f3ae120ee508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup\DailyLuckySpin">
+      <UniqueIdentifier>{fc1e38d6-b43d-4439-b378-1e309b1cee92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\LoginScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\NetworkManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\MainLoginLayer.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\SignUpLayer.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\PPLoginLayer.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\ResetPassLayer.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Constant\MessageConstant.cpp">
+      <Filter>src\Constant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Constant\JSONFieldConstant.cpp">
+      <Filter>src\Constant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\UtilFunction.cpp">
+      <Filter>src\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Login\NotiLoginPopup.cpp">
+      <Filter>src\Views\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\LanguageManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Constant\LanguageConstant.cpp">
+      <Filter>src\Constant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\Helper4String.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\constant\GameConstant.cpp">
+      <Filter>src\SlotGame\base\constant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\game\CGameBase.cpp">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\game\CMainBase.cpp">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CReel.cpp">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\manager\Manager4Network.cpp">
+      <Filter>src\SlotGame\base\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\settings\CSettings.cpp">
+      <Filter>src\SlotGame\base\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\utils\GameUtils.cpp">
+      <Filter>src\SlotGame\base\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CGameLN.cpp">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CMainLN.cpp">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\interfaceUI\CCharacterLN.cpp">
+      <Filter>src\SlotGame\nezha\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CInterfaceBase.cpp">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\utils\CSpriteButton.cpp">
+      <Filter>src\SlotGame\base\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\settings\CSlotSettings.cpp">
+      <Filter>src\SlotGame\base\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\LobbyScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\LuckyWheelScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\InitSessionScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\game\CBonusBase.cpp">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CBonusPalaceLN.cpp">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\interfaceUI\CInterfaceLN.cpp">
+      <Filter>src\SlotGame\nezha\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\SoundManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\testScene\GameSlotTestScene.cpp">
+      <Filter>src\Scene\testScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\GameSlot\ButtonDownloadGameSlot.cpp">
+      <Filter>src\Custom\GameSlot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CBonusBattleLN.cpp">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\InfoManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Constant\LobbyConstant.cpp">
+      <Filter>src\Constant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\FileManager\SlotsGameDownloadFileManager.cpp">
+      <Filter>src\Manager\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\FileManager\DownloadFileManager.cpp">
+      <Filter>src\Manager\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\FileManager\FileManager.cpp">
+      <Filter>src\Manager\FileManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\manager\Manager4Sound.cpp">
+      <Filter>src\SlotGame\base\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\CLoader.cpp">
+      <Filter>src\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\PoolSystem.cpp">
+      <Filter>src\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CWinPanelBase.cpp">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\nezha\interfaceUI\CWinPanelLN.cpp">
+      <Filter>src\SlotGame\nezha\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CDoubleUpDB.cpp">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CGameDB.cpp">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CMainDB.cpp">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CBonusFreeSpinDB.cpp">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\interfaceUI\CInterfaceDB.cpp">
+      <Filter>src\SlotGame\deepblue\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\interfaceUI\CWinPanelDB.cpp">
+      <Filter>src\SlotGame\deepblue\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\deepblue\interfaceUI\CJellyFishDB.cpp">
+      <Filter>src\SlotGame\deepblue\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\ButtonScaleChild.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\testScene\CoinAnimationTestScene.cpp">
+      <Filter>src\Scene\testScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\AnimationHelper.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\AnimationManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\NotificationPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Lobby\body\BodyLobbyLayout.cpp">
+      <Filter>src\Views\Lobby\body</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Lobby\body\ButtonGameSlot.cpp">
+      <Filter>src\Views\Lobby\body</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\BasePopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\PopupManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Lobby\header\HeaderLobbyLayout.cpp">
+      <Filter>src\Views\Lobby\header</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CBonusFreeSpinGE.cpp">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CDoubleUpGE.cpp">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CGameGE.cpp">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CMainGE.cpp">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\interfaceUI\CInterfaceGE.cpp">
+      <Filter>src\SlotGame\goldenegg\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\interfaceUI\CWinPanelGE.cpp">
+      <Filter>src\SlotGame\goldenegg\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\interfaceUI\CCharacterGE.cpp">
+      <Filter>src\SlotGame\goldenegg\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\boxing\game\CDoubleUpBO.cpp">
+      <Filter>src\SlotGame\boxing\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\boxing\game\CGameBO.cpp">
+      <Filter>src\SlotGame\boxing\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\boxing\game\CMainBO.cpp">
+      <Filter>src\SlotGame\boxing\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\boxing\interfaceUI\CWinPanelBO.cpp">
+      <Filter>src\SlotGame\boxing\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\boxing\interfaceUI\CInterfaceBO.cpp">
+      <Filter>src\SlotGame\boxing\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\Test\TestManager.cpp">
+      <Filter>src\Manager\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Lobby\bottom\BottomLobbyLayout.cpp">
+      <Filter>src\Views\Lobby\bottom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CGameRE.cpp">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CMainRE.cpp">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CBonusRE.cpp">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CDoubleUpRE.cpp">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\romanempire\interfaceUI\CWinPanelRE.cpp">
+      <Filter>src\SlotGame\romanempire\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\LabelAutoSize.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\Helper4ParseJSON.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\CSpinWheel.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\romanempire\interfaceUI\CReelRE.cpp">
+      <Filter>src\SlotGame\romanempire\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\SettingPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\ToggleButton.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\LoadingAnimation.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CBonusStage2PO.cpp">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CGamePO.cpp">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CMainPO.cpp">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CBonusStage1PO.cpp">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CWinPanelPO.cpp">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CInterfacePO.cpp">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CReelPO.cpp">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CEaglePO.cpp">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\game\CLoadingUI.cpp">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\GameSlotScene.cpp">
+      <Filter>src\SlotGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CFooter.cpp">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\PluginManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\FacebookController.cpp">
+      <Filter>src\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Shop\PurchaseItemNode.cpp">
+      <Filter>src\Views\Popup\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Shop\ShopPopup.cpp">
+      <Filter>src\Views\Popup\Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\IAPController.cpp">
+      <Filter>src\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\AdcolonyController.cpp">
+      <Filter>src\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\LevelUpPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\Helper4Time.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\GameSlotInfoPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\CRadioButton.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\GameUnlockedPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\ProfilePopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\ImagePicker\ImagePicker.cpp">
+      <Filter>src\Plugins\ImagePicker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\ImagePicker\ImagePickerImpl.cpp">
+      <Filter>src\Plugins\ImagePicker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\FriendPopup.cpp">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\CellInbox.cpp">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\CellLeaderboard.cpp">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\ReuseItemListView_Vertical.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\StrategyManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\CellFriend.cpp">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\ChangeNamePopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\DownloadImageManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\GamePlugin.cpp">
+      <Filter>src\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Achievement\AchievementCell.cpp">
+      <Filter>src\Views\Popup\Achievement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Achievement\AchievementPopup.cpp">
+      <Filter>src\Views\Popup\Achievement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CGameEffectUI.cpp">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Effects\AnimationCoinCrown.cpp">
+      <Filter>src\Views\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Effects\CrownFlareWithLensFlare.cpp">
+      <Filter>src\Views\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Effects\CoinFlare.cpp">
+      <Filter>src\Views\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Effects\CirclePink.cpp">
+      <Filter>src\Views\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelPopup.cpp">
+      <Filter>src\Views\Popup\FBDailySpinPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelResultPopup.cpp">
+      <Filter>src\Views\Popup\FBDailySpinPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelSpinPopup.cpp">
+      <Filter>src\Views\Popup\FBDailySpinPopup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Tutorial\Tutorial.cpp">
+      <Filter>src\Views\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Lobby\bottom\BottomItem.cpp">
+      <Filter>src\Views\Lobby\bottom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\ReuseItemListView_Horizontal.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Configs.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\KeyboardHelper.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\AddRefereeCodePopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\ScaleManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\ComebackBonusMobilePopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\DailyBonusStreakPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\LuckyBoxPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\BaseScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\Helper4Scene.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\LuckyWheel\LuckyWheelLayout.cpp">
+      <Filter>src\Views\LuckyWheel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\LuckyWheel\LuckyWheelAnimationObject.cpp">
+      <Filter>src\Views\LuckyWheel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\LuckyWheel\LuckyWheelShopPopup.cpp">
+      <Filter>src\Views\LuckyWheel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\Action\FShake.cpp">
+      <Filter>src\Helper\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Helper\Helper4Sprite.cpp">
+      <Filter>src\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinInfoPopup.cpp">
+      <Filter>src\Views\Popup\DailyLuckySpin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinPopup.cpp">
+      <Filter>src\Views\Popup\DailyLuckySpin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\CSpinMachine.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\DailyChallengePopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\MascotNotificationPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\MagicItemPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Lobby\header\HeaderMagicItemBtn.cpp">
+      <Filter>src\Views\Lobby\header</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\DeviceManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\MissingPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\PiggyBankPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\LoginScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\NetworkManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Configs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\MainLoginLayer.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\ResetPassLayer.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\SignUpLayer.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\PPLoginLayer.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\MessageConstant.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\JSONFieldConstant.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\ResultCodeConstant.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\UtilFunction.h">
+      <Filter>src\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Login\NotiLoginPopup.h">
+      <Filter>src\Views\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\Defination.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\LanguageManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\LanguageConstant.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\Helper4String.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\constant\GameConstant.h">
+      <Filter>src\SlotGame\base\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\game\CGameBase.h">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\game\CMainBase.h">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CReel.h">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\manager\Manager4Network.h">
+      <Filter>src\SlotGame\base\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\object\InfoObject.h">
+      <Filter>src\SlotGame\base\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\settings\CSettings.h">
+      <Filter>src\SlotGame\base\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\utils\GameUtils.h">
+      <Filter>src\SlotGame\base\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CGameLN.h">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CMainLN.h">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\ICharacter.h">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\interfaceUI\CCharacterLN.h">
+      <Filter>src\SlotGame\nezha\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CInterfaceBase.h">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\utils\CSpriteButton.h">
+      <Filter>src\SlotGame\base\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\settings\CSlotSettings.h">
+      <Filter>src\SlotGame\base\settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\LobbyScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\LuckyWheelScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\InitSessionScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\game\CBonusBase.h">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CBonusPalaceLN.h">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\interfaceUI\CInterfaceLN.h">
+      <Filter>src\SlotGame\nezha\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\SoundManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\testScene\GameSlotTestScene.h">
+      <Filter>src\Scene\testScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\GameSlot\ButtonDownloadGameSlot.h">
+      <Filter>src\Custom\GameSlot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CBonusBattleLN.h">
+      <Filter>src\SlotGame\nezha\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\UserInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\BaseItemInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\InfoManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\LobbyConstant.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\FileManager\SlotsGameDownloadFileManager.h">
+      <Filter>src\Manager\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\FileManager\DownloadFileManager.h">
+      <Filter>src\Manager\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\FileManager\FileManager.h">
+      <Filter>src\Manager\FileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\manager\Manager4Sound.h">
+      <Filter>src\SlotGame\base\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\CLoader.h">
+      <Filter>src\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\PoolSystem.h">
+      <Filter>src\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CWinPanelBase.h">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\nezha\interfaceUI\CWinPanelLN.h">
+      <Filter>src\SlotGame\nezha\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CBonusFreeSpinDB.h">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CDoubleUpDB.h">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CGameDB.h">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CMainDB.h">
+      <Filter>src\SlotGame\deepblue\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\interfaceUI\CInterfaceDB.h">
+      <Filter>src\SlotGame\deepblue\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\interfaceUI\CWinPanelDB.h">
+      <Filter>src\SlotGame\deepblue\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\deepblue\interfaceUI\CJellyFishDB.h">
+      <Filter>src\SlotGame\deepblue\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\ButtonScaleChild.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\ButtonAdjustClikableAreaSize.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\testScene\CoinAnimationTestScene.h">
+      <Filter>src\Scene\testScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\AnimationHelper.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\AnimationManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\NotificationPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Lobby\body\BodyLobbyLayout.h">
+      <Filter>src\Views\Lobby\body</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Lobby\body\ButtonGameSlot.h">
+      <Filter>src\Views\Lobby\body</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\BasePopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\PopupManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\ServerConfigsInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\ServerSlotGameInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\UserBonusCheckInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\BetSlotGameInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\LevelInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Lobby\header\HeaderLobbyLayout.h">
+      <Filter>src\Views\Lobby\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CBonusFreeSpinGE.h">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CDoubleUpGE.h">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CGameGE.h">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CMainGE.h">
+      <Filter>src\SlotGame\goldenegg\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\interfaceUI\CCharacterGE.h">
+      <Filter>src\SlotGame\goldenegg\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\interfaceUI\CInterfaceGE.h">
+      <Filter>src\SlotGame\goldenegg\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\interfaceUI\CWinPanelGE.h">
+      <Filter>src\SlotGame\goldenegg\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\boxing\game\CDoubleUpBO.h">
+      <Filter>src\SlotGame\boxing\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\boxing\game\CGameBO.h">
+      <Filter>src\SlotGame\boxing\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\boxing\game\CMainBO.h">
+      <Filter>src\SlotGame\boxing\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\boxing\interfaceUI\CInterfaceBO.h">
+      <Filter>src\SlotGame\boxing\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\boxing\interfaceUI\CWinPanelBO.h">
+      <Filter>src\SlotGame\boxing\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\Test\TestManager.h">
+      <Filter>src\Manager\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Lobby\bottom\BottomLobbyLayout.h">
+      <Filter>src\Views\Lobby\bottom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CGameRE.h">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CMainRE.h">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CBonusRE.h">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CDoubleUpRE.h">
+      <Filter>src\SlotGame\romanempire\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\romanempire\interfaceUI\CWinPanelRE.h">
+      <Filter>src\SlotGame\romanempire\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\LabelAutoSize.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\Helper4ParseJSON.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\CSpinWheel.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\romanempire\interfaceUI\CReelRE.h">
+      <Filter>src\SlotGame\romanempire\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\IUpdateLanguage.h">
+      <Filter>src\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\SettingPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\ToggleButton.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\LoadingAnimation.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CBonusStage1PO.h">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CBonusStage2PO.h">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CGamePO.h">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CMainPO.h">
+      <Filter>src\SlotGame\pharaoh\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CInterfacePO.h">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CWinPanelPO.h">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CReelPO.h">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CEaglePO.h">
+      <Filter>src\SlotGame\pharaoh\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\FeatureConfigInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constant\PPEnums.h">
+      <Filter>src\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\AdditionalInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\game\CLoadingUI.h">
+      <Filter>src\SlotGame\base\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\GameSlotScene.h">
+      <Filter>src\SlotGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CFooter.h">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\PluginManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\FacebookController.h">
+      <Filter>src\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Shop\PurchaseItemNode.h">
+      <Filter>src\Views\Popup\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Shop\ShopPopup.h">
+      <Filter>src\Views\Popup\Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\IAPController.h">
+      <Filter>src\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\AdcolonyController.h">
+      <Filter>src\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\LevelUpPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\Helper4Time.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\GameSlotInfoPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\CRadioButton.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\GameUnlockedPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\ProfilePopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\ImagePicker\ImagePicker.h">
+      <Filter>src\Plugins\ImagePicker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\ImagePicker\ImagePickerImpl.h">
+      <Filter>src\Plugins\ImagePicker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\FriendPopup.h">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\CellInbox.h">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\CellLeaderboard.h">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\ReuseItemListView_Vertical.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\StrategyManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\FacebookFriendInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\CellFriend.h">
+      <Filter>src\Views\Popup\FriendPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\ChangeNamePopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\DownloadImageManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\GamePlugin.h">
+      <Filter>src\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\AchievementInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Achievement\AchievementCell.h">
+      <Filter>src\Views\Popup\Achievement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Achievement\AchievementPopup.h">
+      <Filter>src\Views\Popup\Achievement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CGameEffectUI.h">
+      <Filter>src\SlotGame\base\interfaceUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Effects\AnimationCoinCrown.h">
+      <Filter>src\Views\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Effects\CrownFlareWithLensFlare.h">
+      <Filter>src\Views\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Effects\CoinFlare.h">
+      <Filter>src\Views\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Effects\CirclePink.h">
+      <Filter>src\Views\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Tutorial\Tutorial.h">
+      <Filter>src\Views\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\GiftInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\LeaderboardInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Lobby\bottom\BottomItem.h">
+      <Filter>src\Views\Lobby\bottom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\ReuseItemListView_Horizontal.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelPopup.h">
+      <Filter>src\Views\Popup\FBDailySpinPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelResultPopup.h">
+      <Filter>src\Views\Popup\FBDailySpinPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelSpinPopup.h">
+      <Filter>src\Views\Popup\FBDailySpinPopup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\KeyboardHelper.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\AddRefereeCodePopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\ScaleManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\ComebackBonusMobilePopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\DailyBonusStreakPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\LuckyBoxPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\BaseScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\Helper4Scene.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\LuckyWheel\LuckyWheelLayout.h">
+      <Filter>src\Views\LuckyWheel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\LuckyWheel\LuckyWheelAnimationObject.h">
+      <Filter>src\Views\LuckyWheel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\LuckyWheel\LuckyWheelShopPopup.h">
+      <Filter>src\Views\LuckyWheel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\Action\FShake.h">
+      <Filter>src\Helper\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Helper\Helper4Sprite.h">
+      <Filter>src\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinInfoPopup.h">
+      <Filter>src\Views\Popup\DailyLuckySpin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinPopup.h">
+      <Filter>src\Views\Popup\DailyLuckySpin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\CSpinMachine.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\DailyChallengePopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\DailyChallengeInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\MascotNotificationPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\MagicItemPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Lobby\header\HeaderMagicItemBtn.h">
+      <Filter>src\Views\Lobby\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\DeviceManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\MissingPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\PiggyBankPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\proj.android-studio\app\jni\Android.mk">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\jni\Application.mk">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\Resources\language\en.json">
+      <Filter>resource\language</Filter>
+    </None>
+    <None Include="..\Resources\language\indo.json">
+      <Filter>resource\language</Filter>
+    </None>
+    <None Include="..\Resources\language\my.json">
+      <Filter>resource\language</Filter>
+    </None>
+    <None Include="..\Resources\language\vn.json">
+      <Filter>resource\language</Filter>
+    </None>
+    <None Include="..\Resources\language\cn.json">
+      <Filter>resource\language</Filter>
+    </None>
+    <None Include="..\Resources\language\cn_tran.json">
+      <Filter>resource\language</Filter>
+    </None>
+    <None Include="..\Resources\img\animation\coin-animation.plist">
+      <Filter>resource\img\animation</Filter>
+    </None>
+    <None Include="..\Resources\img\animation\crown-star-animtion.json">
+      <Filter>resource\img\animation</Filter>
+    </None>
+    <None Include="..\Resources\img\animation\crown-flare-animation.json">
+      <Filter>resource\img\animation</Filter>
+    </None>
+    <None Include="..\.cocos-project.json">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\.sdkbox_packages.json">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\Resources\sdkbox_config.json">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\project.properties">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\app\build.gradle">
+      <Filter>build</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\proj.android-studio\app\AndroidManifest.xml">
+      <Filter>build</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\CloseSelected.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\HelloWorld.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseNormal.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\img\coin.png">
+      <Filter>resource\img</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\52.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\53.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\54.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\55.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\40.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\41.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\42.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\43.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\44.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\45.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\46.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\47.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\48.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\49.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\50.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\51.png">
+      <Filter>resource\img\body\slotGameIcon\WebGame</Filter>
+    </Image>
+    <Image Include="..\Resources\test\snowflakes.png">
+      <Filter>resource\test</Filter>
+    </Image>
+    <Image Include="..\Resources\img\animation\coin-animation.png">
+      <Filter>resource\img\animation</Filter>
+    </Image>
+    <Image Include="..\Resources\img\animation\crown-flare-animation.png">
+      <Filter>resource\img\animation</Filter>
+    </Image>
+    <Image Include="..\Resources\img\animation\crown-star-animtion.png">
+      <Filter>resource\img\animation</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\background_high.jpg">
+      <Filter>resource\img\body</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\btn_download.png">
+      <Filter>resource\img\body\slotGameIcon</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\btn_lock.png">
+      <Filter>resource\img\body\slotGameIcon</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\progress_bg.png">
+      <Filter>resource\img\body\slotGameIcon</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\slider_bar.png">
+      <Filter>resource\img\body\slotGameIcon</Filter>
+    </Image>
+    <Image Include="..\Resources\img\body\slotGameIcon\slider_bar_bg.png">
+      <Filter>resource\img\body\slotGameIcon</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\bottom-bar.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\bt-notification.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\Divisor.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\lense_flare_worn.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\PartialBottomBar.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\ProgressBar.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+    <Image Include="..\Resources\img\bottom\ProgressBarBg.png">
+      <Filter>resource\img\bottom</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\fonts\DIN-Light.otf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\DIN-Medium.otf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\Helvetica-Bold.otf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\Helvetica-Light.otf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\Helvetica-Medium.otf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\HelveticaNeue-Thin.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\ICIEL-KONI-BLACK.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\Marker Felt.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\PassionOne-Black.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\PassionOne-Bold.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\PassionOne-Regular.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\Skater Girls Rock.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\ADONAIS.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\AMERICAN CAPTAIN.OTF">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\arial.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\copperplatessibold-webfont.ttf">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\DALEK_.TTF">
+      <Filter>resource\font</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\DIN-Bold.otf">
+      <Filter>resource\font</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\sound\coinCrownPurchase.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\coin-drop.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\failedCoin.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\lucky_wheel_bg.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\megaBigWin_creditToLittlerobotsoundfactory.wav">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\mini-background.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\popup.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\sound_hover_game_lobby.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\spin-sound.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\TotalWin.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\animationCoinReceive.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\background.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\chest_bounce.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\chest_open.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\chest_shake.mp3">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\lucky_wheel\start_lucky_wheel_spin.mp3">
+      <Filter>resource\sound\lucky_wheel</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\lucky_wheel\stop_lucky_wheel_spin.mp3">
+      <Filter>resource\sound\lucky_wheel</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\lucky_wheel\spinning_lucky_wheel.mp3">
+      <Filter>resource\sound\lucky_wheel</Filter>
+    </Media>
+    <Media Include="..\Resources\sound\lucky_wheel\spinning_lucky_wheel_v2.mp3">
+      <Filter>resource\sound\lucky_wheel</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\document\document_project.txt">
+      <Filter>build</Filter>
+    </Text>
+    <Text Include="..\..\Plugin\document_plugin.txt">
+      <Filter>build</Filter>
+    </Text>
+    <Text Include="..\Resources\language\en.txt">
+      <Filter>resource\language</Filter>
+    </Text>
+    <Text Include="..\Resources\language\indo.txt">
+      <Filter>resource\language</Filter>
+    </Text>
+    <Text Include="..\Resources\language\my.txt">
+      <Filter>resource\language</Filter>
+    </Text>
+    <Text Include="..\Resources\language\vn.txt">
+      <Filter>resource\language</Filter>
+    </Text>
+    <Text Include="..\Resources\language\cn.txt">
+      <Filter>resource\language</Filter>
+    </Text>
+    <Text Include="..\Resources\language\cn_tran.txt">
+      <Filter>resource\language</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

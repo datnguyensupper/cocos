@@ -1,0 +1,84 @@
+﻿#create project
+cocos new playpalace -p com.lobbyteam.playpalace.unity -l cpp
+
+#build android x86
+cocos compile -p android --android-studio --app-abi x86
+
+# build android arm
+cocos compile -p android --android-studio
+
+
+# lưu ý lần đầu build release: sau khi chạy lệnh build, nhập các thông tin như path keystore, alias, password keystore, password alias.
+# Đảm bảo là trong git không thấy file gradle.properties chứa password keystore (file này đã bị add vào gitignore)
+
+#build release x86
+cocos compile -p android --android-studio --app-abi x86 -m release
+Remove-Item bin\release\android\x86-playpalace-release-signed.apk
+Rename-Item bin/release/android/playpalace-release-signed.apk x86-playpalace-release-signed.apk
+
+#build release arm
+cocos compile -p android --android-studio --app-abi armeabi -m release
+Remove-Item bin\release\android\armeabi-playpalace-release-signed.apk
+Rename-Item bin/release/android/playpalace-release-signed.apk armeabi-playpalace-release-signed.apk
+
+#compile at lobbyandslotsgamecocos project
+cocos compile -s lobby-cocos/PlayPalace -p android --android-sdutio
+
+# Run android
+cocos run -p android --android-studio
+
+# Move resource game slot to tmp folder window
+mkdir ResourcesGameSlot\Game\img\slotgame
+move Resources\img80Percent ResourcesGameSlot\Game\
+move Resources\imgTiny ResourcesGameSlot\Game\
+move Resources\img\slotgame\deepblue ResourcesGameSlot\Game\img\slotgame\
+move Resources\img\slotgame\goldenegg ResourcesGameSlot\Game\img\slotgame\
+move Resources\img\slotgame\pharaoh ResourcesGameSlot\Game\img\slotgame\
+move Resources\img\slotgame\romanempire ResourcesGameSlot\Game\img\slotgame\
+move Resources\img\slotgame\boxing ResourcesGameSlot\Game\img\slotgame\
+
+# Move resource game slot back window
+move ResourcesGameSlot\Game\img80Percent Resources\ 
+move ResourcesGameSlot\Game\imgTiny Resources\ 
+move ResourcesGameSlot\Game\img\slotgame\boxing Resources\img\slotgame\
+move ResourcesGameSlot\Game\img\slotgame\deepblue Resources\img\slotgame\
+move ResourcesGameSlot\Game\img\slotgame\goldenegg Resources\img\slotgame\
+move ResourcesGameSlot\Game\img\slotgame\romanempire Resources\img\slotgame\
+move ResourcesGameSlot\Game\img\slotgame\pharaoh Resources\img\slotgame\
+
+# Move resource game slot to tmp folder mac
+mkdir ResourcesGameSlot
+mkdir ResourcesGameSlot/Game
+mkdir ResourcesGameSlot/Game/img80Percent
+mkdir ResourcesGameSlot/Game/img80Percent/slotgame
+mkdir ResourcesGameSlot/Game/imgTiny
+mkdir ResourcesGameSlot/Game/imgTiny/slotgame
+mv Resources/img ResourcesGameSlot/Game/
+mv Resources/img80Percent/slotgame/deepblue ResourcesGameSlot/Game/img80Percent/slotgame/
+mv Resources/img80Percent/slotgame/goldenegg ResourcesGameSlot/Game/img80Percent/slotgame/
+mv Resources/img80Percent/slotgame/pharaoh ResourcesGameSlot/Game/img80Percent/slotgame/
+mv Resources/img80Percent/slotgame/romanempire ResourcesGameSlot/Game/img80Percent/slotgame/
+mv Resources/img80Percent/slotgame/boxing ResourcesGameSlot/Game/img80Percent/slotgame/
+mv Resources/imgTiny/slotgame/deepblue ResourcesGameSlot/Game/imgTiny/slotgame/
+mv Resources/imgTiny/slotgame/goldenegg ResourcesGameSlot/Game/imgTiny/slotgame/
+mv Resources/imgTiny/slotgame/pharaoh ResourcesGameSlot/Game/imgTiny/slotgame/
+mv Resources/imgTiny/slotgame/romanempire ResourcesGameSlot/Game/imgTiny/slotgame/
+mv Resources/imgTiny/slotgame/boxing ResourcesGameSlot/Game/imgTiny/slotgame/
+
+# Move resource game slot back mac
+mv ResourcesGameSlot/Game/img Resources/
+mv ResourcesGameSlot/Game/img80Percent/slotgame/boxing Resources/img80Percent/slotgame/
+mv ResourcesGameSlot/Game/img80Percent/slotgame/deepblue Resources/img80Percent/slotgame/
+mv ResourcesGameSlot/Game/img80Percent/slotgame/goldenegg Resources/img80Percent/slotgame/
+mv ResourcesGameSlot/Game/img80Percent/slotgame/romanempire Resources/img80Percent/slotgame/
+mv ResourcesGameSlot/Game/img80Percent/slotgame/pharaoh Resources/img80Percent/slotgame/
+mv ResourcesGameSlot/Game/imgTiny/slotgame/boxing Resources/imgTiny/slotgame/
+mv ResourcesGameSlot/Game/imgTiny/slotgame/deepblue Resources/imgTiny/slotgame/
+mv ResourcesGameSlot/Game/imgTiny/slotgame/goldenegg Resources/imgTiny/slotgame/
+mv ResourcesGameSlot/Game/imgTiny/slotgame/romanempire Resources/imgTiny/slotgame/
+mv ResourcesGameSlot/Game/imgTiny/slotgame/pharaoh Resources/imgTiny/slotgame/
+
+#include additional path playpalace c++
+$(EngineRoot)external\unzip
+$(EngineRoot)external\win32-specific\zlib\include
+$(EngineRoot)external

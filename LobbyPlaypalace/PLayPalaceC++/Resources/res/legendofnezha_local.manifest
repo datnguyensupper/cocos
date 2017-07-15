@@ -1,0 +1,7 @@
+{
+    "packageUrl" : "https://scmw.spiralworks-cloud.com/ppwebstatic/cocos_gameslot_resource/",
+    "remoteVersionUrl" : "https://scmw.spiralworks-cloud.com/ppwebstatic/cocos_gameslot_resource/legendofnezha_version.manifest",
+    "remoteManifestUrl" : "https://scmw.spiralworks-cloud.com/ppwebstatic/cocos_gameslot_resource/legendofnezha_project.manifest",
+    "version" : "1.0.0",
+    "engineVersion" : "Cocos2d-JS v3.0 RC0"
+}

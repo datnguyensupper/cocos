@@ -1,0 +1,16 @@
+coppy file plugin java vào thu mục cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib
+
+coppy file plugin ios (.h, .mm) vào thu mục cocos2d\cocos\platform\ios
+nhớ khai báo trong file xcodeproj
+
+
+--------------------------------ADD PLUGINS-----------------------------------
+1/Nếu chưa có sdkbox, cài sdkbox:  python -c "import urllib; s = urllib.urlopen('https://raw.githubusercontent.com/sdkbox-doc/en/master/install/install.py').read(); exec s"
+2/
+-Check sdkbox: sdkbox -h
+-Nếu chưa có -> reset máy
+3/Add Plugins
+sdkbox import adcolony
+sdkbox import facebook
+sdkbox import iap
+--------------------------------ADD PLUGINS-----------------------------------

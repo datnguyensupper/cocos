@@ -1,0 +1,77 @@
+{
+    "android" : {
+		"iap" : {
+            "enabled" : true,
+            "key" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyuN+aaACVHDzM8wnESkZ0Mp/kkYPviifEUdwadDI+9ppiKfJlwpI9J2lvDoxrr58z1MlURKMT4iNQWQAvM90kkdSL37+cdzxltz5PiTIOS6uz/6MsuR4hbH3xXDTzDX4ED9Fw+RRbU+I6U/naKBJCQDQZ+SlgPriA1EykUhmvjoe1WjaIBzQB4YeLTZfyYAqO5AzjT9lMMtnsxyzsRWohCaoNmzEa5atLjBDBpXy7DXAgKBD98t5m9hDAHIs3o7I8apaxzwZn+ZY21G/1YJjSzTy4Ciryk839AmyXzzkZjK/y3M8qfc5+iSMyB0slD+wGeDHGb520Xv9tv1YguaHuwIDAQAB",
+            "items" : {
+                "400kcoin" : {
+                    "id" : "playpalace.product.400000coinsonce",
+                    "type" : "consumable"
+                },
+                "800kcoin" : {
+                    "id" : "playpalace.product.800000coinsonce",
+                    "type" : "consumable"
+                },
+                "2mcoin" : {
+                    "id" : "playpalace.product.2000000coinsonce",
+                    "type" : "consumable"
+                },
+                "4mcoin" : {
+                    "id" : "playpalace.product.4000000coinsonce",
+                    "type" : "consumable"
+                },
+                "8mcoin" : {
+                    "id" : "playpalace.product.8000000coinsonce",
+                    "type" : "consumable"
+                },
+                "20mcoin" : {
+                    "id" : "playpalace.product.20000000coinsonce",
+                    "type" : "consumable"
+                },
+                "40mcoin" : {
+                    "id" : "playpalace.product.40000000coinsonce",
+                    "type" : "consumable"
+                },
+                "10crowns" : {
+                    "id" : "playpalace.product.10crownsonce",
+                    "type" : "consumable"
+                },
+                "55crowns" : {
+                    "id" : "playpalace.product.55crownsonce",
+                    "type" : "consumable"
+                },
+                "120crowns" : {
+                    "id" : "playpalace.product.120crownsonce",
+                    "type" : "consumable"
+                },
+                "100%win" : {
+                    "id" : "com.playpalace.product.android.uat.cordova.magicitem.package1",
+                    "type" : "consumable"
+                }
+            }
+        },
+        "Facebook" : {
+            "enabled" : true,
+            "debug" : true,
+            "url_scheme" : "fb822586904502053suffix",
+            "facebook_id" : "822586904502053"
+        },
+		"AdColony" : {
+            "enabled" : true,
+			"id": "app5da0b1d06a614b8a8f",
+			"debug" : true,
+			"ads" : {
+				"video" : {
+					"zone" : "vz9536a932b875420fb0",
+					"v4vc" : false
+				}
+			}
+		}
+    },
+    "ios" : [
+        
+    ],
+    "playphone" : [
+        
+    ]
+}

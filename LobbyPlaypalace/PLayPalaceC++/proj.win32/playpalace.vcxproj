@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
+    <RootNamespace>test_win32</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0'">v120</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)external\unzip;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <CustomBuildStep>
+      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+      </Command>
+      <Outputs>$(TargetName).cab</Outputs>
+      <Inputs>$(TargetFileName)</Inputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcurl_imp.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Configs.cpp" />
+    <ClCompile Include="..\Classes\Constant\JSONFieldConstant.cpp" />
+    <ClCompile Include="..\Classes\Constant\LanguageConstant.cpp" />
+    <ClCompile Include="..\Classes\Constant\LobbyConstant.cpp" />
+    <ClCompile Include="..\Classes\Constant\MessageConstant.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\ButtonScaleChild.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\CRadioButton.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\CSpinMachine.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\CSpinWheel.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\LabelAutoSize.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\ReuseItemListView_Horizontal.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\ReuseItemListView_Vertical.cpp" />
+    <ClCompile Include="..\Classes\Custom\Common\ToggleButton.cpp" />
+    <ClCompile Include="..\Classes\Custom\GameSlot\ButtonDownloadGameSlot.cpp" />
+    <ClCompile Include="..\Classes\Helper\Action\FShake.cpp" />
+    <ClCompile Include="..\Classes\Helper\AnimationHelper.cpp" />
+    <ClCompile Include="..\Classes\Helper\Helper4ParseJSON.cpp" />
+    <ClCompile Include="..\Classes\Helper\Helper4Scene.cpp" />
+    <ClCompile Include="..\Classes\Helper\Helper4Sprite.cpp" />
+    <ClCompile Include="..\Classes\Helper\Helper4String.cpp" />
+    <ClCompile Include="..\Classes\Helper\Helper4Time.cpp" />
+    <ClCompile Include="..\Classes\Helper\KeyboardHelper.cpp" />
+    <ClCompile Include="..\Classes\Manager\AnimationManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\DeviceManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\DownloadImageManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\FileManager\DownloadFileManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\FileManager\FileManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\FileManager\SlotsGameDownloadFileManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\InfoManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\LanguageManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\NetworkManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\PluginManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\PopupManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\ScaleManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\SoundManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\StrategyManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\Test\TestManager.cpp" />
+    <ClCompile Include="..\Classes\Plugins\AdcolonyController.cpp" />
+    <ClCompile Include="..\Classes\Plugins\FacebookController.cpp" />
+    <ClCompile Include="..\Classes\Plugins\GamePlugin.cpp" />
+    <ClCompile Include="..\Classes\Plugins\IAPController.cpp" />
+    <ClCompile Include="..\Classes\Plugins\ImagePicker\ImagePicker.cpp" />
+    <ClCompile Include="..\Classes\Plugins\ImagePicker\ImagePickerImpl.cpp" />
+    <ClCompile Include="..\Classes\Scene\BaseScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\InitSessionScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\LobbyScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\LoginScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\LuckyWheelScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\testScene\CoinAnimationTestScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\testScene\GameSlotTestScene.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\constant\GameConstant.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\game\CBonusBase.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\game\CGameBase.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\game\CLoadingUI.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\game\CMainBase.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CFooter.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CInterfaceBase.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CReel.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CGameEffectUI.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\interfaceUI\CWinPanelBase.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\manager\Manager4Network.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\manager\Manager4Sound.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\settings\CSettings.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\settings\CSlotSettings.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\utils\CSpriteButton.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\base\utils\GameUtils.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\boxing\game\CDoubleUpBO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\boxing\game\CGameBO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\boxing\game\CMainBO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\boxing\interfaceUI\CInterfaceBO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\boxing\interfaceUI\CWinPanelBO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CBonusFreeSpinDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CDoubleUpDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CGameDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\game\CMainDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\interfaceUI\CInterfaceDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\interfaceUI\CJellyFishDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\deepblue\interfaceUI\CWinPanelDB.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\GameSlotScene.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CBonusFreeSpinGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CDoubleUpGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CGameGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\game\CMainGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\interfaceUI\CCharacterGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\interfaceUI\CInterfaceGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\goldenegg\interfaceUI\CWinPanelGE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CBonusBattleLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CBonusPalaceLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CGameLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\game\CMainLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\interfaceUI\CCharacterLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\interfaceUI\CInterfaceLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\nezha\interfaceUI\CWinPanelLN.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CBonusStage1PO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CBonusStage2PO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CGamePO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\game\CMainPO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CEaglePO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CInterfacePO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CReelPO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\pharaoh\interfaceUI\CWinPanelPO.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CBonusRE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CDoubleUpRE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CGameRE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\romanempire\game\CMainRE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\romanempire\interfaceUI\CReelRE.cpp" />
+    <ClCompile Include="..\Classes\SlotGame\romanempire\interfaceUI\CWinPanelRE.cpp" />
+    <ClCompile Include="..\Classes\Util\CLoader.cpp" />
+    <ClCompile Include="..\Classes\Util\PoolSystem.cpp" />
+    <ClCompile Include="..\Classes\Util\UtilFunction.cpp" />
+    <ClCompile Include="..\Classes\Views\Effects\AnimationCoinCrown.cpp" />
+    <ClCompile Include="..\Classes\Views\Effects\CirclePink.cpp" />
+    <ClCompile Include="..\Classes\Views\Effects\CoinFlare.cpp" />
+    <ClCompile Include="..\Classes\Views\Effects\CrownFlareWithLensFlare.cpp" />
+    <ClCompile Include="..\Classes\Views\Lobby\body\BodyLobbyLayout.cpp" />
+    <ClCompile Include="..\Classes\Views\Lobby\body\ButtonGameSlot.cpp" />
+    <ClCompile Include="..\Classes\Views\Lobby\bottom\BottomItem.cpp" />
+    <ClCompile Include="..\Classes\Views\Lobby\bottom\BottomLobbyLayout.cpp" />
+    <ClCompile Include="..\Classes\Views\Lobby\header\HeaderLobbyLayout.cpp" />
+    <ClCompile Include="..\Classes\Views\Lobby\header\HeaderMagicItemBtn.cpp" />
+    <ClCompile Include="..\Classes\Views\Login\MainLoginLayer.cpp" />
+    <ClCompile Include="..\Classes\Views\Login\NotiLoginPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Login\PPLoginLayer.cpp" />
+    <ClCompile Include="..\Classes\Views\Login\ResetPassLayer.cpp" />
+    <ClCompile Include="..\Classes\Views\Login\SignUpLayer.cpp" />
+    <ClCompile Include="..\Classes\Views\LuckyWheel\LuckyWheelShopPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\LuckyWheel\LuckyWheelAnimationObject.cpp" />
+    <ClCompile Include="..\Classes\Views\LuckyWheel\LuckyWheelLayout.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\Achievement\AchievementCell.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\Achievement\AchievementPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\AddRefereeCodePopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\BasePopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\ChangeNamePopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\ComebackBonusMobilePopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\DailyBonusStreakPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\DailyChallengePopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinInfoPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelResultPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelSpinPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\CellFriend.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\CellInbox.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\CellLeaderboard.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\FriendPopup\FriendPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\GameSlotInfoPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\GameUnlockedPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\LevelUpPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\LoadingAnimation.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\LuckyBoxPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\MascotNotificationPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\MagicItemPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\MissingPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\NotificationPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\PiggyBankPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\ProfilePopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\SettingPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\Shop\PurchaseItemNode.cpp" />
+    <ClCompile Include="..\Classes\Views\Popup\Shop\ShopPopup.cpp" />
+    <ClCompile Include="..\Classes\Views\Tutorial\Tutorial.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Configs.h" />
+    <ClInclude Include="..\Classes\Constant\JSONFieldConstant.h" />
+    <ClInclude Include="..\Classes\Constant\LanguageConstant.h" />
+    <ClInclude Include="..\Classes\Constant\LobbyConstant.h" />
+    <ClInclude Include="..\Classes\Constant\MessageConstant.h" />
+    <ClInclude Include="..\Classes\Constant\Defination.h" />
+    <ClInclude Include="..\Classes\Constant\PPEnums.h" />
+    <ClInclude Include="..\Classes\Constant\ResultCodeConstant.h" />
+    <ClInclude Include="..\Classes\Custom\Common\ButtonAdjustClikableAreaSize.h" />
+    <ClInclude Include="..\Classes\Custom\Common\ButtonScaleChild.h" />
+    <ClInclude Include="..\Classes\Custom\Common\CRadioButton.h" />
+    <ClInclude Include="..\Classes\Custom\Common\CSpinMachine.h" />
+    <ClInclude Include="..\Classes\Custom\Common\CSpinWheel.h" />
+    <ClInclude Include="..\Classes\Custom\Common\LabelAutoSize.h" />
+    <ClInclude Include="..\Classes\Custom\Common\ReuseItemListView_Horizontal.h" />
+    <ClInclude Include="..\Classes\Custom\Common\ReuseItemListView_Vertical.h" />
+    <ClInclude Include="..\Classes\Custom\Common\ToggleButton.h" />
+    <ClInclude Include="..\Classes\Custom\GameSlot\ButtonDownloadGameSlot.h" />
+    <ClInclude Include="..\Classes\Helper\Action\FShake.h" />
+    <ClInclude Include="..\Classes\Helper\AnimationHelper.h" />
+    <ClInclude Include="..\Classes\Helper\Helper4ParseJSON.h" />
+    <ClInclude Include="..\Classes\Helper\Helper4Scene.h" />
+    <ClInclude Include="..\Classes\Helper\Helper4Sprite.h" />
+    <ClInclude Include="..\Classes\Helper\Helper4String.h" />
+    <ClInclude Include="..\Classes\Helper\Helper4Time.h" />
+    <ClInclude Include="..\Classes\Helper\KeyboardHelper.h" />
+    <ClInclude Include="..\Classes\Info\AchievementInfo.h" />
+    <ClInclude Include="..\Classes\Info\AdditionalInfo.h" />
+    <ClInclude Include="..\Classes\Info\BaseItemInfo.h" />
+    <ClInclude Include="..\Classes\Info\BetSlotGameInfo.h" />
+    <ClInclude Include="..\Classes\Info\DailyChallengeInfo.h" />
+    <ClInclude Include="..\Classes\Info\FacebookFriendInfo.h" />
+    <ClInclude Include="..\Classes\Info\FeatureConfigInfo.h" />
+    <ClInclude Include="..\Classes\Info\GiftInfo.h" />
+    <ClInclude Include="..\Classes\Info\LeaderboardInfo.h" />
+    <ClInclude Include="..\Classes\Info\LevelInfo.h" />
+    <ClInclude Include="..\Classes\Info\ServerConfigsInfo.h" />
+    <ClInclude Include="..\Classes\Info\ServerSlotGameInfo.h" />
+    <ClInclude Include="..\Classes\Info\UserBonusCheckInfo.h" />
+    <ClInclude Include="..\Classes\Info\UserInfo.h" />
+    <ClInclude Include="..\Classes\Manager\AnimationManager.h" />
+    <ClInclude Include="..\Classes\Manager\DeviceManager.h" />
+    <ClInclude Include="..\Classes\Manager\DownloadImageManager.h" />
+    <ClInclude Include="..\Classes\Manager\FileManager\DownloadFileManager.h" />
+    <ClInclude Include="..\Classes\Manager\FileManager\FileManager.h" />
+    <ClInclude Include="..\Classes\Manager\FileManager\SlotsGameDownloadFileManager.h" />
+    <ClInclude Include="..\Classes\Manager\InfoManager.h" />
+    <ClInclude Include="..\Classes\Manager\LanguageManager.h" />
+    <ClInclude Include="..\Classes\Manager\NetworkManager.h" />
+    <ClInclude Include="..\Classes\Manager\PluginManager.h" />
+    <ClInclude Include="..\Classes\Manager\PopupManager.h" />
+    <ClInclude Include="..\Classes\Manager\ScaleManager.h" />
+    <ClInclude Include="..\Classes\Manager\SoundManager.h" />
+    <ClInclude Include="..\Classes\Manager\StrategyManager.h" />
+    <ClInclude Include="..\Classes\Manager\Test\TestManager.h" />
+    <ClInclude Include="..\Classes\Plugins\AdcolonyController.h" />
+    <ClInclude Include="..\Classes\Plugins\FacebookController.h" />
+    <ClInclude Include="..\Classes\Plugins\GamePlugin.h" />
+    <ClInclude Include="..\Classes\Plugins\IAPController.h" />
+    <ClInclude Include="..\Classes\Plugins\ImagePicker\ImagePicker.h" />
+    <ClInclude Include="..\Classes\Plugins\ImagePicker\ImagePickerImpl.h" />
+    <ClInclude Include="..\Classes\Scene\BaseScene.h" />
+    <ClInclude Include="..\Classes\Scene\InitSessionScene.h" />
+    <ClInclude Include="..\Classes\Scene\LobbyScene.h" />
+    <ClInclude Include="..\Classes\Scene\LoginScene.h" />
+    <ClInclude Include="..\Classes\Scene\LuckyWheelScene.h" />
+    <ClInclude Include="..\Classes\Scene\testScene\CoinAnimationTestScene.h" />
+    <ClInclude Include="..\Classes\Scene\testScene\GameSlotTestScene.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\constant\GameConstant.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\game\CBonusBase.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\game\CGameBase.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\game\CLoadingUI.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\game\CMainBase.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CFooter.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CInterfaceBase.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CGameEffectUI.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CWinPanelBase.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\ICharacter.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\interfaceUI\CReel.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\manager\Manager4Network.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\manager\Manager4Sound.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\object\InfoObject.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\settings\CSettings.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\settings\CSlotSettings.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\utils\CSpriteButton.h" />
+    <ClInclude Include="..\Classes\SlotGame\base\utils\GameUtils.h" />
+    <ClInclude Include="..\Classes\SlotGame\boxing\game\CDoubleUpBO.h" />
+    <ClInclude Include="..\Classes\SlotGame\boxing\game\CGameBO.h" />
+    <ClInclude Include="..\Classes\SlotGame\boxing\game\CMainBO.h" />
+    <ClInclude Include="..\Classes\SlotGame\boxing\interfaceUI\CInterfaceBO.h" />
+    <ClInclude Include="..\Classes\SlotGame\boxing\interfaceUI\CWinPanelBO.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CBonusFreeSpinDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CDoubleUpDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CGameDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\game\CMainDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\interfaceUI\CInterfaceDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\interfaceUI\CJellyFishDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\deepblue\interfaceUI\CWinPanelDB.h" />
+    <ClInclude Include="..\Classes\SlotGame\GameSlotScene.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CBonusFreeSpinGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CDoubleUpGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CGameGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\game\CMainGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\interfaceUI\CCharacterGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\interfaceUI\CInterfaceGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\goldenegg\interfaceUI\CWinPanelGE.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CBonusBattleLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CBonusPalaceLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CGameLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\game\CMainLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\interfaceUI\CCharacterLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\interfaceUI\CInterfaceLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\nezha\interfaceUI\CWinPanelLN.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CBonusStage1PO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CBonusStage2PO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CGamePO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\game\CMainPO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CEaglePO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CInterfacePO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CReelPO.h" />
+    <ClInclude Include="..\Classes\SlotGame\pharaoh\interfaceUI\CWinPanelPO.h" />
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CBonusRE.h" />
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CDoubleUpRE.h" />
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CGameRE.h" />
+    <ClInclude Include="..\Classes\SlotGame\romanempire\game\CMainRE.h" />
+    <ClInclude Include="..\Classes\SlotGame\romanempire\interfaceUI\CReelRE.h" />
+    <ClInclude Include="..\Classes\SlotGame\romanempire\interfaceUI\CWinPanelRE.h" />
+    <ClInclude Include="..\Classes\Util\CLoader.h" />
+    <ClInclude Include="..\Classes\Util\PoolSystem.h" />
+    <ClInclude Include="..\Classes\Util\UtilFunction.h" />
+    <ClInclude Include="..\Classes\Views\Effects\AnimationCoinCrown.h" />
+    <ClInclude Include="..\Classes\Views\Effects\CirclePink.h" />
+    <ClInclude Include="..\Classes\Views\Effects\CoinFlare.h" />
+    <ClInclude Include="..\Classes\Views\Effects\CrownFlareWithLensFlare.h" />
+    <ClInclude Include="..\Classes\Views\IUpdateLanguage.h" />
+    <ClInclude Include="..\Classes\Views\Lobby\body\BodyLobbyLayout.h" />
+    <ClInclude Include="..\Classes\Views\Lobby\body\ButtonGameSlot.h" />
+    <ClInclude Include="..\Classes\Views\Lobby\bottom\BottomItem.h" />
+    <ClInclude Include="..\Classes\Views\Lobby\bottom\BottomLobbyLayout.h" />
+    <ClInclude Include="..\Classes\Views\Lobby\header\HeaderLobbyLayout.h" />
+    <ClInclude Include="..\Classes\Views\Lobby\header\HeaderMagicItemBtn.h" />
+    <ClInclude Include="..\Classes\Views\Login\MainLoginLayer.h" />
+    <ClInclude Include="..\Classes\Views\Login\NotiLoginPopup.h" />
+    <ClInclude Include="..\Classes\Views\Login\PPLoginLayer.h" />
+    <ClInclude Include="..\Classes\Views\Login\ResetPassLayer.h" />
+    <ClInclude Include="..\Classes\Views\Login\SignUpLayer.h" />
+    <ClInclude Include="..\Classes\Views\LuckyWheel\LuckyWheelShopPopup.h" />
+    <ClInclude Include="..\Classes\Views\LuckyWheel\LuckyWheelAnimationObject.h" />
+    <ClInclude Include="..\Classes\Views\LuckyWheel\LuckyWheelLayout.h" />
+    <ClInclude Include="..\Classes\Views\Popup\Achievement\AchievementCell.h" />
+    <ClInclude Include="..\Classes\Views\Popup\Achievement\AchievementPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\AddRefereeCodePopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\BasePopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\ChangeNamePopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\ComebackBonusMobilePopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\DailyBonusStreakPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\DailyChallengePopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinInfoPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\DailyLuckySpin\DailyLuckySpinPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelResultPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FBDailySpinPopup\DailyBonusWheelSpinPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\CellFriend.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\CellInbox.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\CellLeaderboard.h" />
+    <ClInclude Include="..\Classes\Views\Popup\FriendPopup\FriendPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\GameSlotInfoPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\GameUnlockedPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\LevelUpPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\LoadingAnimation.h" />
+    <ClInclude Include="..\Classes\Views\Popup\LuckyBoxPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\MascotNotificationPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\MagicItemPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\MissingPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\NotificationPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\PiggyBankPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\ProfilePopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\SettingPopup.h" />
+    <ClInclude Include="..\Classes\Views\Popup\Shop\PurchaseItemNode.h" />
+    <ClInclude Include="..\Classes\Views\Popup\Shop\ShopPopup.h" />
+    <ClInclude Include="..\Classes\Views\Tutorial\Tutorial.h" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\cocos\editor-support\spine\proj.win32\libSpine.vcxproj">
+      <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
+      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.cocos-project.json" />
+    <None Include="..\.sdkbox_packages.json" />
+    <None Include="..\proj.android-studio\app\build.gradle" />
+    <None Include="..\proj.android-studio\app\jni\Android.mk" />
+    <None Include="..\proj.android-studio\app\jni\Application.mk" />
+    <None Include="..\proj.android-studio\app\project.properties" />
+    <None Include="..\Resources\img\animation\coin-animation.plist" />
+    <None Include="..\Resources\img\animation\crown-flare-animation.json" />
+    <None Include="..\Resources\img\animation\crown-star-animtion.json" />
+    <None Include="..\Resources\language\cn.json" />
+    <None Include="..\Resources\language\cn_tran.json" />
+    <None Include="..\Resources\language\en.json" />
+    <None Include="..\Resources\language\indo.json" />
+    <None Include="..\Resources\language\my.json" />
+    <None Include="..\Resources\language\vn.json" />
+    <None Include="..\Resources\sdkbox_config.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\proj.android-studio\app\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\CloseNormal.png" />
+    <Image Include="..\Resources\CloseSelected.png" />
+    <Image Include="..\Resources\HelloWorld.png" />
+    <Image Include="..\Resources\img\animation\coin-animation.png" />
+    <Image Include="..\Resources\img\animation\crown-flare-animation.png" />
+    <Image Include="..\Resources\img\animation\crown-star-animtion.png" />
+    <Image Include="..\Resources\img\body\background_high.jpg" />
+    <Image Include="..\Resources\img\body\btn_download.png" />
+    <Image Include="..\Resources\img\body\btn_lock.png" />
+    <Image Include="..\Resources\img\body\progress_bg.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\slider_bar.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\slider_bar_bg.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\40.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\41.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\42.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\43.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\44.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\45.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\46.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\47.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\48.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\49.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\50.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\51.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\52.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\53.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\54.png" />
+    <Image Include="..\Resources\img\body\slotGameIcon\WebGame\55.png" />
+    <Image Include="..\Resources\img\bottom\bottom-bar.png" />
+    <Image Include="..\Resources\img\bottom\bt-notification.png" />
+    <Image Include="..\Resources\img\bottom\Divisor.png" />
+    <Image Include="..\Resources\img\bottom\lense_flare_worn.png" />
+    <Image Include="..\Resources\img\bottom\PartialBottomBar.png" />
+    <Image Include="..\Resources\img\bottom\ProgressBar.png" />
+    <Image Include="..\Resources\img\bottom\ProgressBarBg.png" />
+    <Image Include="..\Resources\img\coin.png" />
+    <Image Include="..\Resources\test\snowflakes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\fonts\ADONAIS.ttf" />
+    <Font Include="..\Resources\fonts\AMERICAN CAPTAIN.OTF" />
+    <Font Include="..\Resources\fonts\arial.ttf" />
+    <Font Include="..\Resources\fonts\copperplatessibold-webfont.ttf" />
+    <Font Include="..\Resources\fonts\DALEK_.TTF" />
+    <Font Include="..\Resources\fonts\DIN-Bold.otf" />
+    <Font Include="..\Resources\fonts\DIN-Light.otf" />
+    <Font Include="..\Resources\fonts\DIN-Medium.otf" />
+    <Font Include="..\Resources\fonts\Helvetica-Bold.otf" />
+    <Font Include="..\Resources\fonts\Helvetica-Light.otf" />
+    <Font Include="..\Resources\fonts\Helvetica-Medium.otf" />
+    <Font Include="..\Resources\fonts\HelveticaNeue-Thin.ttf" />
+    <Font Include="..\Resources\fonts\ICIEL-KONI-BLACK.ttf" />
+    <Font Include="..\Resources\fonts\Marker Felt.ttf" />
+    <Font Include="..\Resources\fonts\PassionOne-Black.ttf" />
+    <Font Include="..\Resources\fonts\PassionOne-Bold.ttf" />
+    <Font Include="..\Resources\fonts\PassionOne-Regular.ttf" />
+    <Font Include="..\Resources\fonts\Skater Girls Rock.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\sound\animationCoinReceive.mp3" />
+    <Media Include="..\Resources\sound\background.mp3" />
+    <Media Include="..\Resources\sound\chest_bounce.mp3" />
+    <Media Include="..\Resources\sound\chest_open.mp3" />
+    <Media Include="..\Resources\sound\chest_shake.mp3" />
+    <Media Include="..\Resources\sound\coin-drop.mp3" />
+    <Media Include="..\Resources\sound\coinCrownPurchase.mp3" />
+    <Media Include="..\Resources\sound\failedCoin.mp3" />
+    <Media Include="..\Resources\sound\lucky_wheel\spinning_lucky_wheel.mp3" />
+    <Media Include="..\Resources\sound\lucky_wheel\spinning_lucky_wheel_v2.mp3" />
+    <Media Include="..\Resources\sound\lucky_wheel\start_lucky_wheel_spin.mp3" />
+    <Media Include="..\Resources\sound\lucky_wheel\stop_lucky_wheel_spin.mp3" />
+    <Media Include="..\Resources\sound\lucky_wheel_bg.mp3" />
+    <Media Include="..\Resources\sound\megaBigWin_creditToLittlerobotsoundfactory.wav" />
+    <Media Include="..\Resources\sound\mini-background.mp3" />
+    <Media Include="..\Resources\sound\popup.mp3" />
+    <Media Include="..\Resources\sound\sound_hover_game_lobby.mp3" />
+    <Media Include="..\Resources\sound\spin-sound.mp3" />
+    <Media Include="..\Resources\sound\TotalWin.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\document\document_project.txt" />
+    <Text Include="..\..\Plugin\document_plugin.txt" />
+    <Text Include="..\Resources\language\cn.txt" />
+    <Text Include="..\Resources\language\cn_tran.txt" />
+    <Text Include="..\Resources\language\en.txt" />
+    <Text Include="..\Resources\language\indo.txt" />
+    <Text Include="..\Resources\language\my.txt" />
+    <Text Include="..\Resources\language\vn.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
