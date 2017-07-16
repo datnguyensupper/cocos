@@ -10,6 +10,8 @@
 class ButtonScaleChild : public cocos2d::ui::Button {
 private:
 	cocos2d::Node* scaleNode;
+    float originalTitleScaleX;
+    float originalTitleScaleY;
 protected:
 	virtual void onPressStateChangedToNormal() override;
 	virtual void onPressStateChangedToPressed() override;
@@ -24,6 +26,9 @@ public:
 		const std::string& disableImage = "",
 		TextureResType texType = TextureResType::LOCAL);
 
+    void setTitleLabel(cocos2d::Label* label);
+    bool initUITitleLabel();
+    
 	ButtonScaleChild();
 
 	/**

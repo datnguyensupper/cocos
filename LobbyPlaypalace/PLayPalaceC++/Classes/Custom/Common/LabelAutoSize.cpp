@@ -1,5 +1,6 @@
 #include "LabelAutoSize.h"
 #include "Util/UtilFunction.h"
+#include "ButtonScaleChild.h"
 
 USING_NS_CC;
 
@@ -55,14 +56,18 @@ LabelAutoSize* LabelAutoSize::createWithBMFont(const std::string& bmfontFilePath
 	return nullptr;
 }
 
-void LabelAutoSize::setString(const std::string& text)
+void LabelAutoSize::setString(const std::string& text){
+	setString(text,0, 1);
+}
+
+void LabelAutoSize::setString(const std::string& text, float minScale, float maxScale)
 {
 	Label::setString(text);
 
 	switch (autofitType)
 	{
 	case Resize:
-		this->resizeToFit();
+		this->resizeToFit(minScale,maxScale);
 		break;
 	case TrimString:
 		this->trimStringToFit();
@@ -72,9 +77,10 @@ void LabelAutoSize::setString(const std::string& text)
 	}
 }
 
-void LabelAutoSize::resizeToFit()
+void LabelAutoSize::resizeToFit(float minScale, float maxScale)
 {
-	this->setScale(1);
+    this->setScale(1);
+    if(parentBtnScaleChild) parentBtnScaleChild->initUITitleLabel();
 	this->updateContent();
 	float scaleByWidth = this->getContentSize().width == 0 ? 0 : this->_textArea.width * 1.0f / this->getContentSize().width;
 	float scaleByHeight = this->getContentSize().height == 0 ? 0 : this->_textArea.height * 1.0f / this->getContentSize().height;
@@ -87,9 +93,13 @@ void LabelAutoSize::resizeToFit()
 	{
 		scaleValue = scaleByHeight;
 	}
+	if (scaleValue > 1) scaleValue = min(scaleValue, maxScale);
 	if (scaleValue != 0
 		&& abs(scaleValue < 1)) {
+		scaleValue = min(scaleValue, maxScale);
+		scaleValue = max(scaleValue, minScale);
 		this->setScale(scaleValue);
+        if(parentBtnScaleChild) parentBtnScaleChild->initUITitleLabel();
 	}
 }
 

@@ -5,16 +5,23 @@
 * file: GiftInfo.h
 */
 #include "BaseItemInfo.h"
+#include "Manager/LanguageManager.h"
 
 struct GiftInfo : public BaseItemInfo
 {
 	std::string message;
+	std::string message_en;
+	std::string message_vn;
+	std::string message_cn;
+	std::string message_tw;
+	std::string message_my;
+	std::string message_indo;
 	double coinReward;
 	int crownReward;
 	int luckyWheelReward;
 	int keyReward;
-	long fromUserId;
-	long toUserId;
+	int64_t fromUserId;
+	int64_t toUserId;
 	int status;
 	int type;
 
@@ -26,6 +33,19 @@ struct GiftInfo : public BaseItemInfo
 		BaseItemInfo::updateBaseItemInfoByValue(data);
 		if (data.HasMember(JSONFieldConstant::MESSAGE.c_str()))	
 			this->message = data[JSONFieldConstant::MESSAGE.c_str()].GetString();
+		if (data.HasMember(JSONFieldConstant::MESSAGE_EN.c_str()))
+			this->message_en = data[JSONFieldConstant::MESSAGE_EN.c_str()].GetString();
+		if (data.HasMember(JSONFieldConstant::MESSAGE_VN.c_str()))
+			this->message_vn = data[JSONFieldConstant::MESSAGE_VN.c_str()].GetString();
+		if (data.HasMember(JSONFieldConstant::MESSAGE_CN.c_str()))
+			this->message_cn = data[JSONFieldConstant::MESSAGE_CN.c_str()].GetString();
+		if (data.HasMember(JSONFieldConstant::MESSAGE_TW.c_str()))
+			this->message_tw = data[JSONFieldConstant::MESSAGE_TW.c_str()].GetString();
+		if (data.HasMember(JSONFieldConstant::MESSAGE_MY.c_str()))
+			this->message_my = data[JSONFieldConstant::MESSAGE_MY.c_str()].GetString();
+		if (data.HasMember(JSONFieldConstant::MESSAGE_INDO.c_str()))
+			this->message_indo = data[JSONFieldConstant::MESSAGE_INDO.c_str()].GetString();
+
 		if (data.HasMember(JSONFieldConstant::COIN_REWARD.c_str()))
 			this->coinReward = data[JSONFieldConstant::COIN_REWARD.c_str()].GetDouble();
 		if (data.HasMember(JSONFieldConstant::CROWN_REWARD.c_str()))
@@ -44,6 +64,34 @@ struct GiftInfo : public BaseItemInfo
 			this->type = data[JSONFieldConstant::Type.c_str()].GetInt();
 		
 	
+	}
+
+	std::string getMessage() {
+		std::string mes = "";
+		switch (LanguageManager::getInstance()->getCurrentLanguage()) {
+		case SupportLanguage::en:
+			mes = this->message_en;
+			break;
+		case SupportLanguage::vn:
+			mes = this->message_vn;
+			break;
+		case SupportLanguage::cn:
+			mes = this->message_cn;
+			break;
+		case SupportLanguage::tran_cn:
+			mes = this->message_tw;
+			break;
+		case SupportLanguage::my:
+			mes = this->message_my;
+			break;
+		case SupportLanguage::indo:
+			mes = this->message_indo;
+			break;
+		}
+		if (mes.empty()) {
+			mes = this->message;
+		}
+		return mes;
 	}
 
 	void update(GiftInfo* gift){

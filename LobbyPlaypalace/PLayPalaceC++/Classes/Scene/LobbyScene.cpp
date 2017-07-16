@@ -6,6 +6,7 @@
 
 #include "Manager/SoundManager.h"
 #include "Manager/PopupManager.h"
+#include "Manager/PromotionsManager.h"
 #include "Manager/InfoManager.h"
 #include "Manager/NetworkManager.h"
 #include "Manager/ScaleManager.h"
@@ -32,22 +33,11 @@ void LobbyScene::checkAndShowStrategyPopups()
 	auto infoMNG = InfoManager::getInstance();
 	auto additionalInfo = infoMNG->getAdditionalInfo();
 
-	if (
-		(infoMNG->getUserInfo()->role != USER_ROLE::FACEBOOK
-		|| !additionalInfo->dailyBonusWheelInfo->canCollect)
-
-		&& !additionalInfo->comebackBonusMobileInfo->canCollect
-		&& !additionalInfo->dailyBonusStreakInfo->canCollect
-
-		) {
-		return;
-	}
-
+	this->layerSwallowTouched->setVisible(true);
 	//CHECK AND SHOW DAILY BONUS WHEEL
 	if (infoMNG->getUserInfo()->role == USER_ROLE::FACEBOOK
 		&& additionalInfo->dailyBonusWheelInfo->canCollect)
 	{
-		this->layerSwallowTouched->setVisible(true);
 		NetworkManager::getInstance()->collectDailyBonusWheel(
 			[this, infoMNG](int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)
 		{
@@ -69,18 +59,27 @@ void LobbyScene::checkAndShowStrategyPopups()
 		}
 		);
 	}
+	else {
+		this->layerSwallowTouched->setVisible(false);
+	}
 
 	//CHECK AND SHOW COMEBACK BONUS MOBILE 
 	if (additionalInfo->comebackBonusMobileInfo->canCollect)
 	{
+		this->layerSwallowTouched->setVisible(false);
 		PopupManager::getInstance()->getComebackBonusMobilePopup()->prepareAndShow(this);
 	}
 	//CHECK AND SHOW DAILY BONUS STREAK
 //#if IS_DEBUG
 	if (additionalInfo->dailyBonusStreakInfo->canCollect) {
+		this->layerSwallowTouched->setVisible(false);
 		PopupManager::getInstance()->getDailyBonusStreakPopup()->prepareAndShow(this);
 	}
 //#endif
+
+	PromotionsManager::getInstance()->checkStartupPromotions([this](bool isHavePromotions) {
+		this->layerSwallowTouched->setVisible(false);
+	});
 }
 Scene* LobbyScene::createScene(ppEnum::GameScene lastScene)
 {
@@ -92,7 +91,7 @@ Scene* LobbyScene::createScene(ppEnum::GameScene lastScene)
 	auto origin = Director::getInstance()->getVisibleOrigin();
 
 
-	if (lastScene == ppEnum::GameScene::GameSlot) {
+	if (lastScene != ppEnum::GameScene::InitSession) {
 		scene->isShowLoading = true;
 		auto bgLoading = GameSlot::CSpriteButton::createButtonWithFile(PNG_LOADING_BACKGROUND, nullptr, nullptr);
 		bgLoading->setIsBlock(true);
@@ -106,6 +105,9 @@ Scene* LobbyScene::createScene(ppEnum::GameScene lastScene)
 			scene->onBegin();
 		}), NULL));
 	}
+	else {
+		PromotionsManager::getInstance()->reset();
+	}
 
 	// return the scene
 	return scene;
@@ -116,9 +118,14 @@ void LobbyScene::onBegin()
 	PopupManager::getInstance()->reset();
 	Tutorial::getInstance()->setFinishCallback(CC_CALLBACK_0(LobbyScene::checkAndShowStrategyPopups, this));
 	Tutorial::getInstance()->checkAndShow(this);
+	log("***************************start CCTextureCache::getInstance()->getDescription() ***********************");
+	//CCTextureCache::getInstance()->removeUnusedTextures();
+	log(CCTextureCache::getInstance()->getDescription().c_str());
+	log("***************************finish CCTextureCache::getInstance()->getDescription() ***********************");
 #if IS_DEBUG
 	TestManager::getInstance()->createTestButton(this);
 	TestManager::getInstance()->check4AutoTest(this);
+
 #endif
 }
 

@@ -10,10 +10,19 @@ using namespace std;
 class Helper4Time
 {
 public:
+	static const int64_t ONE_MINUTE_MILLISECOND = 60 * 1000;
+	static const int64_t ONE_HOUR_MILLISECOND = 3600 * 1000;
+	static const int64_t ONE_DAY_MILLISECOND = 24 * 3600 * 1000;
 	/// <summary>
 	/// from milisecond to string on normal format
 	/// </summary>
 	/// <param name="millisecond"></param>
 	/// <returns></returns>
-	static string millisecondTimeToNormalTimeHourMinAndSecString(int millisecond);
+	static string millisecondTimeToNormalTimeHourMinAndSecString(double millisecond);
+	/// <summary>
+	/// get current timestamp (millisecond)
+	/// </summary>
+	/// <param name="millisecond"></param>
+	/// <returns></returns>
+	static int64_t getCurrentTimeStamp();
 };

@@ -13,13 +13,13 @@ using namespace rapidjson;
 using namespace std;
 struct BeanComebackBonusGift
 {
-	long userId;
+	int64_t userId;
 	double coinBeforeCollection;
 	double coinAfterCollection;
 	double bonusCoin;
-	long timestampLastLogin;
+	int64_t timestampLastLogin;
 	int status;
-	long numberOfInactiveDay;
+	int64_t numberOfInactiveDay;
 	double bonusCoinPerDay;
 
 	void updateDataFromValue(rapidjson::Value &beanData)
@@ -130,9 +130,9 @@ public:
 	string urlFullAvatar;
 	long serverStartTimestamp;
 
-	long timeLeftSendFreeGift;
-	long timeLeftSendCoin;
-	long timeLeftRequestSecretKey;
+	int64_t timeLeftSendFreeGift;
+	int64_t timeLeftSendCoin;
+	int64_t timeLeftRequestSecretKey;
 	string userName;
 	bool validateActivated;
 
@@ -153,7 +153,7 @@ public:
 	string extraInfo;
 
 	bool allowGetLoginCount;
-	long timestampLastLogin;
+	int64_t timestampLastLogin;
 	long loginCount;
 
 	int blueStone;
@@ -175,7 +175,7 @@ public:
 	bool allowGetTutorialSpinReward;
 	bool allowGetPreTutorialReward;
 
-	long remainingExp;
+	int64_t remainingExp;
 
 	bool allowGetTimestampLastLogin;
 

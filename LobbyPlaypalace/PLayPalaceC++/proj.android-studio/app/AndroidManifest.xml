@@ -14,6 +14,12 @@
         <provider android:authorities="com.facebook.app.FacebookContentProvider822586904502053" android:exported="true" android:name="com.facebook.FacebookContentProvider" />
         <activity android:configChanges="orientation|keyboardHidden|screenSize" android:hardwareAccelerated="true" android:name="com.adcolony.sdk.AdColonyInterstitialActivity"  android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity android:configChanges="orientation|keyboardHidden|screenSize" android:hardwareAccelerated="true" android:name="com.adcolony.sdk.AdColonyAdViewActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name="com.vungle.publisher.VideoFullScreenAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

@@ -27,7 +27,7 @@ bool MissingPopup::init()
 
 	//MISSING LABEL
 	this->missingCoinLabel = Label::createWithTTF(
-		TTFConfig(FONT_PassionOne_Regular, 36),
+		TTFConfig(FONT_PassionOne_Regular, 45),
 		"You need...",
 		TextHAlignment::RIGHT
 	);
@@ -42,7 +42,7 @@ bool MissingPopup::init()
 
 	//MORE TXT
 	this->moreLabel = Label::createWithTTF(
-		TTFConfig(FONT_PassionOne_Regular, 36),
+		TTFConfig(FONT_PassionOne_Regular, 45),
 		"more",
 		TextHAlignment::LEFT
 	);
@@ -51,7 +51,7 @@ bool MissingPopup::init()
 	background->addChild(this->moreLabel);
 
 	//LEFT BTN
-	this->leftBtn = this->createButtonWithFrameName(PNG_FRAME_PURPLE_POPUP_BUTTON, Language(nullptr, LanguageConstant::CANCEL));
+	this->leftBtn = this->createButtonWithFrameName(PNG_FRAME_PURPLE_POPUP_BUTTON, false, Language(nullptr, LanguageConstant::CANCEL));
 	this->leftBtn->setPosition(background->getContentSize() / 2 
 		+ Size(-this->leftBtn->getContentSize().width / 1.5f, -background->getContentSize().height / 5)
 	);
@@ -78,7 +78,7 @@ bool MissingPopup::init()
 	background->addChild(this->leftBtn);
 
 	//RIGHT BTN
-	this->rightBtn = this->createButtonWithFrameName(PNG_FRAME_YELLOW_POPUP_BUTTON, "BUY COINS");
+	this->rightBtn = this->createButtonWithFrameName(PNG_FRAME_YELLOW_POPUP_BUTTON,false, "   BUY COINS   ");
 	this->rightBtn->setPosition(background->getContentSize() / 2
 		+ Size(this->rightBtn->getContentSize().width / 1.5f, -background->getContentSize().height / 5)
 	);
@@ -127,13 +127,13 @@ void MissingPopup::prepareAndShow(cocos2d::Node * parent, ppEnum::PPCurrency mis
 		this->currencySprite->initWithFile(PNG_SHOP_COIN_ICON);
 		this->leftBtn->loadTextureNormal(PNG_FRAME_GREEN_POPUP_BUTTON, ui::Widget::TextureResType::PLIST);
 		this->leftBtn->getTitleLabel()->setString("BUY MAGIC ITEMS");
-		this->rightBtn->getTitleLabel()->setString("BUY COINS");
+		this->rightBtn->getTitleLabel()->setString("   BUY COINS   ");
 		break;
 	case ppEnum::CROWN_CURRENCY:
 		this->currencySprite->initWithFile(PNG_SHOP_CROWN_ICON);
 		this->leftBtn->loadTextureNormal(PNG_FRAME_PURPLE_POPUP_BUTTON, ui::Widget::TextureResType::PLIST);
 		this->leftBtn->getTitleLabel()->setString(Language(leftBtn->getTitleLabel(),LanguageConstant::CANCEL));
-		this->rightBtn->getTitleLabel()->setString("BUY CROWNS");
+		this->rightBtn->getTitleLabel()->setString("   BUY CROWNS   ");
 		break;
 	default:
 		return;

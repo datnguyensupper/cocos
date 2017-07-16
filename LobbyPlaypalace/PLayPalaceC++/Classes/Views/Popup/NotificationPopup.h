@@ -79,7 +79,13 @@ public:
 	/// <param name="parent">parent of popup</param>
 	void showUnfinishJobPopup(
 		cocos2d::Node* parent
-	);
+                              );
+    
+    /// <summary>
+    /// show unfinish popup
+    /// </summary>
+    /// <param name="parent">parent of popup</param>
+    void showDisconnect2PurchaseStore(cocos2d::Node* parent);
 
 	/// <summary>
 	/// show not support popup

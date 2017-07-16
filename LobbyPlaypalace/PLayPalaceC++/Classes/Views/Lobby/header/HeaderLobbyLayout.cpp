@@ -64,7 +64,7 @@ bool HeaderLobbyLayout::init()
 });
 	this->avatarSprite->setScale(RADIUS_CIRCLE_AVATAR  * 2.0f / this->avatarSprite->getContentSize().width);
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && CALL_NATIVE_CROP_AVATAR)
+#if (CALL_NATIVE_CROP_AVATAR)
 	this->avatarSprite->setPosition(avatarPos);
 	this->addChild(avatarSprite);
 #else

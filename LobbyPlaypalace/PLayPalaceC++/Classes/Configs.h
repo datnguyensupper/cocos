@@ -15,11 +15,17 @@ public:
 #pragma region app configs
 	static const bool isProduction;
 	static const string AppDomain;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	static const string AppDomainTest;
+#endif
 	static const bool printConsoleLog;
 	static const string webServiceFullUrl;
 	static const string appBundleID_android;
 	static const string appBundleID_IOS;
 	static const string downloadGameSlotPath;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	static const string downloadGameSlotPathTest;
+#endif
 	static const string freeGiftFacebookProductId;
 
 	static const int mobilePlatform;

@@ -40,18 +40,35 @@ namespace GameSlot {
 		createButton(1, "doubleup_btn_escape", Vec2(765, 115) * CSettings::SCALE_VALUE_TO_1920);
 		createButton(2, "doubleup_btn_capture", Vec2(1119, 115) * CSettings::SCALE_VALUE_TO_1920);
 
+		oCurrentWinBg = cocos2d::ui::Scale9Sprite::createWithSpriteFrameName("doubleup_bottom_bg_win_amount");
+		oCurrentWinBg->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+		auto capInsets = oCurrentWinBg->getCapInsets();
+		capInsets.origin.x = capInsets.size.width / 2 - 2;
+		capInsets.size.width = 4;
+		oCurrentWinBg->setCapInsets(capInsets);
+		oCurrentWinBgOriginalSize = oCurrentWinBg->getContentSize();
+		this->addChild(oCurrentWinBg);
 
 		this->oCurrentWinTxt = Label::createWithTTF(res.fontConfigs["double_up"], "0");
 		this->oCurrentWinTxt->setPosition(this->aBtn[0]->getPosition() - Vec2(0, 50));
 		this->oCurrentWinTxt->setTextColor(Color4B(255, 254, 197, 255));
 		this->oCurrentWinTxt->enableOutline(Color4B(135, 72, 41, 255));
 		this->addChild(this->oCurrentWinTxt);
+		oCurrentWinBg->setPosition(this->oCurrentWinTxt->getPosition() - Vec2(5, 2));
+
+
+		oPotentialWinBg = cocos2d::ui::Scale9Sprite::createWithSpriteFrameName("doubleup_bottom_bg_win_amount");
+		oPotentialWinBg->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+		oPotentialWinBg->setCapInsets(capInsets);
+		oPotentialWinBgOriginalSize = oPotentialWinBg->getContentSize();
+		this->addChild(oPotentialWinBg);
 
 		this->oPotentialWinTxt = Label::createWithTTF(res.fontConfigs["double_up"], "0");
 		this->oPotentialWinTxt->setPosition(CSettings::CANVAS_WIDTH - this->oCurrentWinTxt->getPositionX() - 10, this->oCurrentWinTxt->getPositionY());
 		this->oPotentialWinTxt->setTextColor(Color4B(255, 254, 197, 255));
 		this->oPotentialWinTxt->enableOutline(Color4B(135, 72, 41, 255));
 		this->addChild(this->oPotentialWinTxt);
+		oPotentialWinBg->setPosition(this->oPotentialWinTxt->getPosition() - Vec2(5, 2));
 
 		return true;
 	}
@@ -185,8 +202,11 @@ namespace GameSlot {
 	void CDoubleUpDB::updateTotalWinText()
 	{
 		if (this->iTotWin > 0) {
+			//this->iTotWin = 10000000000000000000;
 			this->oCurrentWinTxt->setString(UtilFunction::FormatWithCommas(this->iTotWin));
+			oCurrentWinBg->setContentSize(Size(MAX(oCurrentWinBgOriginalSize.width,MIN(oCurrentWinTxt->getContentSize().width+60, oCurrentWinBgOriginalSize.width*2)),oCurrentWinBgOriginalSize.height));
 			this->oPotentialWinTxt->setString(UtilFunction::FormatWithCommas(this->iTotWin * 2));
+			oPotentialWinBg->setContentSize(Size(MAX(oPotentialWinBgOriginalSize.width, MIN(oPotentialWinTxt->getContentSize().width + 60, oPotentialWinBgOriginalSize.width * 2)), oPotentialWinBgOriginalSize.height));
 
 			this->oCurrentWinTxt->runAction(Sequence::createWithTwoActions(
 				EaseBounceOut::create(ScaleTo::create(0.1f, 1.5f)),

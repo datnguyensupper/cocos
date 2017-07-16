@@ -212,7 +212,8 @@ void DailyChallengePopup::reloadTotalProgress(DailyChallengeInfo * info, int tot
 				anim,
 				anim->reverse()
 		)));
-		this->txtCollect->setString(Language(txtCollect,LanguageConstant::COLLECT));
+		//this->txtCollect->setString(Language(txtCollect,LanguageConstant::COLLECT));
+		this->txtCollect->setString("Collect");
 		this->txtCollect->setTextColor(Color4B(217, 255, 83, 255));
 		this->txtCollect->enableOutline(Color4B(0, 255, 255, 75), 4);
 	} else {

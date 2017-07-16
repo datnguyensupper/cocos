@@ -179,7 +179,7 @@ public:
 	/// <param name="titleText">title button</param>
 	/// <param name="fontSize"></param>
 	/// <returns></returns>
-	cocos2d::ui::Button* createButton(std::string titleText, float fontSize);
+	cocos2d::ui::Button* createButton(bool isMutilpleLanguage, std::string titleText, float fontSize);
 	/// <summary>
 	/// enable popup
 	/// </summary>

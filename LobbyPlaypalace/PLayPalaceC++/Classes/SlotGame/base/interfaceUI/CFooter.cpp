@@ -1,6 +1,5 @@
 #include "CFooter.h"
 #include "SlotGame/base/game/CGameBase.h"
-#include "Manager/InfoManager.h"
 #include "Manager/PopupManager.h"
 #include "Views/Popup/NotificationPopup.h"
 #include "Views/Popup/MissingPopup.h"
@@ -23,6 +22,7 @@ namespace GameSlot {
 		this->autorelease();
 		auto gameID = InfoManager::getInstance()->getGameIDByName(this->oGame->getMain()->getGameName());
 		this->aPayLineConfig = InfoManager::getInstance()->getMapListPaylineConfig().at(gameID);
+		this->currentConfig.level = -1;
 
 		for (auto config : aPayLineConfig) {
 			unsigned bet = config.maxBetPerLine;
@@ -284,9 +284,9 @@ namespace GameSlot {
 
 		PopupManager::getInstance()->getInfoPopup()->getBetTab()->setEnableBtn(oBtn->getParent()->getName() == "bet" ? BetType::Bet : BetType::PayLine, oBtn->getName(), isEnabled) ;
 	}
-	PayLineConfig * CFooter::getConfigByLevel(int iLevel)
+	PayLineConfig CFooter::getConfigByLevel(int iLevel)
 	{
-		if (!this->currentConfig || this->currentConfig->level != iLevel) {
+		if (this->currentConfig.level != iLevel) {
 			PayLineConfig configByLevel;
 			for (auto config : aPayLineConfig) {
 				if (config.level > iLevel) {
@@ -294,14 +294,14 @@ namespace GameSlot {
 				}
 				configByLevel = config;
 			}
-			this->currentConfig = &configByLevel;
+			this->currentConfig = configByLevel;
 		}
 		return this->currentConfig;
 	}
 	unsigned CFooter::getMaxBet()
 	{
 		auto config = this->getConfigByLevel(InfoManager::getInstance()->getUserInfo()->level + 1);
-		return config->maxBetPerLine;
+		return config.maxBetPerLine;
 	}
 	unsigned CFooter::getMinPayLine()
 	{
@@ -315,6 +315,6 @@ namespace GameSlot {
 	unsigned CFooter::getMaxPayLine()
 	{
 		auto config = this->getConfigByLevel(InfoManager::getInstance()->getUserInfo()->level + 1);
-		return config->maxPayLine;
+		return config.maxPayLine;
 	}
 }

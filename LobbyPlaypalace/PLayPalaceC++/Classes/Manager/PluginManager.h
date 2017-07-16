@@ -8,9 +8,9 @@
 #include "cocos2d.h"
 #include "Plugins/FacebookController.h"
 #include "Plugins/IAPController.h"
-#include "Plugins/AdcolonyController.h"
 #include "Plugins/GamePlugin.h"
 #include "Plugins/ImagePicker/ImagePicker.h"
+#include "Plugins/AdvertiseController.h"
 
 class PluginManager
 {
@@ -20,7 +20,7 @@ private:
 
 	FacebookController* facebookController;
 	IAPController* iapController;
-	AdcolonyController* adcolonyController;
+	AdvertiseController* advertiseController;
 	GamePlugin* gamePlugin;
 	cocos2d::ImagePicker* imagePickerController;
 public:
@@ -48,10 +48,10 @@ public:
 		return this->iapController;
 	}
 	/**
-	* 2017-03-01: Kiet: get adcolony controller
+	* get Vungle Controller
 	*/
-	AdcolonyController* getAdcolonyController() {
-		return this->adcolonyController;
+	AdvertiseController* getAdvertiseController() {
+		return this->advertiseController;
 	}
 
 	/**

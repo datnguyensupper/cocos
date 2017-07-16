@@ -42,6 +42,7 @@ private:
 	cocos2d::Label* myCodeTitleLabel;
 	cocos2d::Label* myRefCodeTitleLabel;
 	cocos2d::Label* versionLabel;
+	cocos2d::CCMenu* menuVersionLabel;
 #pragma endregion
 
 	int numberLabelVersionTextTouched = 0;

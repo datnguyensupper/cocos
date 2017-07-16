@@ -98,6 +98,16 @@ public:
 		MAGIC_ITEM_100_PERCENT_BIG_WIN = 126
 	};
 
+	enum FlipCardType {
+		CARD_1 = 1,
+		CARD_2 = 2,
+		CARD_3 = 3,
+		CARD_4 = 4,
+		CARD_5 = 5,
+		CARD_6 = 6,
+		CARD_7 = 7,
+		CARD_8 = 8,
+	};
 	///* ------------------------------------------------- Magic Item ------------------------------------------------- */
 	//public static final int MAGIC_ITEM_TYPE_DEFAULT = 0; // normal spin without magic item
 	//public static final int MAGIC_ITEM_TYPE_100_PERCENT_MEGA_WIN = 1;
@@ -1022,6 +1032,7 @@ public:
 	static const string API_FEATURE_BEAN_TYPE_MOBILE_SLOT_GAME_PAY_LINE_CONFIG;
 	static const string API_FEATURE_BEAN_TYPE_LUCKY_BOX_CONFIG;
 	static const string API_FEATURE_BEAN_TYPE_MAGIC_ITEM_CONFIG;
+	static const string API_FEATURE_BEAN_TYPE_LIST_FLIP_CARD_CONFIG;
 
 	static const int PAYMENT_API_VERSION_UNKNOWN;
 	static const int PAYMENT_API_VERSION_FACEBOOK;
@@ -1029,8 +1040,7 @@ public:
     static const int PAYMENT_API_VERSION_CORDOVA;
     static const int PAYMENT_API_VERSION_COCOS;
 
-	static const int SPECIAL_OFFER_API_VERSION_UNITY;
-	static const int SPECIAL_OFFER_API_VERSION_CORDOVA;
+	static const int SPECIAL_OFFER_API_VERSION;
 
 	static const int SCHEDULER_LOG_TYPE_CHECK_SCHEDULER_STATUS_SCHEDULER;
 	static const int SCHEDULER_LOG_TYPE_CALCULATE_AVG_PLAY_TIME_SCHEDULER;
@@ -1115,4 +1125,7 @@ public:
 	static const string API_BONUS_BEAN_TYPE_BOOSTER;
 	static const string API_BONUS_BEAN_TYPE_COMEBACK_BONUS;
 	static const string API_BONUS_BEAN_TYPE_MAGIC_ITEM;
+	static const string API_BONUS_BEAN_TYPE_SCRATCH_CARD_INFO;
+	static const string API_BONUS_BEAN_TYPE_FEEDBACK;
+	static const string API_BONUS_BEAN_TYPE_FLIP_CARD_INFO;
 };

@@ -1,6 +1,6 @@
 #include "GamePlugin.h"
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS)
 using namespace cocos2d;
-
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include <jni.h>
@@ -9,7 +9,6 @@ using namespace cocos2d;
 extern "C" {
 
 }
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #endif
 
 cocos2d::Image* GamePlugin::circleImage(unsigned char* data, size_t len)
@@ -36,8 +35,9 @@ cocos2d::Image* GamePlugin::circleImage(unsigned char* data, size_t len)
 		t.env->DeleteLocalRef(oldData);
 		t.env->DeleteLocalRef(newData);
 		t.env->DeleteLocalRef(t.classID);
-	}
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    }
 #endif
 	return newImg;
 }
+
+#endif

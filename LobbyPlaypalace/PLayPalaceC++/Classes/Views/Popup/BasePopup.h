@@ -33,27 +33,27 @@ protected:
 	/**
 	* create label of button
 	*/
-	virtual cocos2d::ui::Button* createLabelButton(ButtonScaleChild* btn, std::string titleText = "", float fontSize = 60);
+	virtual cocos2d::ui::Button* createLabelButton(ButtonScaleChild* btn, bool isMutilpleLanguage, std::string titleText = "", float fontSize = 60);
 	/**
 	* create button base on sprite name
 	*/
-	virtual cocos2d::ui::Button* createButton(const std::string& fileName, std::string titleText = "", float fontSize = 60);
+	virtual cocos2d::ui::Button* createButton(const std::string& fileName, bool isMutilpleLanguage, std::string titleText = "", float fontSize = 60);
 	/**
 	* create button base on frame name
 	*/
-	virtual cocos2d::ui::Button* createButtonWithFrameName(const std::string& frameName, std::string titleText = "", float fontSize = 60);
+	virtual cocos2d::ui::Button* createButtonWithFrameName(const std::string& frameName, bool isMutilpleLanguage, std::string titleText = "", float fontSize = 60);
 	/**
 	* create blue button
 	*/
-	virtual cocos2d::ui::Button* createBlueButton(std::string titleText = "", float fontSize = 60);
+	virtual cocos2d::ui::Button* createBlueButton(bool isMutilpleLanguage, std::string titleText = "", float fontSize = 60);
 	/**
 	* 2017-02-18: Kiet: create green button
 	*/
-	virtual cocos2d::ui::Button* createGreenButton(std::string titleText = "", float fontSize = 60);
+	virtual cocos2d::ui::Button* createGreenButton(bool isMutilpleLanguage, std::string titleText = "", float fontSize = 60);
 	/**
 	* 2017-02-18: Kiet: create purple button
 	*/
-	virtual cocos2d::ui::Button* createPurpleButton(std::string titleText = "", float fontSize = 60);
+	virtual cocos2d::ui::Button* createPurpleButton(bool isMutilpleLanguage, std::string titleText = "", float fontSize = 60);
 	/**
 	* 2017-02-22: Kiet: create list animation for show popup
 	* override this to JUST custom ONLY animation for show popup ( don't need call visible true after run animation )

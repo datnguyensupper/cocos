@@ -97,7 +97,7 @@ void PiggyBankPopup::initGroupNormal()
 	((LabelAutoSize*)this->txtCoin)->setTextAreaSize(Size(sprtPig->getContentSize().width * 0.75f, 100));
 	this->groupInfo->addChild(this->txtCoin);
 
-	this->btnBreak = this->createButtonWithFrameName(PNG_FRAME_GREEN_POPUP_BUTTON_NEW, "Break now for $2.99", 30);
+	this->btnBreak = this->createButtonWithFrameName(PNG_FRAME_GREEN_POPUP_BUTTON_NEW, false, "Break now for $2.99", 30);
 	this->btnBreak->setCascadeOpacityEnabled(true);
 	this->btnBreak->setScaleX(1.1f);
 	this->btnBreak->setPosition(this->groupInfo->getPosition() - Vec2(0, sprtPig->getContentSize().height / 4));
@@ -246,8 +246,7 @@ void PiggyBankPopup::stopAllAnimations()
 	this->groupBreaking->stopAnimation();
 }
 
-void PiggyBankPopup::onPurchaseFailed()
-{
+void PiggyBankPopup::onPurchaseFailed(){
 	this->btnBreak->setTouchEnabled(true);
 	closeBtn->setVisible(true);
 	this->hide();
@@ -308,7 +307,8 @@ void PiggyBankPopup::onBreakTouched(cocos2d::Ref* sender, cocos2d::ui::Widget::T
 		[this](sdkbox::Product const&p, const std::string&msg)
 	{
 		PopupManager::getInstance()->getLoadingAnimation()->hide();
-		this->onPurchaseFailed();
+        this->onPurchaseFailed();
+        PopupManager::getInstance()->getNotificationPopup()->showDisconnect2PurchaseStore(this->getParent());
 	},
 		[this](sdkbox::Product const&p)
 	{

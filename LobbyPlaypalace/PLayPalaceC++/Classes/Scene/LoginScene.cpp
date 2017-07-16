@@ -7,6 +7,9 @@
 #include "Manager/PopupManager.h"
 #include "Manager/PluginManager.h"
 #include "Manager/ScaleManager.h"
+#include "Manager/InfoManager.h"
+
+#include "Helper/Helper4Sprite.h"
 #if IS_DEBUG
 #include "Manager/Test/TestManager.h"
 #endif
@@ -17,6 +20,7 @@
 #include "Views/Login/SignUpLayer.h"
 #include "Views/Login/NotiLoginPopup.h"
 #include "Views/Tutorial/Tutorial.h"
+#include "Views/Popup/LoadingAnimation.h"
 
 #include "Util/UtilFunction.h"
 USING_NS_CC;
@@ -28,8 +32,8 @@ Scene* LoginScene::createScene(std::string title, std::string message)
 	PopupManager::getInstance()->reset();
 
 	if (!message.empty()
-		&& PopupManager::getInstance()->getNotificationLoginPopup())
-	{
+		&& PopupManager::getInstance()->getNotificationLoginPopup()){
+		NetworkManager::getInstance()->resetJSESSIONID();
         if(title.empty()) title =MessageConstant::MESSAGE_ERROR;
 		scene->showNotificationLoginPopup(
 			title,
@@ -98,7 +102,72 @@ bool LoginScene::init()
 	TestManager::getInstance()->createTestButton(this);
 #endif
 
+    check4AutoLogin();
+    
     return true;
+}
+
+void LoginScene::check4AutoLogin(){
+    
+    auto listener1 = EventListenerTouchOneByOne::create();
+    listener1->setSwallowTouches(true);
+    listener1->onTouchBegan = [this](Touch* touch, Event* event) {
+        if (Configs::printConsoleLog)	CCLOG("LOGIN SCENE DARK LAYER SWALLOW TOUCH");
+        if(((Sprite*)event->getCurrentTarget())->isVisible()) return true;
+        return false;
+    };
+    
+    //DARK LAYER
+    auto darkLayer = Helper4Sprite::createOptimizeSprite(PNG_LOADING_BACKGROUND);
+	darkLayer->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2) + origin);
+		//CCLayerColor::create(ccc4(0, 0, 0, 0));
+
+    //darkLayer->setScale(100);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, darkLayer);
+    this->addChild(darkLayer);
+//    darkLayer->setVisible(false);
+    
+    NetworkManager::getInstance()->getLoginTokenFromCache();
+    NetworkManager::getInstance()->getJSESSIONIDFromCache();
+    scheduleOnce([this,darkLayer](float dt){
+        if(darkLayer && darkLayer->isVisible()){
+            PopupManager::getInstance()->getLoadingAnimation()->showLoadingAnimationLogin(this);
+        }
+    }, 1.0f, "LoginScene::check4AutoLogin");
+    PopupManager::getInstance()->getLoadingAnimation()->hide();
+    
+    std::function<void(std::string result)> callbackError = [darkLayer, this](std::string result) {//time out
+        darkLayer->setVisible(false);
+        PopupManager::getInstance()->getLoadingAnimation()->hide();
+    };
+    
+    NetworkManager::getInstance()->getUserInfo(
+    /*dont show error*/false,[this,callbackError](int coreResultCode,
+        rapidjson::Value &doc,string responseAsString) {
+        cocos2d::log("User Info\n %s\n",responseAsString.c_str());
+        if(coreResultCode == RESULT_CODE_VALID){
+            InfoManager::getInstance()->updateUserInfo(doc);
+            if(InfoManager::getInstance()->getUserInfo()->role == USER_ROLE::GUEST){
+				gotoInitSessionSceneWithoutAnimation(0, ppEnum::LoginAndInitSSFrom::Guess);
+                return;
+            }else if(InfoManager::getInstance()->getUserInfo()->role == USER_ROLE::PLAYPALACE){
+				gotoInitSessionSceneWithoutAnimation(0, ppEnum::LoginAndInitSSFrom::PPAccount);
+                return;
+            }else if(
+                 InfoManager::getInstance()->getUserInfo()->role == USER_ROLE::FACEBOOK &&
+                 PluginManager::getInstance()->getFacebookController()->isLogined()){
+				gotoInitSessionSceneWithoutAnimation(0, ppEnum::LoginAndInitSSFrom::Facebook);
+                return;
+            }
+        }
+        callbackError("");
+    },
+    callbackError//error
+    ,callbackError//time out
+    );
+    
+    
+    
 }
 
 void LoginScene::moveCameraToView(LoginViews loginView)
@@ -128,9 +197,13 @@ void LoginScene::moveCameraToView(LoginViews loginView)
 	default:
 		break;
 	}
-	auto actionMoveByLayer = MoveTo::create(0.2f, Vec2(-xPosition, 0));
-	auto ease_in = EaseOut::create(actionMoveByLayer, 0.2f);
-	parent->runAction(ease_in);
+
+	if (parent->getActionByTag(2) == nullptr) {
+		auto actionMoveByLayer = MoveTo::create(0.2f, Vec2(-xPosition, 0));
+		auto ease_in = EaseOut::create(actionMoveByLayer, 0.2f);
+		ease_in->setTag(2);
+		parent->runAction(ease_in);
+	}
 
 	//auto defaultCamera = Camera::getDefaultCamera();
 	//// 2017-02-06: Kiet: get distance position will move to and current pos of camera 

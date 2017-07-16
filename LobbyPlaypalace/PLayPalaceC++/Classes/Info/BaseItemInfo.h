@@ -16,9 +16,9 @@ class BaseItemInfo
 public:
 #pragma region fields
 
-	long id;
-	long timestampOfCreated;
-	long timestampOfLastModified;
+	int64_t id;
+	int64_t timestampOfCreated;
+	int64_t timestampOfLastModified;
 	string info;
 	string name;
 

@@ -14,7 +14,6 @@ import android.preference.PreferenceManager.OnActivityResultListener;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.media.ExifInterface;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.content.Context;
 import android.database.Cursor;
@@ -38,12 +37,11 @@ public class Cocos2dxImagePicker implements OnActivityResultListener{
     public static void verifyStoragePermissions(Activity activity) {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
         // Check if we have write permission
-        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permission = activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
             // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                    activity,
+            activity.requestPermissions(
                     PERMISSIONS_STORAGE,
                     1
             );

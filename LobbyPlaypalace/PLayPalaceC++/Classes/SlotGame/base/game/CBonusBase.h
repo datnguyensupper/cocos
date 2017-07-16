@@ -74,14 +74,14 @@ namespace GameSlot {
 		*/
 		virtual void showFinalWin(float delay);
 		/**
-		* Exit Bonus to Main Game
-		*/
-		virtual void exitFromBonus();
-		/**
 		 * Reset function
 		 */
 		virtual void resetBonus();
 	public:
+		/**
+		* Exit Bonus to Main Game
+		*/
+		virtual void exitFromBonus();
 		CBonusBase(CGameBase* oGame);
 		virtual ~CBonusBase();
 		/**

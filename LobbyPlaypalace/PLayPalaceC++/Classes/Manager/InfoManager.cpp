@@ -1,8 +1,10 @@
 #include "InfoManager.h"
+#include "PromotionsManager.h"
 #include "Util/UtilFunction.h"
 #include "Constant/ResultCodeConstant.h"
 #include "Manager/NetworkManager.h"
 #include "Helper/Helper4ParseJSON.h"
+#include "Helper/Helper4Scene.h"
 #include "Constant/Defination.h"
 #include "Constant/LobbyConstant.h"
 #include "Helper/Helper4String.h"
@@ -30,9 +32,12 @@ InfoManager::InfoManager()
 	this->additionalInfo = new AdditionalInfo();
 	this->facebookFriendInfo = new FacebookFriendInfo();
 	this->achievementInfo = new AchievementInfo();
+	this->flipCardInfo = new FlipCardUserInfo();
+
 	this->listDailyBonuStreakConfig.clear();
 	this->magicItemConfig = new MagicItemConfig();
 	this->dailyChallengeInfo = new DailyChallengeInfo();
+	this->flipCardConfig = new FlipCardConfig();
 }
 
 InfoManager::~InfoManager()
@@ -45,6 +50,10 @@ InfoManager::~InfoManager()
 	CC_SAFE_DELETE(this->additionalInfo);
 	CC_SAFE_DELETE(this->achievementInfo);
 	CC_SAFE_DELETE(this->dailyChallengeInfo);
+	CC_SAFE_DELETE(this->flipCardInfo);
+
+
+	CC_SAFE_DELETE(this->flipCardConfig);
 	this->ClearStdMap(this->betSlotGameInfoMap);
 	this->ClearStdMap(this->serverSlotGameInfoMap);
 	this->ClearStdMap(this->levelInfoMap);
@@ -120,12 +129,16 @@ void InfoManager::reloadUserInfo(std::function<void(bool isSuccess, UserInfo* re
 		if (coreResultCode == RESULT_CODE_VALID)
 		{
 			updateUserInfo(doc);
+
+			PromotionsManager::getInstance()->checkRepeatedPromotions();
 		}
 		callback(coreResultCode == RESULT_CODE_VALID, this->getUserInfo());
 	};
-	NetworkManager::getInstance()->getUserInfo([callbackFromServer](int coreResultCode,
-		rapidjson::Value &doc,
-		string responseAsString) {
+	NetworkManager::getInstance()->getUserInfo(
+       true,
+       [callbackFromServer](int coreResultCode,
+		rapidjson::Value &doc,string responseAsString) {
+        cocos2d::log("User Info\n %s\n",responseAsString.c_str());
 		callbackFromServer(coreResultCode, doc, responseAsString);
 	}, [callback, this](std::string result) {
 		callback(false, this->getUserInfo());
@@ -172,9 +185,31 @@ void InfoManager::reloadDailyChallengeInfo(std::function<void(bool isSuccess, Da
 		rapidjson::Value &doc,
 		string responseAsString) {
 		if (coreResultCode == RESULT_CODE_VALID) {
+			this->dailyChallengeInfo->updateInfoByValue(doc);
 			if (callback) {
-				this->dailyChallengeInfo->updateInfoByValue(doc);
 				callback(true , this->dailyChallengeInfo);
+			}
+		}
+		else {
+			fail(responseAsString);
+		}
+	}, fail, fail);
+}
+void InfoManager::reloadFlipCardUserInfo(std::function<void(bool isSuccess, FlipCardUserInfo*result)> callback)
+{
+	const std::function<void(std::string)>& fail = [this, callback](std::string error) {
+		if (callback) {
+			callback(false, this->flipCardInfo);
+		}
+	};
+
+	NetworkManager::getInstance()->getFlipCardInfo([this, callback, fail](int coreResultCode,
+		rapidjson::Value &doc,
+		string responseAsString) {
+		if (coreResultCode == RESULT_CODE_VALID) {
+			this->flipCardInfo->updateInfoByValue(doc);
+			if (callback) {
+				callback(true, this->flipCardInfo);
 			}
 		}
 		else {
@@ -223,6 +258,12 @@ void InfoManager::reloadAdditionalInfo(std::function<void(bool isSuccess, Additi
 					this->additionalInfo->comebackBonusMobileInfo->updateInfoByValue(beanData);
 				else if (beanType == LobbyConstant::API_BONUS_BEAN_TYPE_MAGIC_ITEM)
 					this->additionalInfo->magicItemInfo->updateInfoByValue(beanData);
+				else if (beanType == LobbyConstant::API_BONUS_BEAN_TYPE_SCRATCH_CARD_INFO)
+					this->additionalInfo->scratchCardInfo->updateInfoByValue(beanData);
+				else if (beanType == LobbyConstant::API_BONUS_BEAN_TYPE_FEEDBACK)
+					this->additionalInfo->feedbackInfo->updateInfoByValue(beanData);
+				else if (beanType == LobbyConstant::API_BONUS_BEAN_TYPE_FLIP_CARD_INFO)
+					this->additionalInfo->flipCardInfo->updateInfoByValue(beanData);
 			}
 		}
 		if (callback)
@@ -510,6 +551,7 @@ void InfoManager::updatePayLineConfig(rapidjson::Value &data) {
 //	}
 	auto dataArray = Helper4ParseJSON::getMember(data);
 	auto length = dataArray.Size();
+	mapListPayLineConfig.clear();
 	for (int index = 0; index < length; index++)
 	{
 		int gameID = dataArray[index][JSONFieldConstant::GAME_ID.c_str()].GetInt();
@@ -538,6 +580,11 @@ void InfoManager::updateLuckyBoxConfig(rapidjson::Value &data) {
 
 void InfoManager::updateMagicItemConfig(rapidjson::Value &data) {
 	magicItemConfig->updateMagicItemConfigInfoByValue(data);
+}
+
+void InfoManager::updateFlipCardConfig(rapidjson::Value & data)
+{
+	this->flipCardConfig->updateConfigInfoByValue(data);
 }
 
 template <typename Key, typename Value>

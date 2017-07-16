@@ -1,5 +1,7 @@
 #include "CMainDB.h"
 #include "CGameDB.h"
+#include "Manager/PopupManager.h"
+#include "Views/Lobby/header/HeaderLobbyLayout.h"
 
 USING_NS_CC;
 namespace GameSlot {
@@ -307,6 +309,11 @@ namespace GameSlot {
 		//Because in this game, FreeSpin id is 3 and Bonus id is 2 (which is different from others)
 		//So we change it to be content with the inheritance
 		//We change when received bonus and only change when step = 1
+        tinyxml2::XMLPrinter printer;
+        oXmlDoc->Accept( &printer );
+        std::string xmltext = printer.CStr();
+        log("xml result:%s",xmltext.c_str() );
+        
 		if (this->oGame->getStepBonus() == 0) {
 			this->iCurBonus =
 				this->iCurBonus == BONUS_TYPE::BONUS_TYPE_3 ?
@@ -333,6 +340,11 @@ namespace GameSlot {
 		auto iStep = this->oGame->getStepBonus();
 
 		if (iStep == 0) {
+            if(dataXML->FirstChildElement("count") == nullptr){
+                PopupManager::getInstance()->getHeaderLobbyLayout()->gotoLobbyScene();
+//                this->oGame->exitFromBonus(0);
+                return;
+            }
 			auto totalFreeSpins = atoi(dataXML->FirstChildElement("count")->Attribute("s"));
 			auto totalMulty = atoi(dataXML->FirstChildElement("count")->Attribute("m"));
 			((CGameDB*)this->oGame)->onBonusFreeSpinStep0Received(totalFreeSpins, totalMulty);

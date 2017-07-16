@@ -930,6 +930,7 @@ const string LobbyConstant::API_FEATURE_BEAN_TYPE_MOBILE_SLOT_GAME_CONFIG = "Bea
 const string LobbyConstant::API_FEATURE_BEAN_TYPE_MOBILE_SLOT_GAME_PAY_LINE_CONFIG = "BeanMobileSlotGamePaylineConfig";
 const string LobbyConstant::API_FEATURE_BEAN_TYPE_LUCKY_BOX_CONFIG = "BeanListLuckyBoxConfig";
 const string LobbyConstant::API_FEATURE_BEAN_TYPE_MAGIC_ITEM_CONFIG = "BeanListMagicItemConfig";
+const string LobbyConstant::API_FEATURE_BEAN_TYPE_LIST_FLIP_CARD_CONFIG = "BeanListFlipCardConfig";
 
 const int LobbyConstant::PAYMENT_API_VERSION_UNKNOWN = 0;
 const int LobbyConstant::PAYMENT_API_VERSION_FACEBOOK = 1;
@@ -937,8 +938,7 @@ const int LobbyConstant::PAYMENT_API_VERSION_UNITY = 2;
 const int LobbyConstant::PAYMENT_API_VERSION_CORDOVA = 3;
 const int LobbyConstant::PAYMENT_API_VERSION_COCOS = 4;
 
-const int LobbyConstant::SPECIAL_OFFER_API_VERSION_UNITY = 0;
-const int LobbyConstant::SPECIAL_OFFER_API_VERSION_CORDOVA = 1;
+const int LobbyConstant::SPECIAL_OFFER_API_VERSION = 1;
 
 const int LobbyConstant::SCHEDULER_LOG_TYPE_CHECK_SCHEDULER_STATUS_SCHEDULER = 0;
 const int LobbyConstant::SCHEDULER_LOG_TYPE_CALCULATE_AVG_PLAY_TIME_SCHEDULER = 1;
@@ -1025,3 +1025,6 @@ const string LobbyConstant::API_BONUS_BEAN_TYPE_PIGGY_BANK = "BeanPiggyBank";
 const string LobbyConstant::API_BONUS_BEAN_TYPE_BOOSTER = "BeanBooster";
 const string LobbyConstant::API_BONUS_BEAN_TYPE_COMEBACK_BONUS = "BeanComebackBonusMobile";
 const string LobbyConstant::API_BONUS_BEAN_TYPE_MAGIC_ITEM = "BeanMagicItem";
+const string LobbyConstant::API_BONUS_BEAN_TYPE_SCRATCH_CARD_INFO = "BeanScratchCardInfo";
+const string LobbyConstant::API_BONUS_BEAN_TYPE_FEEDBACK = "BeanFeedback";
+const string LobbyConstant::API_BONUS_BEAN_TYPE_FLIP_CARD_INFO = "BeanFlipCardInfo";

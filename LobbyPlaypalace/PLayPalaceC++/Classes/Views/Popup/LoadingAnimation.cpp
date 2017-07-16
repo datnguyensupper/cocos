@@ -73,3 +73,22 @@ void LoadingAnimation::prepareAndShow(
 	BasePopup::show(parent, false);
 	this->setLocalZOrder(INT_MAX);
 }
+
+
+void LoadingAnimation::showLoadingAnimationLogin(cocos2d::Node* parent){
+    if (!this || !parent) {
+        return;
+    }
+    if (this->loadingAnimationLogin->getNumberOfRunningActions() <= 0)
+    {
+        auto actionLoadingLogin =
+        AnimationHelper::getInstance()->createAnimationByFrameName(
+                                                                   PLIST_LOADNING_ANIMATION_LOGIN, "Layer %i", 1, 20, 20, kRepeatForever);
+        this->loadingAnimationLogin->runAction(actionLoadingLogin);
+    }
+    this->loadingAnimationLogin->setVisible(true);
+    this->loadingAnimationLobby->setVisible(false);
+    this->setPosition(-parent->getPosition());
+    BasePopup::show(parent, false);
+    this->setLocalZOrder(INT_MAX);
+}

@@ -493,6 +493,9 @@
 	cancel: {
 		text: "取消"
 	},
+	buy: {
+		text: "购买"
+	},
 	buyNow: {
 		text: "立即购买"
 	},

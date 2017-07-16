@@ -11,7 +11,7 @@ class LevelInfo : public BaseItemInfo
 public:
 	int levelId;
 	double coinReward;
-	long crownReward;
+	double crownReward;
 
 	/// <summary>
 	/// update info from values from PP Server
@@ -26,6 +26,6 @@ public:
 		BaseItemInfo::updateBaseItemInfoByValue(data);
 		this->levelId = data[JSONFieldConstant::LEVEL_ID.c_str()].GetInt();
 		this->coinReward = data[JSONFieldConstant::COIN_REWARD.c_str()].GetDouble();
-		this->crownReward = data[JSONFieldConstant::CROWN_REWARD.c_str()].GetInt64();
+		this->crownReward = data[JSONFieldConstant::CROWN_REWARD.c_str()].GetDouble();
 	}
 };

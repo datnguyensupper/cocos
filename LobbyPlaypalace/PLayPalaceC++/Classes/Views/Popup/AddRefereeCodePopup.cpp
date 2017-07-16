@@ -89,4 +89,6 @@ void AddRefereeCodePopup::prepareAndShow(cocos2d::Node * parent)
 	auto confirmTxt = LanguageText(btnSend->getTitleLabel(),LanguageConstant::POPUP_REFERENCE, "confirm");
 	ToUpper(confirmTxt);
 	btnSend->getTitleLabel()->setString(confirmTxt);
+	UtilFunction::setLabelFontByLanguage(titleLabel);
+	titleLabel->setString(LanguageText(nullptr, LanguageConstant::POPUP_REFERENCE, "title"));
 }

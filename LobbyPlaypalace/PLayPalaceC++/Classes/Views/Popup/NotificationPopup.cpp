@@ -77,7 +77,7 @@ bool NotificationPopup::init()
 	this->addChild(exitButton);
 
 	//OK BUTTON
-	this->okButton = BasePopup::createGreenButton("", 50);
+	this->okButton = BasePopup::createGreenButton(false,"", 50);
 	this->okButton->setPosition(Vec2(
 		origin.x + visibleSize.width / 2 + this->okButton->getContentSize().width / 1.8f,
 		origin.y + visibleSize.height / 2 - background->getContentSize().height / 5
@@ -86,7 +86,7 @@ bool NotificationPopup::init()
 	this->addChild(this->okButton);
 
 	//CANCEL BUTTON
-	this->cancelButton = BasePopup::createPurpleButton("", 50);
+	this->cancelButton = BasePopup::createPurpleButton(false,"", 50);
 	this->cancelButton->setPosition(Vec2(
 		origin.x + visibleSize.width / 2 - this->cancelButton->getContentSize().width / 1.8, 
 		origin.y + this->okButton->getPosition().y
@@ -132,6 +132,12 @@ void NotificationPopup::prepareAndShow(
 	const std::function <void(void)> callbackCancel
 )
 {
+	std::string finalOKText = okText.c_str();
+	if (finalOKText.empty()) {
+		finalOKText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::OK);
+	}
+
+
 	UtilFunction::setLabelFontByLanguage(this->titleLabel);
 	this->titleLabel->setString(title);
 	UtilFunction::setLabelFontByLanguage(this->bodyLabel);
@@ -148,7 +154,7 @@ void NotificationPopup::prepareAndShow(
 	UtilFunction::setLabelFontByLanguage(this->infoLabel);
 	this->infoLabel->setString(info);
 	UtilFunction::setLabelFontByLanguage(this->okButton->getTitleLabel());
-	this->okButton->getTitleLabel()->setString(okText);
+	this->okButton->getTitleLabel()->setString(finalOKText);
 	UtilFunction::setLabelFontByLanguage(this->cancelButton->getTitleLabel());
 	this->cancelButton->getTitleLabel()->setString(cancelText);
 
@@ -204,7 +210,23 @@ void NotificationPopup::showUnfinishJobPopup(
 		LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::OK),
 		""
 	);
+}
 
+/**
+ * show unfinish job popup
+ */
+void NotificationPopup::showDisconnect2PurchaseStore(
+                                             cocos2d::Node* parent
+                                             ) {
+    
+    prepareAndShow(
+       parent,
+       "Error",
+       "Cannot connect to iTunes Store",
+       "OK",
+       ""
+       );
+    
 }
 
 /**

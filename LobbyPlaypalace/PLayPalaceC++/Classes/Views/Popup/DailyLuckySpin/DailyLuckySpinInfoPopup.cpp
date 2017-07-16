@@ -1,6 +1,7 @@
 #include "DailyLuckySpinInfoPopup.h"
 #include "Constant/Defination.h"
 #include "Constant/LanguageConstant.h"
+#include "Util/UtilFunction.h"
 
 USING_NS_CC;
 using namespace std;
@@ -46,7 +47,7 @@ bool DailyLuckySpinInfoPopup::init()
 		}
 	}
 
-	auto btnOK = this->createButtonWithFrameName(PNG_FRAME_GREEN_POPUP_BUTTON_NEW, Language(nullptr, LanguageConstant::OK));
+	btnOK = this->createButtonWithFrameName(PNG_FRAME_GREEN_POPUP_BUTTON_NEW, true, Language(nullptr, LanguageConstant::OK));
 	btnOK->addTouchEventListener([this](cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type != cocos2d::ui::Widget::TouchEventType::ENDED) {
@@ -62,5 +63,7 @@ bool DailyLuckySpinInfoPopup::init()
 
 void DailyLuckySpinInfoPopup::prepareAndShow(cocos2d::Node * parent)
 {
+	UtilFunction::setLabelFontByLanguage(btnOK->getTitleLabel());
+	btnOK->getTitleLabel()->setString(Language(nullptr, LanguageConstant::OK));
 	BasePopup::show(parent);
 }

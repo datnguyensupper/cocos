@@ -4,7 +4,7 @@
 class DailyLuckySpinInfoPopup : public BasePopup
 {
 private:
-
+	cocos2d::ui::Button * btnOK;
 public:
 	/// <summary>
 	/// init UI

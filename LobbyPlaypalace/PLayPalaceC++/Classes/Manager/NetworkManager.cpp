@@ -32,6 +32,11 @@ NetworkManager::~NetworkManager()
 {
 	CC_SAFE_DELETE(s_instance);
 }
+
+NetworkManager::NetworkManager()
+{
+    isFirstRequest = true;
+}
 #pragma region core_method
 void NetworkManager::sendRequestInQueue()
 {
@@ -45,19 +50,22 @@ void NetworkManager::sendRequestInQueue()
 		requestQueue[0]->release();
 	}
 }
+
 void NetworkManager::post(
+    bool isCheckErrorCode,
 	const std::string &url,
 	std::string &postData,
 	std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
 	std::function<void(std::string result)> callbackError,
 	std::function<void(std::string result)> callbackTimeOut,
 	float timeoutIn,
-	bool isAddLoginToken
-)
-{
+	bool isAddLoginToken){
+    
 	if (isAddLoginToken
-		&& !this->loginToken.empty())
-	{
+		&& !this->loginToken.empty()){
+        if (Configs::printConsoleLog){
+            CCLOG("loginToken = %s", this->loginToken.c_str());
+        }
 		postData += ((postData.empty() ? "" : "&") + (string)("loginToken=") + this->loginToken);
 	}
 
@@ -77,14 +85,14 @@ void NetworkManager::post(
 		request->setHeaders(headers);
 	}
 
-	if (Configs::printConsoleLog)
-	{
+	if (Configs::printConsoleLog){
 		CCLOG("SESSION = %s", this->session.c_str());
 	}
-	request->setResponseCallback([this, callback, callbackError, callbackTimeOut,url](
+	request->setResponseCallback([this, callback, callbackError, callbackTimeOut,url, isCheckErrorCode](
 		cocos2d::network::HttpClient* sender,
 		cocos2d::network::HttpResponse* response) {
 		onHttpRequestCompleted(
+            isCheckErrorCode,
 			sender,
 			response,
 			callback,
@@ -126,6 +134,7 @@ void NetworkManager::post(
 * @param callback callback after get response and passed handleSpecialErrorResultCode
 */
 void NetworkManager::post(
+    bool isCheckErrorCode,
 	const std::string &url,
 	std::string &data,
 	std::function<void(int coreResultCode, bool isSuccess, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -133,7 +142,8 @@ void NetworkManager::post(
 	bool isAddLoginToken
 ) {
 	post(
-		url, 
+        isCheckErrorCode,
+		url,
 		data, 
 		//request success
 		[callback](int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString) {
@@ -153,13 +163,14 @@ void NetworkManager::post(
 }
 
 void NetworkManager::postMultipart(
+    bool isCheckErrorCode,
 	const std::string & url,
 	const std::map<std::string, std::string>& formData,
 	const std::string &dataFieldName, const char* dataBinary, size_t dataLen,
 	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback, 
 	std::function<void(std::string result)> callbackError, std::function<void(std::string result)> callbackTimeOut, 
-	float timeoutIn)
-{
+	float timeoutIn){
+    
 	std::string boundary = UtilFunction::getRandomBoundary();
 
 	string postString = UtilFunction::getPostString(formData, boundary);
@@ -182,10 +193,11 @@ void NetworkManager::postMultipart(
 	{
 		CCLOG("SESSION = %s", this->session.c_str());
 	}
-	request->setResponseCallback([this, callback, callbackError, callbackTimeOut](
+	request->setResponseCallback([this, callback, callbackError, callbackTimeOut,isCheckErrorCode](
 		cocos2d::network::HttpClient* sender,
 		cocos2d::network::HttpResponse* response) {
 		onHttpRequestCompleted(
+            isCheckErrorCode,
 			sender,
 			response,
 			callback,
@@ -206,6 +218,7 @@ void NetworkManager::postMultipart(
 }
 
 void NetworkManager::get(
+     bool isCheckErrorCode,
 	const std::string &url,
 	std::string &data,
 	std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -234,10 +247,11 @@ void NetworkManager::get(
 		request->setHeaders(headers);
 	}
 
-	request->setResponseCallback([this, callback, callbackError, callbackTimeOut](
+	request->setResponseCallback([this, callback, callbackError, callbackTimeOut, isCheckErrorCode](
 		cocos2d::network::HttpClient* sender,
 		cocos2d::network::HttpResponse* response) {
-		onHttpRequestCompleted(
+        onHttpRequestCompleted(
+            isCheckErrorCode,
 			sender,
 			response,
 			callback,
@@ -263,6 +277,7 @@ void NetworkManager::get(
 	}
 }
 void NetworkManager::onHttpRequestCompleted(
+    bool isCheckErrorCode,
 	cocos2d::network::HttpClient* sender,
 	cocos2d::network::HttpResponse* response,
 	std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -272,7 +287,19 @@ void NetworkManager::onHttpRequestCompleted(
 {
 	requestQueue.erase(requestQueue.begin());
 	sendRequestInQueue();
-
+    
+    string stringResult = "";
+    if(response->getResponseData()){
+        if (Configs::printConsoleLog)
+            CCLOG("response data size = %d", response->getResponseData()->size());
+        std::vector<char> *buffer = response->getResponseData();
+        for (unsigned int i = 0; i < buffer->size(); i++){
+            stringResult += (*buffer)[i];
+        }
+        if (Configs::printConsoleLog)
+            CCLOG("API: %s \n response from server: %s", response->getHttpRequest()->getUrl(), stringResult.c_str());
+        
+    }
 	//request sucess
 	if (response
 		&& response->isSucceed()
@@ -283,23 +310,9 @@ void NetworkManager::onHttpRequestCompleted(
 		}
 		try
 		{
-			if (Configs::printConsoleLog)
-			{
-				CCLOG("response data size = %d", response->getResponseData()->size());
-			}
-			string stringResult = "";
-			std::vector<char> *buffer = response->getResponseData();
-			for (unsigned int i = 0; i < buffer->size(); i++)
-			{
-				stringResult += (*buffer)[i];
-			}
-			if (Configs::printConsoleLog)
-			{
-				CCLOG("API: %s \n response from server: %s", response->getHttpRequest()->getUrl(), stringResult.c_str());
-			}
 			//get session if session empty
-			if (this->session.empty())
-			{
+			if (this->session.empty() || isFirstRequest){
+                isFirstRequest = false;
 				this->getSession(response);
 			}
 			Document responseAsDocument;
@@ -309,7 +322,15 @@ void NetworkManager::onHttpRequestCompleted(
 			{
 				beanResponseAsDocument = responseAsDocument[JSONFieldConstant::BEAN.c_str()];
 			}
-			if (!this->handleSpecialErrorResultCode(responseAsDocument[JSONFieldConstant::RESULT_CODE.c_str()].GetInt())){
+            if(!isCheckErrorCode){
+                if (responseAsDocument.HasMember(JSONFieldConstant::RESULT_CODE.c_str())){
+                    callback(
+                             responseAsDocument[JSONFieldConstant::RESULT_CODE.c_str()].GetInt(),
+                             beanResponseAsDocument,
+                             stringResult
+                             );
+                }
+            }else if (!this->handleSpecialErrorResultCode(responseAsDocument[JSONFieldConstant::RESULT_CODE.c_str()].GetInt())){
 				if (callback){
 					if (responseAsDocument.HasMember(JSONFieldConstant::RESULT_CODE.c_str())){
 						callback(
@@ -331,27 +352,25 @@ void NetworkManager::onHttpRequestCompleted(
 	//request error
 	else {
 		if (Configs::printConsoleLog)
-		{
-			CCLOG("onHttpRequestCompleted fail");
-		}
-		if (!response)
-		{
-			CCLOG("onHttpRequestCompleted fail response null");
-		}
-		else if (!response->isSucceed())
-		{
+            CCLOG("onHttpRequestCompleted fail");
+		
+        if (!response){
+            CCLOG("onHttpRequestCompleted fail response null");
+        }else if (!response->isSucceed()){
 			CCLOG("onHttpRequestCompleted fail response not sucess");
-			if (response->getResponseCode() != 200)
-			{
+			if (response->getResponseCode() != 200){
 				CCLOG("onHttpRequestCompleted fail response code : %lu", response->getResponseCode());
 			}
 		}
-			
-		this->handleErrorRequest(
-			response,
-			callbackError,
-			callbackTimeOut
-		);
+        if(isCheckErrorCode){
+            this->handleErrorRequest(
+                response,
+                callbackError,
+                callbackTimeOut
+            );
+        }else if(callbackError){
+            callbackError(response->getResponseDataString());
+        }
 	}
 }
 void NetworkManager::getSession(cocos2d::network::HttpResponse* response)
@@ -389,9 +408,8 @@ void NetworkManager::getSession(cocos2d::network::HttpResponse* response)
 				}
 				for (auto stringParseByComma : stringsSplit)
 				{
-					if (stringParseByComma.find("JSESSIONID") != std::string::npos)
-					{
-						this->session = stringParseByComma;
+					if (stringParseByComma.find("JSESSIONID") != std::string::npos){
+                        updateJSESSIONID(stringParseByComma);
 						return;
 					}
 				}
@@ -436,16 +454,16 @@ void NetworkManager::handleErrorRequest(
 	case ppEnum::GameScene::GameSlot:
 		if (response&& (response->getResponseCode() == 404 || response->getResponseCode() == 405 || response->getResponseCode() == 500))
 			PopupManager::getInstance()->getNotificationPopup()->prepareAndShow(runningScene,"Warning","Server Maintenance",
-				"OK","","",[runningScene](){
-				runningScene->gotoLoginScene("","");
+				"","","",[runningScene](){
+				runningScene->gotoLoginScene(true,"","");
 			}, [runningScene]() {
-				runningScene->gotoLoginScene("", "");
+				runningScene->gotoLoginScene(true,"", "");
 			});
 		else
 			PopupManager::getInstance()->getNotificationPopup()->showServerErrorPopup(runningScene,nullptr,true,[runningScene](){
-				runningScene->gotoLoginScene("","");
+				runningScene->gotoLoginScene(true, "","");
 			},[runningScene](){
-				runningScene->gotoLoginScene("","");
+				runningScene->gotoLoginScene(true, "","");
 			});
 		
 		break;
@@ -491,7 +509,7 @@ bool NetworkManager::handleSpecialErrorResultCode(
 
 	if (returnWithValue){
 		okCallback = [this, runningScene]() {
-			runningScene->gotoLoginScene("", "");
+			runningScene->gotoLoginScene(true, "", "");
 		};
 		callbackCancel = okCallback;
 		PopupManager::getInstance()->getLoadingAnimation()->hide();
@@ -594,9 +612,10 @@ void NetworkManager::loginFB(
 	string postData = "token=" + accessToken;
 	postData += "&platform=" + ToString(Configs::mobilePlatform);
 	postData += "&isMobile=1";
-	this->session = "";
+	updateJSESSIONID("");
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/loginFacebook",
 		postData,
 		callback,
@@ -616,9 +635,10 @@ void NetworkManager::loginPPAcount(
 {
 	string postData = "username=" + username;
 	postData += "&password=" + password;
-	this->session = "";
+	updateJSESSIONID("");
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/login_web",
 		postData,
 		callback,
@@ -637,6 +657,7 @@ void NetworkManager::authorizePPAccount(
 	string postData = "";
 
 	get(
+        true,
 		Configs::webServiceFullUrl + "/user/authorize",
 		postData,
 		callback,
@@ -661,6 +682,7 @@ void NetworkManager::signUpPlayPalaceAccount(
 	postData += "&referenceCode=" + referenceCode;
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/sign_up",
 		postData,
 		callback,
@@ -680,6 +702,7 @@ void NetworkManager::generateGuessAcount(
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/local/signUp",
 		postData,
 		callback,
@@ -702,8 +725,9 @@ void NetworkManager::loginGuessAcount(
 	postData += "&password=" + passwordLocal;
 	postData += "&platform=" + String::createWithFormat("%d", Configs::versionCode)->_string;
 
-	this->session = "";
+	updateJSESSIONID("");
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/local/login",
 		postData,
 		callback,
@@ -724,6 +748,7 @@ void NetworkManager::resetPassword(
 	string postData = "username=" + username;
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/requestResetPassword",
 		postData,
 		callback,
@@ -749,6 +774,7 @@ void NetworkManager::getAllData(
 	postData += "&specialOfferAPIVersion=1";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/getAllData",
 		postData,
 		callback,
@@ -767,6 +793,7 @@ void NetworkManager::getAdditionalInfo(
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/getAdditionalInfo",
 		postData,
 		callback,
@@ -791,6 +818,7 @@ void NetworkManager::getAllFeatureConfig(
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/featureConfig/getAll",
 		postData,
 		callback
@@ -810,6 +838,7 @@ void NetworkManager::collectFreeCoinGift(
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/freeCoinGift/collect",
 		postData,
 		callback
@@ -817,6 +846,7 @@ void NetworkManager::collectFreeCoinGift(
 }
 
 void NetworkManager::getUserInfo(
+     bool isCheckErrorCode,
 	std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
 	std::function<void(std::string result)> callbackError,
 	std::function<void(std::string result)> callbackTimeOut
@@ -828,6 +858,7 @@ void NetworkManager::getUserInfo(
 	postData += "&getStatisticData=true";
 
 	post(
+         isCheckErrorCode,
 		Configs::webServiceFullUrl + "/user/profile",
 		postData,
 		callback,
@@ -839,12 +870,11 @@ void NetworkManager::getUserInfo(
 void NetworkManager::getGameSlotList(
 	std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
 	std::function<void(std::string result)> callbackError,
-	std::function<void(std::string result)> callbackTimeOut
-)
-{
+	std::function<void(std::string result)> callbackTimeOut){
 	string postData = "platform=" + ToString(Configs::mobilePlatform);
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/game/slot/listAll",
 		postData,
 		callback,
@@ -860,12 +890,11 @@ void NetworkManager::getGameSlotList(
 void NetworkManager::logout(
 	std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
 	std::function<void(std::string result)> callbackError,
-	std::function<void(std::string result)> callbackTimeOut
-)
-{
+	std::function<void(std::string result)> callbackTimeOut){
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/logout",
 		postData,
 		callback,
@@ -886,6 +915,7 @@ void NetworkManager::getAllGift(
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/gift/getAll",
 		postData,
 		callback,
@@ -898,6 +928,7 @@ void NetworkManager::acceptGift(long giftId, std::function<void(int coreResultCo
 	string postData = "id=" + ToString(giftId);
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/gift/accept",
 		postData,
 		callback,
@@ -910,6 +941,7 @@ void NetworkManager::acceptGiftAll(std::function<void(int coreResultCode, rapidj
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/gift/acceptAll",
 		postData,
 		callback,
@@ -922,6 +954,7 @@ void NetworkManager::getFriendList(std::function<void(int coreResultCode, rapidj
 	string postData = "";
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/friendList",
 		postData,
 		callback,
@@ -942,6 +975,7 @@ void NetworkManager::sendGiftToUserList(
 	}
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/gift/sendToUserList",
 		postData,
 		callback,
@@ -959,6 +993,7 @@ void NetworkManager::sendInviteFriend(std::vector<std::string> facebookUIDs, std
 	}
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/inviteFriends",
 		postData,
 		callback,
@@ -978,6 +1013,7 @@ void NetworkManager::getLeaderboard(
 	string postData = "type=" + String::createWithFormat("%d", type)->_string;
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/getLeaderboard",
 		postData,
 		callback,
@@ -999,6 +1035,7 @@ void NetworkManager::verifyAndroidPayment(
 	postData += "&paymentAPIVersion=" + ToString(LobbyConstant::PAYMENT_API_VERSION_COCOS);
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/payment/android/verify",
 		postData,
 		callback,
@@ -1018,6 +1055,7 @@ void NetworkManager::verifyIOSPayment(
     postData += "&paymentAPIVersion=" + ToString(LobbyConstant::PAYMENT_API_VERSION_COCOS);
     
     post(
+         true,
          Configs::webServiceFullUrl + "/user/payment/ios/verify",
          postData,
          callback,
@@ -1036,7 +1074,8 @@ void NetworkManager::uploadAvatar(
 	postData["loginToken"] = this->loginToken;
 
 	postMultipart(
-	Configs::webServiceFullUrl + "/user/updateAvatar",
+        true,
+        Configs::webServiceFullUrl + "/user/updateAvatar",
 		postData,
 		"avatar", data, len,
 		callback,
@@ -1052,6 +1091,7 @@ void NetworkManager::updateName(const std::string & newName,
 	string postData = "name=" + newName;
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/updateName",
 		postData,
 		callback,
@@ -1067,6 +1107,7 @@ void NetworkManager::submitReferenceCode(const std::string & referenceCode,
 	string postData = "referenceCode=" + referenceCode;
 
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/inputReferenceCode",
 		postData,
 		callback,
@@ -1084,6 +1125,7 @@ void NetworkManager::getAchievementList(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/achievement/listAllOfCurrentUser",
 		postData,
 		callback,
@@ -1099,6 +1141,7 @@ void NetworkManager::collectAchievement(int id,
 {
 	string postData = "achievementId=" + ToString(id);
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/collectAchievement",
 		postData,
 		callback,
@@ -1110,6 +1153,7 @@ void NetworkManager::collectDailyBonusWheel(std::function<void(int coreResultCod
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/dailyBonusWheel/collect",
 		postData,
 		callback,
@@ -1124,6 +1168,7 @@ void NetworkManager::collectComebackBonusMobile(std::function<void(int coreResul
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/comebackBonusMobile/collect",
 		postData,
 		callback,
@@ -1142,6 +1187,7 @@ void NetworkManager::redeemPreTutorialReward(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/redeemPreTutorialReward",
 		postData,
 		callback,
@@ -1156,6 +1202,7 @@ void NetworkManager::redeemTutorialReward(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/redeemTutorialReward",
 		postData,
 		callback,
@@ -1170,6 +1217,7 @@ void NetworkManager::finishTutorial(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/me/completeTutorial",
 		postData,
 		callback,
@@ -1187,6 +1235,7 @@ void NetworkManager::collectDailyBonusStreak(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/dailyBonusStreak/collect",
 		postData,
 		callback,
@@ -1207,6 +1256,7 @@ void NetworkManager::spinLuckyWheel(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/luckyWheel/spin",
 		postData,
 		callback,
@@ -1222,6 +1272,7 @@ void NetworkManager::buyLuckyWheelUsingCrow(
 {
 	string postData = "packageType=" + packageType;
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/luckyWheel/buySpinUsingCrown",
 		postData,
 		callback,
@@ -1239,6 +1290,7 @@ void NetworkManager::collectDailyBonusLuckySpin(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/dailyBonusLuckySpin/spin",
 		postData,
 		callback,
@@ -1256,6 +1308,7 @@ void NetworkManager::getDailyChallengeInfo(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/dailyChallenge/getInfo",
 		postData,
 		callback,
@@ -1270,6 +1323,7 @@ void NetworkManager::collectDailyChallenge(
 {
 	string postData = "";
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/dailyChallenge/collect",
 		postData,
 		callback,
@@ -1284,7 +1338,129 @@ void NetworkManager::activateMagicItem(int magicItemType, std::function<void(int
 {
 	string postData = "magicItemType=" + ToString(magicItemType);
 	post(
+         true,
 		Configs::webServiceFullUrl + "/user/magicItem/activate",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+#pragma endregion
+
+#pragma region ScratchCard
+void NetworkManager::scratchCard(
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback, 
+	std::function<void(std::string result)> callbackError, 
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "";
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/scratchCard/scratch",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+#pragma endregion
+
+#pragma region Promotion Code
+void NetworkManager::redeemPromotionCode(const std::string & token, 
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument,
+		std::string responseAsString)> callback, std::function<void(std::string result)> callbackError,
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "token=" + token;
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/promotionCode/redeem",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+#pragma endregion
+
+#pragma region Feedback
+void NetworkManager::redeemFeedback(
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback,
+	std::function<void(std::string result)> callbackError,
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "";
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/feedback/redeem",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+#pragma endregion
+
+#pragma region Flip Card Info
+void NetworkManager::getFlipCardInfo(
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback, 
+	std::function<void(std::string result)> callbackError, 
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "";
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/flipCard/getUserFlipCard",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+void NetworkManager::redeemFlipCard(
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback, 
+	std::function<void(std::string result)> callbackError, 
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "";
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/flipCard/redeem",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+void NetworkManager::upgradeFlipCard(
+	LobbyConstant::FlipCardType cardType, 
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback, 
+	std::function<void(std::string result)> callbackError, 
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "cardType=" + ToString(cardType);
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/flipCard/upgrade",
+		postData,
+		callback,
+		callbackError,
+		callbackTimeOut
+	);
+}
+#pragma endregion
+
+#pragma region Promotions Purchase API
+void NetworkManager::checkSpecialOffer(
+	std::function<void(int coreResultCode, rapidjson::Value&responseAsDocument, std::string responseAsString)> callback, 
+	std::function<void(std::string result)> callbackError, 
+	std::function<void(std::string result)> callbackTimeOut)
+{
+	string postData = "specialOfferAPIVersion=" + ToString(LobbyConstant::SPECIAL_OFFER_API_VERSION);
+	post(
+		true,
+		Configs::webServiceFullUrl + "/user/me/checkSpecialOffer",
 		postData,
 		callback,
 		callbackError,

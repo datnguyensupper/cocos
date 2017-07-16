@@ -6,7 +6,6 @@
 #include "Manager/NetworkManager.h"
 #include "Manager/PluginManager.h"
 #include "Manager/ScaleManager.h"
-#include "Plugins/AdcolonyController.h"
 #include "Views/Lobby/header/HeaderLobbyLayout.h"
 #include "Views/Lobby/bottom/BottomLobbyLayout.h"
 #include "Views/Popup/Achievement/AchievementPopup.h"
@@ -21,6 +20,7 @@
 #include "SlotGame/base/interfaceUI/CFooter.h"
 #include "Helper/Helper4Scene.h"
 #include "Helper/Helper4Sprite.h"
+#include "Custom/Common/LabelAutoSize.h"
 
 USING_NS_CC;
 
@@ -59,14 +59,15 @@ bool Welcome::init()
 	oInfo->setHorizontalAlignment(TextHAlignment::CENTER);
 	oInfo->setPosition(moveRight);
 
-	auto oTitle = Label::createWithTTF("WELCOME, " +
-			UtilFunction::trimStringAndAdd3Dots(InfoManager::getInstance()->getUserInfo()->name, 16)
-			+ "!",
-		FONT_PassionOne_Bold,
-		75);
-	oTitle->setHorizontalAlignment(TextHAlignment::CENTER);
-	oTitle->setTextColor(Color4B(255, 210, 77, 255));
-	oTitle->setPosition(Vec2(0, 100) + moveRight);
+	lb_welcome = LabelAutoSize::createWithTTF("WELCOME, " +InfoManager::getInstance()->getUserInfo()->name+ "!",FONT_PassionOne_Bold,75);
+	((LabelAutoSize*)lb_welcome)->setAutoFitType(LabelAutoFitType::TrimString);
+	((LabelAutoSize*)lb_welcome)->setTextAreaSize(Size(800, 0));
+
+
+	/*auto oTitle = Label::createWithTTF("WELCOME, " +UtilFunction::trimStringAndAdd3Dots(InfoManager::getInstance()->getUserInfo()->name, 13)+ "!",FONT_PassionOne_Bold,75);*/
+	lb_welcome->setHorizontalAlignment(TextHAlignment::CENTER);
+	lb_welcome->setTextColor(Color4B(255, 210, 77, 255));
+	lb_welcome->setPosition(Vec2(0, 100) + moveRight);
 
 	oClaimBtn = UtilFunction::createButtonWithText(PNG_FRAME_GREEN_LONG_POPUP_BUTTON,
 		"", "", ui::Widget::TextureResType::PLIST,
@@ -77,11 +78,17 @@ bool Welcome::init()
 	this->addChild(oBG);
 	this->addChild(oDarklayer);
 	this->addChild(oModel);
-	this->addChild(oTitle);
+	this->addChild(lb_welcome);
 	this->addChild(oInfo);
 	this->addChild(oClaimBtn);
 
 	return true;
+}
+
+
+void Welcome::updateWelcomeText() {
+
+	UtilFunction::detectFontAndSetStringForLabel(lb_welcome, FONT_PassionOne_Regular, "WELCOME, " + InfoManager::getInstance()->getUserInfo()->name);
 }
 
 void Welcome::addOnClaimListener(const std::function<void(cocos2d::Ref*sender, cocos2d::ui::Widget::TouchEventType type)>& claimCallBack)
@@ -333,6 +340,7 @@ void Tutorial::start()
 			});
 			this->addChild(oWelcome);
 		}
+		oWelcome->updateWelcomeText();
 		break;
 	}
 	case TutorialStep::StepSelectGame:
@@ -375,7 +383,7 @@ bool Tutorial::onTouched(cocos2d::Touch * touch, cocos2d::Event * event)
 {
 	if (Configs::printConsoleLog)
 	{
-		CCLOG("DARK LAYER SWALLOW TOUCH");
+		CCLOG("TUTORIAL DARK LAYER SWALLOW TOUCH");
 	}
 
 	cocos2d::Vec2 p = this->convertToNodeSpace(touch->getLocation());
@@ -485,6 +493,11 @@ bool Tutorial::onTouched(cocos2d::Touch * touch, cocos2d::Event * event)
 	return true;
 }
 
+
+void Tutorial::setTutorialString(std::string tutorialString) {
+	UtilFunction::detectFontAndSetStringForLabel(this->oText, FONT_PassionOne_Regular, tutorialString);
+}
+
 void Tutorial::showStep(TutorialStep step)
 {
 
@@ -502,9 +515,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x + this->aSize[this->info.iCurStep] * 1.4f,
 			this->aPos[this->info.iCurStep].y - this->aSize[this->info.iCurStep] * 1.3f);
 
-		UtilFunction::detectFontAndSetStringForLabel(this->oText, FONT_PassionOne_Regular, "Hello "
-			+ UtilFunction::trimStringAndAdd3Dots(this->userInfo->name, 16) + "!"
-			+ "\nTap the icon to start!");
+		/*UtilFunction::detectFontAndSetStringForLabel(this->oText, FONT_PassionOne_Regular, "Hello "+ UtilFunction::trimStringAndAdd3Dots(this->userInfo->name, 16) + "!"+ "\nTap the icon to start!");*/
+		setTutorialString("Hello " + UtilFunction::trimStringAndAdd3Dots(this->userInfo->name, 16) + "!" + "\nTap the icon to start!");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(60, -55));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width / 2 + 10 + origin.x);
@@ -517,7 +529,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x - this->aSize[this->info.iCurStep] * 1.3f,
 			this->aPos[this->info.iCurStep].y + this->aSize[this->info.iCurStep] * 2.3f);
 
-		this->oText->setString("Tap to change bet.");
+		//this->oText->setString("Tap to change bet.");
+		setTutorialString("Tap to change bet.");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(-200, 160));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width / 2 + 10+origin.x);
@@ -530,10 +543,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x + this->aSize[this->info.iCurStep] * 2.8f,
 			this->aPos[this->info.iCurStep].y - this->aSize[this->info.iCurStep] * 2.8f);
 
-		UtilFunction::detectFontAndSetStringForLabel(this->oText, FONT_PassionOne_Regular, "This is you, \n"
-			+ UtilFunction::trimStringAndAdd3Dots(this->userInfo->name, 16) +
-			".\nCustomize by logging in.");
-
+		//UtilFunction::detectFontAndSetStringForLabel(this->oText, FONT_PassionOne_Regular, "This is you, \n"+ UtilFunction::trimStringAndAdd3Dots(this->userInfo->name, 16) +".\nCustomize by logging in.");
+		setTutorialString("This is you, \n" + UtilFunction::trimStringAndAdd3Dots(this->userInfo->name, 16) + ".\nCustomize by logging in.");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(80, -80));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width*scaleDownRatio / 2 + 1300*scaleDownRatio+origin.x/2);
@@ -561,7 +572,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x - this->aSize[this->info.iCurStep] * 1.8f,
 			this->aPos[this->info.iCurStep].y);
 
-		this->oText->setString("Tap to spin!");
+		setTutorialString("Tap to spin!");
+		//this->oText->setString("Tap to spin!");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(-300, 10));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width / 2 + 10+origin.x);
@@ -579,7 +591,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x - this->aSize[this->info.iCurStep] * 2.8f,
 			this->aPos[this->info.iCurStep].y - this->aSize[this->info.iCurStep] * 2.8f);
 
-		this->oText->setString("This takes you back \nto the lobby.");
+		setTutorialString("This takes you back \nto the lobby.");
+		//this->oText->setString("This takes you back \nto the lobby.");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(-250, -110));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width / 2 + 10+origin.x);
@@ -593,8 +606,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setRotation(-145);
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x + this->aSize[this->info.iCurStep],
 			this->aPos[this->info.iCurStep].y + this->aSize[this->info.iCurStep] * 2.0f);
-
-		this->oText->setString("Tutorial completed! \nClaim your rewards now\nand spin away.");
+		setTutorialString("Tutorial completed! \nClaim your rewards now\nand spin away.");
+		//this->oText->setString("Tutorial completed! \nClaim your rewards now\nand spin away.");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(100, 160));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width / 2 + 1300*scaleDownRatio);
@@ -606,8 +619,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setRotation(-35);
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x + this->aSize[this->info.iCurStep] * 1.8f,
 			this->aPos[this->info.iCurStep].y - this->aSize[this->info.iCurStep] * 3.0f);
-
-		this->oText->setString("One more thing...");
+		setTutorialString("One more thing...");
+		//this->oText->setString("One more thing...");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(60, -90));
 
 		this->oModel->setPositionX(this->oModel->getContentSize().width / 2 + 1300 * scaleDownRatio);
@@ -619,8 +632,8 @@ void Tutorial::showStep(TutorialStep step)
 		this->oArrow->setRotation(-130);
 		this->oArrow->setPosition(this->aPos[this->info.iCurStep].x + this->aSize[this->info.iCurStep] * 1.3f,
 			this->aPos[this->info.iCurStep].y + this->aSize[this->info.iCurStep]);
-
-		this->oText->setString("You can always get more\nfree coins by watching a video.");
+		setTutorialString("You can always get more\nfree coins by watching a video.");
+		//this->oText->setString("You can always get more\nfree coins by watching a video.");
 		this->oText->setPosition(this->oArrow->getPosition() + Vec2(100, 120+(1-ScaleManager::
 getInstance()->getLookGoodScaleDownRatio())*oModel->getContentSize().height));
 
@@ -697,11 +710,11 @@ void Tutorial::loadLocal()
 	if (!bActive) {
 #if IS_DEBUG
 	/*test: force turn on tutorial*/
-		/*this->info.isFirstLogin = true;
-		this->info.iCurStep = TutorialStep::StepWelcome;
-		this->info.iCurStep = TutorialStep::StepShowShop;
-		this->info.isComplete = false;
-		this->userInfo->allowPlayTutorial = true;*/
+		//this->info.isFirstLogin = true;
+		//this->info.iCurStep = TutorialStep::StepWelcome;
+		////this->info.iCurStep = TutorialStep::StepShowShop;
+		//this->info.isComplete = false;
+		//this->userInfo->allowPlayTutorial = true;
 #endif
 	}
 }

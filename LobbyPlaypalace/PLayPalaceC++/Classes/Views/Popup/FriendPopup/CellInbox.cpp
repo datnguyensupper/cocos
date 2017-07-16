@@ -56,8 +56,7 @@ bool CellInbox::init()
 		avatarUserSprite->getContentSize().height * avatarUserSprite->getScaleY() / 2
 	);
 	//INIT AVATAR USER
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && CALL_NATIVE_CROP_AVATAR)
-	avatarUserSprite->setScale(avatarUserSprite->getScale() * Configs::SCALE_RESOUCE_VALUE);
+#if (CALL_NATIVE_CROP_AVATAR)
 	//avatarUserSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	avatarUserSprite->setPosition(avatarPos);
 	this->addChild(avatarUserSprite);
@@ -103,18 +102,22 @@ void CellInbox::updateCell(GiftInfo * _giftInfo)
 	std::string coinRerwardWithCommaFormat = UtilFunction::FormatWithCommas(this->giftInfo->coinReward);
 	auto languageManager = LanguageManager::getInstance();
 	std::string spriteFrame = ADMIN_ICON;
-	std::string message = this->giftInfo->message;
+	std::string message = this->giftInfo->getMessage();
 	bool isUserAvatar = false;
     float scaleRatioForAvatarIcon = 1;
     Vec2 translateForAvatarIcon = Vec2::ZERO;
 	UtilFunction::setLabelFontByLanguage(messageLabel);
 	switch (static_cast<LobbyConstant::GiftType>(this->giftInfo->type))
 	{
-	case LobbyConstant::GIFT_SECRET_KEY_FROM_USER:
+        case LobbyConstant::GIFT_SECRET_KEY_FROM_USER:
+            scaleRatioForAvatarIcon = 1.3;
+            translateForAvatarIcon = Vec2(-17,0);
 		spriteFrame = ADMIN_ICON;
 		message = languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_REQUESTKEY);
 		break;
-	case LobbyConstant::GIFT_FROM_SYSTEM:
+        case LobbyConstant::GIFT_FROM_SYSTEM:
+            scaleRatioForAvatarIcon = 1.3;
+            translateForAvatarIcon = Vec2(-17,0);
 		spriteFrame = ADMIN_ICON;
 		if (this->giftInfo->message.empty()) {
 			message = languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_SYSTEMGIFT, "text1") + coinRerwardWithCommaFormat + languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_SYSTEMGIFT, "text2");
@@ -122,17 +125,19 @@ void CellInbox::updateCell(GiftInfo * _giftInfo)
 		break;
 	case LobbyConstant::GIFT_FOR_PROMOTION_001:
 	case LobbyConstant::GIFT_FOR_PROMOTION_002:
-	case LobbyConstant::GIFT_FOR_PROMOTION_003:
+        case LobbyConstant::GIFT_FOR_PROMOTION_003:
+            scaleRatioForAvatarIcon = 1.3;
+            translateForAvatarIcon = Vec2(-17,0);
 		spriteFrame = ADMIN_ICON;
 		message = languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_PROMOTE, "text1") + coinRerwardWithCommaFormat + languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_PROMOTE, "text2");
 		break;
 	case LobbyConstant::GIFT_FOR_PROMOTION_VIP_UP:
         scaleRatioForAvatarIcon = 1.3;
-            translateForAvatarIcon = Vec2(-17,0);
+        translateForAvatarIcon = Vec2(-17,0);
 		spriteFrame = ADMIN_ICON;
 		message = languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_VIP, "text1") + coinRerwardWithCommaFormat + languageManager->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_MESSAGE_VIP, "text2");
 		break;
-    case LobbyConstant::GIFT_FROM_BONUS_FOR_TOP_PLAYER:
+        case LobbyConstant::GIFT_FROM_BONUS_FOR_TOP_PLAYER:
             scaleRatioForAvatarIcon = 1.3;
             translateForAvatarIcon = Vec2(-17,0);
 		spriteFrame = ADMIN_ICON;
@@ -175,7 +180,7 @@ void CellInbox::updateCell(GiftInfo * _giftInfo)
 		FONT_PassionOne_Regular, message);
 	if (isUserAvatar)
 	{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && CALL_NATIVE_CROP_AVATAR)
+#if (CALL_NATIVE_CROP_AVATAR)
 		this->avatarUserSprite->setVisible(true);
 #else
 		this->avatarUserClippingNode->setVisible(true);
@@ -214,7 +219,7 @@ void CellInbox::updateCell(GiftInfo * _giftInfo)
         this->avatarIconSprite->setScale(scaleRatioForAvatarIcon, scaleRatioForAvatarIcon);
         this->avatarIconSprite->setPosition(translateForAvatarIcon);
         
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && CALL_NATIVE_CROP_AVATAR)
+#if (CALL_NATIVE_CROP_AVATAR)
 		this->avatarUserSprite->setVisible(false);
 #else
 		this->avatarUserClippingNode->setVisible(false);

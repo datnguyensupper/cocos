@@ -121,6 +121,38 @@
             "piggy_bank_1": {
               "id": "com.playpalace.product.android.uat.cordova.piggybank.package1",
               "type": "consumable"
+            },
+            "specialoffer": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package1",
+              "type": "consumable"
+            },
+            "starter_pack": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package2",
+              "type": "consumable"
+            },
+            "get_more_coins": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package3",
+              "type": "consumable"
+            },
+            "free_to_play_1": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package4",
+              "type": "consumable"
+            },
+            "free_to_play_2": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package5",
+              "type": "consumable"
+            },
+            "pay_to_play_1": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package6",
+              "type": "consumable"
+            },
+            "pay_to_play_2": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package7",
+              "type": "consumable"
+            },
+            "pay_to_play_3": {
+              "id": "com.playpalace.product.android.uat.cocos.specialoffer.package8",
+              "type": "consumable"
             }
           }
         }
@@ -244,6 +276,38 @@
             },
             "piggy_bank_1": {
               "id": "com.playpalace.product.ios.uat.cocos.piggybank.package1",
+              "type": "consumable"
+            },
+            "specialoffer": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package1",
+              "type": "consumable"
+            },
+            "starter_pack": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package2",
+              "type": "consumable"
+            },
+            "get_more_coins": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package3",
+              "type": "consumable"
+            },
+            "free_to_play_1": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package4",
+              "type": "consumable"
+            },
+            "free_to_play_2": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package5",
+              "type": "consumable"
+            },
+            "pay_to_play_1": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package6",
+              "type": "consumable"
+            },
+            "pay_to_play_2": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package7",
+              "type": "consumable"
+            },
+            "pay_to_play_3": {
+              "id": "com.playpalace.product.ios.uat.cocos.specialoffer.package8",
               "type": "consumable"
             }
           }

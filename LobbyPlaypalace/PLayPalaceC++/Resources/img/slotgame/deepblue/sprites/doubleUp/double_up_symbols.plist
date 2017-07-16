@@ -6,71 +6,64 @@
   <dict>
    <key>doubleup_bottom-bar</key>
    <dict>
-    <key>aliases</key>
-    <array/>
-    <key>spriteOffset</key>
-    <string>{0,0}</string>
-    <key>spriteSize</key>
-    <string>{828,134}</string>
-    <key>spriteSourceSize</key>
-    <string>{828,134}</string>
-    <key>textureRect</key>
-    <string>{{0,0},{828,134}}</string>
-    <key>textureRotated</key>
+    <key>frame</key>
+    <string>{{0,0},{812,133}}</string>
+    <key>offset</key>
+    <string>{7,0}</string>
+    <key>rotated</key>
     <false/>
+    <key>sourceSize</key>
+    <string>{828,134}</string>
+   </dict>
+   <key>doubleup_bottom_bg_win_amount</key>
+   <dict>
+    <key>frame</key>
+    <string>{{208,135},{166,50}}</string>
+    <key>offset</key>
+    <string>{0,0}</string>
+    <key>rotated</key>
+    <false/>
+    <key>sourceSize</key>
+    <string>{166,50}</string>
    </dict>
    <key>doubleup_btn_capture</key>
    <dict>
-    <key>aliases</key>
-    <array/>
-    <key>spriteOffset</key>
-    <string>{0,0}</string>
-    <key>spriteSize</key>
-    <string>{212,43}</string>
-    <key>spriteSourceSize</key>
-    <string>{212,43}</string>
-    <key>textureRect</key>
-    <string>{{0,136},{212,43}}</string>
-    <key>textureRotated</key>
+    <key>frame</key>
+    <string>{{0,135},{206,43}}</string>
+    <key>offset</key>
+    <string>{3,0}</string>
+    <key>rotated</key>
     <false/>
+    <key>sourceSize</key>
+    <string>{212,43}</string>
    </dict>
    <key>doubleup_btn_collect</key>
    <dict>
-    <key>aliases</key>
-    <array/>
-    <key>spriteOffset</key>
+    <key>frame</key>
+    <string>{{559,135},{151,35}}</string>
+    <key>offset</key>
     <string>{0,0}</string>
-    <key>spriteSize</key>
-    <string>{151,35}</string>
-    <key>spriteSourceSize</key>
-    <string>{151,35}</string>
-    <key>textureRect</key>
-    <string>{{397,136},{151,35}}</string>
-    <key>textureRotated</key>
+    <key>rotated</key>
     <false/>
+    <key>sourceSize</key>
+    <string>{151,35}</string>
    </dict>
    <key>doubleup_btn_escape</key>
    <dict>
-    <key>aliases</key>
-    <array/>
-    <key>spriteOffset</key>
+    <key>frame</key>
+    <string>{{376,135},{181,42}}</string>
+    <key>offset</key>
     <string>{0,0}</string>
-    <key>spriteSize</key>
-    <string>{181,42}</string>
-    <key>spriteSourceSize</key>
-    <string>{181,42}</string>
-    <key>textureRect</key>
-    <string>{{214,136},{181,42}}</string>
-    <key>textureRotated</key>
+    <key>rotated</key>
     <false/>
+    <key>sourceSize</key>
+    <string>{181,42}</string>
    </dict>
   </dict>
   <key>metadata</key>
   <dict>
    <key>format</key>
-   <integer>3</integer>
-   <key>size</key>
-   <string>{830,181}</string>
+   <integer>2</integer>
    <key>textureFileName</key>
    <string>double_up_symbols.png</string>
   </dict>

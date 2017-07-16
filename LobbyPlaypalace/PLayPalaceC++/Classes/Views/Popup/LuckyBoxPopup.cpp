@@ -146,8 +146,8 @@ void LuckyBoxPopup::hide() {
 }
 
 
-cocos2d::ui::Button* LuckyBoxPopup::createButton(std::string titleText, float fontSize) {
-	return BasePopup::createGreenButton(titleText,fontSize);
+cocos2d::ui::Button* LuckyBoxPopup::createButton(bool isMutilpleLanguage, std::string titleText, float fontSize) {
+	return BasePopup::createGreenButton(isMutilpleLanguage,titleText,fontSize);
 }
 
 
@@ -640,7 +640,7 @@ void BuyAndDoubleUI::setUpUI() {
 	chest2->setPosition(Vec2(30,-30)+chest1->getPosition());
 	addChild(chest2);
 
-	buyButton = parent->createButton(" BUY & DOUBLE ", 20);
+	buyButton = parent->createButton(false, " BUY & DOUBLE ", 40);
 	buyButton->setPosition(backgroundBottom->getPosition()+Vec2(220,-15));
 	buyButton->addTouchEventListener([this](cocos2d::Ref* sender, ui::Widget::TouchEventType touchEvent) {
 		if (touchEvent != ui::Widget::TouchEventType::ENDED) return;

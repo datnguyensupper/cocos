@@ -22,6 +22,14 @@
 #include "Views/Popup/MagicItemPopup.h"
 #include "Views/Popup/PiggyBankPopup.h"
 #include "Views/Popup/MissingPopup.h"
+
+#include "Views/Popup/Promotions/SpecialOfferPopup.h"
+#include "Views/Popup/Promotions/StarterPackPopup.h"
+#include "Views/Popup/Promotions/PayToPlayPopup.h"
+#include "Views/Popup/Promotions/FreeToPlayPopup.h"
+#include "Views/Popup/Promotions/GetMoreCoinsPopup.h"
+#include "Views/Popup/ScratchCardPopup.h"
+
 #include "Helper/Helper4Scene.h"
 
 using namespace std;
@@ -119,6 +127,20 @@ void PopupManager::initAllPopupLobbyScene()
 	this->magicItemPopup->retain();
 	this->missingPopup = MissingPopup::create();
 	this->missingPopup->retain();
+
+	this->specialOfferPopup = SpecialOfferPopup::create();
+	this->specialOfferPopup->retain();
+	this->starterPackPopup = StarterPackPopup::create();
+	this->starterPackPopup->retain();
+	this->payToPlayPopup = PayToPlayPopup::create();
+	this->payToPlayPopup->retain();
+	this->freeToPlayPopup = FreeToPlayPopup::create();
+	this->freeToPlayPopup->retain();
+	this->getMoreCoinsPopup = GetMoreCoinsPopup::create();
+	this->getMoreCoinsPopup->retain();
+
+	this->scratchCardPopup = ScratchCardPopup::create();
+	this->scratchCardPopup->retain();
 }
 void PopupManager::initThingsLoginScene()
 {
@@ -215,6 +237,27 @@ void PopupManager::reset()
 	if (this->missingPopup) {
 		this->missingPopup->reset();
 	}
+
+	if (this->specialOfferPopup) {
+		this->specialOfferPopup->reset();
+	}
+	if (this->starterPackPopup) {
+		this->starterPackPopup->reset();
+	}
+	if (this->payToPlayPopup) {
+		this->payToPlayPopup->reset();
+	}
+	if (this->freeToPlayPopup) {
+		this->freeToPlayPopup->reset();
+	}
+	if (this->getMoreCoinsPopup) {
+		this->getMoreCoinsPopup->reset();
+	}
+
+	if (this->scratchCardPopup) {
+		this->scratchCardPopup->reset();
+	}
+
 	this->checkAndShowPopupInQueue();
 }
 

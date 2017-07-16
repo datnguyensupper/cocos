@@ -13,9 +13,12 @@ class LobbyScene;
 class Welcome : public cocos2d::Node {
 private:
 	cocos2d::ui::Button* oClaimBtn;
+	cocos2d::Label* lb_welcome;
 public:
+
 	//init func
 	bool init() override;
+	void updateWelcomeText();
 	//set on claim coin callback
 	void addOnClaimListener(const std::function<void(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type)>& claimCallBack);
 
@@ -84,6 +87,12 @@ private:
 	/// start Tutorial
 	/// </summary>
 	void start();
+
+	/// <summary>
+	/// set tutorial string on step
+	/// </summary>
+	/// <param name="step">step of tutorial</param>
+	void setTutorialString(std::string tutorialString);
 
 	/// <summary>
 	/// show tutorial on step

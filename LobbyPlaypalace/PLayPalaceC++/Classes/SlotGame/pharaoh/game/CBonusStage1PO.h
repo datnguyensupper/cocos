@@ -61,5 +61,6 @@ namespace GameSlot {
 		* @param isFromRestore: is from restore
 		*/
 		void showResult(bool bFinish, const std::vector<ObjectBonus>& aWheels, int iIndex, bool bFromRestore = false) override;
+		std::vector<ObjectBonus> createFakeWheel(std::vector<ObjectBonus> awheel) ;
 	};
 }

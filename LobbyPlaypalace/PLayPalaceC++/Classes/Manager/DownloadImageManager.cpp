@@ -120,19 +120,17 @@ void DownloadImageManager::onHttpRequestLoadImageCompleted(
 		response->retain();
 
 		AsyncTaskPool::getInstance()->enqueue(
-			AsyncTaskPool::TaskType::TASK_OTHER,
-			std::bind(&DownloadImageManager::onReceivedCircleImage, this, data, len, url),
+			AsyncTaskPool::TaskType::TASK_NETWORK,
+			std::bind(&DownloadImageManager::onReceivedCircleImage, this, url, response),
 			nullptr,
 			[this, data, len, response]() {
-			this->currentImage = PluginManager::getInstance()->getGamePlugin()->circleImage((unsigned char*)data, len);
+                this->currentImage = PluginManager::getInstance()->getGamePlugin()->circleImage((unsigned char*)data, len);
 
-			if (!this->currentImage) {
-				log("Circle Image Failed");
-				this->currentImage = new Image();
-				this->currentImage->initWithImageData(reinterpret_cast<const unsigned char*>(data), len);
-			}
-
-			response->release();
+                if (!this->currentImage) {
+                    log("Circle Image Failed");
+                    this->currentImage = new Image();
+                    this->currentImage->initWithImageData(reinterpret_cast<const unsigned char*>(data), len);
+                }
 		});
 	}
 	else {
@@ -157,8 +155,13 @@ void DownloadImageManager::onHttpRequestLoadImageCompleted(
 	}
 }
 
-void DownloadImageManager::onReceivedCircleImage(const char * data, size_t len, const std::string & url)
+void DownloadImageManager::onReceivedCircleImage(const std::string & url,
+                                                 cocos2d::network::HttpResponse* response)
 {
+	if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) {
+		response->release();
+	}
+
 	if (Configs::printConsoleLog)
 	{
 		CCLOG("onHttpRequestCompleted - sucess create image");

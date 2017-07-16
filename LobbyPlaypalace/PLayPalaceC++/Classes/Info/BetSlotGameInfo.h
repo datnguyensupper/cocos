@@ -10,7 +10,7 @@ class BetSlotGameInfo : public BaseItemInfo
 {
 public:
 	int betSize;
-	long betSizePerLine;
+	int64_t betSizePerLine;
 	int payline;
 	int levelRestriction;
 

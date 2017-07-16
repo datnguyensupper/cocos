@@ -9,6 +9,8 @@
 #include "network/HttpClient.h"
 #include "json/writer.h"
 #include "json/document.h"
+#include "Constant/Defination.h"
+#include "Constant/LobbyConstant.h"
 
 using namespace rapidjson;
 
@@ -24,6 +26,7 @@ struct NetworkFailProcessInfo {
 class NetworkManager
 {
 private:
+    bool isFirstRequest = true;
 	static NetworkManager* s_instance;
 	std::string loginToken = "";
 	std::string session = "";
@@ -39,7 +42,8 @@ private:
 	* @param data (example: data = "username=kiet@gmail.com&password=12345678" for login_web)
 	* @param callback callback after get response and passed handleSpecialErrorResultCode
 	*/
-	void post(
+    void post(
+        bool isCheckErrorCode,
 		const std::string &url,
 		std::string &data,
 		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -55,7 +59,8 @@ private:
 	* @param data (example: data = "username=kiet@gmail.com&password=12345678" for login_web)
 	* @param callback callback after get response and passed handleSpecialErrorResultCode
 	*/
-	void post(
+    void post(
+        bool isCheckErrorCode,
 		const std::string &url,
 		std::string &data,
 		std::function<void(int coreResultCode, bool isSuccess, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -70,7 +75,8 @@ private:
 	* @param dataBinary: data need to send
 	* @param callback callback after get response and passed handleSpecialErrorResultCode
 	*/
-	void postMultipart(
+    void postMultipart(
+        bool isCheckErrorCode,
 		const std::string &url,
 		const std::map<std::string, std::string> &formData,
 		const std::string &dataFieldName, const char* dataBinary, size_t dataLen,
@@ -85,7 +91,8 @@ private:
 	* @param data (example: data = "?username=kiet@gmail.com&password=12345678" for login_web)
 	* @param callback callback after get response and passed handleSpecialErrorResultCode
 	*/
-	void get(
+    void get(
+         bool isCheckErrorCode,
 		const std::string &url,
 		std::string &data,
 		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -99,6 +106,7 @@ private:
 	* method parse response to Document and call callbacks
 	*/
 	void onHttpRequestCompleted(
+        bool isCheckErrorCode,
 		cocos2d::network::HttpClient* sender,
 		cocos2d::network::HttpResponse* response,
 		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
@@ -139,7 +147,11 @@ public:
 	/**
 	* 2017-02-27: Kiet: destructor
 	*/
-	~NetworkManager();
+    ~NetworkManager();
+    /**
+     * Dat : init class
+     */
+    NetworkManager();
 
 	/**
 	* 2017-02-09: Kiet: set login token ( call after apis login )
@@ -147,7 +159,37 @@ public:
 	void setLoginToken(const std::string &tsLogin)
 	{
 		this->loginToken = tsLogin;
+        cocos2d::CCUserDefault::getInstance()->setStringForKey(STORING_KEY_LOGIN_TOKEN, tsLogin);
+        cocos2d::CCUserDefault::getInstance()->flush();
 	}
+    
+    /**
+     * 2017-02-09: Kiet: set login token ( call after apis login )
+     */
+    void updateJSESSIONID(std::string newJsessionId){
+        if(!newJsessionId.empty()){
+            session = newJsessionId;
+            cocos2d::CCUserDefault::getInstance()->setStringForKey(STORING_KEY_JSESSIONID, session);
+            cocos2d::CCUserDefault::getInstance()->flush();
+        }
+    }
+    
+    void resetJSESSIONID(){
+        session = "";
+        cocos2d::CCUserDefault::getInstance()->setStringForKey(STORING_KEY_JSESSIONID, session);
+        cocos2d::CCUserDefault::getInstance()->flush();
+        
+    }
+    
+    void getLoginTokenFromCache(){
+        std::string defaultValue = "";
+        this->loginToken = cocos2d::CCUserDefault::getInstance()->getStringForKey(STORING_KEY_LOGIN_TOKEN,defaultValue);
+    }
+    
+    void getJSESSIONIDFromCache(){
+        std::string defaultValue = "";
+        session = cocos2d::CCUserDefault::getInstance()->getStringForKey(STORING_KEY_JSESSIONID,defaultValue);
+    }
 #pragma endregion
 
 #pragma region Requests
@@ -274,7 +316,8 @@ public:
 	/**
 	* 2017-02-20: Kiet: call API user/getAdditionalInfo to get all user data
 	*/
-	void getUserInfo(
+    void getUserInfo(
+         bool isCheckErrorCode,
 		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
 		std::function<void(std::string result)> callbackError = nullptr,
 		std::function<void(std::string result)> callbackTimeOut = nullptr
@@ -574,6 +617,79 @@ public:
 	*/
 	void activateMagicItem(
 		int magicItemType,
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+#pragma endregion
+
+#pragma region ScratchCard
+	/**
+	* call API scratch card
+	*/
+	void scratchCard(
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+#pragma endregion
+
+#pragma region Promotion Code
+	/**
+	* call API redeem promotion code
+	*/
+	void redeemPromotionCode(
+		const std::string& token,
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+#pragma endregion
+
+#pragma region Feedback
+	/**
+	* call API redeem feed back
+	*/
+	void redeemFeedback(
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+#pragma endregion
+
+#pragma region Flip Card Info
+	/**
+	* call API get user's flip card info
+	*/
+	void getFlipCardInfo(
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+	/**
+	* call API redeem flip card
+	*/
+	void redeemFlipCard(
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+	/**
+	* call API upgrade flip card
+	*/
+	void upgradeFlipCard(
+		LobbyConstant::FlipCardType cardType,
+		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
+		std::function<void(std::string result)> callbackError = nullptr,
+		std::function<void(std::string result)> callbackTimeOut = nullptr
+	);
+#pragma endregion
+
+#pragma region Promotions Purchase API
+	/**
+	* call API check show special offer
+	*/
+	void checkSpecialOffer(
 		std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback,
 		std::function<void(std::string result)> callbackError = nullptr,
 		std::function<void(std::string result)> callbackTimeOut = nullptr

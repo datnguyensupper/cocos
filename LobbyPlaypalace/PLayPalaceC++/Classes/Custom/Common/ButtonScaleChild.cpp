@@ -19,7 +19,8 @@ ButtonScaleChild* ButtonScaleChild::create()
 	widget->addChild(widget->scaleNode);
 	if (widget && widget->init())
 	{
-		widget->autorelease();
+        widget->autorelease();
+//        widget->initUITitleLabel();
 		return widget;
 	}
 	CC_SAFE_DELETE(widget);
@@ -35,10 +36,31 @@ ButtonScaleChild* ButtonScaleChild::create(
 	if (btn && btn->init(normalImage, selectedImage, disableImage, texType))
 	{
 		btn->autorelease();
+//        btn->initUITitleLabel();
 		return btn;
 	}
 	CC_SAFE_DELETE(btn);
 	return nullptr;
+}
+
+/** replaces the current Label node with a new one */
+void ButtonScaleChild::setTitleLabel(Label* label)
+{
+    cocos2d::ui::Button::setTitleLabel(label);
+    initUITitleLabel();
+}
+
+bool ButtonScaleChild::initUITitleLabel()
+{
+    
+    originalTitleScaleX = 1;
+    originalTitleScaleY = 1;
+    if(_titleRenderer){
+        originalTitleScaleX = _titleRenderer->getScaleX();
+        originalTitleScaleY = _titleRenderer->getScaleY();
+    }
+    
+    return true;
 }
 
 void ButtonScaleChild::onPressStateChangedToNormal()
@@ -70,13 +92,13 @@ void ButtonScaleChild::onPressStateChangedToNormal()
 				_titleRenderer->stopAllActions();
 				if (_unifySize)
 				{
-					Action *zoomTitleAction = ScaleTo::create(ZOOM_ACTION_TIME_STEP, _titleRenderer->getScaleX() - _zoomScale, _titleRenderer->getScaleY() - _zoomScale);
+					Action *zoomTitleAction = ScaleTo::create(ZOOM_ACTION_TIME_STEP, originalTitleScaleX, originalTitleScaleY);
 					_titleRenderer->runAction(zoomTitleAction);
 				}
 				else
 				{
-					_titleRenderer->setScaleX(_titleRenderer->getScaleX() - _zoomScale);
-					_titleRenderer->setScaleY(_titleRenderer->getScaleY() - _zoomScale);
+					_titleRenderer->setScaleX(originalTitleScaleX);
+					_titleRenderer->setScaleY(originalTitleScaleY);
 				}
 			}
 		}
@@ -92,8 +114,8 @@ void ButtonScaleChild::onPressStateChangedToNormal()
 		if (nullptr != _titleRenderer)
 		{
 			_titleRenderer->stopAllActions();
-			_titleRenderer->setScaleX(_titleRenderer->getScaleX() - _zoomScale);
-			_titleRenderer->setScaleY(_titleRenderer->getScaleY() - _zoomScale);
+			_titleRenderer->setScaleX(originalTitleScaleX);
+			_titleRenderer->setScaleY(originalTitleScaleY);
 		}
 	}
 }
@@ -120,7 +142,7 @@ void ButtonScaleChild::onPressStateChangedToPressed()
 		{
 			_titleRenderer->stopAllActions();
 			Action *zoomTitleAction = ScaleTo::create(ZOOM_ACTION_TIME_STEP,
-				_titleRenderer->getScaleX() + _zoomScale, _titleRenderer->getScaleY() + _zoomScale);
+				originalTitleScaleX + _zoomScale, originalTitleScaleY + _zoomScale);
 			_titleRenderer->runAction(zoomTitleAction);
 		}
 	}
@@ -135,8 +157,8 @@ void ButtonScaleChild::onPressStateChangedToPressed()
 		if (nullptr != _titleRenderer)
 		{
 			_titleRenderer->stopAllActions();
-			_titleRenderer->setScaleX(_titleRenderer->getScaleX() + _zoomScale);
-			_titleRenderer->setScaleY(_titleRenderer->getScaleY() + _zoomScale);
+			_titleRenderer->setScaleX(originalTitleScaleX + _zoomScale);
+			_titleRenderer->setScaleY(originalTitleScaleY + _zoomScale);
 		}
 	}
 }

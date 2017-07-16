@@ -133,7 +133,7 @@ public:
 class PayLineConfig {
 public:
 	int maxPayLine = 0;
-	int maxBetPerLine = 0;
+	float maxBetPerLine = 0;
 	int level = 0;
 
 	/**
@@ -219,6 +219,68 @@ public:
 
 			if (name == LobbyConstant::API_FEATURE_BEAN_TYPE_MIN_NUMBER_OF_CONSECUTIVE_VIDEO_VIEW_TO_RECEIVE_MAGIC_ITEM_REWARD)
 				minNumberOfConsecutiveVideoViewToReceiveMagicItemReward = stoi(static_cast<std::string>(dataArray[index][JSONFieldConstant::VALUE.c_str()].GetString()));
+		}
+
+	}
+};
+
+struct FlipCardConfig {
+public:
+	struct LevelConfig {
+		int level;
+		double coin_reward;
+		double crown_reward;
+		int leaf_reward;
+		int leaf_upgrade_requirement;
+
+		void updateInfo(const rapidjson::Value &data) {
+			level = data[JSONFieldConstant::CARD_LEVEL.c_str()].GetInt();
+			coin_reward = data[JSONFieldConstant::COIN_REWARD.c_str()].GetDouble();
+			crown_reward = data[JSONFieldConstant::CROWN_REWARD.c_str()].GetDouble();
+			leaf_reward = data[JSONFieldConstant::LEAF_REWARD.c_str()].GetInt();
+			leaf_upgrade_requirement = data[JSONFieldConstant::LEAF_UPGRADE_REQUIREMENT.c_str()].GetInt();
+		}
+	};
+	std::map<LobbyConstant::FlipCardType, std::map<int, LevelConfig*>> configs;
+	double waitingTime;
+
+	~FlipCardConfig() {
+		for (auto levelConfig : configs) {
+			for (auto child : levelConfig.second) {
+				CC_SAFE_DELETE(child.second);
+			}
+		}
+		configs.clear();
+	}
+
+	/**
+	* update Flip Card Config from values
+	*/
+	void updateConfigInfoByValue(rapidjson::Value &data) {
+
+		auto dataArray = Helper4ParseJSON::getMember(data);
+		if (dataArray.Size() < 2) return;
+
+		waitingTime = atoll(dataArray[0][JSONFieldConstant::VALUE.c_str()].GetString());
+
+		configs.clear();
+
+		auto aCardConfigs = Helper4ParseJSON::getMember(dataArray[1]);
+
+		for (int index = 0, length = aCardConfigs.Size(); index < length; index++)
+		{
+			std::map<int, LevelConfig*> mapLevelConfig;
+			LobbyConstant::FlipCardType cardType = 
+				(LobbyConstant::FlipCardType)aCardConfigs[index][JSONFieldConstant::CARD_TYPE.c_str()].GetInt();
+			if (configs.find(cardType) != configs.end()) {
+				mapLevelConfig = configs[cardType];
+			}
+
+			auto levelConfig = new LevelConfig();
+			levelConfig->updateInfo(aCardConfigs[index]);
+			mapLevelConfig[levelConfig->level] = levelConfig;
+
+			configs[cardType] = mapLevelConfig;
 		}
 
 	}

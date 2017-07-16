@@ -150,6 +150,7 @@ const string LanguageConstant::LOGINFACEBOOK = "loginFacebook";
 const string LanguageConstant::COLLECT = "collect";
 const string LanguageConstant::COLLECTANDSHARE = "collectAndShare";
 const string LanguageConstant::CANCEL = "cancel";
+const string LanguageConstant::BUY = "buy";
 const string LanguageConstant::BUYNOW = "buyNow";
 const string LanguageConstant::GOTOLOBBY = "goToLobby";
 const string LanguageConstant::SEND = "send";

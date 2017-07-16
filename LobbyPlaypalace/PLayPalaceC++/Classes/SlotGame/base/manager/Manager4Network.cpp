@@ -5,6 +5,7 @@
 #include "Manager/PopupManager.h"
 #include "Info/AdditionalInfo.h"
 #include "Views/Popup/NotificationPopup.h"
+#include "Helper/Helper4Time.h"
 
 USING_NS_CC;
 using namespace network;
@@ -125,7 +126,7 @@ namespace GameSlot {
 				cb(false, nullptr);
 			}
 			else {
-				this->_oMain->getScene()->gotoLoginScene("", "");
+				this->_oMain->getScene()->gotoLoginScene(true, "", "");
 			}		
 		}
 	}
@@ -180,7 +181,7 @@ namespace GameSlot {
 			if(cb){
 				cb(false, nullptr);
 			}else{
-			    this->_oMain->getScene()->gotoLoginScene("","");
+			    this->_oMain->getScene()->gotoLoginScene(true,"","");
 			}
 			return true;
 		}
@@ -267,8 +268,7 @@ namespace GameSlot {
 
 	void Manager4Network::callGetBet(const std::string& szKey)
 	{
-		this->_lTs = std::chrono::duration_cast<std::chrono::milliseconds>
-			(std::chrono::system_clock::now().time_since_epoch()).count();
+		this->_lTs = Helper4Time::getCurrentTimeStamp();
 		std::string params = "key=" + szKey + "&" +
 			"ts=" + ToString(_lTs);
 

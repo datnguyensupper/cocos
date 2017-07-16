@@ -12,9 +12,10 @@
 #include "Manager/PluginManager.h"
 #include "Manager/PopupManager.h"
 
-
 #include "Manager/InfoManager.h"
 #include "Helper/Helper4Sprite.h"
+
+#include "Custom/Common/LabelAutoSize.h"
 
 USING_NS_CC;
 using namespace std;
@@ -114,14 +115,14 @@ bool LevelUpPopup::init()
 	crownIcon->setPosition(-55, crownIcon->getContentSize().height / 2 + 5);
 	this->oCrownReward->addChild(crownIcon);
 
-	btnCollect = this->createGreenButton();
+	btnCollect = this->createGreenButton(false);
 	btnCollect->setScale(1.2f);
 	btnCollect->getTitleLabel()->setString("COLLECT");
 	btnCollect->setPosition(Vec2(-235, -260));
 	btnCollect->addTouchEventListener(CC_CALLBACK_2(LevelUpPopup::onCollect, this));
 	oContainer->addChild(btnCollect);
 
-	btnCollectAndShare = this->createBlueButton();
+	btnCollectAndShare = this->createBlueButton(false);
 	btnCollectAndShare->getTitleLabel()->setString("COLLECT & SHARE");
 	btnCollectAndShare->setPosition(Vec2(145, -260));
 	btnCollectAndShare->setScale(1.05f);
@@ -540,6 +541,27 @@ void LevelUpPopup::runActionForBoosterCrown()
 
 void LevelUpPopup::updateAfterChangeLanguage() {
 
-	this->btnCollect->getTitleLabel()->setString(LanguageManager::getInstance()->getStringForKeys(this->btnCollect->getTitleLabel(), LanguageConstant::COLLECT));
-	this->btnCollectAndShare->getTitleLabel()->setString(LanguageManager::getInstance()->getStringForKeys(this->btnCollectAndShare->getTitleLabel(), LanguageConstant::COLLECTANDSHARE));
+	float maxScaleBtnCollect = 1;
+	float minScaleBtnCollect = 0;
+	
+	float maxScaleBtnShare = 1;
+	float minScaleBtnShare = 0;
+
+
+	if (LanguageManager::getInstance()->getCurrentLanguage() == indo) {
+		minScaleBtnCollect = 0.6;
+		maxScaleBtnShare = 0.75;
+	}else if (LanguageManager::getInstance()->getCurrentLanguage() == my) {
+		minScaleBtnCollect = 0.7;
+	}else if (LanguageManager::getInstance()->getCurrentLanguage() == en) {
+		maxScaleBtnCollect = 0.9;
+	}else if (LanguageManager::getInstance()->getCurrentLanguage() == cn ||
+		LanguageManager::getInstance()->getCurrentLanguage() == tran_cn) {
+		maxScaleBtnCollect = 0.85;
+	}else if (LanguageManager::getInstance()->getCurrentLanguage() == vn ) {
+		maxScaleBtnCollect = 0.9;
+		maxScaleBtnShare = 0.9;
+	}
+	((LabelAutoSize*)this->btnCollect->getTitleLabel())->setString(LanguageManager::getInstance()->getStringForKeys(this->btnCollect->getTitleLabel(), LanguageConstant::COLLECT), minScaleBtnCollect, maxScaleBtnCollect);
+	((LabelAutoSize*)this->btnCollectAndShare->getTitleLabel())->setString(LanguageManager::getInstance()->getStringForKeys(this->btnCollectAndShare->getTitleLabel(), LanguageConstant::COLLECTANDSHARE), 0, maxScaleBtnShare);
 }

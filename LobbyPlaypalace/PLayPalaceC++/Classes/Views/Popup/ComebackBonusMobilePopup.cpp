@@ -100,9 +100,7 @@ bool ComebackBonusMobilePopup::init()
 	bg->addChild(this->expBonusLabel);
 
 	//COLLECT BUTTON
-	this->collectButton = this->createGreenButton(
-		LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::COLLECT)
-	);
+	this->collectButton = this->createGreenButton(true,LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::COLLECT));
 	this->collectButton->setPosition(
 		bg->getContentSize() / 2 + Size(0, -bg->getContentSize().height / 2 + this->collectButton->getContentSize().height / 0.8f)
 	);

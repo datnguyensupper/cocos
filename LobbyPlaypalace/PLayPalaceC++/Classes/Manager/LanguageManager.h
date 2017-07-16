@@ -32,7 +32,11 @@ class IUpdateLanguage;
 class LanguageManager
 {
 private:
-	Document document; // current document with language data
+    void initData();
+    Document document; // current document with language data
+    bool isGetMainLanguageSuccess = false;
+    Document documentDefault; // current document with language data
+    bool isGetDefaultLanguageSuccess = false;
 	LanguageManager(); // constructor is private
 	SupportLanguage currentLanguage;
 
@@ -59,15 +63,26 @@ public:
 	/**
 	* 2017-02-09: Kiet: get string for key
 	*/
-	std::string getStringForKeys(cocos2d::Label * label, std::string key, std::string key2 = "text");
+    std::string getStringForKeys(cocos2d::Label * label, std::string key, std::string key2 = "text");
 	/**
 	* 2017-02-09: Kiet: get current language
 	*/
 	SupportLanguage getCurrentLanguage() { return currentLanguage; }
+
+	/// <summary>
+	/// update current language to cache
+	/// </summary>
+	/// <param name="language"></param>
+	void updateCurrentLanguageToCache(SupportLanguage language);
+	/// <summary>
+	/// parse language from string format json
+	/// </summary>
+	/// <param name="languageJson"></param>
+	void parseLanguageFromJsonString(std::string languageJson);
 	/**
 	* 2017-02-09: Kiet: set current language
 	*/
-	void setCurrentLanguage(SupportLanguage language);
+	bool setCurrentLanguage(SupportLanguage language);
 	/**
 	* 2017-02-22: Kiet: add IUpdateLanguage to list need update when click change language button
 	*/
@@ -80,6 +95,10 @@ public:
 	* 2017-02-22: Kiet: get name of current language ( use for setting popup )
 	*/
 	std::string getCurrentLanguageName();
+	/**
+	* Dat: set for fail parse language
+	*/
+	bool setLanguage4ParseLanguageFail();
 	/**
 	* 2017-02-22: Kiet: get number time change language
 	*/

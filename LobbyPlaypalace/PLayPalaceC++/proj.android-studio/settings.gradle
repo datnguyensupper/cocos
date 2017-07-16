@@ -3,8 +3,8 @@ project(':libcocos2dx').projectDir = new File(settingsDir, '../cocos2d/cocos/pla
 include ':playpalace'
 project(':playpalace').projectDir = new File(settingsDir, 'app')
 
-include ':facebook_lib'
-project(':facebook_lib').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/java/libs/facebook_lib')
-
 include ':gps'
 project(':gps').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/java/libs/gps')
+
+include ':facebook_lib'
+project(':facebook_lib').projectDir = new File(settingsDir, '../cocos2d/cocos/platform/android/java/libs/facebook_lib')

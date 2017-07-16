@@ -340,6 +340,12 @@ const string JSONFieldConstant::PACKAGE_PRICE = "package_price";
 const string JSONFieldConstant::STRATEGY_TYPE = "strategy_type";
 
 const string JSONFieldConstant::MESSAGE = "message";
+const string JSONFieldConstant::MESSAGE_EN = "message_en";
+const string JSONFieldConstant::MESSAGE_VN = "message_vn";
+const string JSONFieldConstant::MESSAGE_CN = "message_zh_cn";
+const string JSONFieldConstant::MESSAGE_TW = "message_zh_tw";
+const string JSONFieldConstant::MESSAGE_MY = "message_my";
+const string JSONFieldConstant::MESSAGE_INDO = "message_id";
 const string JSONFieldConstant::FROM_USER_ID = "from_user_id";
 const string JSONFieldConstant::TO_USER_ID = "to_user_id";
 
@@ -435,6 +441,17 @@ const string JSONFieldConstant::NEXT_SCRATCH_CARD_INFO = "next_scratch_card_info
 const string JSONFieldConstant::SCRATCH_CARD_REWARD = "scratch_card_reward";
 
 const string JSONFieldConstant::FEEDBACK_STATUS = "feedback_status";
+
+const string JSONFieldConstant::CARD_TYPE = "card_type";
+const string JSONFieldConstant::CARD_LEVEL = "card_level";
+const string JSONFieldConstant::LEAF_REWARD = "leaf_reward";
+const string JSONFieldConstant::LEAF_UPGRADE_REQUIREMENT = "leaf_upgrade_requirement";
+
+const string JSONFieldConstant::FLIP_CARD_VALUE = "flip_card_value";
+const string JSONFieldConstant::REMAINING_WAITING_TIME = "remaining_waiting_time";
+const string JSONFieldConstant::SHOW_FLIP_CARD_DETAIL = "show_flip_card_detail";
+const string JSONFieldConstant::CAN_REDEEM_FLIP_CARD_REWARD = "can_redeem_flip_card_reward";
+const string JSONFieldConstant::LEAF = "leaf";
 
 const string JSONFieldConstant::PASSWORD = "password";
 

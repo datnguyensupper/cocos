@@ -8,6 +8,7 @@ namespace GameSlot {
 		cocos2d::EventListenerTouchOneByOne* listener;
 		std::function<void()> onLongTouch;
 		std::function<void()> onDown;
+		std::function<void(cocos2d::Touch* touch)> onMove;
 		std::function<void()> onUp;
 		cocos2d::Rect touchRect;
 
@@ -32,6 +33,7 @@ namespace GameSlot {
 
 		bool isButtonVisible();
 
+		bool isCallOnUpWithouCheck;
 		/**
 		* on Down Event
 		*/
@@ -91,11 +93,16 @@ namespace GameSlot {
 		*/
 		void setOnTouchUp(const std::function<void()>& onUp);
 		/**
-		* set on touch up callback
+		* set on long touch callback
 		* @param duration:  long touch duration (second)
 		* @param onLongTouch:  on long touch callback
 		*/
 		void setLongTouch(float duration, const std::function<void()>& onLongTouch);
+		/**
+		* set on touch move callback
+		* @param onLongTouch:  on touch move callback
+		*/
+		void setOnTouchMove(std::function<void(cocos2d::Touch* touch)> onMove);
 		/**
 		* set touch enabled
 		* @param isEnabled
@@ -106,6 +113,12 @@ namespace GameSlot {
 		* @param isEnabled
 		*/
 		void setScaleEvent(float scaleDown, float scaleUp = 1.0f) { this->scaleDown = scaleDown; this->scaleUp = scaleUp; }
+
+		/**
+		* Set scale button when touched
+		* @param isRunOnUpWithouCheck
+		*/
+		void setCallOnUpWithoutCheck(bool isCallOnUpWithouCheck) { this->isCallOnUpWithouCheck = isCallOnUpWithouCheck; }
 		/**
 		* Set change button image on different state
 		* @param isEnabled

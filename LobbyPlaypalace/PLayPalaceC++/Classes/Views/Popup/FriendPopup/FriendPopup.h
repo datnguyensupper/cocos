@@ -57,6 +57,7 @@ class FriendPopup : public BasePopup, public IUpdateLanguage
 private:
 	cocos2d::Label *titleLabel = nullptr;
 	cocos2d::ui::Button* acceptAllButton;
+	cocos2d::Label* emptyGiftLabel;
 
 	cocos2d::Label * infoFriendLabel;
 	cocos2d::ui::Button * sendGiftButton;

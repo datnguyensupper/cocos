@@ -19,3 +19,5 @@ APP_OPTIM := release
 endif
 APP_PLATFORM := android-15
 
+LOCAL_SHORT_COMMANDS := true
+APP_SHORT_COMMANDS := true

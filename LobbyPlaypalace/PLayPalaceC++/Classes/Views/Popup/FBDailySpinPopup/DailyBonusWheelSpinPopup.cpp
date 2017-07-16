@@ -154,10 +154,14 @@ bool DailyBonusWheelSpinPopup::init()
 		Vec2(39, 129),
 		Vec2(50, 167)
 	};
+    
+//    float contentScaleFactor = Director::getInstance()->getContentScaleFactor();
+    float contentScaleFactor = 0.8f;
+    
 	for (int i = 0; i < 16; i++)
 	{
 		Vec2 animationPos = animationArr[i];
-		animationPos = (Vec2(animationPos.x * 2, light->getContentSize().height * Director::getInstance()->getContentScaleFactor()) - animationPos) / Director::getInstance()->getContentScaleFactor();
+		animationPos = (Vec2(animationPos.x * 2, light->getContentSize().height * contentScaleFactor) - animationPos) / contentScaleFactor;
 		auto lensflareAnim = Helper4Sprite::createWithSpriteFrameName(
 			(RandomHelper::random_int(0, 10) > 5 ?
 				PNG_FRAME_DAILY_BONUS_WHEEL_RESULT_POPUP_START_WHITE : PNG_FRAME_DAILY_BONUS_WHEEL_RESULT_POPUP_START_YELLOW));

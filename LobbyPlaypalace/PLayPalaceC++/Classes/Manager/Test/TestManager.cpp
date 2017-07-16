@@ -640,7 +640,7 @@ void TestManager::createTestButton(cocos2d::Node * parent) {
 
 
 	PopupManager::getInstance()->initAllPopupLobbyScene();
-	cocos2d::ui::Button* testButton = BasePopup::createGreenButton("Test", 50);;
+	cocos2d::ui::Button* testButton = BasePopup::createGreenButton(false, "Test", 50);;
 	testButton->setPosition(Vec2(
 		origin.x + 100 ,
 		origin.y + visibleSize.height/2

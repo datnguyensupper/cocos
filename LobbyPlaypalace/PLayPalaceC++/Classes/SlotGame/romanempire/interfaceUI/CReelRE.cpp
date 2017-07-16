@@ -47,7 +47,7 @@ namespace GameSlot {
 			aSymbols[1] == CSettings::WILD_SYMBOL &&
 			aSymbols[2] == CSettings::WILD_SYMBOL) {
 			auto type = RandomHelper::random_int(1, 3);
-			auto maxSymbol = CSettings::WILD_SYMBOL - 1;
+			auto maxSymbol = CSettings::SCATTER_SYMBOL - 1;
 			switch (type)
 			{
 			case 1:

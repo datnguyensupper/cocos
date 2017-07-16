@@ -37,7 +37,8 @@ DeviceManager::DeviceManager(){
     
 #if IS_DEBUG
     /*test: force low ram device*/
-    //    _isLowRamDevice = true;
+//    _isLowRamDevice = true;
+//    _isLowRamDevice = false;
 #endif
     
     log("<<________------ IsLowRamDevice : %s----------___",_isLowRamDevice?"true":"false");

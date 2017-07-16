@@ -43,7 +43,10 @@ BaseScene* BaseScene::getCurrentScene(){
     return currentScene;
 }
 
-void BaseScene::gotoLoginScene(std::string title, std::string message){
+void BaseScene::gotoLoginScene(bool _isFailBeforeGoToLoginScene, std::string title, std::string message){
+
+	if (_isFailBeforeGoToLoginScene) NetworkManager::getInstance()->resetJSESSIONID();
+
 	if (getTag() == ppEnum::GameScene::Login) {
 		if(!message.empty()) ((LoginScene*)this)->showNotificationLoginPopup(title,message);
 		return;
@@ -67,15 +70,18 @@ void BaseScene::gotoLoginScene(std::string title, std::string message){
 }
 
 void BaseScene::gotoLoginSceneServerMaintenance(){
-    gotoLoginScene(MessageConstant::MESSAGE_SERVER_MAINTENANCE_TITLE,MessageConstant::MESSAGE_LOGIN_MAINTENANCE);
+	
+    gotoLoginScene(true,MessageConstant::MESSAGE_SERVER_MAINTENANCE_TITLE,MessageConstant::MESSAGE_LOGIN_MAINTENANCE);
 }
 
 void BaseScene::gotoLoginSceneLostConnection(){
-    gotoLoginScene(MessageConstant::MESSAGE_NETWORK_ERROR,MessageConstant::MESSAGE_LOST_INTERNET_CONNECTION);
+	NetworkManager::getInstance()->resetJSESSIONID();
+    gotoLoginScene(true, MessageConstant::MESSAGE_NETWORK_ERROR,MessageConstant::MESSAGE_LOST_INTERNET_CONNECTION);
 }
 
 void BaseScene::gotoLoginSceneLoginAnotherPlace(){
-    gotoLoginScene(MessageConstant::MESSAGE_NETWORK_ERROR,"Your account has been logged in from another location. Please reload the game");
+	NetworkManager::getInstance()->resetJSESSIONID();
+    gotoLoginScene(true, MessageConstant::MESSAGE_NETWORK_ERROR,"Your account has been logged in from another location. Please reload the game");
 }
 
 void BaseScene::gotoLoginSceneSomethingWrong(){
@@ -111,9 +117,7 @@ void BaseScene::gotoLoginSceneWithDelay(float delay){
 void BaseScene::gotoLobbyScene(float dt)
 {
     //set custom id for adcolony
-    PluginManager::getInstance()->getAdcolonyController()->initWithCustomId(
-    ToString(InfoManager::getInstance()->getUserInfo()->id)
-    );
+	PluginManager::getInstance()->getAdvertiseController()->init();
     Director::getInstance()->replaceScene(
       TransitionFade::create(
          Configs::TIME_TRANSITION_FADE_SCENE,
@@ -194,6 +198,18 @@ void BaseScene::gotoInitSessionScene(float dt, ppEnum::LoginAndInitSSFrom loginF
          InitSessionScene::createScene(loginFrom)
          )
       );
+    
+}
+
+/**
+ Dat: go to gotoInitSessionSceneWithoutAnimation
+ */
+void BaseScene::gotoInitSessionSceneWithoutAnimation(float dt, ppEnum::LoginAndInitSSFrom loginFrom) {
+    
+    //go to init session scene
+    Director::getInstance()->replaceScene(
+		InitSessionScene::createScene(loginFrom)
+	);
     
 }
 

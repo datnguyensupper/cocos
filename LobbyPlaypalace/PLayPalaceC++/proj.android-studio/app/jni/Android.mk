@@ -6,9 +6,7 @@ $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/external)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos)
 $(call import-add-path,$(LOCAL_PATH)/../../../cocos2d/cocos/audio/include)
-$(call import-add-path, $(LOCAL_PATH))
-
-#APP_ALLOW_MISSING_DEPS
+$(call import-add-path,$(LOCAL_PATH))
 
 LOCAL_MODULE := MyGame_shared
 
@@ -21,8 +19,10 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 ../../../Classes/Constant/MessageConstant.cpp \
 ../../../Classes/Custom/Common/ButtonScaleChild.cpp \
 ../../../Classes/Custom/Common/CRadioButton.cpp \
+../../../Classes/Custom/Common/CScratchSprite.cpp \
 ../../../Classes/Custom/Common/CSpinMachine.cpp \
 ../../../Classes/Custom/Common/CSpinWheel.cpp \
+../../../Classes/Custom/Common/CustomRenderTexture.cpp \
 ../../../Classes/Custom/Common/LabelAutoSize.cpp \
 ../../../Classes/Custom/Common/ReuseItemListView_Horizontal.cpp \
 ../../../Classes/Custom/Common/ReuseItemListView_Vertical.cpp \
@@ -171,12 +171,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 ../../../Classes/Views/Popup/NotificationPopup.cpp \
 ../../../Classes/Views/Popup/PiggyBankPopup.cpp \
 ../../../Classes/Views/Popup/ProfilePopup.cpp \
+../../../Classes/Views/Popup/ScratchCardPopup.cpp \
 ../../../Classes/Views/Popup/SettingPopup.cpp \
 ../../../Classes/Views/Tutorial/Tutorial.cpp \
 ../../../Classes/AppDelegate.cpp \
 ../../../Classes/Configs.cpp \
-
-
 
 LOCAL_CPPFLAGS := -DSDKBOX_ENABLED
 LOCAL_LDLIBS := -landroid \
@@ -184,14 +183,12 @@ LOCAL_LDLIBS := -landroid \
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 LOCAL_SHARED_LIBRARIES := libadcolonyso \
 libjsso
-LOCAL_WHOLE_STATIC_LIBRARIES := PluginFacebook \
+LOCAL_WHOLE_STATIC_LIBRARIES := PluginAdColony \
 sdkbox \
-PluginIAP \
-PluginAdColony
-
+PluginFacebook \
+PluginIAP 
 
 LOCAL_STATIC_LIBRARIES += android_native_app_glue
-
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
@@ -206,9 +203,9 @@ include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,.)
 $(call import-module, ./sdkbox)
+$(call import-module, ./pluginadcolony)
 $(call import-module, ./pluginfacebook)
 $(call import-module, ./pluginiap)
-$(call import-module, ./pluginadcolony)
 
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
 # _COCOS_LIB_IMPORT_ANDROID_END

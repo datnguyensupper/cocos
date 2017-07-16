@@ -9,10 +9,10 @@
 class UserBonusCheck : public BaseItemInfo
 {
 public:
-	long timeLeft;
-	long countDown;
-	long timeLeftFreeGift;
-	long timeLeftSendGift;
+	int64_t timeLeft;
+	int64_t countDown;
+	int64_t timeLeftFreeGift;
+	int64_t timeLeftSendGift;
 	double coinBonus;
 	/// <summary>
 	/// update info from values from PP Server

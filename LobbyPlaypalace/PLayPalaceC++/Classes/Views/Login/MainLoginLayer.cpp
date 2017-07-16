@@ -222,7 +222,7 @@ void MainLoginLayer::onLoginFacebookTouched(cocos2d::Ref* sender, cocos2d::ui::W
 		else if (error == "CONNECTION_FAILURE: CONNECTION_FAILURE")
 			this->loginScene->gotoLoginSceneLostConnection();
         else
-		    this->loginScene->gotoLoginScene(MessageConstant::MESSAGE_LOGIN_FACEBOOK,MessageConstant::MESSAGE_SOMETHING_WRONG);
+		    this->loginScene->gotoLoginScene(false,MessageConstant::MESSAGE_LOGIN_FACEBOOK,MessageConstant::MESSAGE_SOMETHING_WRONG);
 		
 	});
 #else
@@ -262,8 +262,8 @@ void MainLoginLayer::loginGuess(
 		string stringBeanResult = string(strbuf.GetString());
 		switch (coreResultCode)
 		{
-		case RESULT_CODE_VALID:
-		{
+		case RESULT_CODE_VALID:{
+                log("User Info\n %s\n",responseAsString.c_str());
 			InfoManager::getInstance()->updateUserInfo(doc);
 			NetworkManager::getInstance()->setLoginToken(doc[JSONFieldConstant::LOGIN_TOKEN.c_str()].GetString());
 			//go to init session scene

@@ -15,6 +15,7 @@
 #define TTF_FONT false
 using namespace std;
 
+class MobilePaymentInfo;
 class UtilFunction
 {
 public:
@@ -233,4 +234,18 @@ public:
 	*
 	*/
 	static void detectFontAndSetStringForLabel(cocos2d::Label * label, const std::string & font, const std::string& text);
+
+	/**
+	*  purchase item in a convenient way
+	*  @param itemID
+	*  @param cb
+	*  @param cbError
+	*
+	*/
+	static void purchaseItem(
+		const std::string& itemID, 
+		bool bHideLoadingAfterFinishPurchase = true,
+		const std::function<void(int, MobilePaymentInfo*)> cb = nullptr, 
+		const std::function<void()> cbError = nullptr,
+		const std::function<void()> cbCancle = nullptr);
 };

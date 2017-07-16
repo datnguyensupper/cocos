@@ -51,9 +51,13 @@ std::string SlotsGameDownloadFileManager::getSlotGameDownloadURL(std::string gam
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || IS_DEBUG)
 	if (DeviceManager::getInstance()->isLowRamDevice()) suffixes = "80Percent";
+#endif    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 && IS_DEBUG)
+	std::string url = Configs::downloadGameSlotPathTest + version + "/" + gameId + suffixes + ".zip";
+#else
+	std::string url = Configs::downloadGameSlotPath + version + "/" + gameId + suffixes + ".zip";
 #endif
     
-	std::string url = Configs::downloadGameSlotPath + version + "/"  + gameId + suffixes + ".zip";
 	return url;
 }
 

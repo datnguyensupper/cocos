@@ -42,9 +42,8 @@ bool CellLeaderboard::init()
 		30,
 		this->avatarSprite->getContentSize().height * this->avatarSprite->getScaleY() / 2
 	);
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && CALL_NATIVE_CROP_AVATAR)
+#if (CALL_NATIVE_CROP_AVATAR)
 	//this->avatarSprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
-	this->avatarSprite->setScale(this->avatarSprite->getScale() * Configs::SCALE_RESOUCE_VALUE);
 	this->avatarSprite->setPosition(avatarPos);
 	this->addChild(this->avatarSprite);
 #else
@@ -57,7 +56,7 @@ bool CellLeaderboard::init()
 #endif
 	this->stardom = Helper4Sprite::createWithSpriteFrameName(PNG_FRAME_GOLD_STARDOM);
 	this->stardom->setScale(0.8f);
-	this->stardom->setPosition(avatar->getPosition() + Vec2(-RADIUS_CIRCLE_AVATAR + 13, RADIUS_CIRCLE_AVATAR - 2));
+	this->stardom->setPosition(avatarPos + Vec2(-RADIUS_CIRCLE_AVATAR + 13, RADIUS_CIRCLE_AVATAR - 2));
 	this->stardom->setVisible(false);
 	this->addChild(this->stardom);
 

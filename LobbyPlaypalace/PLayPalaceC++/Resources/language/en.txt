@@ -499,6 +499,9 @@
 	cancel: {
 		text: "Cancel"
 	},
+	buy: {
+		text: "Buy"
+	},
 	buyNow: {
 		text: "Buy now"
 	},

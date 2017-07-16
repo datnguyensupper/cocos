@@ -40,7 +40,7 @@ private:
 	void onSharedCancel();
 	void onInviteFriendsWithInviteIdsResult(bool result, const std::string& msg);
 	void onAPI(const std::string& key, const std::string& jsonData);
-	void onAskGiftResult(bool result, const std::string& msg);
+	void onSendGiftResult(bool result, const std::string& msg);
 	/**
 	* 2017-03-01: Kiet: unuse listeners
 	*/
@@ -58,6 +58,12 @@ public:
 	* 2017-03-01: Kiet: login facebook
 	*/
 	void login(std::function<void(bool isLogin, const std::string& msg)> callback);
+    
+    /**
+     * Dat: check is logined facebook
+     */
+    bool isLogined();
+    
 	/**
 	* 2017-03-01: Kiet: get friends
 	*/

@@ -17,6 +17,7 @@
 #include "Info/GiftInfo.h"
 #include "Info/LeaderboardInfo.h"
 #include "Info/DailyChallengeInfo.h"
+#include "Info/FlipCardUserInfo.h"
 
 class AdditionalInfo;
 
@@ -32,6 +33,7 @@ private:
 	FacebookFriendInfo *facebookFriendInfo;
 	AchievementInfo* achievementInfo;
 	DailyChallengeInfo* dailyChallengeInfo;
+	FlipCardUserInfo* flipCardInfo;
 
 	bool isGettingListAchievementsFromSV = false;
 	std::vector<GiftInfo*> giftInfoList;
@@ -50,6 +52,7 @@ private:
 	std::map<int, std::vector<PayLineConfig>> mapListPayLineConfig; //key = freecoingift turn id
 	LuckyBoxConfig luckyBoxConfig; //key = freecoingift turn id
 	MagicItemConfig* magicItemConfig;
+	FlipCardConfig* flipCardConfig;
 public:
 	/**
 	* 2017-02-13: Kiet: get instance class
@@ -118,6 +121,15 @@ public:
 	void reloadDailyChallengeInfo(std::function<void(bool isSuccess, DailyChallengeInfo* result)> callback);
 	DailyChallengeInfo* getDailyChallengeInfo() {
 		return this->dailyChallengeInfo;
+	}
+
+	/// <summary>
+	/// reloadFlipCardInfo
+	/// </summary>
+	/// <param name="callback"></param>
+	void reloadFlipCardUserInfo(std::function<void(bool isSuccess, FlipCardUserInfo* result)> callback);
+	FlipCardUserInfo* getFlipCardUserInfo() {
+		return this->flipCardInfo;
 	}
 
 	std::vector<GiftInfo*> getGiftInfoList() {
@@ -242,6 +254,14 @@ public:
 	void updateMagicItemConfig(rapidjson::Value &data);
 	MagicItemConfig * getMagicItemConfig() {
 		return magicItemConfig;
+	}
+	/// <summary>
+	/// Duy: update flip card config
+	/// </summary>
+	/// <param name="data">data from pp sv</param>
+	void updateFlipCardConfig(rapidjson::Value &data);
+	FlipCardConfig* getFlipCardConfig() {
+		return flipCardConfig;
 	}
 
 	/**

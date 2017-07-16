@@ -33,6 +33,13 @@ class PiggyBankPopup;
 class MascotNotificationPopup;
 class MagicItemPopup;
 class MissingPopup;
+
+class SpecialOfferPopup;
+class StarterPackPopup;
+class PayToPlayPopup;
+class FreeToPlayPopup;
+class GetMoreCoinsPopup;
+class ScratchCardPopup;
 struct PopupQueueStruct
 {
 	BasePopup* popup;
@@ -70,6 +77,14 @@ private:
 	MascotNotificationPopup* mascotNotiPopup = nullptr;
 	MagicItemPopup* magicItemPopup = nullptr;
 	MissingPopup* missingPopup = nullptr;
+
+	SpecialOfferPopup* specialOfferPopup = nullptr;
+	StarterPackPopup* starterPackPopup = nullptr;
+	PayToPlayPopup* payToPlayPopup = nullptr;
+	FreeToPlayPopup* freeToPlayPopup = nullptr;
+	GetMoreCoinsPopup* getMoreCoinsPopup = nullptr;
+
+	ScratchCardPopup* scratchCardPopup = nullptr;
 
 	std::deque<PopupQueueStruct*> *popupQueue;
 
@@ -257,6 +272,44 @@ public:
 	MissingPopup* getMissingPopup() {
 		return this->missingPopup;
 	}
+	/**
+	* get special offer popup
+	*/
+	SpecialOfferPopup* getSpecialOfferPopup() {
+		return this->specialOfferPopup;
+	}
+	/**
+	* get starter pack popup
+	*/
+	StarterPackPopup* getStarterPackPopup() {
+		return this->starterPackPopup;
+	}
+	/**
+	* get pay to play popup
+	*/
+	PayToPlayPopup* getPayToPlayPopup() {
+		return this->payToPlayPopup;
+	}
+	/**
+	* get starter pack popup
+	*/
+	FreeToPlayPopup* getFreeToPlayPopup() {
+		return this->freeToPlayPopup;
+	}
+	/**
+	* get pay to play popup
+	*/
+	GetMoreCoinsPopup* getGetMoreCoinsPopup() {
+		return this->getMoreCoinsPopup;
+	}
+
+	/**
+	* get scratch card popup
+	*/
+	ScratchCardPopup* getScratchCardPopup() {
+		return this->scratchCardPopup;
+	}
+
 	/**
 	* 2017-03-01: Kiet: get header lobby layout 
 	*/

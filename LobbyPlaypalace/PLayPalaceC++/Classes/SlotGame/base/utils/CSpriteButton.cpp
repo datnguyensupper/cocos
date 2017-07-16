@@ -9,7 +9,12 @@ namespace GameSlot {
 		frameNormal(""),
 		frameTouching(""),
 		frameDisable(""),
-		isBlock(false)
+		isBlock(false),
+		isCallOnUpWithouCheck(false),
+		onDown(nullptr),
+		onUp(nullptr),
+		onMove(nullptr),
+		onLongTouch(nullptr)
 	{
 	}
 	CSpriteButton::~CSpriteButton()
@@ -109,6 +114,11 @@ namespace GameSlot {
 		this->onLongTouch = onLongTouch;
 	}
 
+	void CSpriteButton::setOnTouchMove(std::function<void(cocos2d::Touch*touch)> onMove)
+	{
+		this->onMove = onMove;
+	}
+
 	void CSpriteButton::setTouchEnabled(bool isEnabled)
 	{
 		if (!this->frameDisable.empty()) {
@@ -165,8 +175,13 @@ namespace GameSlot {
 				if (this->isTouching && !isTouching) {
 					this->normalState();
 				}
-				else if(!this->isTouching && isTouching){
-					this->pressedState();
+				else if(isTouching){
+					if (!this->isTouching) {
+						this->pressedState();
+					}
+					if (this->onMove) {
+						this->onMove(touch);
+					}
 				}
 			}
 			this->isTouching = isTouching;
@@ -174,9 +189,10 @@ namespace GameSlot {
 
 		listener->onTouchEnded = [=](cocos2d::Touch* touch, cocos2d::Event* event)
 		{
-			if (this->isTouching)
-			{
-				if (!this->isBlock) {
+			if (!this->isBlock) {
+
+				if (this->isTouching || isCallOnUpWithouCheck)
+				{
 					this->onUpEvent();
 				}
 			}

@@ -96,7 +96,7 @@ namespace GameSlot {
 		}
 
 		SoundManager::getInstance()->stopSound(backGroundID);
-		backGroundID = SoundManager::getInstance()->playSoundEffect(soundFile, true, 0.5f);
+		backGroundID = SoundManager::getInstance()->playSoundEffect(soundFile,true, true, 0.5f);
 		return backGroundID;
 	}
 
@@ -110,7 +110,7 @@ namespace GameSlot {
 		if (!bSoundEnabled) {
 			return -1;
 		}
-		return SoundManager::getInstance()->playSoundEffect(this->resSound["spin"]);
+		return SoundManager::getInstance()->playSoundEffect(this->resSound["spin"],false,false,1.0f);
 	}
 
 	int Manager4Sound::playReelSpin()
@@ -119,7 +119,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("reel_spin") != this->resSound.end()) {
-			reelSpinID = SoundManager::getInstance()->playSoundEffect(this->resSound["reel_spin"], true);
+			reelSpinID = SoundManager::getInstance()->playSoundEffect(this->resSound["reel_spin"],false, true,1.0f);
 		}
 		return reelSpinID;
 	}
@@ -134,7 +134,7 @@ namespace GameSlot {
 		if (!bSoundEnabled) {
 			return -1;
 		}
-		return SoundManager::getInstance()->playSoundEffect(this->resSound["reel_stop"]);
+		return SoundManager::getInstance()->playSoundEffect(this->resSound["reel_stop"], false, false, 1.0f);
 	}
 
 	int Manager4Sound::playScatterStop()
@@ -143,7 +143,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("scatter_stop") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["scatter_stop"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["scatter_stop"], false, false, 1.0f);
 		}
 		else {
 			return this->playReelStop();
@@ -156,7 +156,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("wild_stop") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["wild_stop"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["wild_stop"], false, false, 1.0f);
 		}
 		else {
 			return this->playReelStop();
@@ -169,7 +169,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("bonus_" + ToString(bonusID) + "_stop") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["bonus_" + ToString(bonusID) + "_stop"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["bonus_" + ToString(bonusID) + "_stop"], false, false, 1.0f);
 		}
 		else {
 			return this->playReelStop();
@@ -181,7 +181,7 @@ namespace GameSlot {
 		if (!bSoundEnabled) {
 			return -1;
 		}
-		animationID = SoundManager::getInstance()->playSoundEffect(this->resSound["symbol_" + ToString(iSymbol)]);
+		animationID = SoundManager::getInstance()->playSoundEffect(this->resSound["symbol_" + ToString(iSymbol)], false, false, 1.0f);
 		this->setVolumeBackgroundMusic(0.1f);
 		return animationID;
 	}
@@ -197,7 +197,7 @@ namespace GameSlot {
 		if (!bSoundEnabled) {
 			return -1;
 		}
-		totalWinID = SoundManager::getInstance()->playSoundEffect(this->resSound["total_winning"]);
+		totalWinID = SoundManager::getInstance()->playSoundEffect(this->resSound["total_winning"], false, false, 1.0f);
 		return totalWinID;
 	}
 
@@ -212,7 +212,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("double_up_clicked") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["double_up_clicked"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["double_up_clicked"], false, false, 1.0f);
 		}
 		return -1;
 	}
@@ -223,7 +223,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("bonus_3_clicked") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["bonus_3_clicked"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["bonus_3_clicked"], false, false, 1.0f);
 		}
 		return -1;
 	}
@@ -234,7 +234,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("bonus_4_clicked") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["bonus_4_clicked"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["bonus_4_clicked"], false, false, 1.0f);
 		}
 		return -1;
 	}
@@ -245,7 +245,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("double_up_win") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["double_up_win"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["double_up_win"], false, false, 1.0f);
 		}
 		return -1;
 	}
@@ -256,7 +256,7 @@ namespace GameSlot {
 			return -1;
 		}
 		if (this->resSound.find("double_up_lose") != this->resSound.end()) {
-			return SoundManager::getInstance()->playSoundEffect(this->resSound["double_up_lose"]);
+			return SoundManager::getInstance()->playSoundEffect(this->resSound["double_up_lose"], false, false, 1.0f);
 		}
 		return -1;
 	}
@@ -266,7 +266,7 @@ namespace GameSlot {
 		if (!bSoundEnabled) {
 			return -1;
 		}
-		return SoundManager::getInstance()->playSoundEffect("sound/megaBigWin.mp3");
+		return SoundManager::getInstance()->playSoundEffect("sound/megaBigWin.mp3", false, false, 1.0f);
 	}
 
 	int Manager4Sound::playEffect(const std::string & file, bool isLoop)
@@ -274,7 +274,7 @@ namespace GameSlot {
 		if (!bSoundEnabled) {
 			return -1;
 		}
-		return SoundManager::getInstance()->playSoundEffect(file, isLoop);
+		return SoundManager::getInstance()->playSoundEffect(file,false, isLoop,1.0f);
 	}
 
 	void Manager4Sound::stopEffect(int id)

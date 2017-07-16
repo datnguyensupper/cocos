@@ -142,13 +142,12 @@ namespace LuckyWheel {
 				PopupManager::getInstance()->getLoadingAnimation()->hide();
 			},
 				nullptr,
-				[](sdkbox::Product const&p, const std::string&msg)
-			{
-				PopupManager::getInstance()->getLoadingAnimation()->hide();
+				[this](sdkbox::Product const&p, const std::string&msg){
+                    PopupManager::getInstance()->getLoadingAnimation()->hide();
+                    PopupManager::getInstance()->getNotificationPopup()->showDisconnect2PurchaseStore(this->getParent());
 			},
-				[](sdkbox::Product const&p)
-			{
-				PopupManager::getInstance()->getLoadingAnimation()->hide();
+				[this](sdkbox::Product const&p){
+                    PopupManager::getInstance()->getLoadingAnimation()->hide();
 			}
 			);
 #else

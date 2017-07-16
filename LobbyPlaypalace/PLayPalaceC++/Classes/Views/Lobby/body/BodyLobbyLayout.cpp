@@ -385,7 +385,7 @@ void BodyLobbyLayout::onGameSlotTouched(cocos2d::Ref* sender, cocos2d::ui::Widge
 				LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_NEED_LEVEL_TO_PLAY_GAME, "text1")
 				+ ToString(buttonGameSlot->getGameInfo()->minLevel)
 				+ LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_NEED_LEVEL_TO_PLAY_GAME, "text2"),
-				"OK",
+				"",
 				""
 			);
 			break;

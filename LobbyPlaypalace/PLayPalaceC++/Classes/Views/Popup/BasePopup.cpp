@@ -15,7 +15,7 @@
 USING_NS_CC;
 using namespace std;
 
-#define APLHA_DARK_LAYER 150
+
 #define TAG_ACTION_HIDE_POPUP 2
 BasePopup::BasePopup() : Layer()
 {
@@ -61,15 +61,20 @@ cocos2d::ui::Button* BasePopup::createCloseButton()
 }
 
 
-cocos2d::ui::Button* BasePopup::createLabelButton(ButtonScaleChild* button, std::string titleText, float fontSize) {
+cocos2d::ui::Button* BasePopup::createLabelButton(ButtonScaleChild* button, bool isMutilpleLanguage, std::string titleText, float fontSize) {
 
 	std::string fontName = UtilFunction::getFontNameFromLanguage();
+	if (!isMutilpleLanguage) {
+		fontName = FONT_PassionOne_Regular;
+	}
 
 	auto labelAutoScale = LabelAutoSize::createWithTTF(
 		TTFConfig(fontName, fontSize),
 		titleText
 	);
-	UtilFunction::setLabelFontByLanguage(labelAutoScale);
+    if(isMutilpleLanguage){
+        UtilFunction::setLabelFontByLanguage(labelAutoScale);
+    }
 	labelAutoScale->setString(titleText);
 	labelAutoScale->setTextColor(Color4B::WHITE);
 	labelAutoScale->setCascadeOpacityEnabled(true);
@@ -77,57 +82,60 @@ cocos2d::ui::Button* BasePopup::createLabelButton(ButtonScaleChild* button, std:
 	//labelAutoScale->setDimensions(button->getContentSize().width * button->getScaleX(), button->getContentSize().height * button->getScaleY());
 	labelAutoScale->setAlignment(cocos2d::TextHAlignment::CENTER, cocos2d::TextVAlignment::CENTER);
 	labelAutoScale->setTextAreaSize(Size(button->getContentSize().width * button->getScaleX() - 20, button->getContentSize().height * button->getScaleY()));
-
+    labelAutoScale->setParentButtonScaleChild(button);
 	button->setTitleLabel(labelAutoScale);
 	button->addScaleNode(labelAutoScale);
 	return button;
 
 }
 
-cocos2d::ui::Button * BasePopup::createButton(const std::string & fileName, std::string titleText, float fontSize){
+cocos2d::ui::Button * BasePopup::createButton(const std::string & fileName, bool isMutilpleLanguage, std::string titleText, float fontSize){
 
 	auto button = ButtonScaleChild::create(fileName);
 	button->setCascadeOpacityEnabled(true);
 	button->setZoomScale(Configs::BUTTON_ZOOM_SCALE_VALUE);
 
-	createLabelButton(button, titleText, fontSize);
+	createLabelButton(button, isMutilpleLanguage, titleText, fontSize);
 
 	return button;
 }
 
-cocos2d::ui::Button* BasePopup::createButtonWithFrameName(const std::string& frameName, std::string titleText, float fontSize) {
+cocos2d::ui::Button* BasePopup::createButtonWithFrameName(const std::string& frameName, bool isMutilpleLanguage, std::string titleText, float fontSize) {
 	auto button = ButtonScaleChild::create(frameName, "", "", ui::Widget::TextureResType::PLIST);
 	button->setCascadeOpacityEnabled(true);
 	button->setZoomScale(Configs::BUTTON_ZOOM_SCALE_VALUE);
 
-	createLabelButton(button, titleText, fontSize);
+	createLabelButton(button, isMutilpleLanguage, titleText, fontSize);
 
 	return button;
 
 }
 
-cocos2d::ui::Button * BasePopup::createBlueButton(std::string titleText, float fontSize)
+cocos2d::ui::Button * BasePopup::createBlueButton(bool isMutilpleLanguage, std::string titleText, float fontSize)
 {
 	if (titleText.empty()) {
 		titleText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::COLLECTANDSHARE);
+        isMutilpleLanguage = true;
 	}
-	return this->createButtonWithFrameName(PNG_FRAME_BLUE_POPUP_BUTTON, titleText, fontSize);
+    return this->createButtonWithFrameName(PNG_FRAME_BLUE_POPUP_BUTTON, isMutilpleLanguage, titleText, fontSize);
 }
 
-cocos2d::ui::Button* BasePopup::createGreenButton(std::string titleText, float fontSize)
+cocos2d::ui::Button* BasePopup::createGreenButton(bool isMutilpleLanguage, std::string titleText, float fontSize)
 {
 	if (titleText.empty()) {
-		titleText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::COLLECT);
+        titleText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::COLLECT);
+        isMutilpleLanguage = true;
 	}
-	return this->createButtonWithFrameName(PNG_FRAME_GREEN_POPUP_BUTTON, titleText, fontSize);
+	return this->createButtonWithFrameName(PNG_FRAME_GREEN_POPUP_BUTTON, isMutilpleLanguage, titleText, fontSize);
 }
 
-cocos2d::ui::Button* BasePopup::createPurpleButton(std::string titleText, float fontSize)
+cocos2d::ui::Button* BasePopup::createPurpleButton(bool isMutilpleLanguage, std::string titleText, float fontSize)
 {
 	if (titleText.empty()) {
-		titleText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::CANCEL);
+        titleText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::CANCEL);
+        isMutilpleLanguage = true;
 	}
-	return this->createButtonWithFrameName(PNG_FRAME_PURPLE_POPUP_BUTTON, titleText, fontSize);
+	return this->createButtonWithFrameName(PNG_FRAME_PURPLE_POPUP_BUTTON, isMutilpleLanguage, titleText, fontSize);
 }
 
 std::vector<Action*> BasePopup::animationShowPopup()
@@ -229,7 +237,7 @@ void BasePopup::show()
 		auto listener1 = EventListenerTouchOneByOne::create();
 		listener1->setSwallowTouches(true);
 		listener1->onTouchBegan = [this](Touch* touch, Event* event) {
-			if (Configs::printConsoleLog)	CCLOG("DARK LAYER SWALLOW TOUCH");
+			if (Configs::printConsoleLog)	CCLOG("Base Popup DARK LAYER SWALLOW TOUCH");
 			
 			callback4Click2DarkLayer();
 			if (this->isVisible()) return true;
@@ -248,6 +256,8 @@ void BasePopup::show()
 	}
 
 	this->setVisible(true);
+	if(this->layerDisableClickOnHide)
+		this->layerDisableClickOnHide->setVisible(false);
 
 	//Animation show popup
 	std::vector<Action*> actionList = this->animationShowPopup();
@@ -293,6 +303,8 @@ void BasePopup::hide()
 	{
 		return;
 	}
+	this->stopAllActions();
+
 	if (!this->layerDisableClickOnHide)
 	{
 		//swallow touch
@@ -303,7 +315,7 @@ void BasePopup::hide()
 			{
 				CCLOG("layerDisableClickOnHide SWALLOW TOUCH");
 			}
-			return this->layerDisableClickOnHide->isVisible();
+			return (this->layerDisableClickOnHide->isVisible() && this->isVisible());
 		};
 
 		//DARK LAYER
@@ -339,14 +351,19 @@ void BasePopup::hide()
 	});
 	auto sequenseAction = Sequence::create(longestAction, hideCallback, nullptr);
 	sequenseAction->setTag(TAG_ACTION_HIDE_POPUP);
+	bool isExistLongestAction = false;
 	for (auto &action : actionList)
 	{
 		if (action == longestAction) {
+			isExistLongestAction = true;
 			this->runAction(sequenseAction);
 		}
 		else {
 			this->runAction(action);
 		}
+	}
+	if (!isExistLongestAction) {
+		this->runAction(hideCallback);
 	}
 }
 

@@ -205,6 +205,8 @@ void ButtonGameSlot::updateDownloadProgress(float progress, bool isFinish, bool 
 		}
 		//downloadingProgress->setPercentage(progress * 100);
 
+
+		UtilFunction::setFontForLabel(statusLabel, FONT_PassionOne_Regular, 30, false);
 		std::string progressStr = StringUtils::format("%i", (int)(progress * 100)) + "%";
 		statusLabel->setString(progressStr);
 	}
@@ -258,8 +260,9 @@ void ButtonGameSlot::checkStateAndUpdateUI()
 	}
 	case Locked:
 	{
-		std::string statusString = LanguageManager::getInstance()->getStringForKeys(statusLabel,LanguageConstant::POPUP_USER_GAME_UNLOCK, "text4") + " - " +
-			LanguageManager::getInstance()->getStringForKeys(statusLabel, LanguageConstant::POPUP_USER_GAME_UNLOCK, "text1") + " " + StringUtils::toString(gameInfo->minLevel);
+		UtilFunction::setLabelFontByLanguage(statusLabel);
+		std::string statusString = LanguageManager::getInstance()->getStringForKeys(nullptr,LanguageConstant::POPUP_USER_GAME_UNLOCK, "text4") + " - " +
+			LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_USER_GAME_UNLOCK, "text1") + " " + StringUtils::toString(gameInfo->minLevel);
 		this->statusLabel->setString(statusString);
 		
 		this->getScaleNode()->setVisible(true);

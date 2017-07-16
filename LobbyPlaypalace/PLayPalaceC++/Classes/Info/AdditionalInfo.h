@@ -32,7 +32,7 @@ struct FreeCoinGiftInfo : public BaseItemInfo
 	bool canCollect;
 	double coinReward;
 	double nextCoinReward;
-	int waitingTime;
+	double waitingTime;
 	int numberOfTimeCollectFreeCoin;
 	/// <summary>
 	/// get waiting time base on coin reward
@@ -77,7 +77,7 @@ struct FreeCoinGiftInfo : public BaseItemInfo
 		}
 
 		if (data.HasMember(JSONFieldConstant::WAITING_TIME.c_str()))
-			waitingTime = data[JSONFieldConstant::WAITING_TIME.c_str()].GetInt();
+			waitingTime = data[JSONFieldConstant::WAITING_TIME.c_str()].GetDouble();
 		else
 			waitingTime = getCoinInfoCollectWaitingTime(data[JSONFieldConstant::COIN_REWARD.c_str()].GetDouble());
 
@@ -153,6 +153,7 @@ struct DailyBonusWheelInfo : public BaseItemInfo
 	int box;
 	double vipBenefit;
 
+	int scratchCardRewards;
 	/// <summary>
 	/// update info from values from PP Server
 	/// </summary>
@@ -169,6 +170,8 @@ struct DailyBonusWheelInfo : public BaseItemInfo
 		totalCoin = data[JSONFieldConstant::TOTAL_COIN.c_str()].GetDouble();
 		box = data[JSONFieldConstant::BOX.c_str()].GetInt();
 		vipBenefit = data[JSONFieldConstant::VIP_BENEFIT.c_str()].GetDouble();
+
+		scratchCardRewards = data[JSONFieldConstant::SCRATCH_CARD_REWARD.c_str()].GetInt();
 	}
 };
 
@@ -270,10 +273,10 @@ struct MagicItemInfo : public BaseItemInfo
 	int remainingSpinOfMagicItemLuckySpinType2;
 
 	int remainingPackageOfMagicItemDoubleExp;
-	long remainingTimeOfMagicItemDoubleExp;
+	int64_t remainingTimeOfMagicItemDoubleExp;
 
 	int remainingPackageOfMagicItemLuckySymbol;
-	long remainingTimeOfMagicItemLuckySymbol;
+	int64_t remainingTimeOfMagicItemLuckySymbol;
 
 	/// <summary>
 	/// update info from values from PP Server
@@ -304,6 +307,61 @@ struct MagicItemInfo : public BaseItemInfo
 	}
 };
 
+struct ScratchCardInfo : public BaseItemInfo {
+	std::string currentInfo;
+	std::string nextInfo;
+	double coinReward;
+	int remainingCards;
+
+	/// <summary>
+	/// update info from values from PP Server
+	/// </summary>
+	/// <param name="data">data from PP Server</param>
+	void updateInfoByValue(rapidjson::Value &data)
+	{
+		BaseItemInfo::updateBaseItemInfoByValue(data);
+		currentInfo = data[JSONFieldConstant::CURRENT_SCRATCH_CARD_INFO.c_str()].GetString();
+		nextInfo = data[JSONFieldConstant::NEXT_SCRATCH_CARD_INFO.c_str()].GetString();
+		coinReward = data[JSONFieldConstant::COIN_REWARD.c_str()].GetDouble();
+		remainingCards = data[JSONFieldConstant::REMAINING_SCRATCH_CARD.c_str()].GetInt();
+	}
+};
+
+struct FeedbackInfo : public BaseItemInfo {
+	int status;
+	/// <summary>
+	/// update info from values from PP Server
+	/// </summary>
+	/// <param name="data">data from PP Server</param>
+	void updateInfoByValue(rapidjson::Value &data)
+	{
+		BaseItemInfo::updateBaseItemInfoByValue(data);
+		status = data[JSONFieldConstant::FEEDBACK_STATUS.c_str()].GetInt();
+	}
+};
+
+struct FlipCardInfo : public BaseItemInfo {
+	std::string flip_card_value;
+	int leaf;
+	double remainingWaitingTime;
+	bool bCanShow;
+	bool bCanRedeem;
+
+	/// <summary>
+	/// update info from values from PP Server
+	/// </summary>
+	/// <param name="data">data from PP Server</param>
+	void updateInfoByValue(rapidjson::Value &data)
+	{
+		BaseItemInfo::updateBaseItemInfoByValue(data);
+		flip_card_value = data[JSONFieldConstant::FLIP_CARD_VALUE.c_str()].GetString();
+		leaf = data[JSONFieldConstant::LEAF.c_str()].GetInt();
+		remainingWaitingTime = data[JSONFieldConstant::REMAINING_WAITING_TIME.c_str()].GetDouble();
+		bCanShow = data[JSONFieldConstant::SHOW_FLIP_CARD_DETAIL.c_str()].GetBool();
+		bCanRedeem = data[JSONFieldConstant::CAN_REDEEM_FLIP_CARD_REWARD.c_str()].GetBool();
+	}
+};
+
 class AdditionalInfo
 {
 public:
@@ -318,6 +376,9 @@ public:
 	PiggyBankInfo* piggyBankInfo;
 	ComebackBonusMobileInfo* comebackBonusMobileInfo;
 	MagicItemInfo* magicItemInfo;
+	ScratchCardInfo* scratchCardInfo;
+	FeedbackInfo* feedbackInfo;
+	FlipCardInfo* flipCardInfo;
 
 	AdditionalInfo()
 	{
@@ -332,7 +393,9 @@ public:
 		this->piggyBankInfo = new PiggyBankInfo();
 		this->comebackBonusMobileInfo = new ComebackBonusMobileInfo();
 		this->magicItemInfo = new MagicItemInfo();
-
+		this->scratchCardInfo = new ScratchCardInfo();
+		this->feedbackInfo = new FeedbackInfo();
+		this->flipCardInfo = new FlipCardInfo();
 	}
 
 	~AdditionalInfo()
@@ -348,5 +411,8 @@ public:
 		CC_SAFE_DELETE(this->piggyBankInfo);
 		CC_SAFE_DELETE(this->comebackBonusMobileInfo);
 		CC_SAFE_DELETE(this->magicItemInfo);
+		CC_SAFE_DELETE(this->scratchCardInfo);
+		CC_SAFE_DELETE(this->feedbackInfo);
+		CC_SAFE_DELETE(this->flipCardInfo);
 	}
 };

@@ -55,6 +55,8 @@ public:
 	/// <returns>is init success</returns>
 	virtual bool init();
     
+    void check4AutoLogin();
+    
     // implement the "static create()" method manually
     /// <summary>
 	/// define create function

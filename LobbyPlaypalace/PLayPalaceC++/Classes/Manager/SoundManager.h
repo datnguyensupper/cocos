@@ -12,6 +12,7 @@ class SoundManager
 {
 private:
 	int backgroundID;
+    int lastSoundStopID = -1;
 
 	std::set<int> aEffectPlaying;
 
@@ -69,13 +70,14 @@ public:
 	/// <param name="pitch">volumn: 0->1</param>
 	/// <returns>sound id</returns>
 	/// <summary>
-	int playSoundEffect(const std::string& pszFilePath, bool isLoop = false, float pitch = 1.0f);
+	int playSoundEffect(const std::string& pszFilePath, bool isBgMusic, bool isLoop, float pitch);
 	/// <summary>
 	/// set volumn for sound
 	/// </summary>
 	/// <param name="soundID">soud id</param>
 	/// <param name="volume">volumn</param>
 	void setVolume(int soundID, float volume);
+	int playSound(const std::string& filePath, bool loop, float volume = 1.0f);
 	/// <summary>
 	/// stop sound effect with id
 	/// </summary>

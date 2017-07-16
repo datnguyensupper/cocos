@@ -409,7 +409,7 @@ void FreeCoinGiftItem::onEnter()
 void FreeCoinGiftItem::countDown(float dt)
 {
 	if (this->state != FreeCoinGiftState::CountDown) return;
-	if (this->freeCoinGiftBonus->waitingTime > 0) {
+	if (this->freeCoinGiftBonus && this->freeCoinGiftBonus->waitingTime > 0) {
 		freeCoinGiftBonus->waitingTime -= (dt * 1000);
 		this->oInfo->setString(Helper4Time::millisecondTimeToNormalTimeHourMinAndSecString(freeCoinGiftBonus->waitingTime));
 	}

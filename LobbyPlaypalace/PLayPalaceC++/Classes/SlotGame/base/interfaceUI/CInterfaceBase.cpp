@@ -70,10 +70,10 @@ namespace GameSlot {
 		if (this->bGameHasDoubleUp) {
 			this->oButDoubleUp = CSpriteButton::createButtonWithSpriteFrameName(
 				"btn-double-up",
-				nullptr,
-				[this]() {
-				this->oGame->startDoubleUp();
-			}
+                [this]() {
+                    this->oGame->startDoubleUp();
+                },
+				[this]() {}
 			);
 			this->oButDoubleUp->setPosition(this->oButSpin->getPosition() + Vec2(0, -190));
 			this->oButDoubleUp->setScaleEvent(0.9f, 1.0f);

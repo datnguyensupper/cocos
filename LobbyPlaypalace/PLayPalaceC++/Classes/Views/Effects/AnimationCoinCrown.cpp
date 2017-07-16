@@ -123,6 +123,7 @@ bool AnimationCoinCrown::init()
 		break;
 	}
 
+	numberObject *= 3;
 
 	Menu* mymenu = Menu::create();
 	mymenu->setPosition(Vec2::ZERO);

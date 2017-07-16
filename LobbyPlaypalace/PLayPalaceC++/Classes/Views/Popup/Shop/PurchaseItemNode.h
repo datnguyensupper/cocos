@@ -103,10 +103,7 @@ private:
 	/// <param name="currencyName">currency of reward after watching video</param>
 	/// <param name="amount">amount of reward</param>
 	/// <param name="success">is watch video success</param>
-	void callbackRewardVideoAdcolony(
-		const sdkbox::AdColonyAdInfo& info,
-		const std::string& currencyName,
-		int amount,
+	void callbackRewardVideoAdcolony(int amount,
 		bool success);
 public:
 	static PurchaseCoinCrownItem* create(PurchaseItemType _purchaseItemType);

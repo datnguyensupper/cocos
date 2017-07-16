@@ -9,13 +9,13 @@
 
 struct LeaderboardInfo : public BaseItemInfo
 {
-	long level;
+	int64_t level;
 	double coin;
 	double slotTotalBet;
 	std::string facebookUID;
 	std::string urlFullAvatar;
 	int vipType;
-	long userId;
+	int64_t userId;
 	int rank;
 
 	/// <summary>

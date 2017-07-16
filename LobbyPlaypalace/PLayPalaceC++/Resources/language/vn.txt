@@ -496,6 +496,9 @@
 	cancel: {
 		text: "Hủy"
 	},
+	buy: {
+		text: "Mua"
+	},
 	buyNow: {
 		text: "Mua ngay"
 	},

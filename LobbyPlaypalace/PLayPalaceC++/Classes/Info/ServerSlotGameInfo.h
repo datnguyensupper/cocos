@@ -11,7 +11,7 @@
 class ServerSlotGameInfo : public BaseItemInfo
 {
 public:
-	long orderId;
+	int orderId;
 	std::string gameId;
 	std::string gameIdLocal;
 	std::string newestVersion;
@@ -33,7 +33,7 @@ public:
 //			return;
 //		}
 		BaseItemInfo::updateBaseItemInfoByValue(data);
-		this->orderId = data[JSONFieldConstant::ORDER_ID.c_str()].GetInt64();
+		this->orderId = data[JSONFieldConstant::ORDER_ID.c_str()].GetInt();
 		this->gameId = data[JSONFieldConstant::GAME_ID.c_str()].GetString();
 
 

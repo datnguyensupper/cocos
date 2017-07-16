@@ -1,5 +1,8 @@
 #include "CBonusBase.h"
 #include "CGameBase.h"
+#include "Manager/PopupManager.h"
+#include "Views/Lobby/header/HeaderLobbyLayout.h"
+
 
 USING_NS_CC;
 namespace GameSlot {
@@ -65,14 +68,29 @@ namespace GameSlot {
 			this->init();
 			this->bInited = true;
 		}
+        log("this->oGame->getMain()->isReceivedBonus() %i",this->oGame->getMain()->isReceivedBonus());
+        log("this->oGame->getMain()->getBonusHistory() %i",this->oGame->getMain()->getBonusHistory() != nullptr);
 		if (this->oGame->getMain()->isReceivedBonus() ||
 			this->oGame->getMain()->getBonusHistory()) {
-			Director::getInstance()->getScheduler()->schedule([this](float dt) {
+            
+            log("this->oGame->getMain()->isReceivedBonus() ||this->oGame->getMain()->getBonusHistory()");
+            Director::getInstance()->getScheduler()->schedule([this](float dt) {
+                log("Director::getInstance()->getScheduler()->schedule");
 				this->bLoading = false;
-				this->onBonusEntered();
-				this->restore();
+                this->onBonusEntered();
+                log("log('Director::getInstance()->getScheduler()->schedule');");
+                this->restore();
+                log("this->restore();");
 			}, this, 0, 0, 0.5f, false, "CBonusBase_entered");
-		}
+        }else if(!this->oGame->getMain()->isReceivedBonus()){
+            log("this->oGame->getMain()->isReceivedBonus() ||this->oGame->getMain()->getBonusHistory() FAIL");
+//            Director::getInstance()->getScheduler()->schedule([this](float dt) {
+//            PopupManager::getInstance()->getHeaderLobbyLayout()->scheduleOnce([](float dt){
+//                PopupManager::getInstance()->getHeaderLobbyLayout()->gotoLobbyScene();
+//            }, 1.0f, "CBonusBase_entered");
+            
+//            }, this, 0, 0, 0.5f, false, "CBonusBase_entered");
+        }
 	}
 	bool CBonusBase::init(){
 

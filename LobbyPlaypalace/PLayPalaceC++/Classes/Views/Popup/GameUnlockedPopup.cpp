@@ -12,6 +12,9 @@
 #include "Helper/Helper4Sprite.h"
 #include "Helper/Helper4Scene.h"
 
+#define TITLE_UNLOCK_PAYLINE "You've unlock PAY LINE !!!"
+#define TITLE_UNLOCK_DAILLY_CHANGLENGE "YouPass DAILY CHALLENGE  to get coin !!!"
+#define TITLE_UNLOCK_PIGGY_BANK "You've unlock PIGGY BANK !!!"
 USING_NS_CC;
 using namespace std;
 using namespace GameSlot;
@@ -64,7 +67,7 @@ bool GameUnlockedPopup::init()
 	));
 	this->addChild(closeBtn);
 
-	this->btn = this->createGreenButton(Language(nullptr, LanguageConstant::GOTOLOBBY), 45);
+	this->btn = this->createGreenButton(true,Language(nullptr, LanguageConstant::GOTOLOBBY), 45);
 	this->btn->setPosition(bg->getPosition() + Vec2(0, -195));
 	this->btn->setScale(1.2f);
 	/*this->btn->setTitleFontSize(45);
@@ -116,12 +119,15 @@ void GameUnlockedPopup::reset()
 void GameUnlockedPopup::updateAfterChangeLanguage() {
 
 	if (currentUFBL == LobbyConstant::API_BONUS_NAME_UFBL_CHOOSE_PAY_LINE) {
-	}
-	else if (currentUFBL == LobbyConstant::API_BONUS_NAME_UFBL_DAILY_CHANLLENGE) {
-	}
-	else if (currentUFBL == LobbyConstant::API_BONUS_NAME_UFBL_PIGGY_BANK) {
-	}
-	else {
+		UtilFunction::setLabelFontByLanguage(oText, FONT_PassionOne_Regular, 55);
+		this->oText->setString(TITLE_UNLOCK_PAYLINE);
+	}else if (currentUFBL == LobbyConstant::API_BONUS_NAME_UFBL_DAILY_CHANLLENGE) {
+		UtilFunction::setLabelFontByLanguage(oText, FONT_PassionOne_Regular, 55);
+		this->oText->setString(TITLE_UNLOCK_DAILLY_CHANGLENGE);
+	}else if (currentUFBL == LobbyConstant::API_BONUS_NAME_UFBL_PIGGY_BANK) {
+		UtilFunction::setLabelFontByLanguage(oText, FONT_PassionOne_Regular, 55);
+		this->oText->setString(TITLE_UNLOCK_PIGGY_BANK);
+	}else {
 		UtilFunction::setLabelFontByLanguage(oText, "", (LanguageManager::getInstance()->getCurrentLanguage() == vn) ? 45 : 55);
 		std::string text = Language(nullptr, LanguageConstant::YOU_HAVE_UNLOCKED_A_NEW_GAME);
 		this->oText->setString(text);
@@ -203,6 +209,7 @@ void GameUnlockedPopup::prepareAndShow(const std::deque<std::string>& listNewFea
 void GameUnlockedPopup::prepareInfo(ServerSlotGameInfo* info)
 {
 	std::string spriteName = "";
+	this->currentUFBL = "";
 	switch (info->orderId)
 	{
 	case ppEnum::NEZHA:
@@ -278,6 +285,8 @@ void GameUnlockedPopup::prepareInfo(ServerSlotGameInfo* info)
 	this->oGameIcon->setSpriteFrame(spriteName);
 
 	this->oLightRay->runAction(createActionRotateLightRay());
+
+	updateAfterChangeLanguage();
 }
 
 void GameUnlockedPopup::prepareInfo(std::string & info)
@@ -288,16 +297,16 @@ void GameUnlockedPopup::prepareInfo(std::string & info)
 	this->btn->getTitleLabel()->setString(Language(btn->getTitleLabel(),LanguageConstant::OK));
 	if (info == LobbyConstant::API_BONUS_NAME_UFBL_CHOOSE_PAY_LINE) {
 		spriteName = PNG_FRAME_UFBL_PAYLINE;
-		featureName = "You've unlock PAY LINE !!!";
+		featureName = TITLE_UNLOCK_PAYLINE;
 		this->oGameIcon->setPosition(oLightRay->getPosition() + Vec2(0, -30));
 	}
 	else if (info == LobbyConstant::API_BONUS_NAME_UFBL_DAILY_CHANLLENGE) {
 		spriteName = PNG_FRAME_UFBL_DAILY_CHALLENGE;
-		featureName = "YouPass DAILY CHALLENGE  to get coin !!!";
+		featureName = TITLE_UNLOCK_DAILLY_CHANGLENGE;
 	}
 	else if (info == LobbyConstant::API_BONUS_NAME_UFBL_PIGGY_BANK) {
 		spriteName = PNG_FRAME_UFBL_PIGGY_BANK;
-		featureName = "You've unlock PIGGY BANK !!!";
+		featureName = TITLE_UNLOCK_PIGGY_BANK;
 		this->btn->getTitleLabel()->setString(Language(btn->getTitleLabel(),LanguageConstant::PAY));
 	}
 
@@ -308,6 +317,7 @@ void GameUnlockedPopup::prepareInfo(std::string & info)
 
 	this->currentType = GameUnlockedPopupType::UNLOCK_FEATURE;
 
+	UtilFunction::setLabelFontByLanguage(oText, FONT_PassionOne_Regular, 55);
 	this->oText->setString(featureName);
 
 	//this->oGameIcon->setTexture(spriteName);

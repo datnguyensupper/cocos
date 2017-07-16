@@ -4,6 +4,7 @@
 
 USING_NS_CC;
 #define LIMIT_INVITABLE_FRIENDS 5000
+#define SEND_GIFT_TITLE "Welcome"
 #define SEND_GIFT_MESS "I send a special gift up to $100,000 to you! Good luck!"
 #define INVITE_TITLE "Welcome"
 #define INVITE_MES "Join PlayPalace with me!"
@@ -135,7 +136,7 @@ void FacebookController::onAPI(const std::string & key, const std::string & json
 	}
 }
 
-void FacebookController::onAskGiftResult(bool result, const std::string & msg)
+void FacebookController::onSendGiftResult(bool result, const std::string & msg)
 {
 	if (Configs::printConsoleLog)
 	{
@@ -164,7 +165,7 @@ void FacebookController::login(std::function<void(bool isLogin, const std::strin
 {
 	this->callbackLogin = callback;
 #ifdef SDKBOX_ENABLED
-	bool isLoggedIn = sdkbox::PluginFacebook::isLoggedIn();
+	bool isLoggedIn = isLogined();
 	if (isLoggedIn)
 	{
 		sdkbox::PluginFacebook::logout();
@@ -179,6 +180,15 @@ void FacebookController::login(std::function<void(bool isLogin, const std::strin
 	permissions.push_back(sdkbox::FB_PERM_READ_USER_FRIENDS);
 	sdkbox::PluginFacebook::login(permissions);
 	
+#endif
+}
+
+bool FacebookController::isLogined(){
+#ifdef SDKBOX_ENABLED
+    bool isLoggedIn = sdkbox::PluginFacebook::isLoggedIn();
+    return isLoggedIn;
+#else
+    return false;
 #endif
 }
 
@@ -376,6 +386,6 @@ void FacebookController::sendGifts(std::vector<std::string> facebookUIDs, std::f
 {
 	this->callbackSendGift = callback;
 #ifdef SDKBOX_ENABLED
-	sdkbox::PluginFacebook::requestGift(facebookUIDs, Configs::freeGiftFacebookProductId, SEND_GIFT_MESS);
+	sdkbox::PluginFacebook::sendGift(facebookUIDs, Configs::freeGiftFacebookProductId,SEND_GIFT_TITLE, SEND_GIFT_MESS);
 #endif
 }

@@ -28,6 +28,7 @@ private:
     static BaseScene* currentScene;
     std::string messageGoToLoginScene;
     std::string titleGoToLoginScene;
+    bool isFailBeforeGoToLoginScene;
     bool isGoingToLoginScene = false;
 public:
     static BaseScene* getCurrentScene();
@@ -36,7 +37,7 @@ public:
 	/// </summary>
 	/// <param name="title">title popup</param>
 	/// <param name="message">message popup</param>
-    void gotoLoginScene(std::string title = "", std::string message = "");
+    void gotoLoginScene(bool _isFailBeforeGoToLoginScene, std::string title = "", std::string message = "");
 	/// <summary>
 	/// go to login scene and show popup server maintainance
 	/// </summary>
@@ -86,6 +87,13 @@ public:
 	/// <param name="dt">delay by second</param>
 	/// <param name="loginFrom">type of user login</param>
     void gotoInitSessionScene(float dt, ppEnum::LoginAndInitSSFrom loginFrom);
+	/// <summary>
+	/// gotoInitSessionSceneWithoutAnimation
+	/// </summary>
+	/// <param name="dt"></param>
+	/// <param name="loginFrom"></param>
+    void gotoInitSessionSceneWithoutAnimation(float dt, ppEnum::LoginAndInitSSFrom loginFrom);
+
 	/// <summary>
 	/// go to init session scene after delay
 	/// </summary>

@@ -79,6 +79,9 @@ void AdcolonyController::initWithCustomId(std::string customId)
 		return;
 	}
 #ifdef SDKBOX_ENABLED
+
+    CCLOG("ADCOLONY START INIT**********************************************");
+
 	this->setCustomId(customId);
 	if (Configs::printConsoleLog)
 	{
@@ -86,6 +89,8 @@ void AdcolonyController::initWithCustomId(std::string customId)
 	}
 	sdkbox::PluginAdColony::init();
 	sdkbox::PluginAdColony::setListener(this);
+
+    CCLOG("ADCOLONY FINISH INIT**********************************************");
 #endif
 }
 
@@ -144,7 +149,8 @@ sdkbox::AdColonyAdStatus AdcolonyController::getVideoStatus()
 	sdkbox::AdColonyAdStatus status = sdkbox::PluginAdColony::getStatus("v4vc");;
 	if (Configs::printConsoleLog)
 	{
-		CCLOG("ADCOLONY: GET VIDEO STATUS: %d", status == sdkbox::AdColonyAdStatus::ADCOLONY_ZONE_STATUS_ACTIVE ? 1 : 0);
+        CCLOG("ADCOLONY: GET VIDEO STATUS: %d", status == sdkbox::AdColonyAdStatus::ADCOLONY_ZONE_STATUS_ACTIVE ? 1 : 0);
+        CCLOG("ADCOLONY: GET VIDEO STATUS: %i", status);
 	}
 	return status;
 #endif

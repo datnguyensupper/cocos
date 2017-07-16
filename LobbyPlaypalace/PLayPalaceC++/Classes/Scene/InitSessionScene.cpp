@@ -244,6 +244,8 @@ void InitSessionScene::getFeatureConfigInfoAndCollectDataInfo(std::function<void
 					InfoManager::getInstance()->updateLuckyBoxConfig(members[i]);
 				else if (beanType == LobbyConstant::API_FEATURE_BEAN_TYPE_MAGIC_ITEM_CONFIG)
 					InfoManager::getInstance()->updateMagicItemConfig(members[i]);
+				else if (beanType == LobbyConstant::API_FEATURE_BEAN_TYPE_LIST_FLIP_CARD_CONFIG)
+					InfoManager::getInstance()->updateFlipCardConfig(members[i]);
 			}
 			this->updateProgressTimerLoading(1.0f, false);
 			if (callbackAfterGet)callbackAfterGet();

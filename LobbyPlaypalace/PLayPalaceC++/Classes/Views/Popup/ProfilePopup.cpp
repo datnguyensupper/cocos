@@ -45,7 +45,7 @@ bool ProfilePopup::init()
 	this->oAvatar = Helper4Sprite::createOptimizeSprite(PNG_HEADER_AVATAR_ICON);
 	this->oAvatar->setContentSize(Size(POPUP_AVATAR_SIZE, POPUP_AVATAR_SIZE));
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID && CALL_NATIVE_CROP_AVATAR)
+#if (CALL_NATIVE_CROP_AVATAR)
 	this->oAvatar->setPosition(avatarPos);
 	this->addChild(oAvatar);
 #else
@@ -295,11 +295,24 @@ void ImagePickerResult::didFinishPickingWithResult(cocos2d::Image* image, int or
 					LanguageText(nullptr, LanguageConstant::POPUP_PROFILE_CHANGE_AVATAR, "title") ,
 					LanguageText(nullptr, LanguageConstant::POPUP_PROFILE_CHANGE_AVATAR, "success"), Language(nullptr, LanguageConstant::OK), "");
 				InfoManager::getInstance()->reloadUserInfo([this, newImg](bool isSuccess, UserInfo* userInfo) {
-					auto tex = TextureCache::getInstance()->addImage(newImg, userInfo->getAvatarURL());
+					if (CALL_NATIVE_CROP_AVATAR) {
+						DownloadImageManager::getInstance()->loadImageFromCacheOrDownload(
+							userInfo->getAvatarURL(),
+							[this](cocos2d::Texture2D* texture)
+						{
+							this->profile->updateAvatar(texture);
+							PopupManager::getInstance()->getHeaderLobbyLayout()->updateAvatar(texture);
+							PopupManager::getInstance()->getLoadingAnimation()->hide();
+						}
+						);
+					}
+					else {
+						auto tex = TextureCache::getInstance()->addImage(newImg, userInfo->getAvatarURL());
 
-					this->profile->updateAvatar(tex);
-					PopupManager::getInstance()->getHeaderLobbyLayout()->updateAvatar(tex);
-					PopupManager::getInstance()->getLoadingAnimation()->hide();
+						this->profile->updateAvatar(tex);
+						PopupManager::getInstance()->getHeaderLobbyLayout()->updateAvatar(tex);
+						PopupManager::getInstance()->getLoadingAnimation()->hide();
+					}
 				});
 			}
 			else {

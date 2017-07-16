@@ -4,11 +4,16 @@
 #include "Constant/ResultCodeConstant.h"
 #include "Constant/JSONFieldConstant.h"
 #include "Helper/Helper4String.h"
+#include "Helper/Helper4Scene.h"
 #include "Info/AdditionalInfo.h"
 #include "Manager/InfoManager.h"
 #include "Manager/LanguageManager.h"
 #include "Manager/DeviceManager.h"
+#include "Manager/PopupManager.h"
+#include "Manager/PluginManager.h"
 #include "Views/Lobby/body/BodyLobbyLayout.h"
+#include "Views/Popup/LoadingAnimation.h"
+#include "Views/Popup/NotificationPopup.h"
 #include "Custom/Common/ButtonScaleChild.h"
 #include "Custom/Common/LabelAutoSize.h"
 #include "Configs.h"
@@ -115,7 +120,7 @@ cocos2d::Node* UtilFunction::createDarkLayer(GLubyte alpha,
 		listener->onTouchBegan = [darkLayer](Touch* touch, Event* event) {
 			if (Configs::printConsoleLog)
 			{
-				CCLOG("DARK LAYER SWALLOW TOUCH");
+				CCLOG("UTIL FUNCTION DARK LAYER SWALLOW TOUCH");
 			}
 			auto node = darkLayer->getParent();
 
@@ -742,4 +747,55 @@ void UtilFunction::detectFontAndSetStringForLabel(cocos2d::Label * label, const 
 		UtilFunction::setFontForLabel(label, font, UtilFunction::getFontSizeFromLabel(label), TTF_FONT);
 	}
 	label->setString(text);
+}
+
+void UtilFunction::purchaseItem(
+	const std::string & itemID,
+	bool bHideLoadingAfterFinishPurchase,
+	const std::function<void(int, MobilePaymentInfo*)> cb, 
+	const std::function<void()> cbError,
+	const std::function<void()> cbCancle)
+{
+#ifdef SDKBOX_ENABLED
+	PopupManager::getInstance()->getLoadingAnimation()->prepareAndShow(Helper4Scene::getRunningScene());
+	PluginManager::getInstance()->getIAPController()->purchase(
+		itemID,
+		[cb, bHideLoadingAfterFinishPurchase](int core_result_code, MobilePaymentInfo mobilePaymentInfo)
+	{
+		if (core_result_code != RESULT_CODE_VALID)
+		{
+			PopupManager::getInstance()->getNotificationPopup()->prepareAndShow(
+				Helper4Scene::getRunningScene(),
+				"",
+				LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_SHOP_TRANSACTION_CANCELLED),
+				LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::OK),
+				""
+			);
+		}
+		if (cb) {
+			cb(core_result_code, &mobilePaymentInfo);
+		}
+		if (bHideLoadingAfterFinishPurchase) {
+			PopupManager::getInstance()->getLoadingAnimation()->hide();
+		}
+	},
+		nullptr,
+		[cbError](sdkbox::Product const&p, const std::string&msg) {
+		PopupManager::getInstance()->getNotificationPopup()->showDisconnect2PurchaseStore(Helper4Scene::getRunningScene());
+		if (cbError) {
+			cbError();
+		}
+	},
+		[cbCancle](sdkbox::Product const&p) {
+		PopupManager::getInstance()->getLoadingAnimation()->hide();
+		if (cbCancle) {
+			cbCancle();
+		}
+	}
+	);
+#else
+	PopupManager::getInstance()->getNotificationPopup()->showDontSupportPopup(
+		Helper4Scene::getRunningScene()
+	);
+#endif
 }

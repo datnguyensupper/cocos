@@ -159,6 +159,7 @@ public:
 	static const string COLLECT;
 	static const string COLLECTANDSHARE;
 	static const string CANCEL;
+	static const string BUY;
 	static const string BUYNOW;
 	static const string GOTOLOBBY;
 	static const string SEND;

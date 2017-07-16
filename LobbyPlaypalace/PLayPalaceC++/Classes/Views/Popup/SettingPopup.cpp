@@ -122,7 +122,7 @@ bool SettingPopup::init(){
 	accountUIDScrollView->addChild(this->accountUIDLabel);
 
 	this->accountUIDScrollView->setInnerContainerSize(Size(
-		accountUIDTitleLabel->getContentSize().width + this->accountUIDLabel->getContentSize().width + 30, 40));
+		this->accountUIDLabel->getPositionX() + this->accountUIDLabel->getContentSize().width + 5, 40));
 
 #pragma endregion
 
@@ -235,7 +235,7 @@ bool SettingPopup::init(){
 	this->languageTitleLabel = Label::createWithTTF(
 		LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::SETTING_LANGUAGE),
 		fontName,
-		FONT_SIZE_2 + 5
+		FONT_SIZE_2
 	);
 	LanguageManager::getInstance()->getStringForKeys(languageTitleLabel, LanguageConstant::SETTING_LANGUAGE);
 	this->languageTitleLabel->enableShadow();
@@ -332,7 +332,8 @@ bool SettingPopup::init(){
 	));
 	buttonVn->setTag(SupportLanguage::vn);
 	setupButtonPickLanguage(buttonVn);
-	buttonVn->getTitleLabel()->setString(LanguageManager::getInstance()->getStringForKeys(nullptr,LanguageConstant::SETTING_LANGUAGES, "vn"));
+	std::string vnText = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::SETTING_LANGUAGES, "vn");
+	buttonVn->getTitleLabel()->setString(vnText);
 	this->languageComboBox->addChild(buttonVn);
 
 	auto buttonCn = ui::Button::create(PNG_FRAME_SETTING_BTN_ISSUE_TYPE, "", "", ui::Widget::TextureResType::PLIST);
@@ -543,14 +544,18 @@ bool SettingPopup::init(){
 	//VERSION LABEL
 	this->versionLabel = Label::createWithTTF(
 		LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::SETTING_VERSION_LABLE) + ": " + Configs::versionName,
-		fontName,
+		FONT_PassionOne_Regular,
 		FONT_SIZE_2 - 5
 	);
 	this->versionLabel->enableShadow();
 	this->versionLabel->setTextColor(Color4B(235, 118, 228, 255));
-	this->versionLabel->setHorizontalAlignment(TextHAlignment::LEFT);
-	this->versionLabel->setAnchorPoint(Vec2(0, 0.5f));
-	CCMenuItemLabel* menuLabel = CCMenuItemLabel::create(this->versionLabel, [this](Ref* sender)
+	this->versionLabel->setHorizontalAlignment(TextHAlignment::RIGHT);
+	this->versionLabel->setAnchorPoint(Vec2(1, 0.5f));
+	this->addChild(versionLabel, 1);
+
+	Node * fakeNode = Node::create();
+	fakeNode->setContentSize(Size(100, 100));
+	CCMenuItemLabel* menuItemLabel = CCMenuItemLabel::create(fakeNode, [this](Ref* sender)
 	{
 		this->numberLabelVersionTextTouched++;
 		if (this->numberLabelVersionTextTouched % 5 == 0
@@ -563,12 +568,15 @@ bool SettingPopup::init(){
 			);
 		}
 	});
-	CCMenu* menu = CCMenu::create(menuLabel, NULL);
-	menu->setPosition(Vec2(
-		this->privacyPolicyButton->getPosition().x + 550,
-		this->privacyPolicyButton->getPosition().y - 18
-	));
-	this->addChild(menu, 1);
+	menuItemLabel->setAnchorPoint(Vec2(1, 0.5f));
+	menuVersionLabel = CCMenu::create(menuItemLabel, NULL);
+	menuVersionLabel->setAnchorPoint(Vec2(1, 0.5f));
+	this->addChild(menuVersionLabel, 1);
+
+	float menuVersionLabelX = this->privacyPolicyButton->getPosition().x + 710;
+	menuVersionLabel->setPosition(Vec2(menuVersionLabelX,this->privacyPolicyButton->getPosition().y - 18));
+	versionLabel->setPosition(menuVersionLabel->getPosition());
+
 
 	//CLOSE BUTTON
 	auto closeButton = this->createCloseButton();
@@ -587,6 +595,11 @@ void SettingPopup::updateAfterChangeLanguage()
 {
 	std::string fontName = UtilFunction::getFontNameFromLanguage();
 	std::string currentLanguage = LanguageManager::getInstance()->getCurrentLanguageName();
+	bool isVNLanguage = LanguageManager::getInstance()->getCurrentLanguage() == vn;
+	bool isEnLanguage = LanguageManager::getInstance()->getCurrentLanguage() == en;
+
+
+
 
 	//RESET FONT NAME
 	UtilFunction::setLabelFontByLanguage(this->loggedViaLabel);
@@ -601,7 +614,9 @@ void SettingPopup::updateAfterChangeLanguage()
 
 	UtilFunction::setLabelFontByLanguage(this->myRefCodeTitleLabel);
 
-	UtilFunction::setLabelFontByLanguage(this->versionLabel);
+	int fontSize = isVNLanguage ? FONT_SIZE_2 - 5 : FONT_SIZE_2;
+	UtilFunction::setLabelFontByLanguage(versionLabel,fontName,fontSize);
+
 	auto termOfServiceText = (Label *) this->termsOfServiceButton->getChildByName("termsOfServiceLabel");
 	UtilFunction::setLabelFontByLanguage(termOfServiceText);
 	auto privacyPolicyText = (Label*) this->privacyPolicyButton->getChildByName("privacyPolicyLabel");
@@ -688,8 +703,8 @@ void SettingPopup::onLogoutTouched(cocos2d::Ref* sender, cocos2d::ui::Widget::To
 	NetworkManager::getInstance()->logout([this](
 		int coreResultCode,
 		rapidjson::Value &doc,
-		string responseAsString)
-	{
+		string responseAsString){
+        NetworkManager::getInstance()->resetJSESSIONID();
 		PopupManager::getInstance()->getLoadingAnimation()->hide();
 		if (coreResultCode == RESULT_CODE_VALID) {
 			SoundManager::getInstance()->stopAll();
@@ -700,7 +715,11 @@ void SettingPopup::onLogoutTouched(cocos2d::Ref* sender, cocos2d::ui::Widget::To
 				)
 			);
 		}
-	});
+    },[](std::string msg){
+        NetworkManager::getInstance()->resetJSESSIONID();
+    },[](std::string msg){
+        NetworkManager::getInstance()->resetJSESSIONID();
+    });
 }
 
 void SettingPopup::onCopyMyCodeTouched(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
@@ -736,8 +755,8 @@ void SettingPopup::onToggleBGMusicTouched(cocos2d::Ref* sender, cocos2d::ui::Wid
 		return;
 	}
 	ToggleButton* toggleButton = (ToggleButton*)sender;
-	SoundManager::getInstance()->setCanPlayBackgroundMusic(!toggleButton->isToggle());
 	SoundManager::getInstance()->stopBackgroundMusic();
+	SoundManager::getInstance()->setCanPlayBackgroundMusic(!toggleButton->isToggle());
 	SoundManager::getInstance()->playBackgroundMusic(static_cast<ppEnum::GameScene>(Helper4Scene::getRunningScene()->getTag()));
 }
 
@@ -787,7 +806,7 @@ void SettingPopup::prepareData()
 	this->toggleSoundEffectsItem->setToggle(!SoundManager::getInstance()->getCanPlaySoundEffect());
 	this->currentLanguageLabel->setString(LanguageManager::getInstance()->getStringForKeys(currentLanguageLabel,LanguageConstant::SETTING_LANGUAGE_LABLE));
 	this->accountUIDScrollView->setInnerContainerSize(Size(
-		147 + 13 * accountUID.size() + 20, 40));
+		accountUIDLabel->getPositionX()+ this->accountUIDLabel->getContentSize().width + 5, 40));
 
 	this->myCodeLabel->setString(InfoManager::getInstance()->getAdditionalInfo()->referenceCodeInfo->referenceCode);
 

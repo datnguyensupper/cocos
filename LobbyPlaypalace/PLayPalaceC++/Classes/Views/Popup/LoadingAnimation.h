@@ -29,6 +29,7 @@ public:
 		cocos2d::Node* parent
 	);
 
+    void showLoadingAnimationLogin(cocos2d::Node* parent);
 	/// <summary>
 	/// define create function
 	/// </summary>

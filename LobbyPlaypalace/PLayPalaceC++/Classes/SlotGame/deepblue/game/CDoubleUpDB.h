@@ -8,7 +8,11 @@ namespace GameSlot {
 	class CDoubleUpDB : public CBonusBase
 	{
 	private:
+		cocos2d::Size oCurrentWinBgOriginalSize;
+		cocos2d::ui::Scale9Sprite * oCurrentWinBg;
 		cocos2d::Label* oCurrentWinTxt;
+		cocos2d::Size oPotentialWinBgOriginalSize;
+		cocos2d::ui::Scale9Sprite * oPotentialWinBg;
 		cocos2d::Label* oPotentialWinTxt;
 
 		cocos2d::Node* oFishContainer;

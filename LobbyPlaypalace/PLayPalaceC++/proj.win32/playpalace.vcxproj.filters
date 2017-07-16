@@ -220,6 +220,15 @@
     <Filter Include="src\Views\Popup\DailyLuckySpin">
       <UniqueIdentifier>{fc1e38d6-b43d-4439-b378-1e309b1cee92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="build\plugin">
+      <UniqueIdentifier>{942fdd85-c740-4235-ab89-887ad1408411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views\Popup\Promotions">
+      <UniqueIdentifier>{ac74c891-5241-426c-9ea0-2731ff8d1fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Plugins\Advertise">
+      <UniqueIdentifier>{e7ce4af7-0c69-4231-92e7-4c7273ae1cdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -543,9 +552,6 @@
     <ClCompile Include="..\Classes\Plugins\IAPController.cpp">
       <Filter>src\Plugins</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Plugins\AdcolonyController.cpp">
-      <Filter>src\Plugins</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Views\Popup\LevelUpPopup.cpp">
       <Filter>src\Views\Popup</Filter>
     </ClCompile>
@@ -707,6 +713,45 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Views\Popup\PiggyBankPopup.cpp">
       <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\ScratchCardPopup.cpp">
+      <Filter>src\Views\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\CScratchSprite.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Custom\Common\CustomRenderTexture.cpp">
+      <Filter>src\Custom\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Promotions\GetMoreCoinsPopup.cpp">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Promotions\PayToPlayPopup.cpp">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Promotions\StarterPackPopup.cpp">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Promotions\FreeToPlayPopup.cpp">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\PromotionsManager.cpp">
+      <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Views\Popup\Promotions\SpecialOfferPopup.cpp">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\AdvertiseController.cpp">
+      <Filter>src\Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\Advertise\AdcolonyController.cpp">
+      <Filter>src\Plugins\Advertise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\Advertise\PluginVungle.cpp">
+      <Filter>src\Plugins\Advertise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Plugins\Advertise\PluginVungleController.cpp">
+      <Filter>src\Plugins\Advertise</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1082,9 +1127,6 @@
     <ClInclude Include="..\Classes\Plugins\IAPController.h">
       <Filter>src\Plugins</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Plugins\AdcolonyController.h">
-      <Filter>src\Plugins</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Views\Popup\LevelUpPopup.h">
       <Filter>src\Views\Popup</Filter>
     </ClInclude>
@@ -1259,6 +1301,51 @@
     <ClInclude Include="..\Classes\Views\Popup\PiggyBankPopup.h">
       <Filter>src\Views\Popup</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\ScratchCardPopup.h">
+      <Filter>src\Views\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\CScratchSprite.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Custom\Common\CustomRenderTexture.h">
+      <Filter>src\Custom\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\FlipCardUserInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Promotions\GetMoreCoinsPopup.h">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Promotions\PayToPlayPopup.h">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Promotions\StarterPackPopup.h">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Promotions\FreeToPlayPopup.h">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\PromotionsManager.h">
+      <Filter>src\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Views\Popup\Promotions\SpecialOfferPopup.h">
+      <Filter>src\Views\Popup\Promotions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Info\SpecialOfferInfo.h">
+      <Filter>src\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\AdvertiseController.h">
+      <Filter>src\Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\Advertise\AdcolonyController.h">
+      <Filter>src\Plugins\Advertise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\Advertise\PluginVungle.h">
+      <Filter>src\Plugins\Advertise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Plugins\Advertise\PluginVungleController.h">
+      <Filter>src\Plugins\Advertise</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
@@ -1312,6 +1399,9 @@
       <Filter>build</Filter>
     </None>
     <None Include="..\proj.android-studio\app\build.gradle">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\proj.android-studio\gradle.properties">
       <Filter>build</Filter>
     </None>
   </ItemGroup>

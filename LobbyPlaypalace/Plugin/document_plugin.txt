@@ -6,6 +6,8 @@ nhớ khai báo trong file xcodeproj
 
 --------------------------------ADD PLUGINS-----------------------------------
 1/Nếu chưa có sdkbox, cài sdkbox:  python -c "import urllib; s = urllib.urlopen('https://raw.githubusercontent.com/sdkbox-doc/en/master/install/install.py').read(); exec s"
+tham khảo: 
+http://docs.sdkbox.com/en/installer/
 2/
 -Check sdkbox: sdkbox -h
 -Nếu chưa có -> reset máy

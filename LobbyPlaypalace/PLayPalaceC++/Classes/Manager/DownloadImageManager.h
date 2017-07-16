@@ -32,13 +32,11 @@ private:
 	/// <summary>
 	/// call back 4 receive circle image
 	/// </summary>
-	/// <param name="data">image data</param>
-	/// <param name="len">length of image data</param>
-	/// <param name="url">url of image data</param>
+    /// <param name="url">url of image data</param>
+    /// <param name="response">HTTP Response</param>
 	void onReceivedCircleImage(
-		const char* data,
-		size_t len,
-		const std::string &url
+		const std::string &url,
+        cocos2d::network::HttpResponse* response
 	);
 	/// <summary>
 	/// download image with url

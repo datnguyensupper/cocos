@@ -1,8 +1,8 @@
 #pragma once
 
 #include "cocos2d.h"
+#include "Manager/InfoManager.h"
 
-class PayLineConfig;
 namespace GameSlot {
 	class CGameBase;
 	class CSpriteButton;
@@ -11,7 +11,8 @@ namespace GameSlot {
 		CGameBase* oGame;
 		std::vector<PayLineConfig> aPayLineConfig;
 		std::vector<unsigned> aBet;
-		PayLineConfig* currentConfig = nullptr;
+
+		PayLineConfig currentConfig;
 
 		cocos2d::Label* oBetText;
 		cocos2d::Label* oPayLineText;
@@ -37,7 +38,7 @@ namespace GameSlot {
 
 		void setEnableBtn(CSpriteButton* oBtn, bool isEnabled);
 
-		PayLineConfig* getConfigByLevel(int iLevel);
+		PayLineConfig getConfigByLevel(int iLevel);
 		unsigned getMaxBet();
 		unsigned getMinPayLine();
 		unsigned getMaxPayLine();

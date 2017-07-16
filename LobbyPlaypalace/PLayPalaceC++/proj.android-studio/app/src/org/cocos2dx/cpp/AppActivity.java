@@ -23,20 +23,38 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.cpp;
 
-import android.graphics.PixelFormat;
-
+import org.cocos2dx.cpp.plugins.PluginVungle;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 public class AppActivity extends Cocos2dxActivity {
 
+    PluginVungle mPluginVungle;
     @Override
     public Cocos2dxGLSurfaceView onCreateView() {
+        mPluginVungle = new PluginVungle(this);
+
         Cocos2dxGLSurfaceView glSurfaceView = super.onCreateView();
         if(glSurfaceView != null){
             glSurfaceView.setKeepScreenOn(true);
             glSurfaceView.setMultipleTouchEnabled(false);
         }
         return glSurfaceView;
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mPluginVungle.onPause();
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        mPluginVungle.onResume();
+    }
+    @Override
+    protected void onDestroy(){
+        mPluginVungle.clearEventListeners();
+        super.onDestroy();
     }
 }

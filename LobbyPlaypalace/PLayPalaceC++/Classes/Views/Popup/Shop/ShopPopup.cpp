@@ -125,8 +125,8 @@ void ShopPopup::gotoBoosterTab()
 void ShopPopup::checkAndSetEnableFreeCoinButton(float dt)
 {
 	auto watchVideo = this->coinGroupListView->getChildByTag(PurchaseItemType::FREE_COINS);
-	auto status = PluginManager::getInstance()->getAdcolonyController()->getVideoStatus();
-	((PurchaseCoinCrownItem*)watchVideo)->setEnableBuyButton(status == sdkbox::AdColonyAdStatus::ADCOLONY_ZONE_STATUS_ACTIVE);
+	auto status = PluginManager::getInstance()->getAdvertiseController()->isShowable();
+	((PurchaseCoinCrownItem*)watchVideo)->setEnableBuyButton(status);
 }
 
 cocos2d::ui::ListView * ShopPopup::createListViewForTabs(ShopType shopType, int count)

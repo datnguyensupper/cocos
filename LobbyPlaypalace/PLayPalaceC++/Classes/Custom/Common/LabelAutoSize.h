@@ -16,13 +16,14 @@ enum LabelAutoFitType {
 	Resize,
 	TrimString
 };
-
+class ButtonScaleChild;
 class LabelAutoSize : public cocos2d::Label {
 private:
 	cocos2d::Size _textArea = cocos2d::Size::ZERO;
 	LabelAutoFitType autofitType;
+    ButtonScaleChild * parentBtnScaleChild = nullptr;
 
-	void resizeToFit();
+	void resizeToFit(float minScale = 0, float maxScale = 1);
 	void trimStringToFit();
 public:
 	LabelAutoSize(TextHAlignment hAlignment = TextHAlignment::LEFT,
@@ -50,8 +51,13 @@ public:
 		const TextHAlignment& hAlignment = TextHAlignment::LEFT, int maxLineWidth = 0,
 		const Vec2& imageOffset = Vec2::ZERO);
 
+	virtual void setString(const std::string& text, float minScale, float maxScale);
 	virtual void setString(const std::string& text) override;
 
+    void setParentButtonScaleChild(ButtonScaleChild *btnScaleChild){
+        parentBtnScaleChild = btnScaleChild;
+    }
+    
 	void setTextAreaSize(cocos2d::Size areaSize) {
 		this->_textArea = areaSize;
 		this->setString(this->getString());

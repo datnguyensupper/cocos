@@ -349,6 +349,12 @@ public:
 	static const string STRATEGY_TYPE;
 
 	static const string MESSAGE;
+	static const string MESSAGE_EN;
+	static const string MESSAGE_VN;
+	static const string MESSAGE_CN;
+	static const string MESSAGE_TW;
+	static const string MESSAGE_MY;
+	static const string MESSAGE_INDO;
 	static const string FROM_USER_ID;
 	static const string TO_USER_ID;
 
@@ -442,6 +448,17 @@ public:
 	static const string CURRENT_SCRATCH_CARD_INFO;
 	static const string NEXT_SCRATCH_CARD_INFO;
 	static const string SCRATCH_CARD_REWARD;
+
+	static const string CARD_TYPE;
+	static const string CARD_LEVEL;
+	static const string LEAF_REWARD;
+	static const string LEAF_UPGRADE_REQUIREMENT;
+
+	static const string FLIP_CARD_VALUE;
+	static const string REMAINING_WAITING_TIME;
+	static const string SHOW_FLIP_CARD_DETAIL;
+	static const string CAN_REDEEM_FLIP_CARD_REWARD;
+	static const string LEAF;
 
 	static const string FEEDBACK_STATUS;
 

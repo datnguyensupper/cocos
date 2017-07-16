@@ -182,7 +182,7 @@ bool DailyBonusStreakPopup::init()
 	this->particle->setPosition(logo->getPosition() + Vec2(0, -15));
 	this->addChild(this->particle, 1);
 
-	this->btnCollect = this->createGreenButton(Language(nullptr, LanguageConstant::COLLECT));
+	this->btnCollect = this->createGreenButton(true,Language(nullptr, LanguageConstant::COLLECT));
 	this->btnCollect->addTouchEventListener(CC_CALLBACK_2(DailyBonusStreakPopup::onCollect, this));
 	this->btnCollect->setPosition(spriteBg->getPosition() + Vec2(0, -spriteBg->getContentSize().height / 2.8f));
 	this->addChild(this->btnCollect);

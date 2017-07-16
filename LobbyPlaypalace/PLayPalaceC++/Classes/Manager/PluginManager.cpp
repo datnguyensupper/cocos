@@ -8,7 +8,7 @@ PluginManager::PluginManager()
 {
 	facebookController = new FacebookController();
 	iapController = new IAPController();
-	adcolonyController = new AdcolonyController();
+	advertiseController = new AdvertiseController();
 	gamePlugin = new GamePlugin();
 	imagePickerController = new ImagePicker();
 }
@@ -24,5 +24,9 @@ PluginManager* PluginManager::getInstance()
 
 PluginManager::~PluginManager()
 {
-	
+	CC_SAFE_DELETE(facebookController);
+	CC_SAFE_DELETE(iapController);
+	CC_SAFE_DELETE(advertiseController);
+	CC_SAFE_DELETE(gamePlugin);
+	CC_SAFE_DELETE(imagePickerController);
 }

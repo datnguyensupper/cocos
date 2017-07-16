@@ -1,31 +1,28 @@
 ﻿#create project
-cocos new playpalace -p com.lobbyteam.playpalace.unity -l cpp
+cocos new playpalace -p com.lobbyteam.playpalace.cocos -l cpp
 
 #build android x86
-cocos compile -p android --android-studio --app-abi x86
+cocos compile -p android --ap android-15 --android-studio --app-abi x86
 
 # build android arm
-cocos compile -p android --android-studio
+cocos compile -p android --ap android-15 --android-studio
 
 
 # lưu ý lần đầu build release: sau khi chạy lệnh build, nhập các thông tin như path keystore, alias, password keystore, password alias.
 # Đảm bảo là trong git không thấy file gradle.properties chứa password keystore (file này đã bị add vào gitignore)
 
 #build release x86
-cocos compile -p android --android-studio --app-abi x86 -m release
+cocos compile -p android --ap android-19 --android-studio --app-abi x86 -m release
 Remove-Item bin\release\android\x86-playpalace-release-signed.apk
 Rename-Item bin/release/android/playpalace-release-signed.apk x86-playpalace-release-signed.apk
 
 #build release arm
-cocos compile -p android --android-studio --app-abi armeabi -m release
+cocos compile -p android --ap android-19 --android-studio --app-abi armeabi -m release
 Remove-Item bin\release\android\armeabi-playpalace-release-signed.apk
 Rename-Item bin/release/android/playpalace-release-signed.apk armeabi-playpalace-release-signed.apk
 
-#compile at lobbyandslotsgamecocos project
-cocos compile -s lobby-cocos/PlayPalace -p android --android-sdutio
-
 # Run android
-cocos run -p android --android-studio
+cocos run -p android --ap android-15 --android-studio
 
 # Move resource game slot to tmp folder window
 mkdir ResourcesGameSlot\Game\img\slotgame

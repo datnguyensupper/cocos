@@ -74,7 +74,7 @@ void FriendPopup::initInboxTab()
 	this->inboxTab->addChild(inboxTabScrollView, 0, INBOX_TAB_SCROLL_VIEW_TAG);
 	
 	//ACCEPT ALL GIFT BUTTON
-	acceptAllButton = this->createGreenButton(LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_BUTTON_ACCEPT_ALL), 55);
+	acceptAllButton = this->createGreenButton(true,LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_INBOX_BUTTON_ACCEPT_ALL), 55);
 	acceptAllButton->setScale(1920.0f / 1600);
 	acceptAllButton->setCascadeOpacityEnabled(true);
 	acceptAllButton->setPosition(Vec2(
@@ -86,7 +86,7 @@ void FriendPopup::initInboxTab()
 
 	auto currentFontname = UtilFunction::getFontNameFromLanguage();
 	//EMPTY LABEL NOTI
-	auto emptyGiftLabel = Label::createWithTTF(TTFConfig(currentFontname, 50),"");
+	emptyGiftLabel = Label::createWithTTF(TTFConfig(currentFontname, 50),"");
 	emptyGiftLabel->setString(LanguageManager::getInstance()->getStringForKeys(emptyGiftLabel,LanguageConstant::POPUP_GIFT_INBOX_EMPTY));
 	emptyGiftLabel->setPosition(Vec2(
 		bg->getContentSize().width / 2,
@@ -132,9 +132,7 @@ void FriendPopup::initFriendTab()
 	this->friendTab->addChild(friendTabScrollView, 0, FRIEND_TAB_SCROLL_VIEW_TAG);
 
 	//SEND GIFT BUTTON
-	sendGiftButton = this->createGreenButton(
-		LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_INVITE_BTN_SENDGIFT),
-		55);
+	sendGiftButton = this->createGreenButton(true, LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_INVITE_BTN_SENDGIFT),55);
 	sendGiftButton->setScale(1);
 	sendGiftButton->setCascadeOpacityEnabled(true);
 	sendGiftButton->setPosition(Vec2(
@@ -145,7 +143,7 @@ void FriendPopup::initFriendTab()
 	this->friendTab->addChild(sendGiftButton);
 
 	//INVITE BUTTON
-	inviteButton = this->createPurpleButton(LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_INVITE_BTN_INVITE),55);
+	inviteButton = this->createPurpleButton(true, LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_INVITE_BTN_INVITE),55);
 	inviteButton->setScale(1);
 	inviteButton->setCascadeOpacityEnabled(true);
 	inviteButton->setPosition(Vec2(
@@ -630,6 +628,7 @@ void FriendPopup::updateNotificationForInboxTab() {
 
 void FriendPopup::prepareDataInboxTab(std::function<void()> callback)
 {
+	this->inboxTab->getChildByTag(INBOX_TAB_SCROLL_VIEW_TAG)->setVisible(false);
 	PopupManager::getInstance()->getLoadingAnimation()->prepareAndShow(this);
 	InfoManager::getInstance()->reloadGiftInfoList(
 		[this, callback](bool isSuccess, std::vector<GiftInfo *> result)
@@ -771,6 +770,8 @@ void FriendPopup::prepareDataFriendTab(std::function<void()> callback)
 		//parse data and sort
 		auto listSize = this->currentFriendInfoList.size();
 
+		listView->setVisible(listSize > 0);
+
 		bool isCreateChilds = listView->getChildren().size() <= 0;
 		//create teamplate items
 		for (int i = 0; i < NUMBER_TEAMPLATE_CELL; i++)
@@ -825,6 +826,7 @@ void FriendPopup::prepareDataFriendTab(std::function<void()> callback)
 		>= InfoManager::getInstance()->getServerConfigsInfo()->deltaTimeCallUpdateFriend) 
 	{
 		PopupManager::getInstance()->getLoadingAnimation()->prepareAndShow(this);
+		this->friendTab->getChildByTag(FRIEND_TAB_SCROLL_VIEW_TAG)->setVisible(false);
 		InfoManager::getInstance()->reloadFriendListOnly([prepareAndShow](bool isSuccess, FacebookFriendInfo *newFbFriendInfo)
 		{
 			prepareAndShow();
@@ -1186,6 +1188,8 @@ void FriendPopup::updateAfterChangeLanguage() {
 
 	UtilFunction::setLabelFontByLanguage(this->leaderboardButton.btn->getTitleRenderer(),"",fontSize);
 	this->leaderboardButton.btn->getTitleRenderer()->setString(LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_GIFT_LEADERBOARD));
+
+	emptyGiftLabel->setString(LanguageManager::getInstance()->getStringForKeys(emptyGiftLabel, LanguageConstant::POPUP_GIFT_INBOX_EMPTY));
 
 }
 

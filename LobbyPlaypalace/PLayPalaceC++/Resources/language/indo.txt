@@ -493,6 +493,9 @@
 	cancel: {
 		text: "Batalkan"
 	},
+	buy: {
+		text: "Beli"
+	},
 	buyNow: {
 		text: "Beli sekarang"
 	},

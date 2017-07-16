@@ -1,4 +1,5 @@
 #include "CSpinMachine.h"
+#include "Manager/DeviceManager.h"
 
 USING_NS_CC;
 using namespace std;
@@ -137,6 +138,13 @@ cocos2d::Node * CSpinMachine::createCell(const std::string& data)
 			break;
 		case SpinMachineLabelType::BMFONT:
 			cell = Label::createWithBMFont(this->labelType.fontName, data);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+			if (DeviceManager::getInstance()->isLowRamDevice()) {
+				cell->setScale(0.8f);
+			}
+#endif
+
+			
 			break;
 		}
 		break;

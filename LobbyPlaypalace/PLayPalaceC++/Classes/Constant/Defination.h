@@ -4,8 +4,12 @@
 #include "Configs.h"
 #include <algorithm>
 
-
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#define CALL_NATIVE_CROP_AVATAR 1
+#else
 #define CALL_NATIVE_CROP_AVATAR 0
+#endif
+
 /**
 * creator: Kiet Duong
 * date: 2017-02-08
@@ -312,6 +316,18 @@
 
 #pragma endregion
 
+#pragma region Promotions
+
+#define PNG_PROMOTIONS_PLIST "popup/promotions/promotion_popups.plist"
+
+#define FRAME_STARTER_PACK_BG "starter_pack"
+#define FRAME_GET_MORE_COINS_BG "get_more_coins"
+#define FRAME_FREE_TO_PLAY_BG "free_to_play"
+#define FRAME_PAY_TO_PLAY_BG "pay_to_play"
+#define FRAME_SPECIAL_OFFER_BG "special_offer"
+
+#pragma endregion
+
 #pragma region GameSlot-Info
 #define PLIST_INFO "popup/info/info_popup.plist"
 
@@ -519,6 +535,8 @@
 #define STORING_KEY_USER_NAME_GUESS "user_name_guess"
 #define STORING_KEY_PASSWORD_GUESS "password_guess"
 #define STORING_KEY_USER_NAME_PLAYPALACE "user_name_pp"
+#define STORING_KEY_LOGIN_TOKEN "storing_key_login_token"
+#define STORING_KEY_JSESSIONID "storing_key_jsessionid"
 #define STORING_KEY_CURRENT_LANGUAGE "current_language"
 #define STORING_KEY_CAN_PLAY_BACKGROUND_MUSIC "can_play_background_music"
 #define STORING_KEY_CAN_PLAY_SOUND_EFFECT "can_play_sound_effect"
@@ -539,7 +557,7 @@
 #define GAME_SLOT_ID_NEZHA "legendofnezha"
 #define GAME_SLOT_ID_ROMANEMPIRE "romanempire"
 
-#define GAME_SLOT_RS_VERSION_DEEPBLUE "2017-04-27-01"
+#define GAME_SLOT_RS_VERSION_DEEPBLUE "2017-05-27-01"
 #define GAME_SLOT_RS_VERSION_GOLDENEGG "2017-04-27-01"
 #define GAME_SLOT_RS_VERSION_BOXING "2017-04-27-01"
 #define GAME_SLOT_RS_VERSION_PHARAOH "2017-04-27-01"
@@ -582,6 +600,16 @@
 #define IAP_LUCKY_WHEEL_P3 "lucky_wheel_3"
 
 #define IAP_PIGGY_BANK_P1 "piggy_bank_1"
+
+#define IAP_SPECIAL_OFFER "specialoffer"
+#define IAP_STARTER_PACK "starter_pack"
+#define IAP_GET_MORE_COINS "get_more_coins"
+#define IAP_FREE_TO_PLAY_P1 "free_to_play_1"
+#define IAP_FREE_TO_PLAY_P2 "free_to_play_2"
+#define IAP_PAY_TO_PLAY_P1 "pay_to_play_1"
+#define IAP_PAY_TO_PLAY_P2 "pay_to_play_2"
+#define IAP_PAY_TO_PLAY_P3 "pay_to_play_3"
+
 #pragma endregion
 
 #pragma region Sounds
@@ -633,6 +661,12 @@
 #pragma region Helper
 
 #define PNG_FRAME_TRANSPARENT "popup_button_transparent"
+
+#pragma endregion
+
+#pragma region Other
+
+#define APLHA_DARK_LAYER 150
 
 #pragma endregion
 

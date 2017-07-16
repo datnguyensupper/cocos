@@ -221,7 +221,8 @@ namespace sdkbox
         virtual void onInviteFriendsResult( bool result, const std::string& msg )= 0;
 
         virtual void onGetUserInfo( const FBGraphUser& userInfo ) = 0;
-        virtual void onAskGiftResult(bool result, const std::string& msg) {}
+        virtual void onRequestGiftResult(bool result, const std::string& msg) {}
+        virtual void onSendGiftResult(bool result, const std::string& msg) {}
     };
 
     class PluginFacebook
@@ -383,7 +384,12 @@ namespace sdkbox
         /**
          * Ask friends for a gift
          */
-        static void requestGift(const std::vector<std::string>& invite_ids, const std::string& object_id, const std::string& message);
+        static void requestGift(const std::vector<std::string>& invite_ids, const std::string& object_id, const std::string& message, const std::string& title = "", const std::string& additional_data = "");
+
+        /**
+         * Send friend a gift
+         */
+        static void sendGift(const std::vector<std::string>& friend_ids, const std::string& object_id, const std::string& title, const std::string& message, const std::string& additional_data = "");
     };
 }
 

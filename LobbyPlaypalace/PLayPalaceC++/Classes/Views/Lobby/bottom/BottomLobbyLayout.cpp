@@ -21,6 +21,8 @@
 #include "Helper/Helper4Scene.h"
 #include "Helper/Helper4Sprite.h"
 
+#include "Views/Popup/ScratchCardPopup.h"
+
 USING_NS_CC;
 using namespace std;
 
@@ -388,41 +390,21 @@ void BottomLobbyLayout::onScroll(cocos2d::Ref * pSender, cocos2d::ui::ScrollView
 
 void BottomLobbyLayout::onLuckyWheel(BottomItem* sender)
 {
-	/*PopupManager::getInstance()->getNotificationPopup()->showUnfinishJobPopup(
-		this->getParent()
-	);
-	return;
-	sender->showLock();*/
 	((BaseScene*)Helper4Scene::getRunningScene())->gotoLuckyWheelScene(0);
 }
 
 void BottomLobbyLayout::onLuckySpin(BottomItem* sender)
 {
-	/*PopupManager::getInstance()->getNotificationPopup()->showUnfinishJobPopup(
-		this->getParent()
-	);
-	return;
-	sender->showLock();*/
 	PopupManager::getInstance()->getDailyLuckySpinPopup()->prepareAndShow(this->getParent());
 }
 
 void BottomLobbyLayout::onLuckyBox(BottomItem* sender)
 {
-	/*PopupManager::getInstance()->getNotificationPopup()->showUnfinishJobPopup(
-		this->getParent()
-	);
-	return;
-	sender->showLock();*/
 	PopupManager::getInstance()->getFriendPopup()->prepareAndShow(this->getParent(), OpenTab::Inbox);
 }
 
 void BottomLobbyLayout::onDailyChallenge(BottomItem* sender)
 {
-	/*PopupManager::getInstance()->getNotificationPopup()->showUnfinishJobPopup(
-		this->getParent()
-	);
-	return;*/
-
 	if (InfoManager::getInstance()->getUserInfo()->level + 1 >= InfoManager::getInstance()->getUnlockFeatureByLevelConfig().dailyChallenge) {
 		PopupManager::getInstance()->getDailyChallengePopup()->prepareAndShow(this->getParent());
 	}
@@ -437,11 +419,6 @@ void BottomLobbyLayout::onDailyChallenge(BottomItem* sender)
 
 void BottomLobbyLayout::onPiggyBank(BottomItem* sender)
 {
-	/*PopupManager::getInstance()->getNotificationPopup()->showUnfinishJobPopup(
-		this->getParent()
-	);
-	return;
-	sender->showLock();*/
 	if (InfoManager::getInstance()->getUserInfo()->level + 1 >= InfoManager::getInstance()->getUnlockFeatureByLevelConfig().piggyBank) {
 		PopupManager::getInstance()->getPiggyBankPopup()->prepareAndShow(this->getParent());
 	}

@@ -129,29 +129,25 @@ void PurchaseItemNode::onSelected(int purchasePos) {
 	if (this->namePurchaseList.size() - 1 >= purchasePos
 		&& !this->namePurchaseList[purchasePos].empty())
 	{
+        std::function<void()> fail = [](){
+            PopupManager::getInstance()->getNotificationPopup()->showDisconnect2PurchaseStore(PopupManager::getInstance()->getShopPopup()->getParent());
+        };
 		PluginManager::getInstance()->getIAPController()->purchase(
 			this->namePurchaseList[purchasePos],
-			[this](int core_result_code, MobilePaymentInfo mobilePaymentInfo)
-		{
+			[this,fail](int core_result_code, MobilePaymentInfo mobilePaymentInfo){
 			this->callbackAfterPurchase(core_result_code, mobilePaymentInfo);
 		},
 			nullptr,
-			[](sdkbox::Product const&p, const std::string&msg)
-		{
+			[fail](sdkbox::Product const&p, const std::string&msg){
 			PopupManager::getInstance()->getLoadingAnimation()->hide();
+            fail();
 		},
-			[](sdkbox::Product const&p)
-		{
+			[fail](sdkbox::Product const&p){
 			PopupManager::getInstance()->getLoadingAnimation()->hide();
+//            fail();
 		}
 		);
 	}
-	////Adcolony show
-	//else
-	//{
-	//	PluginManager::getInstance()->getAdcolonyController()->showVideo(CALLBACK_4(PurchaseCoinCrownItem::callbackRewardVideoAdcolony, this));
-	//	this->buyButton->setEnabled(false);
-	//}
 #else
 	PopupManager::getInstance()->getNotificationPopup()->showUnfinishJobPopup(
 		this->getParent()->getParent()->getParent()->getParent()
@@ -175,11 +171,11 @@ void PurchaseCoinCrownItem::callbackAfterPurchase(int core_result_code, MobilePa
 	std::string rewardString = LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::PURCHASED, "reward");//my.selectlanguage.purchased.reward + Lobby.Utils.formatNumberWithCommas(amountBonusToShowInPopup);
 	if (isPurchaseCoinPakage) {
 		rewardString += UtilFunction::FormatWithCommas(coinReward);
-		rewardString += " " + LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_USER_GAME_UNLOCK, "text5");//my.selectlanguage.popup_user_game_unlock.text5;
+		rewardString += " " + LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_STARDOM_PLAYER_COINS);//rewardString += " " + my.selectlanguage.popup_stardom_player_Coins.text;
 	}
 	else {
 		rewardString += UtilFunction::FormatWithCommas(crownReward);
-		rewardString += " " + LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_STARDOM_PLAYER_COINS);//rewardString += " " + my.selectlanguage.popup_stardom_player_Coins.text;
+		rewardString += " " + LanguageManager::getInstance()->getStringForKeys(nullptr, LanguageConstant::POPUP_USER_GAME_UNLOCK, "text5");//my.selectlanguage.popup_user_game_unlock.text5;
 	}
 	//reload coin ui
 	auto header = PopupManager::getInstance()->getHeaderLobbyLayout();
@@ -214,11 +210,11 @@ void PurchaseCoinCrownItem::callbackAfterPurchase(int core_result_code, MobilePa
 	);
 }
 
-void PurchaseCoinCrownItem::callbackRewardVideoAdcolony(const sdkbox::AdColonyAdInfo & info, const std::string & currencyName, int amount, bool success)
+void PurchaseCoinCrownItem::callbackRewardVideoAdcolony(int amount, bool success)
 {
 	if (Configs::printConsoleLog)
 	{
-		CCLOG("@@@@@@@@@@@@@@@@@@@@@ CALL BACK REWARD AFTER WATCH VIDEO ADCOLONY , isSuccess = %s @@@@@@@@@@@@@@@@@@@@@", success ? "true" : "false");
+		CCLOG("@@@@@@@@@@@@@@@@@@@@@ CALL BACK REWARD AFTER WATCH VIDEO , isSuccess = %s @@@@@@@@@@@@@@@@@@@@@", success ? "true" : "false");
 	}
 	PopupManager::getInstance()->getLoadingAnimation()->hide();
 	if (!success) {
@@ -254,7 +250,7 @@ void PurchaseCoinCrownItem::onSelected(int purchasePos)
 {
 	if (this->isItemAdcolony)
 	{
-		PluginManager::getInstance()->getAdcolonyController()->showVideo(CALLBACK_4(PurchaseCoinCrownItem::callbackRewardVideoAdcolony, this));
+		PluginManager::getInstance()->getAdvertiseController()->showVideo(CC_CALLBACK_2(PurchaseCoinCrownItem::callbackRewardVideoAdcolony, this));
 		this->buyButton->setEnabled(false);
 	}
 	else
