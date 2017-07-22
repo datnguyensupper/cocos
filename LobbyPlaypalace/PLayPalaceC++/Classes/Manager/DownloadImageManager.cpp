@@ -184,6 +184,10 @@ void DownloadImageManager::onReceivedCircleImage(const std::string & url,
 
 void DownloadImageManager::downloadImage(const std::string & url)
 {
+    
+#if IS_RUN_WITHOUT_NW
+    return;
+#endif
 	cocos2d::network::HttpRequest* request = new (std::nothrow) cocos2d::network::HttpRequest();
 	request->setUrl(url);
 	request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
@@ -196,6 +200,9 @@ void DownloadImageManager::addDownloadToQueueAndCheckDownload(
 	const std::string & url, 
 	std::function<void(cocos2d::Texture2D*texture)> callback)
 {
+#if IS_RUN_WITHOUT_NW
+    return;
+#endif
 	this->downloadingImageWithCallback[url].push_back(callback);
 	this->downloadImageQueue.push_back(url);
 	if (this->downloadImageQueue.size() <= 1) {
@@ -205,6 +212,9 @@ void DownloadImageManager::addDownloadToQueueAndCheckDownload(
 
 void DownloadImageManager::checkAndDownload()
 {
+#if IS_RUN_WITHOUT_NW
+    return;
+#endif
 	if (this->downloadImageQueue.size() > 0) {
 		this->downloadImage(this->downloadImageQueue[0]);
 	}
@@ -215,6 +225,9 @@ void DownloadImageManager::loadImageFromCacheOrDownload(
 	std::function<void(cocos2d::Texture2D* texture)> callback)
 
 {
+#if IS_RUN_WITHOUT_NW
+    return;
+#endif
 	std::string realUrl = this->redirectMap[url].empty() ? url : this->redirectMap[url];
 	if (url.empty()) {
 		if (callback)

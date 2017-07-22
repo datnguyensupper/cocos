@@ -8,11 +8,11 @@
 //THAM KHAO: http://docs.sdkbox.com/en/plugins/iap/v3-cpp/
 #include "cocos2d.h"
 #include "Info/BaseItemInfo.h"
-#ifdef SDKBOX_ENABLED
-#include "PluginIAP/PluginIAP.h"
-#else
+//#ifdef SDKBOX_ENABLED
+//#include "PluginIAP/PluginIAP.h"
+//#else
 #include "proj.android-studio/app/jni/pluginiap/PluginIAP.h"
-#endif
+//#endif
 
 struct MobilePaymentInfo : public BaseItemInfo
 {

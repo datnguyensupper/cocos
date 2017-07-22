@@ -64,22 +64,22 @@ void LobbyScene::checkAndShowStrategyPopups()
 	}
 
 	//CHECK AND SHOW COMEBACK BONUS MOBILE 
-	if (additionalInfo->comebackBonusMobileInfo->canCollect)
-	{
-		this->layerSwallowTouched->setVisible(false);
-		PopupManager::getInstance()->getComebackBonusMobilePopup()->prepareAndShow(this);
-	}
+//	if (additionalInfo->comebackBonusMobileInfo->canCollect)
+//	{
+//		this->layerSwallowTouched->setVisible(false);
+//		PopupManager::getInstance()->getComebackBonusMobilePopup()->prepareAndShow(this);
+//	}
 	//CHECK AND SHOW DAILY BONUS STREAK
 //#if IS_DEBUG
-	if (additionalInfo->dailyBonusStreakInfo->canCollect) {
-		this->layerSwallowTouched->setVisible(false);
-		PopupManager::getInstance()->getDailyBonusStreakPopup()->prepareAndShow(this);
-	}
+//	if (additionalInfo->dailyBonusStreakInfo->canCollect) {
+//		this->layerSwallowTouched->setVisible(false);
+//		PopupManager::getInstance()->getDailyBonusStreakPopup()->prepareAndShow(this);
+//	}
 //#endif
 
-	PromotionsManager::getInstance()->checkStartupPromotions([this](bool isHavePromotions) {
-		this->layerSwallowTouched->setVisible(false);
-	});
+//	PromotionsManager::getInstance()->checkStartupPromotions([this](bool isHavePromotions) {
+//		this->layerSwallowTouched->setVisible(false);
+//	});
 }
 Scene* LobbyScene::createScene(ppEnum::GameScene lastScene)
 {

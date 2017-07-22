@@ -102,8 +102,10 @@ bool LoginScene::init()
 	TestManager::getInstance()->createTestButton(this);
 #endif
 
-    check4AutoLogin();
     
+#if !IS_RUN_WITHOUT_NW
+    check4AutoLogin();
+#endif
     return true;
 }
 

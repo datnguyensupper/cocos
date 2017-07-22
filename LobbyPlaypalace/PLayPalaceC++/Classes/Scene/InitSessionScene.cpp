@@ -122,6 +122,11 @@ void InitSessionScene::processAfterInit(){
 	this->updateProgressTimerLoading(0, false, LOADING_SCENE_CALL_API_MESSAGE_1);
 	this->updateProgressTimerLoading(RandomHelper::random_real(0.7f, 1.0f));
 
+    
+#if IS_RUN_WITHOUT_NW
+    this->getDataFromServer();
+    return;
+#endif
 	switch (loginFrom)
 	{
 	case ppEnum::Facebook:{
@@ -171,7 +176,10 @@ void InitSessionScene::getDataFromServer()
 			std::string responseAsString) {
 
 		if (coreResultCode == RESULT_CODE_VALID)
-		{
+        {
+            CCLOG("----------");
+            CCLOG("%s", responseAsString.c_str());
+            CCLOG("----------");
 			this->updateProgressTimerLoading(1.0f, false);
 			auto listSize = responseAsDocument[JSONFieldConstant::LIST_SIZE.c_str()].GetInt();
 			auto members = responseAsDocument[JSONFieldConstant::MEMBER.c_str()].GetArray();
@@ -303,6 +311,13 @@ void InitSessionScene::checkAndGoToNextScene(bool isSuccess) {
 	this->updateProgressTimerLoading(0, false, LOADING_SCENE_CALL_API_MESSAGE_5);
 	this->updateProgressTimerLoading(RandomHelper::random_real(0.7f, 1.0f));
 
+#if IS_RUN_WITHOUT_NW
+    this->scheduleOnce([=](float dt) {
+        if (isSuccess) this->gotoLobbyScene(0);
+        else this->gotoLoginSceneSomethingWrong();
+    }, 2.0, "testwithoutnetwork");
+    return;
+#endif
 	//this->updateProgressTimerLoading(1.0f, false);
 	if (isSuccess) this->gotoLobbyScene(0);
 	else this->gotoLoginSceneSomethingWrong();

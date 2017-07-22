@@ -652,8 +652,14 @@
 
 #pragma region Debug
 
-//#define IS_DEBUG true
-#define IS_DEBUG false
+#define IS_DEBUG true
+//#define IS_DEBUG false
+#define COCOS2D_DEBUG 1
+
+
+
+#define IS_RUN_WITHOUT_NW true
+//#define IS_RUN_WITHOUT_NW false
 
 #pragma endregion
 

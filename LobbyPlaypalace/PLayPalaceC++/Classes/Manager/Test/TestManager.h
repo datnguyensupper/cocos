@@ -13,6 +13,9 @@
 #include "Info/UserBonusCheckInfo.h"
 #include "Info/UserInfo.h"
 
+#include "network/HttpClient.h"
+#include "tinyxml2/tinyxml2.h"
+
 #include "Views/Popup/BasePopup.h"
 
 class TestManager : BasePopup
@@ -45,7 +48,10 @@ public:
 	/// </summary>
 	/// <param name="url"></param>
 	/// <param name="callback"></param>
-	void getFakeRespone(std::string url, std::function<void(rapidjson::Value &responseAsDocument)> callback);
+    void getFakeRespone(std::string url, std::function<void(rapidjson::Value &responseAsDocument)> callback);
+    
+///cool
+    void getFakeXMLRespone(std::string url,std::function<void(bool isSuccess, tinyxml2::XMLDocument* response)> callback);
 	/// <summary>
 	/// testBonusWheel
 	/// </summary>
@@ -131,6 +137,8 @@ public:
 	/// </summary>
 	/// <param name="parent"></param>
 	void autoLogin(cocos2d::Node * parent);
+    void loginGuessAcount(std::function<void(int coreResultCode, rapidjson::Value &responseAsDocument, std::string responseAsString)> callback);
+
 
 
 	bool shouldAutoEnterGameSlots = false;

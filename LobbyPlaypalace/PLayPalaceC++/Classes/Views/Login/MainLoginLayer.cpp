@@ -9,6 +9,9 @@
 
 #include "Views/Popup/LoadingAnimation.h"
 #include "Helper/Helper4Sprite.h"
+#if IS_DEBUG
+#include "Manager/Test/TestManager.h"
+#endif
 
 USING_NS_CC;
 using namespace std;
@@ -113,6 +116,11 @@ void MainLoginLayer::onLoginGuessTouched(cocos2d::Ref* sender, cocos2d::ui::Widg
 	{
 		return;
 	}
+    
+#if IS_RUN_WITHOUT_NW
+    autoLogin();
+    return;
+#endif
 
 	this->isClickedLogin = true;
 	string usernameLocal = UserDefault::getInstance()->getStringForKey(STORING_KEY_USER_NAME_GUESS);
@@ -194,6 +202,11 @@ void MainLoginLayer::onLoginGuessTouched(cocos2d::Ref* sender, cocos2d::ui::Widg
 
 void MainLoginLayer::onLoginAccountPPTouched(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type)
 {
+    
+#if IS_RUN_WITHOUT_NW
+    autoLogin();
+    return;
+#endif
 	if (type == ui::Widget::TouchEventType::ENDED)
 	{
 		this->loginScene->moveCameraToView(LoginViews::PPLoginView);
@@ -203,6 +216,12 @@ void MainLoginLayer::onLoginAccountPPTouched(cocos2d::Ref* sender, cocos2d::ui::
 void MainLoginLayer::onLoginFacebookTouched(cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type)
 {
 
+    
+    
+#if IS_RUN_WITHOUT_NW
+    autoLogin();
+    return;
+#endif
 	if (type != ui::Widget::TouchEventType::ENDED
 		|| this->isClickedLogin)
 	{
@@ -248,6 +267,8 @@ void MainLoginLayer::loginGuess(
 	{
 		CCLOG("LOGIN GUESS");
 	}
+    
+    
 	//callback onLoginTouched account pp 
 	auto callback = [this](
 		int coreResultCode,
@@ -277,6 +298,12 @@ void MainLoginLayer::loginGuess(
 		PopupManager::getInstance()->getLoadingAnimation()->hide();
 	};
 	PopupManager::getInstance()->getLoadingAnimation()->prepareAndShow(this->getParent());
+    
+#if IS_RUN_WITHOUT_NW
+    TestManager::getInstance()->loginGuessAcount(callback);
+    return;
+#endif
+    
 	NetworkManager::getInstance()->loginGuessAcount(
 		username,
 		password,
@@ -292,4 +319,8 @@ void MainLoginLayer::loginGuess(
 		PopupManager::getInstance()->getLoadingAnimation()->hide();
 	}
 	);
+}
+
+void MainLoginLayer::autoLogin() {
+    loginGuess("","");
 }

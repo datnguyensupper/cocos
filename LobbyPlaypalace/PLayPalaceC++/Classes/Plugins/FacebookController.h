@@ -9,11 +9,11 @@
 #include "cocos2d.h"
 #include "Info/FacebookFriendInfo.h"
 
-#ifdef SDKBOX_ENABLED
-#include "PluginFacebook/PluginFacebook.h"
-#else
+//#ifdef SDKBOX_ENABLED
+//#include "PluginFacebook/PluginFacebook.h"
+//#else
 #include "proj.android-studio/app/jni/pluginfacebook/PluginFacebook.h"
-#endif
+//#endif
 
 class FacebookController : public sdkbox::FacebookListener
 {

@@ -136,8 +136,14 @@ namespace GameSlot {
 	}
 	bool GameSlotScene::checkCanSpin()
 	{
+        
 		if (this->isLevelUp) return false;
 
+#if IS_RUN_WITHOUT_NW
+        return true;
+#endif
+
+        
 		//auto missingCoin = this->oMainGame->getTotalBet() - InfoManager::getInstance()->getUserInfo()->coin;
 		auto missingCoin = this->oMainGame->getTotalBet() - PopupManager::getInstance()->getHeaderLobbyLayout()->getCoinInHeaderUI();
 		if (missingCoin > 0) {
