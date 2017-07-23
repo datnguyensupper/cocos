@@ -6,6 +6,9 @@
 #include "Info/AdditionalInfo.h"
 #include "Views/Popup/NotificationPopup.h"
 #include "Helper/Helper4Time.h"
+#if IS_DEBUG
+#include "Manager/Test/TestManager.h"
+#endif
 
 USING_NS_CC;
 using namespace network;
@@ -32,6 +35,17 @@ namespace GameSlot {
 		if (this->curRequest) {
 			this->curRequest->release();
 		}
+        
+#if IS_RUN_WITHOUT_NW
+        CCLOG(url.c_str());
+        CCLOG(url.c_str());
+        TestManager::getInstance()->getFakeXMLRespone(url, [=](bool isSuccess, tinyxml2::XMLDocument* response) {
+            cb(isSuccess, response);
+        });
+        return;
+#endif
+        
+        
 		HttpRequest* request = new HttpRequest();
 		request->setUrl(url + "?" + params);
 		request->setRequestType(HttpRequest::Type::GET);
@@ -99,6 +113,7 @@ namespace GameSlot {
 			std::string _xml = std::string(buffer->begin(), buffer->end());
 
 			auto doc = new tinyxml2::XMLDocument();
+            CCLOG(_xml.c_str());
 			doc->Parse(_xml.c_str());
 
 			this->curDoc = doc;

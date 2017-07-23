@@ -32,6 +32,9 @@ private:
 		std::string username,
 		std::string password
 	);
+    
+    
+    void autoLogin();
 
 	LoginScene* loginScene;
 

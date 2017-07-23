@@ -8,11 +8,11 @@
 //THAM KHAO: http://docs.sdkbox.com/en/plugins/adcolony/v3-cpp/
 #include "cocos2d.h"
 
-#ifdef SDKBOX_ENABLED
-#include "PluginAdColony/PluginAdColony.h"
-#else
+//#ifdef SDKBOX_ENABLED
+//#include "PluginAdColony/PluginAdColony.h"
+//#else
 #include "proj.android-studio/app/jni/pluginadcolony/PluginAdColony.h"
-#endif
+//#endif
 
 class AdcolonyController : public sdkbox::AdColonyListener
 {

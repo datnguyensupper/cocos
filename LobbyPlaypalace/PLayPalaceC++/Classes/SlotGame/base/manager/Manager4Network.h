@@ -22,6 +22,9 @@ namespace GameSlot {
 		* @param response
 		*/
 
+        
+        void getFakeXMLRespone(std::string url,std::function<void(bool isSuccess, tinyxml2::XMLDocument* response)> callback);
+        
 		void onHttpRequestCompleted(
 			cocos2d::network::HttpClient *sender,
 			cocos2d::network::HttpResponse *response);

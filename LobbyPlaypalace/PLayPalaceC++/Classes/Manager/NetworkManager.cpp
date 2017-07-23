@@ -13,6 +13,9 @@
 #include "Helper/Helper4String.h"
 #include "Helper/Helper4Scene.h"
 #include "Util/UtilFunction.h"
+#if IS_DEBUG
+#include "Manager/Test/TestManager.h"
+#endif
 
 using namespace std;
 USING_NS_CC;
@@ -60,6 +63,13 @@ void NetworkManager::post(
 	std::function<void(std::string result)> callbackTimeOut,
 	float timeoutIn,
 	bool isAddLoginToken){
+    
+#if IS_RUN_WITHOUT_NW
+    TestManager::getInstance()->getFakeRespone(url, [callback](rapidjson::Value &responseAsDocument) {
+        callback(0,responseAsDocument,"");
+    });
+    return;
+#endif
     
 	if (isAddLoginToken
 		&& !this->loginToken.empty()){
