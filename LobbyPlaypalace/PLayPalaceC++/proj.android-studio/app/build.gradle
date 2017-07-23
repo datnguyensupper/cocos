@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.lobbyteam.playpalace.cocos.test"
+        applicationId "com.lobbyteam.playpalace.cocos"
         minSdkVersion 15
         targetSdkVersion PROP_TARGET_SDK_VERSION
         versionCode 38
