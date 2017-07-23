@@ -84,19 +84,22 @@ bool MainLoginLayer::init()
 	playPPAcountText->setPosition(Vec2(visibleSize.width / 2 + 338, visibleSize.height / 2 - 142));
 	this->addChild(playPPAcountText);
 
-	if (!Configs::isProduction)
-	{
-		auto testVersionLabel = Label::createWithTTF(
-			TTFConfig(FONT_HelveticaNeue_Thin, 40),
-			"Test version: " + Configs::versionName
-		);
-		testVersionLabel->setTextColor(Color4B::BLACK);
-		testVersionLabel->setPosition(Vec2(
-			testVersionLabel->getContentSize().width / 2 + 20,
-			testVersionLabel->getContentSize().height / 2 + 20
-		));
-		this->addChild(testVersionLabel);
-	}
+    
+#if IS_RUN_WITHOUT_NW
+    if (!Configs::isProduction)
+    {
+        auto testVersionLabel = Label::createWithTTF(
+                                                     TTFConfig(FONT_HelveticaNeue_Thin, 40),
+                                                     "Test version: " + Configs::versionName
+                                                     );
+        testVersionLabel->setTextColor(Color4B::BLACK);
+        testVersionLabel->setPosition(Vec2(
+                                           testVersionLabel->getContentSize().width / 2 + 20,
+                                           testVersionLabel->getContentSize().height / 2 + 20
+                                           ));
+        this->addChild(testVersionLabel);
+    }
+#endif
 
 
 	return true;
