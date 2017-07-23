@@ -50,7 +50,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 ../../../Classes/Manager/FileManager/DownloadFileManager.cpp \
 ../../../Classes/Manager/FileManager/FileManager.cpp \
 ../../../Classes/Manager/FileManager/SlotsGameDownloadFileManager.cpp \
-../../../Classes/Plugins/AdcolonyController.cpp \
+../../../Classes/Manager/PromotionsManager.cpp \
+../../../Classes/Plugins/Advertise/AdcolonyController.cpp \
+../../../Classes/Plugins/Advertise/PluginVungle.cpp \
+../../../Classes/Plugins/Advertise/PluginVungleController.cpp \
+../../../Classes/Plugins/AdvertiseController.cpp \
 ../../../Classes/Plugins/FacebookController.cpp \
 ../../../Classes/Plugins/GamePlugin.cpp \
 ../../../Classes/Plugins/IAPController.cpp \
@@ -152,6 +156,11 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 ../../../Classes/Views/Popup/FriendPopup/CellInbox.cpp \
 ../../../Classes/Views/Popup/FriendPopup/CellLeaderboard.cpp \
 ../../../Classes/Views/Popup/FriendPopup/FriendPopup.cpp \
+../../../Classes/Views/Popup/Promotions/FreeToPlayPopup.cpp \
+../../../Classes/Views/Popup/Promotions/GetMoreCoinsPopup.cpp \
+../../../Classes/Views/Popup/Promotions/PayToPlayPopup.cpp \
+../../../Classes/Views/Popup/Promotions/SpecialOfferPopup.cpp \
+../../../Classes/Views/Popup/Promotions/StarterPackPopup.cpp \
 ../../../Classes/Views/Popup/Shop/PurchaseItemNode.cpp \
 ../../../Classes/Views/Popup/Shop/ShopPopup.cpp \
 ../../../Classes/Views/Popup/AddRefereeCodePopup.cpp \
